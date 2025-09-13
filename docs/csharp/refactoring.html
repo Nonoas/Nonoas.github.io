@@ -1,0 +1,2952 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from code.visualstudio.com/docs/csharp/refactoring by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:55:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="awa-expId" content="vscw_aaflight1016_control:103441;" />
+	<meta name="awa-env" content="prod" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="hNs7DXrTySP_X-0P_AC0WulAXvUwgSXEmgfcO2r79dw" />
+
+	<!-- Twitter and Facebook OpenGraph Metadata-->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@code" />
+
+	<meta name="description" content="C# Quick Actions and Refactorings in Visual Studio Code" />
+<meta name="keywords" content="" />
+<meta name="ms.prod" content="vs-code" />
+<meta name="ms.TOCTitle" content="" />
+<meta name="ms.ContentId" content="76b55a1a-9666-417b-8f13-1de3fd6f36e9" />
+<meta name="ms.date" content="6/6/2023" />
+<meta name="ms.topic" content="conceptual" />
+<!-- Twitter and Facebook OpenGraph Metadata-->
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:url" content="https://code.visualstudio.com/docs/csharp/refactoring" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="C# Quick Actions and Refactorings" />
+<meta property="og:description" content="C# Quick Actions and Refactorings in Visual Studio Code" />
+
+<meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" />
+
+
+
+	<link rel="shortcut icon" href="https://code.visualstudio.com/assets/favicon.ico" sizes="128x128" />
+	<link rel="apple-touch-icon" href="https://code.visualstudio.com/assets/apple-touch-icon.png">
+
+	<title>C# Quick Actions and Refactorings</title>
+
+	<link rel="stylesheet" href="https://code.visualstudio.com/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://code.visualstudio.com/dist/v2/style.css">
+
+	<script src="https://consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js"></script>
+	<script type="text/javascript" src="https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js"></script>
+	
+	<script type="text/javascript">
+	// Leave as var; siteConsent is initialized and referenced elsewhere.
+	var siteConsent = null;
+	
+	const GPC_DataSharingOptIn = false;
+	WcpConsent.onInitCallback(function () {
+		window.appInsights = new oneDS.ApplicationInsights();
+		window.appInsights.initialize({
+			instrumentationKey: "1a3eb3104447440391ad5f2a6ee06a0a-62879566-bc58-4741-9650-302bf2af703f-7103",
+			propertyConfiguration: {
+				userConsented: false,
+				gpcDataSharingOptIn: false,
+				callback: {
+					userConsentDetails: siteConsent ? siteConsent.getConsent : undefined
+				},
+			},
+			cookieCfg: {
+				ignoreCookies: ["MSCC"]
+			},
+			webAnalyticsConfiguration:{ // Web Analytics Plugin configuration
+				urlCollectQuery: true,
+				urlCollectHash: true,
+				autoCapture: {
+					scroll: true,
+					pageView: true,
+					onLoad: true,
+					onUnload: true,
+					click: true,
+					resize: true,
+					jsError: true
+				}
+			}
+		}, []);
+	
+		window.appInsights.getPropertyManager().getPropertiesContext().web.gpcDataSharingOptIn = GPC_DataSharingOptIn;
+	});
+	</script>
+	<link rel="alternate" type="application/atom+xml" title="RSS Feed for code.visualstudio.com" href="https://code.visualstudio.com/feed.xml" />
+</head>
+
+<body >
+	<!-- Setting theme here to avoid FOUC -->
+	<script>
+		function setTheme(themeName) {
+			if (themeName === 'dark') {
+				document.documentElement.removeAttribute('data-theme'); // dark is default, so no data-theme attribute needed
+			}
+
+			if (themeName === 'light') {
+				document.documentElement.setAttribute('data-theme', themeName);
+			}
+			return;
+		}
+
+		// Determine initial theme: user preference or system preference
+		let theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		setTheme(theme); // Apply the initial theme
+
+		// Listen for changes in the system theme preference
+		window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+			if (!localStorage.getItem('theme')) { // Only if no user preference is saved
+				setTheme(e.matches ? 'dark' : 'light');
+			}
+		});
+	</script>
+
+	<div id="main">
+		<div class="navbar-fixed-container">
+			<div class="navbar navbar-inverse navbar-fixed-top " data-spy="affix"
+				data-offset-top="1">
+				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
+					<div class="container">
+						<div class="nav navbar-header">
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>Visual Studio Code</span></a>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+								aria-label="Expand and Collapse Menu">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="navbar-collapse collapse">
+							<ul class="nav navbar-nav navbar-left">
+								<li class="active" ><a id="nav-docs" href="https://code.visualstudio.com/docs">Docs</a></li>
+								<li ><a id="nav-updates" href="https://code.visualstudio.com/updates">Updates</a></li>
+								<li ><a id="nav-blogs" href="https://code.visualstudio.com/blogs">Blog</a></li>
+								<li ><a id="nav-extend" href="https://code.visualstudio.com/api">API</a></li>
+								<li><a href="https://marketplace.visualstudio.com/VSCode" target="_blank" rel="noopener" id="nav-extensions">Extensions</a></li>
+								<li ><a id="nav-mcp" href="https://code.visualstudio.com/mcp">MCP</a></li>
+								<li ><a id="nav-faqs" href="https://code.visualstudio.com/docs/supporting/faq">FAQ</a></li>
+								<li class='search visible-xs visible-sm'
+									><a href="https://code.visualstudio.com/Search">Search</a></li>
+								<li ><a id="nav-events" href="https://code.visualstudio.com/dev-days">Dev Days</a></li>
+							</ul>
+		
+							<ul class="nav navbar-nav navbar-right" role="presentation">
+								<li>
+									<button type="button" class="theme-switch" id="theme-toggle">
+										<img class="theme-icon-light" src="https://code.visualstudio.com/assets/icons/theme-light.svg"
+											alt="Switch to the dark theme" />
+										<img class="theme-icon-dark" src="https://code.visualstudio.com/assets/icons/theme-dark.svg"
+											alt="Switch to the light theme" />
+									</button>
+								</li>
+								<li>
+									<a href="https://code.visualstudio.com/Search" title="Search" class="btn search-btn" id="nav-search" aria-label="Open search page">
+										<img class="search-icon-light" src="https://code.visualstudio.com/assets/icons/search.svg" width="16px" height="16px"
+											alt="" />
+										<img class="search-icon-dark" src="https://code.visualstudio.com/assets/icons/search-dark.svg" width="16px"
+											height="16px" alt="" />
+									</a>
+								</li>
+								<li class="search" role="presentation">
+									<div class="nav-search search-control" role="button" tabindex="0" aria-label="Open search dialog">
+										<div class="input-group" role="presentation">
+											<span class="input-group-btn">
+												<span class="btn search-icon-container" aria-hidden="true">
+													<img class="search-icon-dark" src="https://code.visualstudio.com/assets/icons/search-dark.svg" alt="" />
+													<img class="search-icon-light" src="https://code.visualstudio.com/assets/icons/search.svg" alt="" />
+												</span>
+											</span>
+											<input type="text" name="q" class="search-box form-control" placeholder="Search Docs" aria-hidden="true" tabindex="-1" readonly/>
+											<span class="search-shortcut-overlay"></span>
+										</div>
+									</div>						</li>
+								<!-- this was hiden in the home and download page, keeping it for now -->
+								<li><a class="link-button" href="https://code.visualstudio.com/Download" id="nav-download">
+										<span>Download</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
+			<div class="container">
+				<p class="message">Join a <a href="https://code.visualstudio.com/dev-days" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+			</div>
+			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
+					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
+		</div>		<!-- This div wraps around the entire site -->
+		<!-- The body itself should already have a main tag -->
+		<div id="main-content">
+			<script>
+    function closeReportIssue() {
+        var element = document.getElementById('surveypopup');
+        element.parentElement.removeChild(element);
+    }
+
+    function reportIssue(tutorial, page) {
+        var div = document.createElement('div');
+        div.innerHTML = '<div id="surveypopup" class="overlay visible"><div class="surveypopup"><div id="surveytitle">Tell us more<a href="javascript:void(0)" onclick="closeReportIssue()">X</a></div><div id="surveydiv"><iframe frameBorder="0" scrolling="0" src="https://www.research.net/r/PWZWZ52?tutorial=' + tutorial + '&step=' + page + '"></iframe></div></div></div>';
+        document.body.appendChild(div.children[0]);
+    }
+</script>
+
+<div class="container body-content docs">
+    <div class="row">
+        <!-- left nav -->
+        <div class="col-xs-12 col-md-2 docs-navbar-container">
+            <nav id="docs-navbar" aria-label="Topics" class="docs-nav visible-md visible-lg">
+              <ul class="nav" id="main-nav">
+              <li >
+                <a class="docs-home" href="https://code.visualstudio.com/docs" >Overview</a>
+              </li>
+              
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#setup-articles" data-parent="#main-nav" data-toggle="collapse">Setup</a>
+              <ul id="setup-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/setup-overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/linux" >Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/mac" >macOS</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/windows" >Windows</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/vscode-web" >VS Code for the Web</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/raspberry-pi" >Raspberry Pi</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/network" >Network</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/additional-components" >Additional Components</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/enterprise" >Enterprise</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/uninstall" >Uninstall</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#getstarted-articles" data-parent="#main-nav" data-toggle="collapse">Get Started</a>
+              <ul id="getstarted-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/getting-started" >VS Code Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/copilot-quickstart" >Copilot Quickstart</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/userinterface" >User Interface</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/personalize-vscode" >Personalize VS Code</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/extensions" >Install Extensions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/tips-and-tricks" >Tips and Tricks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/introvideos" >Intro Videos</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#configure-articles" data-parent="#main-nav" data-toggle="collapse">Configure</a>
+              <ul id="configure-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/locales" >Display Language</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/custom-layout" >Layout</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/keybindings" >Keyboard Shortcuts</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/settings" >Settings</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/settings-sync" >Settings Sync</a>
+                    </li>
+                      
+            <li class="panel">
+              <a class="area disabled" tabindex="-1" aria-disabled="true">Extensions</a>
+              <ul id="configure-extensions-articles" class="collapse in">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/extensions/extension-marketplace" >Extension Marketplace</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/extensions/extension-runtime-security" >Extension Runtime Security</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/themes" >Themes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/profiles" >Profiles</a>
+                    </li>
+                      
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#configure-accessibility-articles"  data-toggle="collapse">Accessibility</a>
+              <ul id="configure-accessibility-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/accessibility/accessibility" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/accessibility/voice" >Voice Interactions</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/command-line" >Command Line Interface</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/telemetry" >Telemetry</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#editing-articles" data-parent="#main-nav" data-toggle="collapse">Edit code</a>
+              <ul id="editing-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/codebasics" >Basic Editing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/intellisense" >IntelliSense</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/editingevolved" >Code Navigation</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/refactoring" >Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/userdefinedsnippets" >Snippets</a>
+                    </li>
+                      
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#editing-workspaces-articles"  data-toggle="collapse">Workspaces</a>
+              <ul id="editing-workspaces-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/workspaces/workspaces" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/workspaces/multi-root-workspaces" >Multi-root Workspaces</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/workspaces/workspace-trust" >Workspace Trust</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#debugtest-articles" data-parent="#main-nav" data-toggle="collapse">Build, Debug, Test</a>
+              <ul id="debugtest-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/debugtest/tasks" >Tasks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/debugtest/debugging" >Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/debugtest/debugging-configuration" >Debug Configuration</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/debugtest/testing" >Testing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/debugtest/port-forwarding" >Port Forwarding</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#copilot-articles" data-parent="#main-nav" data-toggle="collapse">GitHub Copilot</a>
+              <ul id="copilot-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/setup" >Setup</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/getting-started" >Quickstart</a>
+                    </li>
+                      
+            <li class="panel">
+              <a class="area disabled" tabindex="-1" aria-disabled="true">Chat</a>
+              <ul id="copilot-chat-articles" class="collapse in">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat" >Chat Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat-context" >Manage Context</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/chat-ask-mode" >Ask Mode</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-edits" >Edit Mode</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode" >Agent Mode</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/inline-chat" >Inline Chat</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/prompt-crafting" >Prompt Engineering</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/ai-powered-suggestions" >Code Completions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/copilot-coding-agent" >Copilot Coding Agent</a>
+                    </li>
+                      
+            <li class="panel">
+              <a class="area disabled" tabindex="-1" aria-disabled="true">Customize Copilot</a>
+              <ul id="copilot-customization-articles" class="collapse in">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/customization/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions" >Custom Instructions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/customization/prompt-files" >Prompt Files</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/customization/custom-chat-modes" >Chat Modes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/customization/language-models" >Language Models</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/customization/mcp-servers" >MCP</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+            <li class="panel">
+              <a class="area disabled" tabindex="-1" aria-disabled="true">Guides</a>
+              <ul id="copilot-guides-articles" class="collapse in">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/guides/notebooks-with-ai" >Edit Notebooks with AI</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/guides/test-with-copilot" >Test with AI</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/guides/debug-with-copilot" >Debug with AI</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/guides/mcp-developer-guide" >MCP Dev Guide</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/copilot-smart-actions" >Smart Actions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/copilot-tips-and-tricks" >Tips and Tricks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/security" >Security</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/faq" >FAQ</a>
+                    </li>
+                      
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#copilot-reference-articles"  data-toggle="collapse">Reference</a>
+              <ul id="copilot-reference-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features" >Cheat Sheet</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/reference/copilot-settings" >Settings Reference</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/reference/workspace-context" >Workspace Context</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#sourcecontrol-articles" data-parent="#main-nav" data-toggle="collapse">Source Control</a>
+              <ul id="sourcecontrol-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/sourcecontrol/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/sourcecontrol/intro-to-git" >Introduction to Git</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/sourcecontrol/github" >Collaborate on GitHub</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/sourcecontrol/faq" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#terminal-articles" data-parent="#main-nav" data-toggle="collapse">Terminal</a>
+              <ul id="terminal-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/terminal/getting-started" >Getting Started Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/terminal/basics" >Terminal Basics</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/terminal/profiles" >Terminal Profiles</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/terminal/shell-integration" >Shell Integration</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/terminal/appearance" >Appearance</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/terminal/advanced" >Advanced</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#languages-articles" data-parent="#main-nav" data-toggle="collapse">Languages</a>
+              <ul id="languages-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/javascript" >JavaScript</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/json" >JSON</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/html" >HTML</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/emmet" >Emmet</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/css" >CSS, SCSS and Less</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/typescript" >TypeScript</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/markdown" >Markdown</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/powershell" >PowerShell</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/cpp" >C++</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/java" >Java</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/php" >PHP</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/python" >Python</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/julia" >Julia</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/r" >R</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/ruby" >Ruby</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/rust" >Rust</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/go" >Go</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/tsql" >T-SQL</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/csharp" >C#</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/dotnet" >.NET</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/polyglot" >Polyglot</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/swift" >Swift</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#nodejs-articles" data-parent="#main-nav" data-toggle="collapse">Node.js / JavaScript</a>
+              <ul id="nodejs-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/working-with-javascript" >Working with JavaScript</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/nodejs-tutorial" >Node.js Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging" >Node.js Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/nodejs-deployment" >Deploy Node.js Apps</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/browser-debugging" >Browser Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/angular-tutorial" >Angular Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/reactjs-tutorial" >React Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/vuejs-tutorial" >Vue Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/debugging-recipes" >Debugging Recipes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/profiling" >Performance Profiling</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/extensions" >Extensions</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#typescript-articles" data-parent="#main-nav" data-toggle="collapse">TypeScript</a>
+              <ul id="typescript-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/typescript/typescript-tutorial" >Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/typescript/typescript-compiling" >Compiling</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/typescript/typescript-editing" >Editing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/typescript/typescript-refactoring" >Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/typescript/typescript-debugging" >Debugging</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#python-articles" data-parent="#main-nav" data-toggle="collapse">Python</a>
+              <ul id="python-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/python-quick-start" >Quick Start</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/python-tutorial" >Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/run" >Run Python Code</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/editing" >Editing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/linting" >Linting</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/formatting" >Formatting</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/debugging" >Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/environments" >Environments</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/testing" >Testing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/jupyter-support-py" >Python Interactive</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/tutorial-django" >Django Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/tutorial-fastapi" >FastAPI Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/tutorial-flask" >Flask Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/tutorial-create-containers" >Create Containers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/python-on-azure" >Deploy Python Apps</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/python-web" >Python in the Web</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/settings-reference" >Settings Reference</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#java-articles" data-parent="#main-nav" data-toggle="collapse">Java</a>
+              <ul id="java-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-tutorial" >Getting Started</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-editing" >Navigate and Edit</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-refactoring" >Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-linting" >Formatting and Linting</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-project" >Project Management</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-build" >Build Tools</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-debugging" >Run and Debug</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-testing" >Testing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-spring-boot" >Spring Boot</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-tomcat-jetty" >Application Servers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-on-azure" >Deploy Java Apps</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-gui" >GUI Applications</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/extensions" >Extensions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-faq" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#cpp-articles" data-parent="#main-nav" data-toggle="collapse">C++</a>
+              <ul id="cpp-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/introvideos-cpp" >Intro Videos</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/config-linux" >GCC on Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/config-mingw" >GCC on Windows</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/config-wsl" >GCC on Windows Subsystem for Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/config-clang-mac" >Clang on macOS</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/config-msvc" >Microsoft C++ on Windows</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/build-with-cmake" >Build with CMake</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/cmake-linux" >CMake Tools on Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/cmake-quickstart" >CMake Quick Start</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/cpp-ide" >Editing and Navigating</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/cpp-debug" >Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/launch-json-reference" >Configure Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/cpp-refactoring" >Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/customize-cpp-settings" >Settings Reference</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/configure-intellisense" >Configure IntelliSense</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/configure-intellisense-crosscompilation" >Configure IntelliSense for Cross-Compiling</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/faq-cpp" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel active expanded">
+              <a class="area" role="button" href="#csharp-articles" data-parent="#main-nav" data-toggle="collapse">C#</a>
+              <ul id="csharp-articles" class="collapse in">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/introvideos-csharp" >Intro Videos</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/get-started" >Get Started</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/navigate-edit" >Navigate and Edit</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/intellicode" >IntelliCode</a>
+                    </li>
+                      
+                    <li class="active">
+                      <a href="https://code.visualstudio.com/docs/csharp/refactoring" aria-label="Current Page: Refactoring">Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/formatting-linting" >Formatting and Linting</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/project-management" >Project Management</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/build-tools" >Build Tools</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/package-management" >Package Management</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/debugging" >Run and Debug</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/testing" >Testing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/cs-dev-kit-faq" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#containers-articles" data-parent="#main-nav" data-toggle="collapse">Container Tools</a>
+              <ul id="containers-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/quickstart-node" >Node.js</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/quickstart-python" >Python</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/quickstart-aspnet-core" >ASP.NET Core</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/debug-common" >Debug</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/docker-compose" >Docker Compose</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/quickstart-container-registries" >Registries</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/app-service" >Deploy to Azure</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/choosing-dev-environment" >Choose a Dev Environment</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/reference" >Customize</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/bridge-to-kubernetes" >Develop with Kubernetes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/troubleshooting" >Tips and Tricks</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#datascience-articles" data-parent="#main-nav" data-toggle="collapse">Data Science</a>
+              <ul id="datascience-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks" >Jupyter Notebooks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/data-science-tutorial" >Data Science Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/python-interactive" >Python Interactive</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/data-wrangler-quick-start" >Data Wrangler Quick Start</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/data-wrangler" >Data Wrangler</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/pytorch-support" >PyTorch Support</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/azure-machine-learning" >Azure Machine Learning</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/jupyter-kernel-management" >Manage Jupyter Kernels</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/notebooks-web" >Jupyter Notebooks on the Web</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#intelligentapps-articles" data-parent="#main-nav" data-toggle="collapse">Intelligent Apps</a>
+              <ul id="intelligentapps-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/overview" >AI Toolkit Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/models" >Models</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/playground" >Playground</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/agentbuilder" >Agent Builder</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/bulkrun" >Bulk Run</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/evaluation" >Evaluation</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/finetune" >Fine-tune</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/modelconversion" >Model Conversion</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/tracing" >Tracing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/faq" >FAQ</a>
+                    </li>
+                      
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#intelligentapps-reference-articles"  data-toggle="collapse">Reference</a>
+              <ul id="intelligentapps-reference-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/reference/FileStructure" >File Structure</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/reference/ManualModelConversion" >Manual Model Conversion</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/reference/ManualConversionOnGPU" >Manual Model Conversion On GPU</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/reference/SetupWithoutAITK" >Setup Environment Without AI Toolkit</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/reference/TemplateProject" >Template Project</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#azure-articles" data-parent="#main-nav" data-toggle="collapse">Azure</a>
+              <ul id="azure-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/gettingstarted" >Getting Started</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/resourcesextension" >Resources View</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/deployment" >Deployment</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/vscodeforweb" >VS Code for the Web - Azure</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/containers" >Containers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/aksextensions" >Azure Kubernetes Service</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/kubernetes" >Kubernetes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/mongodb" >MongoDB</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/remote-debugging" >Remote Debugging for Node.js</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#remote-articles" data-parent="#main-nav" data-toggle="collapse">Remote</a>
+              <ul id="remote-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/remote-overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/ssh" >SSH</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/dev-containers" >Dev Containers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/wsl" >Windows Subsystem for Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/codespaces" >GitHub Codespaces</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/vscode-server" >VS Code Server</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/tunnels" >Tunnels</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/ssh-tutorial" >SSH Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/wsl-tutorial" >WSL Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/troubleshooting" >Tips and Tricks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/faq" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#devcontainers-articles" data-parent="#main-nav" data-toggle="collapse">Dev Containers</a>
+              <ul id="devcontainers-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/containers" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/tutorial" >Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/attach-container" >Attach to Container</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/create-dev-container" >Create Dev Container</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/containers-advanced" >Advanced Containers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/devcontainerjson-reference" >devcontainer.json</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/devcontainer-cli" >Dev Container CLI</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/tips-and-tricks" >Tips and Tricks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/faq" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#reference-articles" data-parent="#main-nav" data-toggle="collapse">Reference</a>
+              <ul id="reference-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/reference/default-keybindings" >Default Keyboard Shortcuts</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/reference/default-settings" >Default Settings</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/reference/variables-reference" >Substitution Variables</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/reference/tasks-appendix" >Tasks Schema</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+              </ul>
+            </nav>
+            
+            <nav id="small-nav" aria-label="Topics" class="docs-nav hidden-md hidden-lg">
+              <label class="faux-h4" for="small-nav-dropdown">Topics</label>
+              <select id="small-nav-dropdown" aria-label="topics">
+                <option value="/docs" >Overview</option>
+            
+              <optgroup label="Setup">
+            
+                    <option value="/docs/setup/setup-overview" >Overview</option>
+                    
+                    <option value="/docs/setup/linux" >Linux</option>
+                    
+                    <option value="/docs/setup/mac" >macOS</option>
+                    
+                    <option value="/docs/setup/windows" >Windows</option>
+                    
+                    <option value="/docs/setup/vscode-web" >VS Code for the Web</option>
+                    
+                    <option value="/docs/setup/raspberry-pi" >Raspberry Pi</option>
+                    
+                    <option value="/docs/setup/network" >Network</option>
+                    
+                    <option value="/docs/setup/additional-components" >Additional Components</option>
+                    
+                    <option value="/docs/setup/enterprise" >Enterprise</option>
+                    
+                    <option value="/docs/setup/uninstall" >Uninstall</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Get Started">
+            
+                    <option value="/docs/getstarted/getting-started" >VS Code Tutorial</option>
+                    
+                    <option value="/docs/getstarted/copilot-quickstart" >Copilot Quickstart</option>
+                    
+                    <option value="/docs/getstarted/userinterface" >User Interface</option>
+                    
+                    <option value="/docs/getstarted/personalize-vscode" >Personalize VS Code</option>
+                    
+                    <option value="/docs/getstarted/extensions" >Install Extensions</option>
+                    
+                    <option value="/docs/getstarted/tips-and-tricks" >Tips and Tricks</option>
+                    
+                    <option value="/docs/getstarted/introvideos" >Intro Videos</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Configure">
+            
+                    <option value="/docs/configure/locales" >Display Language</option>
+                    
+                    <option value="/docs/configure/custom-layout" >Layout</option>
+                    
+                    <option value="/docs/configure/keybindings" >Keyboard Shortcuts</option>
+                    
+                    <option value="/docs/configure/settings" >Settings</option>
+                    
+                    <option value="/docs/configure/settings-sync" >Settings Sync</option>
+                    
+                    <optgroup label="Configure - Extensions">
+            
+                      <option value="/docs/configure/extensions/extension-marketplace" >Extension Marketplace</option>
+                      
+                      <option value="/docs/configure/extensions/extension-runtime-security" >Extension Runtime Security</option>
+                      
+                    </optgroup>
+            
+                    <option value="/docs/configure/themes" >Themes</option>
+                    
+                    <option value="/docs/configure/profiles" >Profiles</option>
+                    
+                    <optgroup label="Configure - Accessibility">
+            
+                      <option value="/docs/configure/accessibility/accessibility" >Overview</option>
+                      
+                      <option value="/docs/configure/accessibility/voice" >Voice Interactions</option>
+                      
+                    </optgroup>
+            
+                    <option value="/docs/configure/command-line" >Command Line Interface</option>
+                    
+                    <option value="/docs/configure/telemetry" >Telemetry</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Edit code">
+            
+                    <option value="/docs/editing/codebasics" >Basic Editing</option>
+                    
+                    <option value="/docs/editing/intellisense" >IntelliSense</option>
+                    
+                    <option value="/docs/editing/editingevolved" >Code Navigation</option>
+                    
+                    <option value="/docs/editing/refactoring" >Refactoring</option>
+                    
+                    <option value="/docs/editing/userdefinedsnippets" >Snippets</option>
+                    
+                    <optgroup label="Edit code - Workspaces">
+            
+                      <option value="/docs/editing/workspaces/workspaces" >Overview</option>
+                      
+                      <option value="/docs/editing/workspaces/multi-root-workspaces" >Multi-root Workspaces</option>
+                      
+                      <option value="/docs/editing/workspaces/workspace-trust" >Workspace Trust</option>
+                      
+                    </optgroup>
+            
+              </optgroup>
+              
+              <optgroup label="Build, Debug, Test">
+            
+                    <option value="/docs/debugtest/tasks" >Tasks</option>
+                    
+                    <option value="/docs/debugtest/debugging" >Debugging</option>
+                    
+                    <option value="/docs/debugtest/debugging-configuration" >Debug Configuration</option>
+                    
+                    <option value="/docs/debugtest/testing" >Testing</option>
+                    
+                    <option value="/docs/debugtest/port-forwarding" >Port Forwarding</option>
+                    
+              </optgroup>
+              
+              <optgroup label="GitHub Copilot">
+            
+                    <option value="/docs/copilot/overview" >Overview</option>
+                    
+                    <option value="/docs/copilot/setup" >Setup</option>
+                    
+                    <option value="/docs/copilot/getting-started" >Quickstart</option>
+                    
+                    <optgroup label="GitHub Copilot - Chat">
+            
+                      <option value="/docs/copilot/chat/copilot-chat" >Chat Overview</option>
+                      
+                      <option value="/docs/copilot/chat/copilot-chat-context" >Manage Context</option>
+                      
+                      <option value="/docs/copilot/chat/chat-ask-mode" >Ask Mode</option>
+                      
+                      <option value="/docs/copilot/chat/copilot-edits" >Edit Mode</option>
+                      
+                      <option value="/docs/copilot/chat/chat-agent-mode" >Agent Mode</option>
+                      
+                      <option value="/docs/copilot/chat/inline-chat" >Inline Chat</option>
+                      
+                      <option value="/docs/copilot/chat/prompt-crafting" >Prompt Engineering</option>
+                      
+                    </optgroup>
+            
+                    <option value="/docs/copilot/ai-powered-suggestions" >Code Completions</option>
+                    
+                    <option value="/docs/copilot/copilot-coding-agent" >Copilot Coding Agent</option>
+                    
+                    <optgroup label="GitHub Copilot - Customize Copilot">
+            
+                      <option value="/docs/copilot/customization/overview" >Overview</option>
+                      
+                      <option value="/docs/copilot/customization/custom-instructions" >Custom Instructions</option>
+                      
+                      <option value="/docs/copilot/customization/prompt-files" >Prompt Files</option>
+                      
+                      <option value="/docs/copilot/customization/custom-chat-modes" >Chat Modes</option>
+                      
+                      <option value="/docs/copilot/customization/language-models" >Language Models</option>
+                      
+                      <option value="/docs/copilot/customization/mcp-servers" >MCP</option>
+                      
+                    </optgroup>
+            
+                    <optgroup label="GitHub Copilot - Guides">
+            
+                      <option value="/docs/copilot/guides/notebooks-with-ai" >Edit Notebooks with AI</option>
+                      
+                      <option value="/docs/copilot/guides/test-with-copilot" >Test with AI</option>
+                      
+                      <option value="/docs/copilot/guides/debug-with-copilot" >Debug with AI</option>
+                      
+                      <option value="/docs/copilot/guides/mcp-developer-guide" >MCP Dev Guide</option>
+                      
+                    </optgroup>
+            
+                    <option value="/docs/copilot/copilot-smart-actions" >Smart Actions</option>
+                    
+                    <option value="/docs/copilot/copilot-tips-and-tricks" >Tips and Tricks</option>
+                    
+                    <option value="/docs/copilot/security" >Security</option>
+                    
+                    <option value="/docs/copilot/faq" >FAQ</option>
+                    
+                    <optgroup label="GitHub Copilot - Reference">
+            
+                      <option value="/docs/copilot/reference/copilot-vscode-features" >Cheat Sheet</option>
+                      
+                      <option value="/docs/copilot/reference/copilot-settings" >Settings Reference</option>
+                      
+                      <option value="/docs/copilot/reference/workspace-context" >Workspace Context</option>
+                      
+                    </optgroup>
+            
+              </optgroup>
+              
+              <optgroup label="Source Control">
+            
+                    <option value="/docs/sourcecontrol/overview" >Overview</option>
+                    
+                    <option value="/docs/sourcecontrol/intro-to-git" >Introduction to Git</option>
+                    
+                    <option value="/docs/sourcecontrol/github" >Collaborate on GitHub</option>
+                    
+                    <option value="/docs/sourcecontrol/faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Terminal">
+            
+                    <option value="/docs/terminal/getting-started" >Getting Started Tutorial</option>
+                    
+                    <option value="/docs/terminal/basics" >Terminal Basics</option>
+                    
+                    <option value="/docs/terminal/profiles" >Terminal Profiles</option>
+                    
+                    <option value="/docs/terminal/shell-integration" >Shell Integration</option>
+                    
+                    <option value="/docs/terminal/appearance" >Appearance</option>
+                    
+                    <option value="/docs/terminal/advanced" >Advanced</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Languages">
+            
+                    <option value="/docs/languages/overview" >Overview</option>
+                    
+                    <option value="/docs/languages/javascript" >JavaScript</option>
+                    
+                    <option value="/docs/languages/json" >JSON</option>
+                    
+                    <option value="/docs/languages/html" >HTML</option>
+                    
+                    <option value="/docs/languages/emmet" >Emmet</option>
+                    
+                    <option value="/docs/languages/css" >CSS, SCSS and Less</option>
+                    
+                    <option value="/docs/languages/typescript" >TypeScript</option>
+                    
+                    <option value="/docs/languages/markdown" >Markdown</option>
+                    
+                    <option value="/docs/languages/powershell" >PowerShell</option>
+                    
+                    <option value="/docs/languages/cpp" >C++</option>
+                    
+                    <option value="/docs/languages/java" >Java</option>
+                    
+                    <option value="/docs/languages/php" >PHP</option>
+                    
+                    <option value="/docs/languages/python" >Python</option>
+                    
+                    <option value="/docs/languages/julia" >Julia</option>
+                    
+                    <option value="/docs/languages/r" >R</option>
+                    
+                    <option value="/docs/languages/ruby" >Ruby</option>
+                    
+                    <option value="/docs/languages/rust" >Rust</option>
+                    
+                    <option value="/docs/languages/go" >Go</option>
+                    
+                    <option value="/docs/languages/tsql" >T-SQL</option>
+                    
+                    <option value="/docs/languages/csharp" >C#</option>
+                    
+                    <option value="/docs/languages/dotnet" >.NET</option>
+                    
+                    <option value="/docs/languages/polyglot" >Polyglot</option>
+                    
+                    <option value="/docs/languages/swift" >Swift</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Node.js / JavaScript">
+            
+                    <option value="/docs/nodejs/working-with-javascript" >Working with JavaScript</option>
+                    
+                    <option value="/docs/nodejs/nodejs-tutorial" >Node.js Tutorial</option>
+                    
+                    <option value="/docs/nodejs/nodejs-debugging" >Node.js Debugging</option>
+                    
+                    <option value="/docs/nodejs/nodejs-deployment" >Deploy Node.js Apps</option>
+                    
+                    <option value="/docs/nodejs/browser-debugging" >Browser Debugging</option>
+                    
+                    <option value="/docs/nodejs/angular-tutorial" >Angular Tutorial</option>
+                    
+                    <option value="/docs/nodejs/reactjs-tutorial" >React Tutorial</option>
+                    
+                    <option value="/docs/nodejs/vuejs-tutorial" >Vue Tutorial</option>
+                    
+                    <option value="/docs/nodejs/debugging-recipes" >Debugging Recipes</option>
+                    
+                    <option value="/docs/nodejs/profiling" >Performance Profiling</option>
+                    
+                    <option value="/docs/nodejs/extensions" >Extensions</option>
+                    
+              </optgroup>
+              
+              <optgroup label="TypeScript">
+            
+                    <option value="/docs/typescript/typescript-tutorial" >Tutorial</option>
+                    
+                    <option value="/docs/typescript/typescript-compiling" >Compiling</option>
+                    
+                    <option value="/docs/typescript/typescript-editing" >Editing</option>
+                    
+                    <option value="/docs/typescript/typescript-refactoring" >Refactoring</option>
+                    
+                    <option value="/docs/typescript/typescript-debugging" >Debugging</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Python">
+            
+                    <option value="/docs/python/python-quick-start" >Quick Start</option>
+                    
+                    <option value="/docs/python/python-tutorial" >Tutorial</option>
+                    
+                    <option value="/docs/python/run" >Run Python Code</option>
+                    
+                    <option value="/docs/python/editing" >Editing</option>
+                    
+                    <option value="/docs/python/linting" >Linting</option>
+                    
+                    <option value="/docs/python/formatting" >Formatting</option>
+                    
+                    <option value="/docs/python/debugging" >Debugging</option>
+                    
+                    <option value="/docs/python/environments" >Environments</option>
+                    
+                    <option value="/docs/python/testing" >Testing</option>
+                    
+                    <option value="/docs/python/jupyter-support-py" >Python Interactive</option>
+                    
+                    <option value="/docs/python/tutorial-django" >Django Tutorial</option>
+                    
+                    <option value="/docs/python/tutorial-fastapi" >FastAPI Tutorial</option>
+                    
+                    <option value="/docs/python/tutorial-flask" >Flask Tutorial</option>
+                    
+                    <option value="/docs/python/tutorial-create-containers" >Create Containers</option>
+                    
+                    <option value="/docs/python/python-on-azure" >Deploy Python Apps</option>
+                    
+                    <option value="/docs/python/python-web" >Python in the Web</option>
+                    
+                    <option value="/docs/python/settings-reference" >Settings Reference</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Java">
+            
+                    <option value="/docs/java/java-tutorial" >Getting Started</option>
+                    
+                    <option value="/docs/java/java-editing" >Navigate and Edit</option>
+                    
+                    <option value="/docs/java/java-refactoring" >Refactoring</option>
+                    
+                    <option value="/docs/java/java-linting" >Formatting and Linting</option>
+                    
+                    <option value="/docs/java/java-project" >Project Management</option>
+                    
+                    <option value="/docs/java/java-build" >Build Tools</option>
+                    
+                    <option value="/docs/java/java-debugging" >Run and Debug</option>
+                    
+                    <option value="/docs/java/java-testing" >Testing</option>
+                    
+                    <option value="/docs/java/java-spring-boot" >Spring Boot</option>
+                    
+                    <option value="/docs/java/java-tomcat-jetty" >Application Servers</option>
+                    
+                    <option value="/docs/java/java-on-azure" >Deploy Java Apps</option>
+                    
+                    <option value="/docs/java/java-gui" >GUI Applications</option>
+                    
+                    <option value="/docs/java/extensions" >Extensions</option>
+                    
+                    <option value="/docs/java/java-faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="C++">
+            
+                    <option value="/docs/cpp/introvideos-cpp" >Intro Videos</option>
+                    
+                    <option value="/docs/cpp/config-linux" >GCC on Linux</option>
+                    
+                    <option value="/docs/cpp/config-mingw" >GCC on Windows</option>
+                    
+                    <option value="/docs/cpp/config-wsl" >GCC on Windows Subsystem for Linux</option>
+                    
+                    <option value="/docs/cpp/config-clang-mac" >Clang on macOS</option>
+                    
+                    <option value="/docs/cpp/config-msvc" >Microsoft C++ on Windows</option>
+                    
+                    <option value="/docs/cpp/build-with-cmake" >Build with CMake</option>
+                    
+                    <option value="/docs/cpp/cmake-linux" >CMake Tools on Linux</option>
+                    
+                    <option value="/docs/cpp/cmake-quickstart" >CMake Quick Start</option>
+                    
+                    <option value="/docs/cpp/cpp-ide" >Editing and Navigating</option>
+                    
+                    <option value="/docs/cpp/cpp-debug" >Debugging</option>
+                    
+                    <option value="/docs/cpp/launch-json-reference" >Configure Debugging</option>
+                    
+                    <option value="/docs/cpp/cpp-refactoring" >Refactoring</option>
+                    
+                    <option value="/docs/cpp/customize-cpp-settings" >Settings Reference</option>
+                    
+                    <option value="/docs/cpp/configure-intellisense" >Configure IntelliSense</option>
+                    
+                    <option value="/docs/cpp/configure-intellisense-crosscompilation" >Configure IntelliSense for Cross-Compiling</option>
+                    
+                    <option value="/docs/cpp/faq-cpp" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="C#">
+            
+                    <option value="/docs/csharp/introvideos-csharp" >Intro Videos</option>
+                    
+                    <option value="/docs/csharp/get-started" >Get Started</option>
+                    
+                    <option value="/docs/csharp/navigate-edit" >Navigate and Edit</option>
+                    
+                    <option value="/docs/csharp/intellicode" >IntelliCode</option>
+                    
+                    <option value="/docs/csharp/refactoring" selected>Refactoring</option>
+                    
+                    <option value="/docs/csharp/formatting-linting" >Formatting and Linting</option>
+                    
+                    <option value="/docs/csharp/project-management" >Project Management</option>
+                    
+                    <option value="/docs/csharp/build-tools" >Build Tools</option>
+                    
+                    <option value="/docs/csharp/package-management" >Package Management</option>
+                    
+                    <option value="/docs/csharp/debugging" >Run and Debug</option>
+                    
+                    <option value="/docs/csharp/testing" >Testing</option>
+                    
+                    <option value="/docs/csharp/cs-dev-kit-faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Container Tools">
+            
+                    <option value="/docs/containers/overview" >Overview</option>
+                    
+                    <option value="/docs/containers/quickstart-node" >Node.js</option>
+                    
+                    <option value="/docs/containers/quickstart-python" >Python</option>
+                    
+                    <option value="/docs/containers/quickstart-aspnet-core" >ASP.NET Core</option>
+                    
+                    <option value="/docs/containers/debug-common" >Debug</option>
+                    
+                    <option value="/docs/containers/docker-compose" >Docker Compose</option>
+                    
+                    <option value="/docs/containers/quickstart-container-registries" >Registries</option>
+                    
+                    <option value="/docs/containers/app-service" >Deploy to Azure</option>
+                    
+                    <option value="/docs/containers/choosing-dev-environment" >Choose a Dev Environment</option>
+                    
+                    <option value="/docs/containers/reference" >Customize</option>
+                    
+                    <option value="/docs/containers/bridge-to-kubernetes" >Develop with Kubernetes</option>
+                    
+                    <option value="/docs/containers/troubleshooting" >Tips and Tricks</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Data Science">
+            
+                    <option value="/docs/datascience/overview" >Overview</option>
+                    
+                    <option value="/docs/datascience/jupyter-notebooks" >Jupyter Notebooks</option>
+                    
+                    <option value="/docs/datascience/data-science-tutorial" >Data Science Tutorial</option>
+                    
+                    <option value="/docs/datascience/python-interactive" >Python Interactive</option>
+                    
+                    <option value="/docs/datascience/data-wrangler-quick-start" >Data Wrangler Quick Start</option>
+                    
+                    <option value="/docs/datascience/data-wrangler" >Data Wrangler</option>
+                    
+                    <option value="/docs/datascience/pytorch-support" >PyTorch Support</option>
+                    
+                    <option value="/docs/datascience/azure-machine-learning" >Azure Machine Learning</option>
+                    
+                    <option value="/docs/datascience/jupyter-kernel-management" >Manage Jupyter Kernels</option>
+                    
+                    <option value="/docs/datascience/notebooks-web" >Jupyter Notebooks on the Web</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Intelligent Apps">
+            
+                    <option value="/docs/intelligentapps/overview" >AI Toolkit Overview</option>
+                    
+                    <option value="/docs/intelligentapps/models" >Models</option>
+                    
+                    <option value="/docs/intelligentapps/playground" >Playground</option>
+                    
+                    <option value="/docs/intelligentapps/agentbuilder" >Agent Builder</option>
+                    
+                    <option value="/docs/intelligentapps/bulkrun" >Bulk Run</option>
+                    
+                    <option value="/docs/intelligentapps/evaluation" >Evaluation</option>
+                    
+                    <option value="/docs/intelligentapps/finetune" >Fine-tune</option>
+                    
+                    <option value="/docs/intelligentapps/modelconversion" >Model Conversion</option>
+                    
+                    <option value="/docs/intelligentapps/tracing" >Tracing</option>
+                    
+                    <option value="/docs/intelligentapps/faq" >FAQ</option>
+                    
+                    <optgroup label="Intelligent Apps - Reference">
+            
+                      <option value="/docs/intelligentapps/reference/FileStructure" >File Structure</option>
+                      
+                      <option value="/docs/intelligentapps/reference/ManualModelConversion" >Manual Model Conversion</option>
+                      
+                      <option value="/docs/intelligentapps/reference/ManualConversionOnGPU" >Manual Model Conversion On GPU</option>
+                      
+                      <option value="/docs/intelligentapps/reference/SetupWithoutAITK" >Setup Environment Without AI Toolkit</option>
+                      
+                      <option value="/docs/intelligentapps/reference/TemplateProject" >Template Project</option>
+                      
+                    </optgroup>
+            
+              </optgroup>
+              
+              <optgroup label="Azure">
+            
+                    <option value="/docs/azure/overview" >Overview</option>
+                    
+                    <option value="/docs/azure/gettingstarted" >Getting Started</option>
+                    
+                    <option value="/docs/azure/resourcesextension" >Resources View</option>
+                    
+                    <option value="/docs/azure/deployment" >Deployment</option>
+                    
+                    <option value="/docs/azure/vscodeforweb" >VS Code for the Web - Azure</option>
+                    
+                    <option value="/docs/azure/containers" >Containers</option>
+                    
+                    <option value="/docs/azure/aksextensions" >Azure Kubernetes Service</option>
+                    
+                    <option value="/docs/azure/kubernetes" >Kubernetes</option>
+                    
+                    <option value="/docs/azure/mongodb" >MongoDB</option>
+                    
+                    <option value="/docs/azure/remote-debugging" >Remote Debugging for Node.js</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Remote">
+            
+                    <option value="/docs/remote/remote-overview" >Overview</option>
+                    
+                    <option value="/docs/remote/ssh" >SSH</option>
+                    
+                    <option value="/docs/remote/dev-containers" >Dev Containers</option>
+                    
+                    <option value="/docs/remote/wsl" >Windows Subsystem for Linux</option>
+                    
+                    <option value="/docs/remote/codespaces" >GitHub Codespaces</option>
+                    
+                    <option value="/docs/remote/vscode-server" >VS Code Server</option>
+                    
+                    <option value="/docs/remote/tunnels" >Tunnels</option>
+                    
+                    <option value="/docs/remote/ssh-tutorial" >SSH Tutorial</option>
+                    
+                    <option value="/docs/remote/wsl-tutorial" >WSL Tutorial</option>
+                    
+                    <option value="/docs/remote/troubleshooting" >Tips and Tricks</option>
+                    
+                    <option value="/docs/remote/faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Dev Containers">
+            
+                    <option value="/docs/devcontainers/containers" >Overview</option>
+                    
+                    <option value="/docs/devcontainers/tutorial" >Tutorial</option>
+                    
+                    <option value="/docs/devcontainers/attach-container" >Attach to Container</option>
+                    
+                    <option value="/docs/devcontainers/create-dev-container" >Create Dev Container</option>
+                    
+                    <option value="/docs/devcontainers/containers-advanced" >Advanced Containers</option>
+                    
+                    <option value="/docs/devcontainers/devcontainerjson-reference" >devcontainer.json</option>
+                    
+                    <option value="/docs/devcontainers/devcontainer-cli" >Dev Container CLI</option>
+                    
+                    <option value="/docs/devcontainers/tips-and-tricks" >Tips and Tricks</option>
+                    
+                    <option value="/docs/devcontainers/faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Reference">
+            
+                    <option value="/docs/reference/default-keybindings" >Default Keyboard Shortcuts</option>
+                    
+                    <option value="/docs/reference/default-settings" >Default Settings</option>
+                    
+                    <option value="/docs/reference/variables-reference" >Substitution Variables</option>
+                    
+                    <option value="/docs/reference/tasks-appendix" >Tasks Schema</option>
+                    
+              </optgroup>
+              
+              </select>
+            </nav>        </div>
+
+        <!-- main content -->
+        <main class="col-xs-12 col-sm-9 col-md-8 body">
+            <div class="edit-github pull-right">
+                <a href="https://vscode.dev/github/microsoft/vscode-docs/blob/main/docs/csharp/refactoring.md"
+                    class="btn btn-default hidden-xs hidden-sm hidden-md" title="Edit this document in vscode.dev">
+                    Edit
+                </a>
+            </div>
+            <h1>C# Quick Actions and Refactorings</h1>
+<p>Visual Studio Code gives you many ways to refactor your source code as well as Quick Fixes to generate code and fix issues while you're coding. To access them, click on the 'light bulb' icon that appears or use the command <strong>Quick Fix</strong> command <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span> to display a list of Quick Fixes and refactoring options.  You can also right-click the editor and select <strong>Refactor</strong> <span class="dynamic-keybinding" data-commandId="editor.action.refactor" data-osx="⌃⇧R" data-win="Ctrl+Shift+R" data-linux="Ctrl+Shift+R"><span class="keybinding">⌃⇧R</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+R</span>)</span> to only display refactoring options.</p>
+<h2 id="_supported-refactorings-and-quick-fixes" data-needslink="_supported-refactorings-and-quick-fixes">Supported refactorings and Quick Fixes</h2>
+<ul>
+<li><a href="#_add-await">Add <code>await</code></a></li>
+<li><a href="#_add-constructor-parameters-from-members">Add constructor parameters from members</a></li>
+<li><a href="#_add-debuggerdisplay-attribute">Add <code>DebuggerDisplay</code> attribute</a></li>
+<li><a href="#_add-explicit-cast">Add explicit cast</a></li>
+<li><a href="#_add-file-header">Add file header</a></li>
+<li><a href="#_add-missing-usings--imports">Add missing <code>usings</code> / imports</a></li>
+<li><a href="#_add-named-argument">Add named argument</a></li>
+<li><a href="#_convert-anonymous-type-to-class">Convert anonymous type to class</a></li>
+<li><a href="#_convert-between-auto-property-and-full-property">Convert between auto property and full property</a></li>
+<li><a href="#_convert-between-direct-cast-and-as-expression">Convert between direct cast and <code>as</code> expression</a></li>
+<li><a href="#_convert-between-for-loop-and-foreach-statement">Convert between <code>for</code> loop and <code>foreach</code> statement</a></li>
+<li><a href="#_convert-between-get-method-and-property">Convert between Get method and property</a>
+<ul>
+<li><a href="#_convert-get-method-to-property">Convert Get method to property</a></li>
+<li><a href="#_convert-property-to-get-method">Convert property to Get method</a></li>
+</ul>
+</li>
+<li><a href="#_convert-between-if-and-switch-statements">Convert between <code>if</code> and <code>switch</code> statements</a></li>
+<li><a href="#_convert-between-regular-string-and-verbatim-string">Convert between regular string and verbatim string</a></li>
+<li><a href="#_convert-class-to-record">Convert class to record</a></li>
+<li><a href="#_convert-local-function-to-method">Convert local function to method</a></li>
+<li><a href="#_convert-numeric-literal-to-hex-decimal-or-binary-number">Convert numeric literal to hex, decimal, or binary number</a></li>
+<li><a href="#_convert-placeholder-to-interpolated-string">Convert placeholder to interpolated string</a></li>
+<li><a href="#_convert-regular-string-to-interpolated-string">Convert regular string to interpolated string</a></li>
+<li><a href="#_convert-tuple-to-struct">Convert tuple to struct</a></li>
+<li><a href="#_encapsulate-field">Encapsulate field</a></li>
+<li><a href="#_generate-comparison-operators">Generate comparison operators</a></li>
+<li><a href="#_generate-default-constructors">Generate default constructors</a></li>
+<li><a href="#_generate-parameter">Generate parameter</a></li>
+<li><a href="#_implement-all-members-explicitly">Implement all members explicitly</a></li>
+<li><a href="#_implement-all-members-implicitly">Implement all members implicitly</a></li>
+<li><a href="#_inline-method">Inline method</a></li>
+<li><a href="#_inline-temporary-variable">Inline temporary variable</a></li>
+<li><a href="#_introduce-local-variable-for-expression">Introduce local variable for expression</a></li>
+<li><a href="#_introduce-parameter">Introduce parameter</a></li>
+<li><a href="#_introduce-using-statement">Introduce <code>using</code> statement</a></li>
+<li><a href="#_invert-conditional-expressions-and-logical-operations">Invert conditional expressions and logical operations</a></li>
+<li><a href="#_invert-if">Invert <code>if</code></a></li>
+<li><a href="#_make-member-static">Make member static</a></li>
+<li><a href="#_move-declaration-near-reference">Move declaration near reference</a></li>
+<li><a href="#_move-type-to-matching-file">Move type to matching file</a></li>
+<li><a href="#_reverse-for-statement">Reverse <code>for</code> statement</a></li>
+<li><a href="#_split-or-merge-if-statements">Split or merge <code>if</code> statements</a></li>
+<li><a href="#_use-explicit-type">Use explicit type</a></li>
+<li><a href="#_use-implicit-type">Use implicit type</a></li>
+<li><a href="#_use-lambda-expression-or-block-body">Use lambda expression or block body</a></li>
+<li><a href="#_use-recursive-patterns">Use recursive patterns</a></li>
+<li><a href="#_wrap-indent-and-align-refactorings">Wrap, indent, and align refactorings</a>
+<ul>
+<li><a href="#_wrap-and-align-call-chains">Wrap and align call chains</a></li>
+<li><a href="#_wrap-indent-and-align-parameters-or-arguments">Wrap, indent, and align parameters or arguments</a></li>
+<li><a href="#_wrap-binary-expressions">Wrap binary expressions</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="_add-await" data-needslink="_add-await">Add await</h2>
+<p><strong>What:</strong> Adds <code>await</code> keyword to a function call.</p>
+<p><strong>When:</strong> When you're calling a function within an asynchronous method.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place carat by the function call (will most likely be underlined in red).</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Add <code>await</code></strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/add-await.png" alt="Add await example" loading="lazy"></p>
+<h2 id="_add-constructor-parameters-from-members" data-needslink="_add-constructor-parameters-from-members">Add constructor parameters from members</h2>
+<p><strong>What:</strong> Generate a new constructor with parameters based on selected class members.</p>
+<p><strong>When:</strong> You introduce a new constructor and want to properly declare it automatically with all the correct parameters.</p>
+<p><strong>Why:</strong> You could declare the constructor before using it, however this feature generates it automatically.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Highlight the class members you want to add as parameters in the constructor.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Generate constructor &lt;classname&gt;(&lt;membertype&gt;, &lt;membertype&gt;, &lt;etc.&gt;)</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/add-constructor-parameters-from-members.png" alt="Add constructor parameters from members example" loading="lazy"></p>
+<h2 id="_add-debuggerdisplay-attribute" data-needslink="_add-debuggerdisplay-attribute">Add DebuggerDisplay attribute</h2>
+<p><strong>What:</strong> The <a href="https://learn.microsoft.com/visualstudio/debugger/using-the-debuggerdisplay-attribute?view=vs-2022" class="external-link" target="_blank">DebuggerDisplay Attribute</a> controls how an object, property, or field is displayed in the debugger variable windows.</p>
+<p><strong>When:</strong> You want to <a href="https://learn.microsoft.com/visualstudio/debugger/view-data-values-in-data-tips-in-the-code-editor?view=vs-2022#pin-properties-in-data-tips" class="external-link" target="_blank">pin properties</a> within the debugger programmatically in your code.</p>
+<p><strong>Why:</strong> Pinning properties allows you to quickly inspect objects by their properties by bubbling up that property to the top of the object's property list within the debugger.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor on either a type, delegate, property, or field.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu and select <strong>Add <code>DebuggerDisplay</code> attribute</strong>.</li>
+<li>The <code>DebuggerDisplay</code> attribute is added along with an auto method that returns the default <code>ToString()</code>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/add-debuggerdisplay-attribute.png" alt="Add DebuggerDisplay attribute example" loading="lazy"></p>
+<h2 id="_add-explicit-cast" data-needslink="_add-explicit-cast">Add explicit cast</h2>
+<p><strong>What:</strong> Lets you automatically add an explicit cast to an expression, based on usage.</p>
+<p><strong>When:</strong> You need to add an explicit cast to an expression and want to properly assign it automatically.</p>
+<p><strong>Why:</strong> You could add an explicit cast to an expression manually, however this feature adds it automatically based on the code context.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your caret on the error.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Add explicit cast</strong>.</li>
+</ol>
+<h2 id="_add-file-header" data-needslink="_add-file-header">Add file header</h2>
+<p><strong>What:</strong> Add file headers to existing files, projects, and solutions using an <a href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig" class="external-link" target="_blank">EditorConfig</a>.</p>
+<p><strong>When:</strong> You want to easily add a file header to files, projects, and solutions.</p>
+<p><strong>Why:</strong> Your team requires you to include a file header for copyright purposes.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Add an <a href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig" class="external-link" target="_blank">EditorConfig</a> to a project or solution if you do not already have one.</li>
+<li>Add the following rule to your EditorConfig file: <code>file_header_template</code>.</li>
+<li>Set the value of the rule to equal the header text you would like applied. You can use <code>{fileName}</code> as a placeholder for the file name.</li>
+<li>Place your caret on the first line of any C# file.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Add file header</strong>.</li>
+</ol>
+<h2 id="_add-missing-usings-imports" data-needslink="_add-missing-usings-imports">Add missing usings / imports</h2>
+<p><strong>What:</strong> Lets you immediately add the necessary imports or using directives for copy-and-pasted code.</p>
+<p><strong>When:</strong> It's common practice to copy code from different places in your project or other sources and paste it into new code. This Quick Action finds missing imports directives for copy-and-pasted code and then prompts you to add them. This code fix can also add references from project to project.</p>
+<p><strong>Why:</strong> Because the Quick Action automatically adds necessary imports, you don't need to manually copy the using directives that your code needs.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Copy code from a file and paste it into a new one without including the necessary using directives. The resulting error is accompanied by a code fix that adds the missing using directives.</li>
+<li>Select <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to open the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Using &lt;your reference&gt;</strong> to add the missing reference.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/add-missing-usings.png" alt="Add missing  / imports example" loading="lazy"></p>
+<h2 id="_add-named-argument" data-needslink="_add-named-argument">Add named argument</h2>
+<p><strong>What:</strong> Append a named argument to the specified parameter value in a function call.</p>
+<p><strong>When:</strong> If you have a method with a lot of parameters, you can add named arguments to make your code more readable.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in a parameter within your function call.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Add argument name &lt;parameter name&gt;</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/add-named-argument.png" alt="Add named argument example" loading="lazy"></p>
+<h2 id="_convert-anonymous-type-to-class" data-needslink="_convert-anonymous-type-to-class">Convert anonymous type to class</h2>
+<p><strong>What:</strong> Convert an anonymous type to class.</p>
+<p><strong>When:</strong> You have an anonymous type that you want to continue to build on in a class.</p>
+<p><strong>Why:</strong> Anonymous types are useful if you're only using them locally. As your code grows, it's nice to have an easy way to promote them to a class.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in an anonymous (<code>var</code>) type.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Convert to class</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-anonymous-type-to-class-result.png" alt="Convert anonymous type to class example" loading="lazy"></p>
+<h2 id="_convert-between-auto-property-and-full-property" data-needslink="_convert-between-auto-property-and-full-property">Convert between auto property and full property</h2>
+<p><strong>What:</strong> Convert between an auto-implemented property to a full property.</p>
+<p><strong>When:</strong> The logic of the property has changed.</p>
+<p><strong>Why:</strong> You can convert between an auto-implemented property to a full property manually, however this feature will automatically do the work for you.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor on the property name.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select from the following two options:</li>
+</ol>
+<p>Select <strong>Convert to full property.</strong></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-to-full-property.png" alt="Convert to full property example" loading="lazy"></p>
+<p>Select <strong>Use auto property.</strong></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/use-auto-property.png" alt="Use auto property example" loading="lazy"></p>
+<h2 id="_convert-between-direct-cast-and-as-expression" data-needslink="_convert-between-direct-cast-and-as-expression">Convert between direct cast and 'as' expression</h2>
+<p><strong>What:</strong> Convert a variable between a regular cast and a try cast using the <code>as</code> keyword.</p>
+<p><strong>When:</strong> When you expect the cast to fail under certain scenarios (<code>as</code>) or if you never expect the cast to fail (direct cast).</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor on the variable.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span> to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select from the following two options:</li>
+</ol>
+<p>Select <strong>Change to cast</strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/change-to-cast.png" alt="Change to cast example" loading="lazy"></p>
+<p>Select <strong>Change to <code>as</code> expression.</strong></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/change-to-as-expression.png" alt="Change to  expression example" loading="lazy"></p>
+<h2 id="_convert-between-for-loop-and-foreach-statement" data-needslink="_convert-between-for-loop-and-foreach-statement">Convert between for loop and foreach statement</h2>
+<p><strong>What:</strong> If you have a <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/for" class="external-link" target="_blank">for</a> loop in your code, you can use this refactoring to convert it to a <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/foreach-in" class="external-link" target="_blank">foreach</a> statement.</p>
+<p><strong>Why:</strong> Reasons you might want to convert a for loop to a foreach statement include:</p>
+<ul>
+<li>You don't use the local loop variable inside the loop except as an index to access items.</li>
+<li>You want to simplify your code and reduce the likelihood of logic errors in the initializer, condition, and iterator sections.</li>
+</ul>
+<p>Reasons you might want to convert a foreach statement to a for loop include:</p>
+<ul>
+<li>You want to use the local loop variable inside the loop for more than just accessing the item.</li>
+<li>You are iterating through a multi-dimensional array and you want more control over the array elements.</li>
+</ul>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your caret in the <code>foreach</code> or <code>for</code> keyword.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select from the following two options:</li>
+</ol>
+<p>Select <strong>Convert to <code>for</code></strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-to-for.png" alt="Convert to  example" loading="lazy"></p>
+<p>Select <strong>Convert to <code>foreach</code></strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-to-foreach.png" alt="Convert to " loading="lazy"></p>
+<h2 id="_convert-between-get-method-and-property" data-needslink="_convert-between-get-method-and-property">Convert between Get method and property</h2>
+<h3 id="_convert-get-method-to-property" data-needslink="_convert-get-method-to-property">Convert Get method to property</h3>
+<p><strong>What:</strong> Lets you convert a Get method into a property (and optionally your Set method).</p>
+<p><strong>When:</strong> You have a Get method that does not contain any logic.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in your Get method name.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>(Optional) If you have a Set method, you can also convert your Set method at this time. Select <strong>Replace &lt;Get method or Set method name&gt; with property</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/replace-get-method-with-property.png" alt="Replace Get method with property example" loading="lazy"></p>
+<h3 id="_convert-property-to-get-method" data-needslink="_convert-property-to-get-method">Convert property to Get method</h3>
+<p><strong>What:</strong> Lets you convert a property to a Get method</p>
+<p><strong>When:</strong> You have a property that involves more than immediately setting and getting a value</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in your Get method name.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Replace &lt;property name&gt; with method</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/replace-property-with-method.png" alt="Replace property name with method example" loading="lazy"></p>
+<h2 id="_convert-between-if-and-switch-statements" data-needslink="_convert-between-if-and-switch-statements">Convert between if and switch statements</h2>
+<p><strong>What:</strong> Convert an <code>if</code> statement to a <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/switch" class="external-link" target="_blank">switch statement</a> or to the C# 8.0 <a href="https://learn.microsoft.com/dotnet/csharp/whats-new/csharp-8#switch-expressions" class="external-link" target="_blank">switch expression</a>.</p>
+<p><strong>When:</strong> You want to convert an <code>if</code> statement to a <code>switch</code> statement or a <code>switch</code> expression and vice versa.</p>
+<p><strong>Why:</strong> If you are using an <code>if</code> statement, this refactoring enables an easy transition to switch statements or switch expressions.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in the <code>if</code> keyword.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select from the following options:</li>
+</ol>
+<p>Select <strong>Convert to <code>switch</code> statement</strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-to-switch-statement.png" alt="Convert to  statement example" loading="lazy"></p>
+<p>Select <strong>Convert to <code>switch</code> expression</strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-to-switch-expression.png" alt="Convert to  expression example" loading="lazy"></p>
+<p>Select <strong>Convert to <code>if</code> statement</strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-to-if-statement.png" alt="Convert to  statement example" loading="lazy"></p>
+<h2 id="_convert-between-regular-string-and-verbatim-string" data-needslink="_convert-between-regular-string-and-verbatim-string">Convert between regular string and verbatim string</h2>
+<p><strong>What:</strong> Lets you convert between regular string and verbatim string literals.</p>
+<p><strong>When:</strong> You either want to save space or provide more clarity in your code.</p>
+<p><strong>Why:</strong> Converting a verbatim string literal to a regular string literal can help save space. Converting a regular string literal to a verbatim string literal can provide more clarity.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your caret on either the regular string or verbatim string literal:</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select from one of the following options:</li>
+</ol>
+<p>Select <strong>Convert to regular string</strong>.</p>
+<p>Select <strong>Convert to verbatim string</strong>.</p>
+<h2 id="_convert-class-to-record" data-needslink="_convert-class-to-record">Convert class to record</h2>
+<p><strong>What:</strong> Convert your class to a C# record.</p>
+<p><strong>When:</strong> When you want to quickly change your class to a record, which is tailored for storing data and immutability.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor on the class name.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Convert to positional record</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-class-to-record-before.png" alt="Convert class to record before example" loading="lazy"></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-class-to-record-result.png" alt="Convert class to record after example" loading="lazy"></p>
+<h2 id="_convert-local-function-to-method" data-needslink="_convert-local-function-to-method">Convert local function to method</h2>
+<p><strong>What:</strong> Convert a local function to a method.</p>
+<p><strong>When:</strong> You have a local function that you want to define outside your current local context.</p>
+<p><strong>Why:</strong> You want to convert a local function into a method so that you can call it outside your local context. You might want to convert to a method when your local function is getting too long. When you define the function in a separate method, your code is easier to read.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in the local function.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Convert to method</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-local-function-to-method.png" alt="Convert local function to method example" loading="lazy"></p>
+<h2 id="_convert-numeric-literal-to-hex-decimal-or-binary-number" data-needslink="_convert-numeric-literal-to-hex-decimal-or-binary-number">Convert numeric literal to hex, decimal, or binary number</h2>
+<p><strong>What:</strong> Convert a number between a hexadecimal, binary, or decimal number.</p>
+<p><strong>When:</strong> Use when you want to automatically convert a number to the desired base without having to manually calculate the conversion.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor on the numeric literal.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select one of the following options:</li>
+</ol>
+<p>Select <strong>Convert to decimal</strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-numeric-literal-to-decimal.png" alt="Convert to decimal example" loading="lazy"></p>
+<p>Select <strong>Convert to hex</strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-numeric-literal-to-hex.png" alt="Convert to hex example" loading="lazy"></p>
+<p>Select <strong>Convert to binary</strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-numeric-literal-to-binary.png" alt="Convert to binary example" loading="lazy"></p>
+<h2 id="_convert-placeholder-to-interpolated-string" data-needslink="_convert-placeholder-to-interpolated-string">Convert placeholder to interpolated string</h2>
+<p><strong>What:</strong> Convert a <code>String.Format</code> formatted result string (or placeholder) to an interpolated string.</p>
+<p><strong>When:</strong> Use when you want to an interpolated string quickly.</p>
+<p><strong>Why:</strong> Interpolated strings can give you a more readable version of <code>String.Format</code> and can let you access your variable name directly.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor on the <code>String.Format</code> placeholder.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Convert to interpolated string</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-to-interpolated-string.png" alt="Convert placeholder to interpolated string example" loading="lazy"></p>
+<h2 id="_convert-regular-string-to-interpolated-string" data-needslink="_convert-regular-string-to-interpolated-string">Convert regular string to interpolated string</h2>
+<p><strong>What:</strong> Change a regular string to an interpolated string.</p>
+<p><strong>When:</strong> Use when you want to clean up your code and make it more readable.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor on the string you want to convert.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Convert to interpolated string</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-to-interpolated-string-before.png" alt="Convert to interpolated string before example" loading="lazy"></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-to-interpolated-string-after.png" alt="Convert to interpolated string after example" loading="lazy"></p>
+<h2 id="_convert-tuple-to-struct" data-needslink="_convert-tuple-to-struct">Convert tuple to struct</h2>
+<p><strong>What:</strong> Convert your tuple to a <code>struct</code></p>
+<p><strong>When:</strong> Use when want to quickly change your tuple to a <code>struct</code> and want to have fixed data you want to access multiple times.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>
+<p>Place your cursor on the tuple.</p>
+</li>
+<li>
+<p>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</p>
+</li>
+<li>
+<p>Select one of the following options:</p>
+<ul>
+<li>Select <strong>Convert to <code>struct</code> -&gt; updating usages in containing member</strong></li>
+<li>Select <strong>Convert to <code>struct</code> -&gt; updating usages in containing type</strong></li>
+<li>Select <strong>Convert to <code>struct</code> -&gt; updating usages in containing project</strong></li>
+<li>Select <strong>Convert to <code>struct</code> -&gt; updating usages in dependent projects</strong></li>
+</ul>
+</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-tuple-to-struct.png" alt="Convert tuple to  options" loading="lazy"></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-tuple-to-struct-result.png" alt="Convert tuple to  example" loading="lazy"></p>
+<h2 id="_encapsulate-field" data-needslink="_encapsulate-field">Encapsulate field</h2>
+<p><strong>What:</strong> Lets you turn a field into a property, and update all usages of that field to use the newly created property.</p>
+<p><strong>When:</strong> You want to move a field into a property, and update all references to that field.</p>
+<p><strong>Why:</strong> You want to give other classes access to a field, but don't want those classes to have direct access. By wrapping the field in a property, you could write code to verify the value being assigned, for example.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor inside the name of the field to encapsulate.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select one of the following:</li>
+</ol>
+<p>Select <strong>Encapsulate field: &lt;fieldname&gt; (and use property)</strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/encapsulate-field-use-property.png" alt="Encapsulate field and use property example" loading="lazy"></p>
+<p>Select <strong>Encapsulate field: &lt;fieldname&gt; (but still use field)</strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/encapsulate-field-still-use-field.png" alt="Encapsulate field but still use field example" loading="lazy"></p>
+<h2 id="_generate-comparison-operators" data-needslink="_generate-comparison-operators">Generate comparison operators</h2>
+<p><strong>What:</strong> Lets you generate Comparison operators for types that implement <code>IComparable</code>.</p>
+<p><strong>When:</strong> You have a type that implements <code>IComparable</code> we will automatically add the comparison operators.</p>
+<p><strong>Why:</strong> If you are implementing a value type, you should consider overriding the <code>Equals</code> method to gain increased performance over the default implementation of the <code>Equals</code> method on <code>ValueType</code>.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor either inside the class or on the IComparable keyword.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Generate comparison operators</strong> from the drop-down menu.</li>
+</ol>
+<h2 id="_generate-default-constructors" data-needslink="_generate-default-constructors">Generate default constructors</h2>
+<p><strong>What:</strong> Lets you immediately generate the code for a new default constructor on a class.</p>
+<p><strong>When:</strong> You introduce a new default constructor and want to properly declare it automatically.</p>
+<p><strong>Why:</strong> You could declare the constructor before using it, however this feature generates it automatically.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor on the class name.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Generate constructor &lt;classname&gt;()</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/generate-default-constructor.png" alt="Generate default constructor example" loading="lazy"></p>
+<h2 id="_generate-parameter" data-needslink="_generate-parameter">Generate parameter</h2>
+<p><strong>What:</strong> Automatically generates a method parameter.</p>
+<p><strong>When:</strong> You reference a variable in a method that doesn't exist in the current context and receive an error; you can generate a parameter as a code fix.</p>
+<p><strong>Why:</strong> You can quickly modify a method signature without losing context.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in the variable name.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span> to trigger the <strong>Quick Actions and Refactoring</strong>s menu.</li>
+<li>Select <strong>Generate parameter</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/add-parameter-check.png" alt="Generate parameter example" loading="lazy"></p>
+<h2 id="_implement-all-members-explicitly" data-needslink="_implement-all-members-explicitly">Implement all members explicitly</h2>
+<p><strong>What:</strong> Define your interface's methods explicitly in a class.  An explicit interface implementation is a class member that is only called through the specified interface.</p>
+<p><strong>When:</strong> Use when:</p>
+<ul>
+<li>You don't want the same implementation to be called for multiple interfaces.</li>
+<li>You want to resolve cases where two interfaces each declare different members of the same name such as a property and a method.</li>
+</ul>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor on an interface being implemented in a class.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Implement all members explicitly</strong>:</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/implement-all-members-explicitly.png" alt="Implement all members explicitly example" loading="lazy"></p>
+<h2 id="_implement-all-members-implicitly" data-needslink="_implement-all-members-implicitly">Implement all members implicitly</h2>
+<p><strong>What:</strong> Define your interface's methods implicitly in a class.  An implicit interface implementation is when an interface's methods and properties are directly added to the class as public methods.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor on an interface being implemented in a class.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Implement interface</strong>:</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/implement-all-members-implicitly.png" alt="Implement all members implicitly" loading="lazy"></p>
+<h2 id="_inline-method" data-needslink="_inline-method">Inline method</h2>
+<p><strong>What:</strong> Inline method refactoring.</p>
+<p><strong>When:</strong> You want to replace usages of a static, instance, and extension method within a single statement body with an option to remove the original method declaration.</p>
+<p><strong>Why:</strong> This refactoring provides a clearer syntax.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your caret on the usage of the method.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select from one of the following options:</li>
+</ol>
+<p>Select <strong>Inline &lt;QualifiedMethodName&gt;</strong> to remove the inline method declaration:</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/inline-method.png" alt="Inline method example" loading="lazy"></p>
+<p>Select <strong>Inline and keep &lt;QualifiedMethodName&gt;</strong> to preserve the original method declaration:</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/inline-method-keep.png" alt="Inline and keep method example" loading="lazy"></p>
+<h2 id="_inline-temporary-variable" data-needslink="_inline-temporary-variable">Inline temporary variable</h2>
+<p><strong>What:</strong> Lets you remove a temporary variable and replace it with its value instead.</p>
+<p><strong>When:</strong> The use of the temporary variable makes the code harder to understand.</p>
+<p><strong>Why:</strong> Removing a temporary variable may make the code easier to read.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor inside the temporary variable to be inlined.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Inline temporary variable</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/inline-temporary-variable.png" alt="Inline temporary variable example" loading="lazy"></p>
+<h2 id="_introduce-local-variable-for-expression" data-needslink="_introduce-local-variable-for-expression">Introduce local variable for expression</h2>
+<p><strong>What:</strong> Lets you immediately generate a local variable to replace an existing expression.</p>
+<p><strong>When:</strong> You have code that could be easily reused later if it were in a local variable.</p>
+<p><strong>Why:</strong> You could copy and paste the code multiple times to use it in various locations, however it would be better to perform the operation once, store the result in a local variable, and use the local variable throughout.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your caret on the expression that you want to assign to a new local variable.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select from the following options:</li>
+</ol>
+<p>Select <strong>Introduce local -&gt; Introduce local for &lt;expression&gt;</strong></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/introduce-local-variable-for-expression.png" alt="Introduce local for expression example" loading="lazy"></p>
+<p>Select <strong>Introduce local -&gt; Introduce local for all occurrences of &lt;expression&gt;</strong></p>
+<h2 id="_introduce-parameter" data-needslink="_introduce-parameter">Introduce parameter</h2>
+<p><strong>What:</strong> Lets you immediately generate a new parameter to replace an existing expression.</p>
+<p><strong>When:</strong> You have code that could be easily reused later if it were in a parameter.</p>
+<p><strong>Why:</strong> You could copy and paste the code multiple times to use it in various locations, however it would be better to perform the operation once, store the result in a parameter, and use the parameter throughout.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your caret on the expression that you want to assign to a new parameter.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select from the following options:</li>
+</ol>
+<p>Select <strong>Introduce parameter for &lt;expression&gt; -&gt; and update call sites directly</strong></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/introduce-parameter-directly.png" alt="Update call sites directly example" loading="lazy"></p>
+<p>Select <strong>Introduce parameter for &lt;expression&gt; -&gt; into extracted method</strong></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/introduce-parameter-extracted-method.png" alt="Introduce parameter into extracted method example" loading="lazy"></p>
+<p>Select <strong>Introduce parameter for &lt;expression&gt; -&gt; into new overload</strong></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/introduce-parameter-overload.png" alt="Introduce parameter into new overload example" loading="lazy"></p>
+<h2 id="_introduce-using-statement" data-needslink="_introduce-using-statement">Introduce <code>using</code> statement</h2>
+<p><strong>What:</strong> Add a <code>using</code> statement / code block to your <code>IDisposable</code> instance.</p>
+<p><strong>When:</strong> You have an <code>IDisposable</code> instance that you want to ensure is acquired, used, and disposed correctly.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your caret on the expression that you want to assign to a new parameter.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Introduce <code>using</code> statement</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/introduce-using-statement.png" alt="Introduce  statement example" loading="lazy"></p>
+<h2 id="_invert-conditional-expressions-and-logical-operations" data-needslink="_invert-conditional-expressions-and-logical-operations">Invert conditional expressions and logical operations</h2>
+<p><strong>What:</strong> Lets you invert a conditional expression or a conditional <code>and</code> \ <code>or</code> operator.</p>
+<p><strong>When:</strong> You have a conditional expression or conditional <code>and</code> \ <code>or</code> operator that would be better understood if inverted.</p>
+<p><strong>Why:</strong> Inverting an expression or conditional <code>and</code> \ <code>or</code> operator by hand can take much longer and possibly introduce errors. This code fix helps you do this refactoring automatically.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in a conditional expression or a conditional <code>and</code> \ <code>or</code> operator.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Invert conditional</strong> or <strong>Replace <code>&amp;&amp;</code> with <code>||</code></strong></li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/invert-conditional.png" alt="Invert conditional example" loading="lazy"></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/replace-and-with-or.png" alt="Replace  with  example" loading="lazy"></p>
+<h2 id="_invert-if" data-needslink="_invert-if">Invert if</h2>
+<p><strong>What:</strong> Lets you invert an <code>if</code> or <code>if else</code> statement without changing the meaning of the code.</p>
+<p><strong>When:</strong> When you have an <code>if</code> or <code>if else</code> statement that would be better understood when inverted.</p>
+<p><strong>Why:</strong> Inverting an <code>if</code> or <code>if else</code> statement by hand can take much longer and possibly introduce errors. This code fix helps you do this refactoring automatically.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in an <code>if</code> or <code>if else</code> statement.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Invert <code>if</code></strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/invert-if.png" alt="Invert  example" loading="lazy"></p>
+<h2 id="_make-member-static" data-needslink="_make-member-static">Make member static</h2>
+<p><strong>What:</strong> Make a member static.</p>
+<p><strong>When:</strong> You want a non-static member to be static.</p>
+<p><strong>Why:</strong> Static members improve readability: knowing that specific code is isolated makes it easier to understand, reread, and reuse.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your caret on the member name.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Make static</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/make-member-static.png" alt="Make member static example" loading="lazy"></p>
+<h2 id="_move-declaration-near-reference" data-needslink="_move-declaration-near-reference">Move declaration near reference</h2>
+<p><strong>What:</strong> Lets you move variable declarations closer to their usage.</p>
+<p><strong>When:</strong> You have variable declarations that can be in a narrower scope.</p>
+<p><strong>Why:</strong> You could leave it as it is, but that may cause readability issues or information hiding. This is a chance to refactor to improve readability.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in the variable declaration.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Move declaration near reference</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/move-declaration-near-reference.png" alt="Move declaration near reference example" loading="lazy"></p>
+<h2 id="_move-type-to-matching-file" data-needslink="_move-type-to-matching-file">Move type to matching file</h2>
+<p><strong>What:</strong> Lets you move the selected type to a separate file with the same name.</p>
+<p><strong>When:</strong> You have multiple classes, structs, interfaces, etc. in the same file that you want to separate.</p>
+<p><strong>Why:</strong> Placing multiple types in the same file can make it difficult to find these types. By moving types to files with the same name, code becomes more readable and easier to navigate.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place the cursor inside the name of the type where it is defined.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Move type to &lt;typename&gt;.cs</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/move-type-to-matching-file.png" alt="Move type to matching file example" loading="lazy"></p>
+<h2 id="_reverse-for-statement" data-needslink="_reverse-for-statement">Reverse for statement</h2>
+<p><strong>What:</strong> Lets you invert a <code>for</code> statement.</p>
+<p><strong>When:</strong> Use when you want to reverse the meaning of a <code>for</code> statement and how it iterates.</p>
+<p><strong>Why:</strong> Inverting a <code>for</code> statement by hand can take much longer and possibly introduce errors. This code fix helps you do this refactoring automatically.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in the <code>for</code> statement.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Reverse <code>for</code> statement</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/reverse-for-statement.png" alt="Reverse  statements example" loading="lazy"></p>
+<h2 id="_split-or-merge-if-statements" data-needslink="_split-or-merge-if-statements">Split or merge if statements</h2>
+<p><strong>What:</strong> Split or merge <code>if</code> statements.</p>
+<p><strong>When:</strong> You want to split an <code>if</code> statement that uses the <code>&amp;&amp;</code> or <code>||</code> operators into a nested <code>if</code> statement, or merge an <code>if</code> statement with an outer <code>if</code> statement.</p>
+<p><strong>Why:</strong> It's a matter of style preference.</p>
+<p><strong>How-to:</strong></p>
+<p>If you want to split the <code>if</code> statement:</p>
+<ol>
+<li>Place your cursor in the <code>if</code> statement by the <code>&amp;&amp;</code> or <code>||</code> operator.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Split into nested <code>if</code> statements</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/split-into-nested-if-statements.png" alt="Split into nested  statements example" loading="lazy"></p>
+<p>If you want to merge the inner <code>if</code> statement with the outer <code>if</code> statement:</p>
+<ol>
+<li>Place your cursor in the inner <code>if</code> keyword.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Merge with nested <code>if</code> statement</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/merge-with-nested-if-statement.png" alt="Merge with nested  statements example" loading="lazy"></p>
+<h2 id="_use-explicit-type" data-needslink="_use-explicit-type">Use explicit type</h2>
+<p><strong>What:</strong> Use this refactoring to replace <code>var</code> in a local variable declaration with an explicit type.</p>
+<p><strong>Why:</strong> To improve the code's readability or when you don't want to initialize the variable in the declaration.</p>
+<p>However, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/var" class="external-link" target="_blank">var</a> must be used when a variable is initialized with an anonymous type and the properties of the object are accessed at a later point. For more information, see <a href="https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/implicitly-typed-local-variables" class="external-link" target="_blank">Implicitly typed local variables (C#)</a>.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place the caret on the <code>var</code> keyword.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Use explicit type instead of <code>var</code></strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/use-explicit-type.png" alt="Use explicit type instead of  example" loading="lazy"></p>
+<h2 id="_use-implicit-type" data-needslink="_use-implicit-type">Use implicit type</h2>
+<p><strong>What:</strong> Use this refactoring to replace an explicit type in a local variable declaration with <code>var</code>.</p>
+<p><strong>Why:</strong> To fit your personal coding conventions and to have less code displayed. <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/var" class="external-link" target="_blank">Var</a> must be used when a variable is initialized with an anonymous type and the properties of the object are accessed at a later point. For more information, see <a href="https://learn.microsoft.com/dotnet/csharp/programming-guide/classes-and-structs/implicitly-typed-local-variables" class="external-link" target="_blank">Implicitly typed local variables (C#)</a>.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place the caret on the explicit type keyword.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Use implicit type</strong>.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/use-implicit-type.png" alt="Use implicit type example" loading="lazy"></p>
+<h2 id="_use-lambda-expression-or-block-body" data-needslink="_use-lambda-expression-or-block-body">Use lambda expression or block body</h2>
+<p><strong>What:</strong> Lets you refactor a lambda expression to use an expression body or a block body.</p>
+<p><strong>When:</strong> You prefer lambda expressions to use either an expression body or a block body.</p>
+<p><strong>Why:</strong> Lambda expressions can be refactored to improve readability according to your user preference.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor on the right of a lambda operator.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select one of the following:</li>
+</ol>
+<p>Select <strong>Use block body for lambda expressions</strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/use-block-body-for-lambda-expression.png" alt="Use block body for lambda expressions example" loading="lazy"></p>
+<p>Select <strong>Use expression body for lambda expressions</strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/use-expression-body-for-lambda-expressions.png" alt="Use expression body for lambda expressions" loading="lazy"></p>
+<h2 id="_use-recursive-patterns" data-needslink="_use-recursive-patterns">Use recursive patterns</h2>
+<p><strong>What:</strong> Converts a code block to using a recursive pattern.  This refactoring works with switch statements, property pattern matching, tuple pattern matching, and positional pattern matching.</p>
+<p><strong>When:</strong> Using recursive patterns can make your code more readable / cleaner.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor on the expression you want to convert to a recursive pattern.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select one of the following:</li>
+</ol>
+<p>Select <strong>Convert <code>switch</code> statement to expression</strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/convert-switch-statement-to-expression.png" alt="Convert  statement to expression example" loading="lazy"></p>
+<p>Select <strong>Use recursive patterns</strong>.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/use-recursive-patterns-before.png" alt="Use recursive patterns before example" loading="lazy"></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/use-recursive-patterns-after.png" alt="Use recursive patterns after example" loading="lazy"></p>
+<h2 id="_wrap-indent-and-align-refactorings" data-needslink="_wrap-indent-and-align-refactorings">Wrap, indent, and align refactorings</h2>
+<h3 id="_wrap-and-align-call-chains" data-needslink="_wrap-and-align-call-chains">Wrap and align call chains</h3>
+<p><strong>What:</strong> Lets you wrap and align chains of method calls.</p>
+<p><strong>When:</strong> You have a long chain consisting of several method calls in one statement.</p>
+<p><strong>Why:</strong> Reading a long list is easier when they're wrapped or indented according to user preference.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in any of the call chains.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Wrap call chain</strong> or <strong>Wrap and align call chain</strong> to accept the refactoring.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/wrap-and-align-call-chains.png" alt="Wrap and align call chain example" loading="lazy"></p>
+<h3 id="_wrap-indent-and-align-parameters-or-arguments" data-needslink="_wrap-indent-and-align-parameters-or-arguments">Wrap, indent, and align parameters or arguments</h3>
+<p><strong>What:</strong> Lets you wrap, indent, and align parameters or arguments.</p>
+<p><strong>When:</strong> You have a method declaration or call that has multiple parameters or arguments.</p>
+<p><strong>Why:</strong> Reading a long list of parameters or arguments is easier when they're wrapped or indented according to user preference.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in a parameter list.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select from the following options:</li>
+</ol>
+<p>Select <strong>Wrap every parameter -&gt; Align wrapped parameters</strong></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/wrap-every-parameter-align.png" alt="Align wrapped parameters example" loading="lazy"></p>
+<p>Select <strong>Wrap every parameter -&gt; Indent all parameters</strong></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/wrap-every-parameter-indent.png" alt="Indent all parameters example" loading="lazy"></p>
+<p>Select <strong>Wrap every parameter -&gt; Indent wrapped parameters</strong></p>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/wrap-every-parameter-indent-wrapped.png" alt="Indent wrapped parameters example" loading="lazy"></p>
+<h3 id="_wrap-binary-expressions" data-needslink="_wrap-binary-expressions">Wrap binary expressions</h3>
+<p><strong>What:</strong> Lets you wrap binary expressions.</p>
+<p><strong>When:</strong> You have a binary expression.</p>
+<p><strong>Why:</strong> Reading a binary expression is easier when it is wrapped to user preference.</p>
+<p><strong>How-to:</strong></p>
+<ol>
+<li>Place your cursor in the binary expression.</li>
+<li>Press <span class="dynamic-keybinding" data-commandId="editor.action.quickFix" data-osx="⌘." data-win="Ctrl+." data-linux="Ctrl+."><span class="keybinding">⌘.</span> (Windows, Linux <span class="keybinding">Ctrl+.</span>)</span>to trigger the <strong>Quick Actions and Refactorings</strong> menu.</li>
+<li>Select <strong>Wrap expression</strong> to accept the refactoring.</li>
+</ol>
+<p><img src="https://code.visualstudio.com/assets/docs/csharp/refactoring/wrap-expression.png" alt="Wrap expression example" loading="lazy"></p>
+
+            <div class="feedback"></div>
+            
+            <div class="body-footer">6/6/2023</div>
+            
+        </main>
+
+        <!-- medium right nav -->
+        <div class="col-sm-3 col-md-2 hidden-xs docs-subnavbar-container">
+            <nav id="docs-subnavbar" aria-label="On Page" data-spy="affix" data-offset-top="20">
+                
+                <h4><span class="sr-only">On this page there are 44 sections</span><span
+                        aria-hidden="true">On this page</span></h4>
+                <ul class="nav">
+                    
+                    <li><a href="#_supported-refactorings-and-quick-fixes">Supported refactorings and Quick Fixes</a></li>
+                    
+                    <li><a href="#_add-await">Add await</a></li>
+                    
+                    <li><a href="#_add-constructor-parameters-from-members">Add constructor parameters from members</a></li>
+                    
+                    <li><a href="#_add-debuggerdisplay-attribute">Add DebuggerDisplay attribute</a></li>
+                    
+                    <li><a href="#_add-explicit-cast">Add explicit cast</a></li>
+                    
+                    <li><a href="#_add-file-header">Add file header</a></li>
+                    
+                    <li><a href="#_add-missing-usings-imports">Add missing usings / imports</a></li>
+                    
+                    <li><a href="#_add-named-argument">Add named argument</a></li>
+                    
+                    <li><a href="#_convert-anonymous-type-to-class">Convert anonymous type to class</a></li>
+                    
+                    <li><a href="#_convert-between-auto-property-and-full-property">Convert between auto property and full property</a></li>
+                    
+                    <li><a href="#_convert-between-direct-cast-and-as-expression">Convert between direct cast and 'as' expression</a></li>
+                    
+                    <li><a href="#_convert-between-for-loop-and-foreach-statement">Convert between for loop and foreach statement</a></li>
+                    
+                    <li><a href="#_convert-between-get-method-and-property">Convert between Get method and property</a></li>
+                    
+                    <li><a href="#_convert-between-if-and-switch-statements">Convert between if and switch statements</a></li>
+                    
+                    <li><a href="#_convert-between-regular-string-and-verbatim-string">Convert between regular string and verbatim string</a></li>
+                    
+                    <li><a href="#_convert-class-to-record">Convert class to record</a></li>
+                    
+                    <li><a href="#_convert-local-function-to-method">Convert local function to method</a></li>
+                    
+                    <li><a href="#_convert-numeric-literal-to-hex-decimal-or-binary-number">Convert numeric literal to hex, decimal, or binary number</a></li>
+                    
+                    <li><a href="#_convert-placeholder-to-interpolated-string">Convert placeholder to interpolated string</a></li>
+                    
+                    <li><a href="#_convert-regular-string-to-interpolated-string">Convert regular string to interpolated string</a></li>
+                    
+                    <li><a href="#_convert-tuple-to-struct">Convert tuple to struct</a></li>
+                    
+                    <li><a href="#_encapsulate-field">Encapsulate field</a></li>
+                    
+                    <li><a href="#_generate-comparison-operators">Generate comparison operators</a></li>
+                    
+                    <li><a href="#_generate-default-constructors">Generate default constructors</a></li>
+                    
+                    <li><a href="#_generate-parameter">Generate parameter</a></li>
+                    
+                    <li><a href="#_implement-all-members-explicitly">Implement all members explicitly</a></li>
+                    
+                    <li><a href="#_implement-all-members-implicitly">Implement all members implicitly</a></li>
+                    
+                    <li><a href="#_inline-method">Inline method</a></li>
+                    
+                    <li><a href="#_inline-temporary-variable">Inline temporary variable</a></li>
+                    
+                    <li><a href="#_introduce-local-variable-for-expression">Introduce local variable for expression</a></li>
+                    
+                    <li><a href="#_introduce-parameter">Introduce parameter</a></li>
+                    
+                    <li><a href="#_introduce-using-statement">Introduce `using` statement</a></li>
+                    
+                    <li><a href="#_invert-conditional-expressions-and-logical-operations">Invert conditional expressions and logical operations</a></li>
+                    
+                    <li><a href="#_invert-if">Invert if</a></li>
+                    
+                    <li><a href="#_make-member-static">Make member static</a></li>
+                    
+                    <li><a href="#_move-declaration-near-reference">Move declaration near reference</a></li>
+                    
+                    <li><a href="#_move-type-to-matching-file">Move type to matching file</a></li>
+                    
+                    <li><a href="#_reverse-for-statement">Reverse for statement</a></li>
+                    
+                    <li><a href="#_split-or-merge-if-statements">Split or merge if statements</a></li>
+                    
+                    <li><a href="#_use-explicit-type">Use explicit type</a></li>
+                    
+                    <li><a href="#_use-implicit-type">Use implicit type</a></li>
+                    
+                    <li><a href="#_use-lambda-expression-or-block-body">Use lambda expression or block body</a></li>
+                    
+                    <li><a href="#_use-recursive-patterns">Use recursive patterns</a></li>
+                    
+                    <li><a href="#_wrap-indent-and-align-refactorings">Wrap, indent, and align refactorings</a></li>
+                    
+                </ul>
+                
+                <div class="connect-widget"></div>
+            </nav>
+        </div>
+        <!-- end of page connect widget -->
+        <div class="col-xs-12 visible-xs">
+            <div class="connect-widget"></div>
+        </div>
+    </div>
+</div>
+		</div>
+	</div>
+
+	<footer role="contentinfo" class="container">
+		<div class="footer-container">
+			<div class="footer-row">
+				<div class="footer-social">
+					<ul class="links">
+						<li>
+							<a href="https://github.com/microsoft/vscode"><img src="https://code.visualstudio.com/assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+						</li>
+						<li>
+							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="https://code.visualstudio.com/assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="https://code.visualstudio.com/assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+						</li>
+						<li>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="https://code.visualstudio.com/assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+						</li>
+						<li>
+							<a href="https://www.reddit.com/r/vscode/"><img src="https://code.visualstudio.com/assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+						</li>
+						<li>
+							<a href="https://www.vscodepodcast.com/"><img src="https://code.visualstudio.com/assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+						</li>
+						<li>
+							<a href="https://www.tiktok.com/@vscode"><img src="https://code.visualstudio.com/assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+						</li>
+						<li>
+							<a href="https://www.youtube.com/@code"><img src="https://code.visualstudio.com/assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+						</li>
+						<script>
+							function manageConsent() {
+								if (siteConsent && siteConsent.isConsentRequired) {
+									siteConsent.manageConsent();
+								}
+							}
+						</script>
+					</ul>
+					<a id="footer-microsoft-link" class="microsoft-logo" href="https://www.microsoft.com/">
+						<img src="https://code.visualstudio.com/assets/icons/microsoft.svg" alt="Microsoft homepage" />
+					</a>
+				</div>
+			</div>
+			<div class="footer-row">
+				<ul class="links">
+					<li><a id="footer-support-link" href="https://support.serviceshub.microsoft.com/supportforbusiness/create?sapId=d66407ed-3967-b000-4cfb-2c318cad363d"
+							target="_blank" rel="noopener">Support</a></li>
+					<li><a id="footer-privacy-link" href="https://go.microsoft.com/fwlink/?LinkId=521839"
+							target="_blank" rel="noopener">Privacy</a></li>
+					<li style="display: none;"><a id="footer-cookie-link" style="cursor: pointer;" onclick="manageConsent()"
+							target="_blank" rel="noopener">Manage Cookies</a></li>
+					<li><a id="footer-terms-link" href="https://www.microsoft.com/legal/terms-of-use"
+							target="_blank" rel="noopener">Terms of Use</a></li>
+					<li><a id="footer-license-link" href="https://code.visualstudio.com/License"
+							target="_blank" rel="noopener">License</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<script type="module">
+		document.addEventListener('DOMContentLoaded', () => {
+			const copilotDeepLinks = document.querySelectorAll('.copilot-deep-link');
+			if (copilotDeepLinks.length === 0) {
+				return;
+			}
+			if (window.innerWidth < 992) {
+				for (const link of copilotDeepLinks) {
+					link.href = 'https://aka.ms/vscode-activatecopilotfree';
+				}
+			}
+		});
+	</script>
+
+	<script src="https://code.visualstudio.com/dist/index.js"></script>
+
+	
+
+	<script type="application/ld+json">
+		{
+			"@context" : "http://schema.org",
+			"@type" : "SoftwareApplication",
+			"name" : "Visual Studio Code",
+			"softwareVersion": "1.104",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			},
+			"applicationCategory": "DeveloperApplication",
+			"applicationSubCategory": "Text Editor",
+			"alternateName": "VS Code",
+			"datePublished": "2021-11-03",
+			"operatingSystem": "Mac, Linux, Windows",
+			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",
+			"screenshot": "https://code.visualstudio.com/assets/home/home-screenshot-win.png",
+			"releaseNotes": "https://code.visualstudio.com/updates",
+			"downloadUrl": "https://code.visualstudio.com/download",
+			"license": "https://code.visualstudio.com/license",
+			"softwareRequirements": "https://code.visualstudio.com/docs/supporting/requirements",
+			"url" : "https://code.visualstudio.com",
+			"author": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"maintainer": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://code.visualstudio.com/Search?q={search_term_string}",
+				"query-input": "required name=search_term_string"
+			},
+			"sameAs" : [
+				"https://en.wikipedia.org/wiki/Visual_Studio_Code",
+				"https://twitter.com/code",
+				"https://www.youtube.com/code",
+				"https://www.tiktok.com/@vscode",
+				"https://github.com/microsoft/vscode"
+			]
+		}
+	</script>
+</body>
+
+
+<!-- Mirrored from code.visualstudio.com/docs/csharp/refactoring by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:55:26 GMT -->
+</html>

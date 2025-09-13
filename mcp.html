@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from code.visualstudio.com/mcp by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:53:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="awa-expId" content="vscw_aaflight1016_control:103441;" />
+	<meta name="awa-env" content="prod" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="hNs7DXrTySP_X-0P_AC0WulAXvUwgSXEmgfcO2r79dw" />
+
+	<!-- Twitter and Facebook OpenGraph Metadata-->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@code" />
+
+	<meta name="description" content="Discover and install Model Context Protocol (MCP) servers to extend agent mode in VS Code with extra tools for connecting to databases, invoking APIs, and performing specialized tasks." />
+<!-- Twitter and Facebook OpenGraph Metadata-->
+<meta property="og:title" content="Discover and install MCP Servers in VS Code" />
+<meta property="og:description" content="Discover and install Model Context Protocol (MCP) servers to extend agent mode in VS Code with extra tools for connecting to databases, invoking APIs, and performing specialized tasks." />
+<meta property="og:image" content="opengraphimg/opengraph-home.png" />
+<meta property="og:url" content="mcp.html" />
+
+
+	<link rel="shortcut icon" href="assets/favicon.ico" sizes="128x128" />
+	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+	<title>Discover and install MCP Servers in VS Code</title>
+
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="dist/v2/style.css">
+
+	<script src="../consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js"></script>
+	<script type="text/javascript" src="../js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js"></script>
+	
+	<script type="text/javascript">
+	// Leave as var; siteConsent is initialized and referenced elsewhere.
+	var siteConsent = null;
+	
+	const GPC_DataSharingOptIn = false;
+	WcpConsent.onInitCallback(function () {
+		window.appInsights = new oneDS.ApplicationInsights();
+		window.appInsights.initialize({
+			instrumentationKey: "1a3eb3104447440391ad5f2a6ee06a0a-62879566-bc58-4741-9650-302bf2af703f-7103",
+			propertyConfiguration: {
+				userConsented: false,
+				gpcDataSharingOptIn: false,
+				callback: {
+					userConsentDetails: siteConsent ? siteConsent.getConsent : undefined
+				},
+			},
+			cookieCfg: {
+				ignoreCookies: ["MSCC"]
+			},
+			webAnalyticsConfiguration:{ // Web Analytics Plugin configuration
+				urlCollectQuery: true,
+				urlCollectHash: true,
+				autoCapture: {
+					scroll: true,
+					pageView: true,
+					onLoad: true,
+					onUnload: true,
+					click: true,
+					resize: true,
+					jsError: true
+				}
+			}
+		}, []);
+	
+		window.appInsights.getPropertyManager().getPropertiesContext().web.gpcDataSharingOptIn = GPC_DataSharingOptIn;
+	});
+	</script>
+	<link rel="alternate" type="application/atom+xml" title="RSS Feed for code.visualstudio.com" href="feed.xml" />
+</head>
+
+<body >
+	<!-- Setting theme here to avoid FOUC -->
+	<script>
+		function setTheme(themeName) {
+			if (themeName === 'dark') {
+				document.documentElement.removeAttribute('data-theme'); // dark is default, so no data-theme attribute needed
+			}
+
+			if (themeName === 'light') {
+				document.documentElement.setAttribute('data-theme', themeName);
+			}
+			return;
+		}
+
+		// Determine initial theme: user preference or system preference
+		let theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		setTheme(theme); // Apply the initial theme
+
+		// Listen for changes in the system theme preference
+		window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+			if (!localStorage.getItem('theme')) { // Only if no user preference is saved
+				setTheme(e.matches ? 'dark' : 'light');
+			}
+		});
+	</script>
+
+	<div id="main">
+		<div class="navbar-fixed-container">
+			<div class="navbar navbar-inverse navbar-fixed-top " data-spy="affix"
+				data-offset-top="1">
+				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
+					<div class="container">
+						<div class="nav navbar-header">
+							<a class="navbar-brand" href="index.html"><span>Visual Studio Code</span></a>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+								aria-label="Expand and Collapse Menu">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="navbar-collapse collapse">
+							<ul class="nav navbar-nav navbar-left">
+								<li ><a id="nav-docs" href="docs.html">Docs</a></li>
+								<li ><a id="nav-updates" href="updates/v1_104.html">Updates</a></li>
+								<li ><a id="nav-blogs" href="blogs.html">Blog</a></li>
+								<li ><a id="nav-extend" href="api.html">API</a></li>
+								<li><a href="https://marketplace.visualstudio.com/VSCode" target="_blank" rel="noopener" id="nav-extensions">Extensions</a></li>
+								<li class="active" ><a id="nav-mcp" href="mcp.html">MCP</a></li>
+								<li ><a id="nav-faqs" href="docs/supporting/faq.html">FAQ</a></li>
+								<li class='search visible-xs visible-sm'
+									><a href="Search.html">Search</a></li>
+								<li ><a id="nav-events" href="dev-days.html">Dev Days</a></li>
+							</ul>
+		
+							<ul class="nav navbar-nav navbar-right" role="presentation">
+								<li>
+									<button type="button" class="theme-switch" id="theme-toggle">
+										<img class="theme-icon-light" src="assets/icons/theme-light.svg"
+											alt="Switch to the dark theme" />
+										<img class="theme-icon-dark" src="assets/icons/theme-dark.svg"
+											alt="Switch to the light theme" />
+									</button>
+								</li>
+								<li>
+									<a href="Search.html" title="Search" class="btn search-btn" id="nav-search" aria-label="Open search page">
+										<img class="search-icon-light" src="assets/icons/search.svg" width="16px" height="16px"
+											alt="" />
+										<img class="search-icon-dark" src="assets/icons/search-dark.svg" width="16px"
+											height="16px" alt="" />
+									</a>
+								</li>
+								<li class="search" role="presentation">
+									<div class="nav-search search-control" role="button" tabindex="0" aria-label="Open search dialog">
+										<div class="input-group" role="presentation">
+											<span class="input-group-btn">
+												<span class="btn search-icon-container" aria-hidden="true">
+													<img class="search-icon-dark" src="assets/icons/search-dark.svg" alt="" />
+													<img class="search-icon-light" src="assets/icons/search.svg" alt="" />
+												</span>
+											</span>
+											<input type="text" name="q" class="search-box form-control" placeholder="Search Docs" aria-hidden="true" tabindex="-1" readonly/>
+											<span class="search-shortcut-overlay"></span>
+										</div>
+									</div>						</li>
+								<!-- this was hiden in the home and download page, keeping it for now -->
+								<li><a class="link-button" href="Download.html" id="nav-download">
+										<span>Download</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
+			<div class="container">
+				<p class="message">Join a <a href="dev-days.html" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+			</div>
+			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
+					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
+		</div>		<!-- This div wraps around the entire site -->
+		<!-- The body itself should already have a main tag -->
+		<div id="main-content">
+			<div class="container body-content mcp-page">
+	<div class="row">
+		<div class="col-xs-12">
+			<div>
+				<h1>MCP Servers for agent mode</h1>
+				<p>Extend agent mode in VS Code by installing MCP servers to bring extra tools for connecting to
+					databases, invoking APIs, and performing specialized tasks. Below is a curated list of MCP
+					servers, if you don't see an MCP server you're looking for, please <a
+						href="https://aka.ms/vscode-mcp-server-list" target="_blank">suggest it here</a>. See
+					the <a href="https://aka.ms/vscode-website-mcp-docs">docs</a> to learn how to use MCP tools in agent
+					mode.
+				</p>
+			</div>
+
+			<div class="category-section">
+				<h2 class="category-title">Developer Tools</h2>
+				<div class="mcp-tools-grid">
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img class="dark" src="assets/mcp/github-dark.svg" alt="GitHub icon">
+									<img class="light" src="assets/mcp/github-light.svg" alt="GitHub icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/github/github-mcp-server" target="_blank" rel="noopener noreferrer">
+										GitHub
+									</a>
+									<div class="tool-publisher">
+										GitHub
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Access GitHub repositories, issues, and pull requests through secure API integration.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22github%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fapi.githubcopilot.com%2Fmcp%2F%22%7D">Install GitHub</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/figma.svg" alt="Figma icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Dev-Mode-MCP-Server" target="_blank" rel="noopener noreferrer">
+										Figma
+									</a>
+									<div class="tool-publisher">
+										Figma
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Extract UI content and generate code from Figma designs. Update to the latest desktop app version.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22figma%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22http%3A%2F%2F127.0.0.1%3A3845%2Fmcp%22%7D">Install Figma</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/playwright.svg" alt="Playwright icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/microsoft/playwright-mcp" target="_blank" rel="noopener noreferrer">
+										Playwright
+									</a>
+									<div class="tool-publisher">
+										Microsoft
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Automate web browsers using accessibility trees for testing and data extraction.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22playwright%22%2C%22gallery%22%3Atrue%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22%40playwright%2Fmcp%40latest%22%5D%7D">Install Playwright</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/sentry.svg" alt="Sentry icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/getsentry/sentry-mcp" target="_blank" rel="noopener noreferrer">
+										Sentry
+									</a>
+									<div class="tool-publisher">
+										Sentry
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Retrieve and analyze application errors and performance issues from Sentry projects.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22sentry%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.sentry.dev%2Fmcp%22%7D">Install Sentry</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/huggingface.svg" alt="Hugging Face icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://hf.co/mcp" target="_blank" rel="noopener noreferrer">
+										Hugging Face
+									</a>
+									<div class="tool-publisher">
+										Hugging Face
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Access models, datasets, and Spaces on the Hugging Face Hub.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22huggingface%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fhf.co%2Fmcp%22%7D">Install Hugging Face</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<i class="codicon codicon-search"></i>
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/regenrek/deepwiki-mcp" target="_blank" rel="noopener noreferrer">
+										DeepWiki
+									</a>
+									<div class="tool-publisher">
+										Kevin Kern
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Query and extract information from GitHub repositories indexed on DeepWiki.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22deepwiki%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.deepwiki.com%2Fsse%22%7D">Install DeepWiki</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img class="dark" src="assets/mcp/markdown-dark.svg" alt="MarkItDown icon">
+									<img class="light" src="assets/mcp/markdown-light.svg" alt="MarkItDown icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp" target="_blank" rel="noopener noreferrer">
+										MarkItDown
+									</a>
+									<div class="tool-publisher">
+										Microsoft
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Convert various file formats (PDF, Word, Excel, images, audio) to Markdown.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22markitdown%22%2C%22gallery%22%3Atrue%2C%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22markitdown-mcp%22%5D%7D">Install MarkItDown</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/microsoft.svg" alt="Microsoft Docs icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/microsoftdocs/mcp" target="_blank" rel="noopener noreferrer">
+										Microsoft Docs
+									</a>
+									<div class="tool-publisher">
+										Microsoft
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Search and retrieve content from Microsoft Learn, Azure documentation, and official Microsoft technical resources.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22microsoft-docs%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Flearn.microsoft.com%2Fapi%2Fmcp%22%7D">Install Microsoft Docs</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/context7.svg" alt="Context7 icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/upstash/context7" target="_blank" rel="noopener noreferrer">
+										Context7
+									</a>
+									<div class="tool-publisher">
+										Upstash
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Get up-to-date, version-specific documentation and code examples from any library or framework.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:extension/Upstash.context7-mcp">Install Context7</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<i class="codicon codicon-paintcan"></i>
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/sunriseapps/imagesorcery-mcp" target="_blank" rel="noopener noreferrer">
+										ImageSorcery
+									</a>
+									<div class="tool-publisher">
+										Sunrise Apps
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Local image processing with computer vision capabilities including object detection, OCR, image editing, and transformations.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22imagesorcery%22%2C%22gallery%22%3Atrue%2C%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22imagesorcery-mcp%22%5D%7D">Install ImageSorcery</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<i class="codicon codicon-shield"></i>
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/codacy/codacy-mcp-server" target="_blank" rel="noopener noreferrer">
+										Codacy
+									</a>
+									<div class="tool-publisher">
+										Codacy
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Comprehensive code quality and security analysis. SAST, secrets detection, dependency scanning, IaC security, and automated code review.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:extension/codacy-app.codacy">Install Codacy</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="category-section">
+				<h2 class="category-title">Productivity</h2>
+				<div class="mcp-tools-grid">
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/notion.svg" alt="Notion icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/makenotion/notion-mcp-server" target="_blank" rel="noopener noreferrer">
+										Notion
+									</a>
+									<div class="tool-publisher">
+										Notion
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								View, search, create, and update Notion pages and databases.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22notion%22%2C%22gallery%22%3Atrue%2C%22inputs%22%3A%5B%7B%22id%22%3A%22NOTION_TOKEN%22%2C%22type%22%3A%22promptString%22%2C%22description%22%3A%22Notion%20API%20Token%20(https%3A%2F%2Fwww.notion.so%2Fprofile%2Fintegrations)%22%2C%22password%22%3Atrue%7D%5D%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40notionhq%2Fnotion-mcp-server%22%5D%2C%22env%22%3A%7B%22OPENAPI_MCP_HEADERS%22%3A%7B%22Authorization%22%3A%22Bearer%20%24%7Binput%3ANOTION_TOKEN%7D%22%2C%22Notion-Version%22%3A%222022-06-28%22%7D%7D%7D">Install Notion</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/linear.svg" alt="Linear icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://linear.app/docs/mcp" target="_blank" rel="noopener noreferrer">
+										Linear
+									</a>
+									<div class="tool-publisher">
+										Linear
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Create, update, and track issues in Linear&#x27;s project management platform.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22linear%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.linear.app%2Fsse%22%7D">Install Linear</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<i class="codicon codicon-list-ordered"></i>
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking" target="_blank" rel="noopener noreferrer">
+										Sequential Thinking
+									</a>
+									<div class="tool-publisher">
+										Model Context Protocol
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Break down complex tasks into manageable steps with transparent tracking.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22sequentialthinking%22%2C%22gallery%22%3Atrue%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-sequential-thinking%22%5D%7D">Install Sequential Thinking</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<i class="codicon codicon-history"></i>
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory" target="_blank" rel="noopener noreferrer">
+										Memory
+									</a>
+									<div class="tool-publisher">
+										Model Context Protocol
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Store and retrieve contextual information across sessions.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22memory%22%2C%22gallery%22%3Atrue%2C%22inputs%22%3A%5B%7B%22id%22%3A%22memory_file_path%22%2C%22type%22%3A%22promptString%22%2C%22description%22%3A%22Path%20to%20the%20memory%20storage%20file%20(optional)%22%2C%22password%22%3Afalse%7D%5D%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40modelcontextprotocol%2Fserver-memory%22%5D%2C%22env%22%3A%7B%22MEMORY_FILE_PATH%22%3A%22%24%7Binput%3Amemory_file_path%7D%22%7D%7D">Install Memory</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/asana.svg" alt="Asana icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://developers.asana.com/docs/using-asanas-model-control-protocol-mcp-server" target="_blank" rel="noopener noreferrer">
+										Asana
+									</a>
+									<div class="tool-publisher">
+										Asana
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Create and manage tasks, projects, and comments through the Asana API.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22asana%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.asana.com%2Fsse%22%7D">Install Asana</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/atlassian.svg" alt="Atlassian icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://www.atlassian.com/platform/remote-mcp-server" target="_blank" rel="noopener noreferrer">
+										Atlassian
+									</a>
+									<div class="tool-publisher">
+										Atlassian
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Connect to Jira and Confluence for issue tracking and documentation.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22atlassian%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.atlassian.com%2Fv1%2Fsse%22%7D">Install Atlassian</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/zapier.svg" alt="Zapier icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://zapier.com/mcp" target="_blank" rel="noopener noreferrer">
+										Zapier
+									</a>
+									<div class="tool-publisher">
+										Zapier
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Create workflows and execute tasks across 30,000+ connected apps.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22zapier%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fapi.zapier.com%2Fv1%2Fmcp%2Fsse%22%7D">Install Zapier</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<i class="codicon codicon-calendar"></i>
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/mondaycom/monday-ai/tree/master/packages/monday-api-mcp" target="_blank" rel="noopener noreferrer">
+										Monday.com
+									</a>
+									<div class="tool-publisher">
+										Monday.com
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Project management integration with Monday.com. Manage boards, items, users, teams, and workspace operations.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22monday-mcp%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.monday.com%2Fsse%22%7D">Install Monday.com</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="category-section">
+				<h2 class="category-title">Data &amp; Analytics</h2>
+				<div class="mcp-tools-grid">
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/duckdb.svg" alt="DuckDB icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/ktanaka101/mcp-server-duckdb" target="_blank" rel="noopener noreferrer">
+										DuckDB
+									</a>
+									<div class="tool-publisher">
+										Kentaro Tanaka
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Query and analyze data in DuckDB databases locally and in the cloud.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22duckdb%22%2C%22gallery%22%3Atrue%2C%22inputs%22%3A%5B%7B%22id%22%3A%22duckdb_db_path%22%2C%22type%22%3A%22promptString%22%2C%22description%22%3A%22Path%20to%20the%20DuckDB%20database%20file%20(e.g.%2C%20%2Fpath%2Fto%2Fdatabase.duckdb)%22%2C%22password%22%3Afalse%7D%5D%2C%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22mcp-server-duckdb%22%2C%22--db-path%22%2C%22%24%7Binput%3Aduckdb_db_path%7D%22%5D%7D">Install DuckDB</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/posthog.svg" alt="PostHog icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/PostHog/mcp" target="_blank" rel="noopener noreferrer">
+										PostHog
+									</a>
+									<div class="tool-publisher">
+										PostHog
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Access PostHog analytics to create annotations and retrieve product usage insights.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22posthog%22%2C%22gallery%22%3Atrue%2C%22inputs%22%3A%5B%7B%22id%22%3A%22posthog_api_key%22%2C%22type%22%3A%22promptString%22%2C%22description%22%3A%22PostHog%20API%20Key%20with%20annotation%3Awrite%20and%20project%3Aread%20scopes%22%2C%22password%22%3Atrue%7D%5D%2C%22url%22%3A%22https%3A%2F%2Fmcp.posthog.com%2Fsse%22%2C%22headers%22%3A%7B%22Authorization%22%3A%22Bearer%20%24%7Binput%3Aposthog_api_key%7D%22%7D%7D">Install PostHog</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/neon.svg" alt="Neon icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/neondatabase-labs/mcp-server-neon" target="_blank" rel="noopener noreferrer">
+										Neon
+									</a>
+									<div class="tool-publisher">
+										neondatabase labs
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Manage and query Neon Postgres databases with natural language.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22neon%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.neon.tech%2Fsse%22%7D">Install Neon</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/apify.svg" alt="Apify icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://docs.apify.com/platform/integrations/mcp" target="_blank" rel="noopener noreferrer">
+										Apify
+									</a>
+									<div class="tool-publisher">
+										Apify
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Extract data from websites and automate workflows through Apify&#x27;s Actor ecosystem.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22apify%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.apify.com%22%7D">Install Apify</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<i class="codicon codicon-graph"></i>
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/microsoft/clarity-mcp-server" target="_blank" rel="noopener noreferrer">
+										Microsoft Clarity
+									</a>
+									<div class="tool-publisher">
+										Microsoft
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Access Microsoft Clarity analytics data including heatmaps, session recordings, and user behavior insights.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22clarity%22%2C%22gallery%22%3Atrue%2C%22inputs%22%3A%5B%7B%22id%22%3A%22clarity_api_token%22%2C%22type%22%3A%22promptString%22%2C%22description%22%3A%22Microsoft%20Clarity%20API%20Token%20(from%20Settings%20%E2%86%92%20Data%20Export%20%E2%86%92%20Generate%20API%20token)%22%2C%22password%22%3Atrue%7D%5D%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40microsoft%2Fclarity-mcp-server%22%2C%22--clarity_api_token%3D%24%7Binput%3Aclarity_api_token%7D%22%5D%7D">Install Microsoft Clarity</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/firecrawl.png" alt="Firecrawl icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/mendableai/firecrawl-mcp-server" target="_blank" rel="noopener noreferrer">
+										Firecrawl
+									</a>
+									<div class="tool-publisher">
+										Mendable
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Extract data from websites with advanced web scraping, crawling, search, and structured data extraction.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22firecrawl%22%2C%22gallery%22%3Atrue%2C%22inputs%22%3A%5B%7B%22id%22%3A%22firecrawl_api_key%22%2C%22type%22%3A%22promptString%22%2C%22description%22%3A%22Firecrawl%20API%20Key%20(get%20from%20https%3A%2F%2Fwww.firecrawl.dev%2Fapp%2Fapi-keys)%22%2C%22password%22%3Atrue%7D%5D%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22firecrawl-mcp%22%5D%2C%22env%22%3A%7B%22FIRECRAWL_API_KEY%22%3A%22%24%7Binput%3Afirecrawl_api_key%7D%22%7D%7D">Install Firecrawl</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<i class="codicon codicon-database"></i>
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://www.prisma.io/docs/postgres/integrations/mcp-server" target="_blank" rel="noopener noreferrer">
+										Prisma Postgres
+									</a>
+									<div class="tool-publisher">
+										Prisma
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Database operations with Prisma ORM and PostgreSQL. Schema management, query execution, migrations, and data modeling.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22prisma-postgres%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.prisma.io%2Fmcp%22%7D">Install Prisma Postgres</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<i class="codicon codicon-database"></i>
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/mongodb-js/mongodb-mcp-server" target="_blank" rel="noopener noreferrer">
+										MongoDB
+									</a>
+									<div class="tool-publisher">
+										MongoDB
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Database operations and management. Execute queries, manage collections, aggregation pipelines, and document operations.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22mongodb%22%2C%22gallery%22%3Atrue%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22mongodb-mcp-server%22%5D%7D">Install MongoDB</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="category-section">
+				<h2 class="category-title">Business Services</h2>
+				<div class="mcp-tools-grid">
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="https://stripe.gallerycdn.vsassets.io/extensions/stripe/vscode-stripe/3.8.6/1747172190934/Microsoft.VisualStudio.Services.Icons.Default" alt="Stripe icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://docs.stripe.com/mcp" target="_blank" rel="noopener noreferrer">
+										Stripe
+									</a>
+									<div class="tool-publisher">
+										Stripe
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Create customers, manage subscriptions, and generate payment links through Stripe APIs.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22stripe%22%2C%22gallery%22%3Atrue%2C%22inputs%22%3A%5B%7B%22id%22%3A%22stripe_api_key%22%2C%22type%22%3A%22promptString%22%2C%22description%22%3A%22Stripe%20API%20Key%20(https%3A%2F%2Fdashboard.stripe.com%2Fapikeys)%22%2C%22password%22%3Atrue%7D%5D%2C%22url%22%3A%22https%3A%2F%2Fmcp.stripe.com%2F%22%2C%22headers%22%3A%7B%22Authorization%22%3A%22Bearer%20%24%7Binput%3Astripe_api_key%7D%22%7D%7D">Install Stripe</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/paypal.svg" alt="PayPal icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://developer.paypal.com/tools/mcp-server/" target="_blank" rel="noopener noreferrer">
+										PayPal
+									</a>
+									<div class="tool-publisher">
+										PayPal
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Create invoices, process payments, and access transaction data through PayPal services.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22paypal%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.paypal.com%2Fsse%22%7D">Install PayPal</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img class="dark" src="assets/mcp/square-dark.svg" alt="Square icon">
+									<img class="light" src="assets/mcp/square-light.svg" alt="Square icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://developer.squareup.com/docs/mcp" target="_blank" rel="noopener noreferrer">
+										Square
+									</a>
+									<div class="tool-publisher">
+										Square
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Process payments and manage customers through Square&#x27;s API ecosystem.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22square%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.squareup.com%2Fsse%22%7D">Install Square</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img class="dark" src="assets/mcp/intercom-dark.svg" alt="Intercom icon">
+									<img class="light" src="assets/mcp/intercom-light.svg" alt="Intercom icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://developers.intercom.com/docs/guides/mcp" target="_blank" rel="noopener noreferrer">
+										Intercom
+									</a>
+									<div class="tool-publisher">
+										Intercom
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Access customer conversations and support tickets for data analysis.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22intercom%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.intercom.com%2Fsse%22%7D">Install Intercom</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img class="dark" src="assets/mcp/wix-dark.svg" alt="Wix icon">
+									<img class="light" src="assets/mcp/wix-light.svg" alt="Wix icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://www.wix.com/studio/developers/mcp-server" target="_blank" rel="noopener noreferrer">
+										Wix
+									</a>
+									<div class="tool-publisher">
+										Wix
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Build and manage Wix sites with eCommerce, bookings, and payment features.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22wix%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.wix.com%2Fsse%22%7D">Install Wix</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/webflow.svg" alt="Webflow icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/webflow/mcp-server" target="_blank" rel="noopener noreferrer">
+										Webflow
+									</a>
+									<div class="tool-publisher">
+										Webflow
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Create and manage websites, collections, and content through Webflow&#x27;s APIs.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22webflow%22%2C%22gallery%22%3Atrue%2C%22url%22%3A%22https%3A%2F%2Fmcp.webflow.com%2Fsse%22%7D">Install Webflow</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="category-section">
+				<h2 class="category-title">Cloud &amp; Infrastructure</h2>
+				<div class="mcp-tools-grid">
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/convex.svg" alt="Convex icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://stack.convex.dev/convex-mcp-server" target="_blank" rel="noopener noreferrer">
+										Convex
+									</a>
+									<div class="tool-publisher">
+										Convex
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Access Convex backend databases and functions for real-time data operations.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22convex%22%2C%22gallery%22%3Atrue%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22convex%40latest%22%2C%22mcp%22%2C%22start%22%5D%7D">Install Convex</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/azure.svg" alt="Azure icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/azure/azure-mcp" target="_blank" rel="noopener noreferrer">
+										Azure
+									</a>
+									<div class="tool-publisher">
+										Microsoft
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Manage Azure resources, query databases, and access Azure services.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:extension/ms-azuretools.vscode-azure-mcp-server">Install Azure</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<img src="assets/mcp/azure-devops.svg" alt="Azure DevOps icon">
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/microsoft/azure-devops-mcp" target="_blank" rel="noopener noreferrer">
+										Azure DevOps
+									</a>
+									<div class="tool-publisher">
+										Microsoft
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Manage Azure DevOps projects, work items, repositories, builds, releases, and test plans.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22azure-devops%22%2C%22gallery%22%3Atrue%2C%22inputs%22%3A%5B%7B%22id%22%3A%22ado_org%22%2C%22type%22%3A%22promptString%22%2C%22description%22%3A%22Azure%20DevOps%20organization%20name%20(e.g.%20&#x27;contoso&#x27;)%22%2C%22password%22%3Afalse%7D%5D%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40azure-devops%2Fmcp%22%2C%22%24%7Binput%3Aado_org%7D%22%5D%7D">Install Azure DevOps</a>
+							</div>
+						</div>
+					</div>
+					<div class="tool-card-container">
+						<div class="tool-card">
+							<div class="tool-header">
+								<div class="tool-icon">
+									<i class="codicon codicon-server-process"></i>
+								</div>
+								<div class="tool-names">
+									<a class="tool-name" href="https://github.com/hashicorp/terraform-mcp-server" target="_blank" rel="noopener noreferrer">
+										Terraform
+									</a>
+									<div class="tool-publisher">
+										HashiCorp
+									</div>
+								</div>
+							</div>
+							<p class="tool-description">
+								Infrastructure as Code management with Terraform. Plan, apply, destroy operations, state management, and resource inspection.
+							</p>
+							<div class="tool-actions">
+								<a class="link-button" href="vscode:mcp/install?%7B%22name%22%3A%22terraform%22%2C%22gallery%22%3Atrue%2C%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22hashicorp%2Fterraform-mcp-server%22%5D%7D">Install Terraform</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		</div>
+	</div>
+
+	<footer role="contentinfo" class="container">
+		<div class="footer-container">
+			<div class="footer-row">
+				<div class="footer-social">
+					<ul class="links">
+						<li>
+							<a href="https://github.com/microsoft/vscode"><img src="assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+						</li>
+						<li>
+							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+						</li>
+						<li>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+						</li>
+						<li>
+							<a href="https://www.reddit.com/r/vscode/"><img src="assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+						</li>
+						<li>
+							<a href="https://www.vscodepodcast.com/"><img src="assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+						</li>
+						<li>
+							<a href="https://www.tiktok.com/@vscode"><img src="assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+						</li>
+						<li>
+							<a href="https://www.youtube.com/@code"><img src="assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+						</li>
+						<script>
+							function manageConsent() {
+								if (siteConsent && siteConsent.isConsentRequired) {
+									siteConsent.manageConsent();
+								}
+							}
+						</script>
+					</ul>
+					<a id="footer-microsoft-link" class="microsoft-logo" href="https://www.microsoft.com/">
+						<img src="assets/icons/microsoft.svg" alt="Microsoft homepage" />
+					</a>
+				</div>
+			</div>
+			<div class="footer-row">
+				<ul class="links">
+					<li><a id="footer-support-link" href="https://support.serviceshub.microsoft.com/supportforbusiness/create?sapId=d66407ed-3967-b000-4cfb-2c318cad363d"
+							target="_blank" rel="noopener">Support</a></li>
+					<li><a id="footer-privacy-link" href="https://go.microsoft.com/fwlink/?LinkId=521839"
+							target="_blank" rel="noopener">Privacy</a></li>
+					<li style="display: none;"><a id="footer-cookie-link" style="cursor: pointer;" onclick="manageConsent()"
+							target="_blank" rel="noopener">Manage Cookies</a></li>
+					<li><a id="footer-terms-link" href="https://www.microsoft.com/legal/terms-of-use"
+							target="_blank" rel="noopener">Terms of Use</a></li>
+					<li><a id="footer-license-link" href="License-2.html"
+							target="_blank" rel="noopener">License</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<script type="module">
+		document.addEventListener('DOMContentLoaded', () => {
+			const copilotDeepLinks = document.querySelectorAll('.copilot-deep-link');
+			if (copilotDeepLinks.length === 0) {
+				return;
+			}
+			if (window.innerWidth < 992) {
+				for (const link of copilotDeepLinks) {
+					link.href = 'https://aka.ms/vscode-activatecopilotfree';
+				}
+			}
+		});
+	</script>
+
+	<script src="dist/index.js"></script>
+
+	
+
+	<script type="application/ld+json">
+		{
+			"@context" : "http://schema.org",
+			"@type" : "SoftwareApplication",
+			"name" : "Visual Studio Code",
+			"softwareVersion": "1.104",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			},
+			"applicationCategory": "DeveloperApplication",
+			"applicationSubCategory": "Text Editor",
+			"alternateName": "VS Code",
+			"datePublished": "2021-11-03",
+			"operatingSystem": "Mac, Linux, Windows",
+			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",
+			"screenshot": "https://code.visualstudio.com/assets/home/home-screenshot-win.png",
+			"releaseNotes": "https://code.visualstudio.com/updates",
+			"downloadUrl": "https://code.visualstudio.com/download",
+			"license": "https://code.visualstudio.com/license",
+			"softwareRequirements": "https://code.visualstudio.com/docs/supporting/requirements",
+			"url" : "https://code.visualstudio.com",
+			"author": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"maintainer": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://code.visualstudio.com/Search?q={search_term_string}",
+				"query-input": "required name=search_term_string"
+			},
+			"sameAs" : [
+				"https://en.wikipedia.org/wiki/Visual_Studio_Code",
+				"https://twitter.com/code",
+				"https://www.youtube.com/code",
+				"https://www.tiktok.com/@vscode",
+				"https://github.com/microsoft/vscode"
+			]
+		}
+	</script>
+</body>
+
+
+<!-- Mirrored from code.visualstudio.com/mcp by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:53:25 GMT -->
+</html>

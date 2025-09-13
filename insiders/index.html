@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from code.visualstudio.com/insiders/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:53:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="awa-expId" content="vscw_aaflight1016_control:103441;" />
+	<meta name="awa-env" content="prod" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="hNs7DXrTySP_X-0P_AC0WulAXvUwgSXEmgfcO2r79dw" />
+
+	<!-- Twitter and Facebook OpenGraph Metadata-->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@code" />
+
+	<meta name="description" content="For early adopters, you can get the latest release of VS Code each day with the Insiders Build.  Available on Mac, Linux and Windows." />
+<!-- Twitter and Facebook OpenGraph Metadata-->
+<meta property="og:title" content="Download Visual Studio Code Insiders" />
+<meta property="og:description" content="For early adopters, you can get the latest release of VS Code each day with the Insiders Build.  Available on Mac, Linux and Windows." />
+<meta property="og:image" content="../opengraphimg/opengraph-home-insiders.png" />
+<meta property="og:url" content="index-2.html" />
+
+
+	<link rel="shortcut icon" href="../assets/favicon.ico" sizes="128x128" />
+	<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+	<title>Download Visual Studio Code Insiders</title>
+
+	<link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../dist/v2/style.css">
+
+	<script src="../../consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js"></script>
+	<script type="text/javascript" src="../../js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js"></script>
+	
+	<script type="text/javascript">
+	// Leave as var; siteConsent is initialized and referenced elsewhere.
+	var siteConsent = null;
+	
+	const GPC_DataSharingOptIn = false;
+	WcpConsent.onInitCallback(function () {
+		window.appInsights = new oneDS.ApplicationInsights();
+		window.appInsights.initialize({
+			instrumentationKey: "1a3eb3104447440391ad5f2a6ee06a0a-62879566-bc58-4741-9650-302bf2af703f-7103",
+			propertyConfiguration: {
+				userConsented: false,
+				gpcDataSharingOptIn: false,
+				callback: {
+					userConsentDetails: siteConsent ? siteConsent.getConsent : undefined
+				},
+			},
+			cookieCfg: {
+				ignoreCookies: ["MSCC"]
+			},
+			webAnalyticsConfiguration:{ // Web Analytics Plugin configuration
+				urlCollectQuery: true,
+				urlCollectHash: true,
+				autoCapture: {
+					scroll: true,
+					pageView: true,
+					onLoad: true,
+					onUnload: true,
+					click: true,
+					resize: true,
+					jsError: true
+				}
+			}
+		}, []);
+	
+		window.appInsights.getPropertyManager().getPropertiesContext().web.gpcDataSharingOptIn = GPC_DataSharingOptIn;
+	});
+	</script>
+	<link rel="alternate" type="application/atom+xml" title="RSS Feed for code.visualstudio.com" href="../feed.xml" />
+</head>
+
+<body >
+	<!-- Setting theme here to avoid FOUC -->
+	<script>
+		function setTheme(themeName) {
+			if (themeName === 'dark') {
+				document.documentElement.removeAttribute('data-theme'); // dark is default, so no data-theme attribute needed
+			}
+
+			if (themeName === 'light') {
+				document.documentElement.setAttribute('data-theme', themeName);
+			}
+			return;
+		}
+
+		// Determine initial theme: user preference or system preference
+		let theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		setTheme(theme); // Apply the initial theme
+
+		// Listen for changes in the system theme preference
+		window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+			if (!localStorage.getItem('theme')) { // Only if no user preference is saved
+				setTheme(e.matches ? 'dark' : 'light');
+			}
+		});
+	</script>
+
+	<div id="main">
+		<div class="navbar-fixed-container">
+			<div class="navbar navbar-inverse navbar-fixed-top " data-spy="affix"
+				data-offset-top="1">
+				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
+					<div class="container">
+						<div class="nav navbar-header">
+							<a class="navbar-brand" href="../index.html"><span>Visual Studio Code</span></a>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+								aria-label="Expand and Collapse Menu">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="navbar-collapse collapse">
+							<ul class="nav navbar-nav navbar-left">
+								<li ><a id="nav-docs" href="../docs.html">Docs</a></li>
+								<li ><a id="nav-updates" href="../updates/v1_104.html">Updates</a></li>
+								<li ><a id="nav-blogs" href="../blogs.html">Blog</a></li>
+								<li ><a id="nav-extend" href="../api.html">API</a></li>
+								<li><a href="https://marketplace.visualstudio.com/VSCode" target="_blank" rel="noopener" id="nav-extensions">Extensions</a></li>
+								<li ><a id="nav-mcp" href="../mcp.html">MCP</a></li>
+								<li ><a id="nav-faqs" href="../docs/supporting/faq.html">FAQ</a></li>
+								<li class='search visible-xs visible-sm'
+									><a href="../Search.html">Search</a></li>
+								<li ><a id="nav-events" href="../dev-days.html">Dev Days</a></li>
+							</ul>
+		
+							<ul class="nav navbar-nav navbar-right" role="presentation">
+								<li>
+									<button type="button" class="theme-switch" id="theme-toggle">
+										<img class="theme-icon-light" src="../assets/icons/theme-light.svg"
+											alt="Switch to the dark theme" />
+										<img class="theme-icon-dark" src="../assets/icons/theme-dark.svg"
+											alt="Switch to the light theme" />
+									</button>
+								</li>
+								<li>
+									<a href="../Search.html" title="Search" class="btn search-btn" id="nav-search" aria-label="Open search page">
+										<img class="search-icon-light" src="../assets/icons/search.svg" width="16px" height="16px"
+											alt="" />
+										<img class="search-icon-dark" src="../assets/icons/search-dark.svg" width="16px"
+											height="16px" alt="" />
+									</a>
+								</li>
+								<li class="search" role="presentation">
+									<div class="nav-search search-control" role="button" tabindex="0" aria-label="Open search dialog">
+										<div class="input-group" role="presentation">
+											<span class="input-group-btn">
+												<span class="btn search-icon-container" aria-hidden="true">
+													<img class="search-icon-dark" src="../assets/icons/search-dark.svg" alt="" />
+													<img class="search-icon-light" src="../assets/icons/search.svg" alt="" />
+												</span>
+											</span>
+											<input type="text" name="q" class="search-box form-control" placeholder="Search Docs" aria-hidden="true" tabindex="-1" readonly/>
+											<span class="search-shortcut-overlay"></span>
+										</div>
+									</div>						</li>
+								<!-- this was hiden in the home and download page, keeping it for now -->
+								<li><a class="link-button" href="../Download.html" id="nav-download">
+										<span>Download</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
+			<div class="container">
+				<p class="message">Join a <a href="../dev-days.html" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+			</div>
+			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
+					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
+		</div>		<!-- This div wraps around the entire site -->
+		<!-- The body itself should already have a main tag -->
+		<div id="main-content">
+			<div class="insiders">
+	<div class="container-fluid swimlane text-center">
+		<div class="container ">
+			<div class="row">
+				<h1>Download Visual Studio Code Insiders</h1>
+				<h3>
+					Get the latest release each day.
+				</h3>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="download-btns insiders-builds"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<p class="terms text-center">By downloading and using Visual Studio Code, you agree to the <a href="../license/insiders.html">license
+						terms</a> and <a href="https://go.microsoft.com/fwlink/?LinkId=521839">privacy
+						statement</a>.  Third party licenses for the CLI can be <a href="https://github.com/microsoft/vscode/blob/2a2f830103fd0f9b46ea56b203bc28e2e22541e9/cli/ThirdPartyNotices.txt">found here</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid swimlane">
+		<div class="container">
+			<div class="row value-props">
+				<div class="col-sm-4">
+					<h2>For early adopters</h2>
+					<p>Insiders has the most recent code pushes and may lead to the occasional broken build.</p>
+				</div>
+				<div class="col-sm-4">
+					<h2>Frequent builds</h2>
+					<p>New builds at least everyday with features, bug fixes, and <a href="https://github.com/microsoft/vscode/issues?utf8=%E2%9C%93&amp;q=is%3Aissue+is%3Aclosed+">other
+						recently closed issues</a>.</p>
+				</div>
+				<div class="col-sm-4">
+					<h2>Side-by-side install</h2>
+					<p>Insiders installs next to the Stable build, allowing you to use either independently.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="text-center">
+						<div class="sha-table-insider"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		</div>
+	</div>
+
+	<footer role="contentinfo" class="container">
+		<div class="footer-container">
+			<div class="footer-row">
+				<div class="footer-social">
+					<ul class="links">
+						<li>
+							<a href="https://github.com/microsoft/vscode"><img src="../assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+						</li>
+						<li>
+							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="../assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="../assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+						</li>
+						<li>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="../assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+						</li>
+						<li>
+							<a href="https://www.reddit.com/r/vscode/"><img src="../assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+						</li>
+						<li>
+							<a href="https://www.vscodepodcast.com/"><img src="../assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+						</li>
+						<li>
+							<a href="https://www.tiktok.com/@vscode"><img src="../assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+						</li>
+						<li>
+							<a href="https://www.youtube.com/@code"><img src="../assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+						</li>
+						<script>
+							function manageConsent() {
+								if (siteConsent && siteConsent.isConsentRequired) {
+									siteConsent.manageConsent();
+								}
+							}
+						</script>
+					</ul>
+					<a id="footer-microsoft-link" class="microsoft-logo" href="https://www.microsoft.com/">
+						<img src="../assets/icons/microsoft.svg" alt="Microsoft homepage" />
+					</a>
+				</div>
+			</div>
+			<div class="footer-row">
+				<ul class="links">
+					<li><a id="footer-support-link" href="https://support.serviceshub.microsoft.com/supportforbusiness/create?sapId=d66407ed-3967-b000-4cfb-2c318cad363d"
+							target="_blank" rel="noopener">Support</a></li>
+					<li><a id="footer-privacy-link" href="https://go.microsoft.com/fwlink/?LinkId=521839"
+							target="_blank" rel="noopener">Privacy</a></li>
+					<li style="display: none;"><a id="footer-cookie-link" style="cursor: pointer;" onclick="manageConsent()"
+							target="_blank" rel="noopener">Manage Cookies</a></li>
+					<li><a id="footer-terms-link" href="https://www.microsoft.com/legal/terms-of-use"
+							target="_blank" rel="noopener">Terms of Use</a></li>
+					<li><a id="footer-license-link" href="../License-2.html"
+							target="_blank" rel="noopener">License</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<script type="module">
+		document.addEventListener('DOMContentLoaded', () => {
+			const copilotDeepLinks = document.querySelectorAll('.copilot-deep-link');
+			if (copilotDeepLinks.length === 0) {
+				return;
+			}
+			if (window.innerWidth < 992) {
+				for (const link of copilotDeepLinks) {
+					link.href = 'https://aka.ms/vscode-activatecopilotfree';
+				}
+			}
+		});
+	</script>
+
+	<script src="../dist/index.js"></script>
+
+	
+
+	<script type="application/ld+json">
+		{
+			"@context" : "http://schema.org",
+			"@type" : "SoftwareApplication",
+			"name" : "Visual Studio Code",
+			"softwareVersion": "1.104",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			},
+			"applicationCategory": "DeveloperApplication",
+			"applicationSubCategory": "Text Editor",
+			"alternateName": "VS Code",
+			"datePublished": "2021-11-03",
+			"operatingSystem": "Mac, Linux, Windows",
+			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",
+			"screenshot": "https://code.visualstudio.com/assets/home/home-screenshot-win.png",
+			"releaseNotes": "https://code.visualstudio.com/updates",
+			"downloadUrl": "https://code.visualstudio.com/download",
+			"license": "https://code.visualstudio.com/license",
+			"softwareRequirements": "https://code.visualstudio.com/docs/supporting/requirements",
+			"url" : "https://code.visualstudio.com",
+			"author": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"maintainer": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://code.visualstudio.com/Search?q={search_term_string}",
+				"query-input": "required name=search_term_string"
+			},
+			"sameAs" : [
+				"https://en.wikipedia.org/wiki/Visual_Studio_Code",
+				"https://twitter.com/code",
+				"https://www.youtube.com/code",
+				"https://www.tiktok.com/@vscode",
+				"https://github.com/microsoft/vscode"
+			]
+		}
+	</script>
+</body>
+
+
+<!-- Mirrored from code.visualstudio.com/insiders/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:53:44 GMT -->
+</html>

@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from code.visualstudio.com/api by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:52:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="awa-expId" content="vscw_aaflight1016_control:103441;" />
+	<meta name="awa-env" content="prod" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="hNs7DXrTySP_X-0P_AC0WulAXvUwgSXEmgfcO2r79dw" />
+
+	<!-- Twitter and Facebook OpenGraph Metadata-->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@code" />
+
+	<meta name="keywords" content="vscode API" />
+
+<meta name="description" content="Visual Studio Code has a rich extension API. Learn how to create your own extensions for VS Code." />
+
+<meta name="ms.prod" content="vs-code" />
+<meta name="ms.TOCTitle" content="Extension API" />
+<meta name="ms.ContentId" content="AD26EFB1-FFC6-4284-BAB8-F3BCB8294728" />
+<meta name="ms.topic" content="conceptual" />
+<meta name="ms.date" content="09/11/2025" />
+<!-- Twitter and Facebook OpenGraph Metadata-->
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:url" content="api/index.html" />
+
+<meta property="og:description" content="Visual Studio Code has a rich extension API. Learn how to create your own extensions for VS Code." />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Extension API" />
+<meta property="og:image" content="opengraphimg/opengraph-docs.png" />
+
+
+	<link rel="shortcut icon" href="assets/favicon.ico" sizes="128x128" />
+	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+	<title>Extension API | Visual Studio Code Extension
+API</title>
+
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="dist/v2/style.css">
+
+	<script src="../consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js"></script>
+	<script type="text/javascript" src="../js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js"></script>
+	
+	<script type="text/javascript">
+	// Leave as var; siteConsent is initialized and referenced elsewhere.
+	var siteConsent = null;
+	
+	const GPC_DataSharingOptIn = false;
+	WcpConsent.onInitCallback(function () {
+		window.appInsights = new oneDS.ApplicationInsights();
+		window.appInsights.initialize({
+			instrumentationKey: "1a3eb3104447440391ad5f2a6ee06a0a-62879566-bc58-4741-9650-302bf2af703f-7103",
+			propertyConfiguration: {
+				userConsented: false,
+				gpcDataSharingOptIn: false,
+				callback: {
+					userConsentDetails: siteConsent ? siteConsent.getConsent : undefined
+				},
+			},
+			cookieCfg: {
+				ignoreCookies: ["MSCC"]
+			},
+			webAnalyticsConfiguration:{ // Web Analytics Plugin configuration
+				urlCollectQuery: true,
+				urlCollectHash: true,
+				autoCapture: {
+					scroll: true,
+					pageView: true,
+					onLoad: true,
+					onUnload: true,
+					click: true,
+					resize: true,
+					jsError: true
+				}
+			}
+		}, []);
+	
+		window.appInsights.getPropertyManager().getPropertiesContext().web.gpcDataSharingOptIn = GPC_DataSharingOptIn;
+	});
+	</script>
+	<link rel="alternate" type="application/atom+xml" title="RSS Feed for code.visualstudio.com" href="feed.xml" />
+</head>
+
+<body >
+	<!-- Setting theme here to avoid FOUC -->
+	<script>
+		function setTheme(themeName) {
+			if (themeName === 'dark') {
+				document.documentElement.removeAttribute('data-theme'); // dark is default, so no data-theme attribute needed
+			}
+
+			if (themeName === 'light') {
+				document.documentElement.setAttribute('data-theme', themeName);
+			}
+			return;
+		}
+
+		// Determine initial theme: user preference or system preference
+		let theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		setTheme(theme); // Apply the initial theme
+
+		// Listen for changes in the system theme preference
+		window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+			if (!localStorage.getItem('theme')) { // Only if no user preference is saved
+				setTheme(e.matches ? 'dark' : 'light');
+			}
+		});
+	</script>
+
+	<div id="main">
+		<div class="navbar-fixed-container">
+			<div class="navbar navbar-inverse navbar-fixed-top " data-spy="affix"
+				data-offset-top="1">
+				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
+					<div class="container">
+						<div class="nav navbar-header">
+							<a class="navbar-brand" href="index.html"><span>Visual Studio Code</span></a>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+								aria-label="Expand and Collapse Menu">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="navbar-collapse collapse">
+							<ul class="nav navbar-nav navbar-left">
+								<li ><a id="nav-docs" href="docs.html">Docs</a></li>
+								<li ><a id="nav-updates" href="updates/v1_104.html">Updates</a></li>
+								<li ><a id="nav-blogs" href="blogs.html">Blog</a></li>
+								<li class="active" ><a id="nav-extend" href="api.html">API</a></li>
+								<li><a href="https://marketplace.visualstudio.com/VSCode" target="_blank" rel="noopener" id="nav-extensions">Extensions</a></li>
+								<li ><a id="nav-mcp" href="mcp.html">MCP</a></li>
+								<li ><a id="nav-faqs" href="docs/supporting/faq.html">FAQ</a></li>
+								<li class='search visible-xs visible-sm'
+									><a href="Search.html">Search</a></li>
+								<li ><a id="nav-events" href="dev-days.html">Dev Days</a></li>
+							</ul>
+		
+							<ul class="nav navbar-nav navbar-right" role="presentation">
+								<li>
+									<button type="button" class="theme-switch" id="theme-toggle">
+										<img class="theme-icon-light" src="assets/icons/theme-light.svg"
+											alt="Switch to the dark theme" />
+										<img class="theme-icon-dark" src="assets/icons/theme-dark.svg"
+											alt="Switch to the light theme" />
+									</button>
+								</li>
+								<li>
+									<a href="Search.html" title="Search" class="btn search-btn" id="nav-search" aria-label="Open search page">
+										<img class="search-icon-light" src="assets/icons/search.svg" width="16px" height="16px"
+											alt="" />
+										<img class="search-icon-dark" src="assets/icons/search-dark.svg" width="16px"
+											height="16px" alt="" />
+									</a>
+								</li>
+								<li class="search" role="presentation">
+									<div class="nav-search search-control" role="button" tabindex="0" aria-label="Open search dialog">
+										<div class="input-group" role="presentation">
+											<span class="input-group-btn">
+												<span class="btn search-icon-container" aria-hidden="true">
+													<img class="search-icon-dark" src="assets/icons/search-dark.svg" alt="" />
+													<img class="search-icon-light" src="assets/icons/search.svg" alt="" />
+												</span>
+											</span>
+											<input type="text" name="q" class="search-box form-control" placeholder="Search Docs" aria-hidden="true" tabindex="-1" readonly/>
+											<span class="search-shortcut-overlay"></span>
+										</div>
+									</div>						</li>
+								<!-- this was hiden in the home and download page, keeping it for now -->
+								<li><a class="link-button" href="Download.html" id="nav-download">
+										<span>Download</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
+			<div class="container">
+				<p class="message">Join a <a href="dev-days.html" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+			</div>
+			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
+					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
+		</div>		<!-- This div wraps around the entire site -->
+		<!-- The body itself should already have a main tag -->
+		<div id="main-content">
+			<div class="container body-content docs">
+	<div class="row">
+		<!-- left nav -->
+		<div class="col-xs-12 col-md-2 docs-navbar-container">
+			<nav id="docs-navbar" aria-label="Topics" class="docs-nav visible-md visible-lg">
+			  <ul class="nav" id="main-nav">
+			  <li class="active">
+			    <a class="docs-home" href="api.html" aria-label="Current Page: VS Code Extension API Documentation Overview">Overview</a>
+			  </li>
+			  
+			<li class="panel collapsed">
+			  <a class="area" role="button" href="#get-started-articles" data-parent="#main-nav" data-toggle="collapse">Get Started</a>
+			  <ul id="get-started-articles" class="collapse ">
+			
+			        <li >
+			          <a href="api/get-started/your-first-extension.html" >Your First Extension</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/get-started/extension-anatomy.html" >Extension Anatomy</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/get-started/wrapping-up.html" >Wrapping Up</a>
+			        </li>
+			          
+			  </ul>
+			</li>
+			    
+			<li class="panel collapsed">
+			  <a class="area" role="button" href="#extension-capabilities-articles" data-parent="#main-nav" data-toggle="collapse">Extension Capabilities</a>
+			  <ul id="extension-capabilities-articles" class="collapse ">
+			
+			        <li >
+			          <a href="api/extension-capabilities/overview.html" >Overview</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-capabilities/common-capabilities.html" >Common Capabilities</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-capabilities/theming.html" >Theming</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-capabilities/extending-workbench.html" >Extending Workbench</a>
+			        </li>
+			          
+			  </ul>
+			</li>
+			    
+			<li class="panel collapsed">
+			  <a class="area" role="button" href="#extension-guides-articles" data-parent="#main-nav" data-toggle="collapse">Extension Guides</a>
+			  <ul id="extension-guides-articles" class="collapse ">
+			
+			        <li >
+			          <a href="api/extension-guides/overview.html" >Overview</a>
+			        </li>
+			          
+			<li class="panel collapsed">
+			  <a class="area" role="button" href="#extension-guides-ai-articles" data-parent="#extension-guides-articles" data-toggle="collapse">AI</a>
+			  <ul id="extension-guides-ai-articles" class="collapse ">
+			
+			        <li >
+			          <a href="api/extension-guides/ai/ai-extensibility-overview.html" >AI Extensibility</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/ai/tools.html" >Language Model Tool</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/ai/mcp.html" >MCP Dev Guide</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/ai/chat.html" >Chat Participant</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/ai/chat-tutorial.html" >Chat Tutorial</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/ai/language-model.html" >Language Model</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/ai/language-model-tutorial.html" >Language Model Tutorial</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/ai/language-model-chat-provider.html" >Language Model Chat Provider</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/ai/prompt-tsx.html" >Prompt TSX</a>
+			        </li>
+			          
+			  </ul>
+			</li>
+			        
+			        <li >
+			          <a href="api/extension-guides/command.html" >Command</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/color-theme.html" >Color Theme</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/file-icon-theme.html" >File Icon Theme</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/product-icon-theme.html" >Product Icon Theme</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/tree-view.html" >Tree View</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/webview.html" >Webview</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/notebook.html" >Notebook</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/custom-editors.html" >Custom Editors</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/virtual-documents.html" >Virtual Documents</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/virtual-workspaces.html" >Virtual Workspaces</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/web-extensions.html" >Web Extensions</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/workspace-trust.html" >Workspace Trust</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/task-provider.html" >Task Provider</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/scm-provider.html" >Source Control</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/debugger-extension.html" >Debugger Extension</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/markdown-extension.html" >Markdown Extension</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/testing.html" >Test Extension</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/custom-data-extension.html" >Custom Data Extension</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/extension-guides/telemetry.html" >Telemetry</a>
+			        </li>
+			          
+			  </ul>
+			</li>
+			    
+			<li class="panel collapsed">
+			  <a class="area" role="button" href="#ux-guidelines-articles" data-parent="#main-nav" data-toggle="collapse">UX Guidelines</a>
+			  <ul id="ux-guidelines-articles" class="collapse ">
+			
+			        <li >
+			          <a href="api/ux-guidelines/overview.html" >Overview</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/ux-guidelines/activity-bar.html" >Activity Bar</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/ux-guidelines/sidebars.html" >Sidebars</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/ux-guidelines/panel.html" >Panel</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/ux-guidelines/status-bar.html" >Status Bar</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/ux-guidelines/views.html" >Views</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/ux-guidelines/editor-actions.html" >Editor Actions</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/ux-guidelines/quick-picks.html" >Quick Picks</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/ux-guidelines/command-palette.html" >Command Palette</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/ux-guidelines/notifications.html" >Notifications</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/ux-guidelines/webviews.html" >Webviews</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/ux-guidelines/context-menus.html" >Context Menus</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/ux-guidelines/walkthroughs.html" >Walkthroughs</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/ux-guidelines/settings.html" >Settings</a>
+			        </li>
+			          
+			  </ul>
+			</li>
+			    
+			<li class="panel collapsed">
+			  <a class="area" role="button" href="#language-extensions-articles" data-parent="#main-nav" data-toggle="collapse">Language Extensions</a>
+			  <ul id="language-extensions-articles" class="collapse ">
+			
+			        <li >
+			          <a href="api/language-extensions/overview.html" >Overview</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/language-extensions/syntax-highlight-guide.html" >Syntax Highlight Guide</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/language-extensions/semantic-highlight-guide.html" >Semantic Highlight Guide</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/language-extensions/snippet-guide.html" >Snippet Guide</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/language-extensions/language-configuration-guide.html" >Language Configuration Guide</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/language-extensions/programmatic-language-features.html" >Programmatic Language Features</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/language-extensions/language-server-extension-guide.html" >Language Server Extension Guide</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/language-extensions/embedded-languages.html" >Embedded Languages</a>
+			        </li>
+			          
+			  </ul>
+			</li>
+			    
+			<li class="panel collapsed">
+			  <a class="area" role="button" href="#working-with-extensions-articles" data-parent="#main-nav" data-toggle="collapse">Testing and Publishing</a>
+			  <ul id="working-with-extensions-articles" class="collapse ">
+			
+			        <li >
+			          <a href="api/working-with-extensions/testing-extension.html" >Testing Extensions</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/working-with-extensions/publishing-extension.html" >Publishing Extensions</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/working-with-extensions/bundling-extension.html" >Bundling Extensions</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/working-with-extensions/continuous-integration.html" >Continuous Integration</a>
+			        </li>
+			          
+			  </ul>
+			</li>
+			    
+			<li class="panel collapsed">
+			  <a class="area" role="button" href="#advanced-topics-articles" data-parent="#main-nav" data-toggle="collapse">Advanced Topics</a>
+			  <ul id="advanced-topics-articles" class="collapse ">
+			
+			        <li >
+			          <a href="api/advanced-topics/extension-host.html" >Extension Host</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/advanced-topics/remote-extensions.html" >Remote Development and Codespaces</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/advanced-topics/using-proposed-api.html" >Using Proposed API</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/advanced-topics/tslint-eslint-migration.html" >Migrate from TSLint to ESLint</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/advanced-topics/python-extension-template.html" >Python Extension Template</a>
+			        </li>
+			          
+			  </ul>
+			</li>
+			    
+			<li class="panel collapsed">
+			  <a class="area" role="button" href="#references-articles" data-parent="#main-nav" data-toggle="collapse">References</a>
+			  <ul id="references-articles" class="collapse ">
+			
+			        <li >
+			          <a href="api/references/vscode-api.html" >VS Code API </a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/references/contribution-points.html" >Contribution Points</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/references/activation-events.html" >Activation Events</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/references/extension-manifest.html" >Extension Manifest</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/references/commands.html" >Built-in Commands</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/references/when-clause-contexts.html" >When clause contexts</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/references/theme-color.html" >Theme Color</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/references/icons-in-labels.html" >Product Icon Reference</a>
+			        </li>
+			          
+			        <li >
+			          <a href="api/references/document-selector.html" >Document Selector</a>
+			        </li>
+			          
+			  </ul>
+			</li>
+			    
+			  </ul>
+			</nav>
+			
+			<nav id="small-nav" aria-label="Topics" class="docs-nav hidden-md hidden-lg">
+				<label class="faux-h4" for="small-nav-dropdown">Topics</label>
+				<select id="small-nav-dropdown" aria-label="topics">
+			    <option value="/api" selected>Overview</option>
+			
+			  <optgroup label="Get Started">
+			
+			        <option value="/api/get-started/your-first-extension" >Your First Extension</option>
+			        
+			        <option value="/api/get-started/extension-anatomy" >Extension Anatomy</option>
+			        
+			        <option value="/api/get-started/wrapping-up" >Wrapping Up</option>
+			        
+			  </optgroup>
+			  
+			  <optgroup label="Extension Capabilities">
+			
+			        <option value="/api/extension-capabilities/overview" >Overview</option>
+			        
+			        <option value="/api/extension-capabilities/common-capabilities" >Common Capabilities</option>
+			        
+			        <option value="/api/extension-capabilities/theming" >Theming</option>
+			        
+			        <option value="/api/extension-capabilities/extending-workbench" >Extending Workbench</option>
+			        
+			  </optgroup>
+			  
+			  <optgroup label="Extension Guides">
+			
+			        <option value="/api/extension-guides/overview" >Overview</option>
+			        
+			        <optgroup label="Extension Guides - AI">
+			
+			          <option value="/api/extension-guides/ai/ai-extensibility-overview" >AI Extensibility</option>
+			          
+			          <option value="/api/extension-guides/ai/tools" >Language Model Tool</option>
+			          
+			          <option value="/api/extension-guides/ai/mcp" >MCP Dev Guide</option>
+			          
+			          <option value="/api/extension-guides/ai/chat" >Chat Participant</option>
+			          
+			          <option value="/api/extension-guides/ai/chat-tutorial" >Chat Tutorial</option>
+			          
+			          <option value="/api/extension-guides/ai/language-model" >Language Model</option>
+			          
+			          <option value="/api/extension-guides/ai/language-model-tutorial" >Language Model Tutorial</option>
+			          
+			          <option value="/api/extension-guides/ai/language-model-chat-provider" >Language Model Chat Provider</option>
+			          
+			          <option value="/api/extension-guides/ai/prompt-tsx" >Prompt TSX</option>
+			          
+			        </optgroup>
+			
+			        <option value="/api/extension-guides/command" >Command</option>
+			        
+			        <option value="/api/extension-guides/color-theme" >Color Theme</option>
+			        
+			        <option value="/api/extension-guides/file-icon-theme" >File Icon Theme</option>
+			        
+			        <option value="/api/extension-guides/product-icon-theme" >Product Icon Theme</option>
+			        
+			        <option value="/api/extension-guides/tree-view" >Tree View</option>
+			        
+			        <option value="/api/extension-guides/webview" >Webview</option>
+			        
+			        <option value="/api/extension-guides/notebook" >Notebook</option>
+			        
+			        <option value="/api/extension-guides/custom-editors" >Custom Editors</option>
+			        
+			        <option value="/api/extension-guides/virtual-documents" >Virtual Documents</option>
+			        
+			        <option value="/api/extension-guides/virtual-workspaces" >Virtual Workspaces</option>
+			        
+			        <option value="/api/extension-guides/web-extensions" >Web Extensions</option>
+			        
+			        <option value="/api/extension-guides/workspace-trust" >Workspace Trust</option>
+			        
+			        <option value="/api/extension-guides/task-provider" >Task Provider</option>
+			        
+			        <option value="/api/extension-guides/scm-provider" >Source Control</option>
+			        
+			        <option value="/api/extension-guides/debugger-extension" >Debugger Extension</option>
+			        
+			        <option value="/api/extension-guides/markdown-extension" >Markdown Extension</option>
+			        
+			        <option value="/api/extension-guides/testing" >Test Extension</option>
+			        
+			        <option value="/api/extension-guides/custom-data-extension" >Custom Data Extension</option>
+			        
+			        <option value="/api/extension-guides/telemetry" >Telemetry</option>
+			        
+			  </optgroup>
+			  
+			  <optgroup label="UX Guidelines">
+			
+			        <option value="/api/ux-guidelines/overview" >Overview</option>
+			        
+			        <option value="/api/ux-guidelines/activity-bar" >Activity Bar</option>
+			        
+			        <option value="/api/ux-guidelines/sidebars" >Sidebars</option>
+			        
+			        <option value="/api/ux-guidelines/panel" >Panel</option>
+			        
+			        <option value="/api/ux-guidelines/status-bar" >Status Bar</option>
+			        
+			        <option value="/api/ux-guidelines/views" >Views</option>
+			        
+			        <option value="/api/ux-guidelines/editor-actions" >Editor Actions</option>
+			        
+			        <option value="/api/ux-guidelines/quick-picks" >Quick Picks</option>
+			        
+			        <option value="/api/ux-guidelines/command-palette" >Command Palette</option>
+			        
+			        <option value="/api/ux-guidelines/notifications" >Notifications</option>
+			        
+			        <option value="/api/ux-guidelines/webviews" >Webviews</option>
+			        
+			        <option value="/api/ux-guidelines/context-menus" >Context Menus</option>
+			        
+			        <option value="/api/ux-guidelines/walkthroughs" >Walkthroughs</option>
+			        
+			        <option value="/api/ux-guidelines/settings" >Settings</option>
+			        
+			  </optgroup>
+			  
+			  <optgroup label="Language Extensions">
+			
+			        <option value="/api/language-extensions/overview" >Overview</option>
+			        
+			        <option value="/api/language-extensions/syntax-highlight-guide" >Syntax Highlight Guide</option>
+			        
+			        <option value="/api/language-extensions/semantic-highlight-guide" >Semantic Highlight Guide</option>
+			        
+			        <option value="/api/language-extensions/snippet-guide" >Snippet Guide</option>
+			        
+			        <option value="/api/language-extensions/language-configuration-guide" >Language Configuration Guide</option>
+			        
+			        <option value="/api/language-extensions/programmatic-language-features" >Programmatic Language Features</option>
+			        
+			        <option value="/api/language-extensions/language-server-extension-guide" >Language Server Extension Guide</option>
+			        
+			        <option value="/api/language-extensions/embedded-languages" >Embedded Languages</option>
+			        
+			  </optgroup>
+			  
+			  <optgroup label="Testing and Publishing">
+			
+			        <option value="/api/working-with-extensions/testing-extension" >Testing Extensions</option>
+			        
+			        <option value="/api/working-with-extensions/publishing-extension" >Publishing Extensions</option>
+			        
+			        <option value="/api/working-with-extensions/bundling-extension" >Bundling Extensions</option>
+			        
+			        <option value="/api/working-with-extensions/continuous-integration" >Continuous Integration</option>
+			        
+			  </optgroup>
+			  
+			  <optgroup label="Advanced Topics">
+			
+			        <option value="/api/advanced-topics/extension-host" >Extension Host</option>
+			        
+			        <option value="/api/advanced-topics/remote-extensions" >Remote Development and Codespaces</option>
+			        
+			        <option value="/api/advanced-topics/using-proposed-api" >Using Proposed API</option>
+			        
+			        <option value="/api/advanced-topics/tslint-eslint-migration" >Migrate from TSLint to ESLint</option>
+			        
+			        <option value="/api/advanced-topics/python-extension-template" >Python Extension Template</option>
+			        
+			  </optgroup>
+			  
+			  <optgroup label="References">
+			
+			        <option value="/api/references/vscode-api" >VS Code API </option>
+			        
+			        <option value="/api/references/contribution-points" >Contribution Points</option>
+			        
+			        <option value="/api/references/activation-events" >Activation Events</option>
+			        
+			        <option value="/api/references/extension-manifest" >Extension Manifest</option>
+			        
+			        <option value="/api/references/commands" >Built-in Commands</option>
+			        
+			        <option value="/api/references/when-clause-contexts" >When clause contexts</option>
+			        
+			        <option value="/api/references/theme-color" >Theme Color</option>
+			        
+			        <option value="/api/references/icons-in-labels" >Product Icon Reference</option>
+			        
+			        <option value="/api/references/document-selector" >Document Selector</option>
+			        
+			  </optgroup>
+			  
+				</select>
+			</nav>		</div>
+
+		<!-- main content -->
+		<main class="col-xs-12 col-sm-9 col-md-8 body">
+			<div class="edit-github pull-right">
+				<a href="https://vscode.dev/github/microsoft/vscode-docs/blob/main/api/index.md"
+					class="btn btn-default hidden-xs hidden-sm hidden-md" title="Edit this document in vscode.dev">
+					Edit
+				</a>
+			</div>
+			<h1>Extension API</h1>
+<p>Visual Studio Code is built with extensibility in mind. From the UI to the editing experience, almost every part of VS Code can be customized and enhanced through the Extension API. In fact, many core features of VS Code are built as <a href="https://github.com/microsoft/vscode/tree/main/extensions" class="external-link" target="_blank">extensions</a> and use the same Extension API.</p>
+<p>This documentation describes:</p>
+<ul>
+<li>How to build, run, debug, test, and publish an extension</li>
+<li>How to take advantage of VS Code's rich Extension API</li>
+<li>Where to find <a href="api/extension-guides/overview.html">guides</a> and <a href="https://github.com/microsoft/vscode-extension-samples" class="external-link" target="_blank">code samples</a> to help get you started</li>
+<li>Following our <a href="api/ux-guidelines/overview.html">UX guidelines</a> for best practices</li>
+</ul>
+<p>Code samples are available at <a href="https://github.com/microsoft/vscode-extension-samples" class="external-link" target="_blank">Microsoft/vscode-extension-samples</a>.</p>
+<p>If you are looking for published extensions, head to the <a href="https://marketplace.visualstudio.com/vscode" class="external-link" target="_blank">VS Code Extension Marketplace</a>.</p>
+<h2 id="what-can-extensions-do" data-needslink="what-can-extensions-do">What can extensions do?</h2>
+<p>Here are some examples of what you can achieve with the Extension API:</p>
+<ul>
+<li>Change the look of VS Code with a color or file icon theme - <a href="api/extension-capabilities/theming.html">Theming</a></li>
+<li>Add custom components &amp; views in the UI - <a href="api/extension-capabilities/extending-workbench.html">Extending the Workbench</a></li>
+<li>Create a Webview to display a custom webpage built with HTML/CSS/JS - <a href="api/extension-guides/webview.html">Webview Guide</a></li>
+<li>Support a new programming language - <a href="api/language-extensions/overview.html">Language Extensions Overview</a></li>
+<li>Support debugging a specific runtime - <a href="api/extension-guides/debugger-extension.html">Debugger Extension Guide</a></li>
+</ul>
+<p>If you'd like to have a more comprehensive overview of the Extension API, refer to the <a href="api/extension-capabilities/overview.html">Extension Capabilities Overview</a> page. <a href="api/extension-guides/overview.html">Extension Guides Overview</a> also includes a list of code samples and guides that illustrate various Extension API usage.</p>
+<h2 id="how-to-build-extensions" data-needslink="how-to-build-extensions">How to build extensions?</h2>
+<p>Building a good extension can take a lot of time and effort. Here is what each section of the API docs can help you with:</p>
+<ul>
+<li><strong>Get Started</strong> teaches fundamental concepts for building extensions with the <a href="https://github.com/microsoft/vscode-extension-samples/tree/main/helloworld-sample" class="external-link" target="_blank">Hello World</a> sample.</li>
+<li><strong>Extension Capabilities</strong> dissects VS Code's vast API into smaller categories and points you to more detailed topics.</li>
+<li><strong>Extension Guides</strong> includes guides and code samples that explain specific usages of VS Code Extension API.</li>
+<li><strong>UX Guidelines</strong> showcases best practices for providing a great user experience in an extension.</li>
+<li><strong>Language Extensions</strong> illustrates how to add support for a programming language with guides and code samples.</li>
+<li><strong>Testing and Publishing</strong> includes in-depth guides on various extension development topics, such as <a href="api/working-with-extensions/testing-extension.html">testing</a> and <a href="api/working-with-extensions/publishing-extension.html">publishing</a> extensions.</li>
+<li><strong>Advanced Topics</strong> explains advanced concepts such as <a href="api/advanced-topics/extension-host.html">Extension Host</a>, <a href="api/advanced-topics/remote-extensions.html">Supporting Remote Development and GitHub Codespaces</a>, and <a href="api/advanced-topics/using-proposed-api.html">Proposed API</a>.</li>
+<li><strong>References</strong> contains exhaustive references for the <a href="api/references/vscode-api.html">VS Code API</a>, <a href="api/references/contribution-points.html">Contribution Points</a>, and many other topics.</li>
+</ul>
+<h2 id="whats-new" data-needslink="whats-new">What's new?</h2>
+<p>VS Code updates on a monthly cadence, and that applies to the Extension API as well. New features and APIs become available every month to increase the power and scope of VS Code extensions.</p>
+<p>To stay current with the Extension API, you can review the monthly release notes, which have dedicated sections covering:</p>
+<ul>
+<li><a href="updates/v1_104.html#_extension-authoring">Extension authoring</a> - Learn what new extension APIs are available in the latest release.</li>
+<li><a href="updates/v1_104.html#_proposed-extension-apis">Proposed extension APIs</a> - Review and give feedback on upcoming proposed APIs.</li>
+</ul>
+<h2 id="looking-for-help" data-needslink="looking-for-help">Looking for help</h2>
+<p>If you have questions for extension development, try asking on:</p>
+<ul>
+<li><a href="https://github.com/microsoft/vscode-discussions" class="external-link" target="_blank">VS Code Discussions</a>: GitHub community to discuss VS Code's extension platform, ask questions, help other members of the community, and get answers.</li>
+<li><a href="https://stackoverflow.com/questions/tagged/vscode-extensions" class="external-link" target="_blank">Stack Overflow</a>: There are <a href="https://stackoverflow.com/questions/tagged/vscode-extensions" class="external-link" target="_blank">thousands of questions</a> tagged <code>vscode-extensions</code>, and over half of them already have answers. Search for your issue, ask questions, or help your fellow developers by answering VS Code extension development questions!</li>
+<li><a href="https://vscode-dev-community.slack.com/" class="external-link" target="_blank">VS Code Dev Slack</a>: Public chatroom for extension developers. VS Code team members often join in the conversations.</li>
+</ul>
+<p>To provide feedback on the documentation, create new issues at <a href="https://github.com/microsoft/vscode-docs/issues" class="external-link" target="_blank">Microsoft/vscode-docs</a>.
+If you have extension questions that you cannot find an answer for, or issues with the VS Code Extension API, please open new issues at <a href="https://github.com/microsoft/vscode/issues" class="external-link" target="_blank">Microsoft/vscode</a>.</p>
+
+			<div class="feedback"></div>
+			
+			<div class="body-footer">09/11/2025</div>
+			
+		</main>
+
+		<!-- medium right nav -->
+		<div class="col-sm-3 col-md-2 hidden-xs docs-subnavbar-container">
+			<nav id="docs-subnavbar" aria-label="On Page" data-spy="affix" data-offset-top="20">
+				
+				<h4><span class="sr-only">On this page there are 4 sections</span><span
+						aria-hidden="true">On this page</span></h4>
+				<ul class="nav">
+					
+					<li><a href="#what-can-extensions-do">What can extensions do?</a></li>
+					
+					<li><a href="#how-to-build-extensions">How to build extensions?</a></li>
+					
+					<li><a href="#whats-new">What's new?</a></li>
+					
+					<li><a href="#looking-for-help">Looking for help</a></li>
+					
+				</ul>
+				
+				<div class="connect-widget"></div>
+			</nav>
+		</div>
+		<!-- end of page connect widget -->
+		<div class="col-xs-12 visible-xs">
+			<div class="connect-widget"></div>
+		</div>
+	</div>
+</div>
+		</div>
+	</div>
+
+	<footer role="contentinfo" class="container">
+		<div class="footer-container">
+			<div class="footer-row">
+				<div class="footer-social">
+					<ul class="links">
+						<li>
+							<a href="https://github.com/microsoft/vscode"><img src="assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+						</li>
+						<li>
+							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+						</li>
+						<li>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+						</li>
+						<li>
+							<a href="https://www.reddit.com/r/vscode/"><img src="assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+						</li>
+						<li>
+							<a href="https://www.vscodepodcast.com/"><img src="assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+						</li>
+						<li>
+							<a href="https://www.tiktok.com/@vscode"><img src="assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+						</li>
+						<li>
+							<a href="https://www.youtube.com/@code"><img src="assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+						</li>
+						<script>
+							function manageConsent() {
+								if (siteConsent && siteConsent.isConsentRequired) {
+									siteConsent.manageConsent();
+								}
+							}
+						</script>
+					</ul>
+					<a id="footer-microsoft-link" class="microsoft-logo" href="https://www.microsoft.com/">
+						<img src="assets/icons/microsoft.svg" alt="Microsoft homepage" />
+					</a>
+				</div>
+			</div>
+			<div class="footer-row">
+				<ul class="links">
+					<li><a id="footer-support-link" href="https://support.serviceshub.microsoft.com/supportforbusiness/create?sapId=d66407ed-3967-b000-4cfb-2c318cad363d"
+							target="_blank" rel="noopener">Support</a></li>
+					<li><a id="footer-privacy-link" href="https://go.microsoft.com/fwlink/?LinkId=521839"
+							target="_blank" rel="noopener">Privacy</a></li>
+					<li style="display: none;"><a id="footer-cookie-link" style="cursor: pointer;" onclick="manageConsent()"
+							target="_blank" rel="noopener">Manage Cookies</a></li>
+					<li><a id="footer-terms-link" href="https://www.microsoft.com/legal/terms-of-use"
+							target="_blank" rel="noopener">Terms of Use</a></li>
+					<li><a id="footer-license-link" href="License-2.html"
+							target="_blank" rel="noopener">License</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<script type="module">
+		document.addEventListener('DOMContentLoaded', () => {
+			const copilotDeepLinks = document.querySelectorAll('.copilot-deep-link');
+			if (copilotDeepLinks.length === 0) {
+				return;
+			}
+			if (window.innerWidth < 992) {
+				for (const link of copilotDeepLinks) {
+					link.href = 'https://aka.ms/vscode-activatecopilotfree';
+				}
+			}
+		});
+	</script>
+
+	<script src="dist/index.js"></script>
+
+	
+
+	<script type="application/ld+json">
+		{
+			"@context" : "http://schema.org",
+			"@type" : "SoftwareApplication",
+			"name" : "Visual Studio Code",
+			"softwareVersion": "1.104",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			},
+			"applicationCategory": "DeveloperApplication",
+			"applicationSubCategory": "Text Editor",
+			"alternateName": "VS Code",
+			"datePublished": "2021-11-03",
+			"operatingSystem": "Mac, Linux, Windows",
+			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",
+			"screenshot": "https://code.visualstudio.com/assets/home/home-screenshot-win.png",
+			"releaseNotes": "https://code.visualstudio.com/updates",
+			"downloadUrl": "https://code.visualstudio.com/download",
+			"license": "https://code.visualstudio.com/license",
+			"softwareRequirements": "https://code.visualstudio.com/docs/supporting/requirements",
+			"url" : "https://code.visualstudio.com",
+			"author": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"maintainer": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://code.visualstudio.com/Search?q={search_term_string}",
+				"query-input": "required name=search_term_string"
+			},
+			"sameAs" : [
+				"https://en.wikipedia.org/wiki/Visual_Studio_Code",
+				"https://twitter.com/code",
+				"https://www.youtube.com/code",
+				"https://www.tiktok.com/@vscode",
+				"https://github.com/microsoft/vscode"
+			]
+		}
+	</script>
+</body>
+
+
+<!-- Mirrored from code.visualstudio.com/api by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:53:06 GMT -->
+</html>

@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from code.visualstudio.com/updates/v1_104 by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:51:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="awa-expId" content="vscw_aaflight1016_control:103441;" />
+	<meta name="awa-env" content="prod" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="hNs7DXrTySP_X-0P_AC0WulAXvUwgSXEmgfcO2r79dw" />
+
+	<!-- Twitter and Facebook OpenGraph Metadata-->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@code" />
+
+	<meta name="description" content="Learn what is new in the Visual Studio Code August 2025 Release (1.104)" />
+<meta name="keywords" content="" />
+<!-- Twitter and Facebook OpenGraph Metadata-->
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:url" content="v1_104.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="August 2025 (version 1.104)" />
+<meta property="og:description" content="Learn what is new in the Visual Studio Code August 2025 Release (1.104)" />
+
+<meta property="og:image" content="../assets/updates/1_104/release-highlights.png" />
+
+
+
+	<link rel="shortcut icon" href="../assets/favicon.ico" sizes="128x128" />
+	<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+	<title>August 2025 (version 1.104)</title>
+
+	<link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../dist/v2/style.css">
+
+	<script src="../../consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js"></script>
+	<script type="text/javascript" src="../../js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js"></script>
+	
+	<script type="text/javascript">
+	// Leave as var; siteConsent is initialized and referenced elsewhere.
+	var siteConsent = null;
+	
+	const GPC_DataSharingOptIn = false;
+	WcpConsent.onInitCallback(function () {
+		window.appInsights = new oneDS.ApplicationInsights();
+		window.appInsights.initialize({
+			instrumentationKey: "1a3eb3104447440391ad5f2a6ee06a0a-62879566-bc58-4741-9650-302bf2af703f-7103",
+			propertyConfiguration: {
+				userConsented: false,
+				gpcDataSharingOptIn: false,
+				callback: {
+					userConsentDetails: siteConsent ? siteConsent.getConsent : undefined
+				},
+			},
+			cookieCfg: {
+				ignoreCookies: ["MSCC"]
+			},
+			webAnalyticsConfiguration:{ // Web Analytics Plugin configuration
+				urlCollectQuery: true,
+				urlCollectHash: true,
+				autoCapture: {
+					scroll: true,
+					pageView: true,
+					onLoad: true,
+					onUnload: true,
+					click: true,
+					resize: true,
+					jsError: true
+				}
+			}
+		}, []);
+	
+		window.appInsights.getPropertyManager().getPropertiesContext().web.gpcDataSharingOptIn = GPC_DataSharingOptIn;
+	});
+	</script>
+	<link rel="alternate" type="application/atom+xml" title="RSS Feed for code.visualstudio.com" href="../feed.xml" />
+</head>
+
+<body >
+	<!-- Setting theme here to avoid FOUC -->
+	<script>
+		function setTheme(themeName) {
+			if (themeName === 'dark') {
+				document.documentElement.removeAttribute('data-theme'); // dark is default, so no data-theme attribute needed
+			}
+
+			if (themeName === 'light') {
+				document.documentElement.setAttribute('data-theme', themeName);
+			}
+			return;
+		}
+
+		// Determine initial theme: user preference or system preference
+		let theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		setTheme(theme); // Apply the initial theme
+
+		// Listen for changes in the system theme preference
+		window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+			if (!localStorage.getItem('theme')) { // Only if no user preference is saved
+				setTheme(e.matches ? 'dark' : 'light');
+			}
+		});
+	</script>
+
+	<div id="main">
+		<div class="navbar-fixed-container">
+			<div class="navbar navbar-inverse navbar-fixed-top " data-spy="affix"
+				data-offset-top="1">
+				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
+					<div class="container">
+						<div class="nav navbar-header">
+							<a class="navbar-brand" href="../index.html"><span>Visual Studio Code</span></a>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+								aria-label="Expand and Collapse Menu">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="navbar-collapse collapse">
+							<ul class="nav navbar-nav navbar-left">
+								<li ><a id="nav-docs" href="../docs.html">Docs</a></li>
+								<li class="active" ><a id="nav-updates" href="v1_104.html">Updates</a></li>
+								<li ><a id="nav-blogs" href="../blogs.html">Blog</a></li>
+								<li ><a id="nav-extend" href="../api.html">API</a></li>
+								<li><a href="https://marketplace.visualstudio.com/VSCode" target="_blank" rel="noopener" id="nav-extensions">Extensions</a></li>
+								<li ><a id="nav-mcp" href="../mcp.html">MCP</a></li>
+								<li ><a id="nav-faqs" href="../docs/supporting/faq.html">FAQ</a></li>
+								<li class='search visible-xs visible-sm'
+									><a href="../Search.html">Search</a></li>
+								<li ><a id="nav-events" href="../dev-days.html">Dev Days</a></li>
+							</ul>
+		
+							<ul class="nav navbar-nav navbar-right" role="presentation">
+								<li>
+									<button type="button" class="theme-switch" id="theme-toggle">
+										<img class="theme-icon-light" src="../assets/icons/theme-light.svg"
+											alt="Switch to the dark theme" />
+										<img class="theme-icon-dark" src="../assets/icons/theme-dark.svg"
+											alt="Switch to the light theme" />
+									</button>
+								</li>
+								<li>
+									<a href="../Search.html" title="Search" class="btn search-btn" id="nav-search" aria-label="Open search page">
+										<img class="search-icon-light" src="../assets/icons/search.svg" width="16px" height="16px"
+											alt="" />
+										<img class="search-icon-dark" src="../assets/icons/search-dark.svg" width="16px"
+											height="16px" alt="" />
+									</a>
+								</li>
+								<li class="search" role="presentation">
+									<div class="nav-search search-control" role="button" tabindex="0" aria-label="Open search dialog">
+										<div class="input-group" role="presentation">
+											<span class="input-group-btn">
+												<span class="btn search-icon-container" aria-hidden="true">
+													<img class="search-icon-dark" src="../assets/icons/search-dark.svg" alt="" />
+													<img class="search-icon-light" src="../assets/icons/search.svg" alt="" />
+												</span>
+											</span>
+											<input type="text" name="q" class="search-box form-control" placeholder="Search Docs" aria-hidden="true" tabindex="-1" readonly/>
+											<span class="search-shortcut-overlay"></span>
+										</div>
+									</div>						</li>
+								<!-- this was hiden in the home and download page, keeping it for now -->
+								<li><a class="link-button" href="../Download.html" id="nav-download">
+										<span>Download</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
+			<div class="container">
+				<p class="message">Join a <a href="../dev-days.html" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+			</div>
+			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
+					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
+		</div>		<!-- This div wraps around the entire site -->
+		<!-- The body itself should already have a main tag -->
+		<div id="main-content">
+			<div class="container body-content docs releases">
+    <div class="row">
+        <!-- left nav -->
+        <div class="col-xs-12 col-md-2 docs-navbar-container">
+            <nav id="docs-navbar" aria-label="Updates" class="docs-nav updates-nav visible-md visible-lg">
+            	<h4>Updates</h4>
+            	<ul class="nav">
+            		
+            			<li class="active">
+            				<a href="v1_104.html" aria-label="Current Page: August 2025">August 2025</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_103.html" >July 2025</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_102.html" >June 2025</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_101.html" >May 2025</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_100.html" >April 2025</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_99.html" >March 2025</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_98.html" >February 2025</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_97.html" >January 2025</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_96.html" >November 2024</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_95.html" >October 2024</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_94.html" >September 2024</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_93.html" >August 2024</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_92.html" >July 2024</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_91.html" >June 2024</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_90.html" >May 2024</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_89.html" >April 2024</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_88.html" >March 2024</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_87.html" >February 2024</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_86.html" >January 2024</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_85.html" >November 2023</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_84.html" >October 2023</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_83.html" >September 2023</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_82.html" >August 2023</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_81.html" >July 2023</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_80.html" >June 2023</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_79.html" >May 2023</a>
+            			</li>
+            		
+            			<li >
+            				<a href="v1_78.html" >April 2023</a>
+            			</li>
+            		
+            	</ul>
+            </nav>
+            <nav id="small-nav" aria-label="Updates" class="docs-nav updates-nav hidden-md hidden-lg">
+            	<label class="faux-h4" for="small-nav-dropdown">Updates</label>
+            	<select id="small-nav-dropdown" aria-label="updates">
+            		
+            			<option value="/updates/v1_104" selected>August 2025</option>
+            		
+            			<option value="/updates/v1_103" >July 2025</option>
+            		
+            			<option value="/updates/v1_102" >June 2025</option>
+            		
+            			<option value="/updates/v1_101" >May 2025</option>
+            		
+            			<option value="/updates/v1_100" >April 2025</option>
+            		
+            			<option value="/updates/v1_99" >March 2025</option>
+            		
+            			<option value="/updates/v1_98" >February 2025</option>
+            		
+            			<option value="/updates/v1_97" >January 2025</option>
+            		
+            			<option value="/updates/v1_96" >November 2024</option>
+            		
+            			<option value="/updates/v1_95" >October 2024</option>
+            		
+            			<option value="/updates/v1_94" >September 2024</option>
+            		
+            			<option value="/updates/v1_93" >August 2024</option>
+            		
+            			<option value="/updates/v1_92" >July 2024</option>
+            		
+            			<option value="/updates/v1_91" >June 2024</option>
+            		
+            			<option value="/updates/v1_90" >May 2024</option>
+            		
+            			<option value="/updates/v1_89" >April 2024</option>
+            		
+            			<option value="/updates/v1_88" >March 2024</option>
+            		
+            			<option value="/updates/v1_87" >February 2024</option>
+            		
+            			<option value="/updates/v1_86" >January 2024</option>
+            		
+            			<option value="/updates/v1_85" >November 2023</option>
+            		
+            			<option value="/updates/v1_84" >October 2023</option>
+            		
+            			<option value="/updates/v1_83" >September 2023</option>
+            		
+            			<option value="/updates/v1_82" >August 2023</option>
+            		
+            			<option value="/updates/v1_81" >July 2023</option>
+            		
+            			<option value="/updates/v1_80" >June 2023</option>
+            		
+            			<option value="/updates/v1_79" >May 2023</option>
+            		
+            			<option value="/updates/v1_78" >April 2023</option>
+            		
+            	</select>
+            </nav>        </div>
+
+        <!-- main content -->
+        <main class="col-xs-12 col-sm-9 col-md-8 body">
+            <div class="edit-github pull-right">
+                <a href="https://vscode.dev/github/microsoft/vscode-docs/blob/main/release-notes/v1_104.md"
+                    class="btn btn-default hidden-xs hidden-sm hidden-md" title="Edit this document in vscode.dev">
+                    Edit
+                </a>
+            </div>
+            <h1>August 2025 (version 1.104)</h1>
+<p><em>Release date: September 11, 2025</em></p>
+<p>Downloads: Windows: <a href="https://update.code.visualstudio.com/1.104.0/win32-x64-user/stable">x64</a> <a href="https://update.code.visualstudio.com/1.104.0/win32-arm64-user/stable">Arm64</a> | Mac: <a href="https://update.code.visualstudio.com/1.104.0/darwin-universal/stable">Universal</a> <a href="https://update.code.visualstudio.com/1.104.0/darwin/stable">Intel</a> <a href="https://update.code.visualstudio.com/1.104.0/darwin-arm64/stable">silicon</a> | Linux: <a href="https://update.code.visualstudio.com/1.104.0/linux-deb-x64/stable">deb</a> <a href="https://update.code.visualstudio.com/1.104.0/linux-rpm-x64/stable">rpm</a> <a href="https://update.code.visualstudio.com/1.104.0/linux-x64/stable">tarball</a> <a href="../docs/supporting/faq.html#_previous-release-versions">Arm</a> <a href="https://update.code.visualstudio.com/1.104.0/linux-snap-x64/stable">snap</a></p>
+<hr>
+<p>Welcome to the August 2025 release of Visual Studio Code. There are many updates in this version that we hope you'll like, some of the key highlights include:</p>
+<ul>
+<li>
+<p><strong>Model flexibility</strong></p>
+<ul>
+<li>Let VS Code select the best model <a href="#_auto-model-selection-preview">(Show more)</a></li>
+<li>Contribute models through VS Code extensions <a href="#_language-model-chat-provider-api">(Show more)</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Security</strong></p>
+<ul>
+<li>Confirm edits for sensitive files <a href="#_confirm-edits-to-sensitive-files">(Show more)</a></li>
+<li>Let agents run terminal commands safely <a href="#_terminal-auto-approve">(Show more)</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Productivity</strong></p>
+<ul>
+<li>Remove distractions from chat file edits <a href="#_improved-changed-files-experience">(Show more)</a></li>
+<li>Use AGENTS.md to add chat context <a href="#_support-for-agentsmd-files-experimental">(Show more)</a></li>
+</ul>
+</li>
+</ul>
+<br>
+<blockquote><p>If you'd like to read these release notes online, go to <a href="v1_104.html">Updates</a> on <a href="../index.html">code.visualstudio.com</a>.<br></p>
+</blockquote><blockquote><p><strong>Insiders: Want to try new features as soon as possible?</strong><br>
+You can download the nightly Insiders build and try the latest updates as soon as they are available.<br>
+<a href="../insiders/index.html">Download Insiders</a><br></p>
+</blockquote><!-- TOC
+<div class="toc-nav-layout">
+  <nav id="toc-nav">
+    <div>In this update</div>
+    <ul>
+      <li><a href="#chat">Chat</a></li>
+      <li><a href="#mcp">MCP</a></li>
+      <li><a href="#accessibility">Accessibility</a></li>
+      <li><a href="#code-editing">Code Editing</a></li>
+      <li><a href="#editor-experience">Editor Experience</a></li>
+      <li><a href="#notebooks">Notebooks</a></li>
+      <li><a href="#source-control">Source Control</a></li>
+      <li><a href="#terminal">Terminal</a></li>
+      <li><a href="#languages">Languages</a></li>
+      <li><a href="#contributions-to-extensions">Contributions to extensions</a></li>
+      <li><a href="#extension-authoring">Extension Authoring</a></li>
+      <li><a href="#proposed-apis">Proposed APIs</a></li>
+      <li><a href="#engineering">Engineering</a></li>
+      <li><a href="#notable-fixes">Notable fixes</a></li>
+      <li><a href="#thank-you">Thank you</a></li>
+    </ul>
+  </nav>
+  <div class="notes-main">
+Navigation End -->
+<h2 id="_chat" data-needslink="_chat">Chat</h2>
+<h3 id="_auto-model-selection-preview" data-needslink="_auto-model-selection-preview">Auto model selection (Preview)</h3>
+<p>This iteration, we're introducing auto model selection in chat. When you choose the <strong>Auto</strong> model in the model picker, VS Code automatically selects a model to ensure that you get the optimal performance and reduce rate limits.</p>
+<p>Auto model selection is currently in preview and we are rolling it out to all GitHub Copilot users in VS Code in the following weeks, starting with the individual Copilot plans.</p>
+<p><img src="../assets/updates/1_104/model-dropdown-auto.png" alt="Screenshot that shows the model picker in the Chat view, showing the Auto option." loading="lazy"></p>
+<p>Auto will choose between Claude Sonnet 4, GPT-5, GPT-5 mini, and GPT-4.1, unless your organization has disabled access to these models. When using auto model selection, VS Code uses a variable model multiplier, based on the selected model. If you are a paid user, auto will apply a 10% request discount.</p>
+<p>You can view the selected model and the model multiplier by hovering over the response in the Chat view.</p>
+<p><img src="../assets/updates/1_104/auto-model-multiplier.png" alt="Screenshot of a chat response, showing the selected model on hover." loading="lazy"></p>
+<p>Learn more about <a href="../docs/copilot/customization/language-models.html">auto model selection in VS Code</a>.</p>
+<h3 id="_confirm-edits-to-sensitive-files" data-needslink="_confirm-edits-to-sensitive-files">Confirm edits to sensitive files</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.tools.edits.autoApprove" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.tools.edits.autoApprove' in Settings Editor"></span>chat.tools.edits.autoApprove</a></span></p>
+<p>In agent mode, the agent can autonomously make edits to files in your workspace. This might include accidentally or maliciously modifying or deleting important files such as configuration files, which could cause immediate negative side-effects on your machine. Learn more about <a href="../docs/copilot/security.html">security considerations when using AI-powered development tools</a>.</p>
+<p>In this release, the agent now explicitly asks for user confirmation before making edits to certain files. This provides an additional layer of safety when using agent mode. With the <span class="setting"><a href="vscode://settings/chat.tools.edits.autoApprove" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.tools.edits.autoApprove' in Settings Editor"></span>chat.tools.edits.autoApprove</a></span> setting, you can configure file patterns to indicate which files require confirmation.</p>
+<p>Common system folders, dotfiles, and files outside your workspace will require confirmation by default.</p>
+<p><img src="../assets/updates/1_104/chat-edit-sensitive-file.png" alt="Screenshot showing the confirmation dialog for sensitive file edits in the Chat view." loading="lazy"></p>
+<h3 id="_support-for-agentsmd-files-experimental" data-needslink="_support-for-agentsmd-files-experimental">Support for AGENTS.md files (Experimental)</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.useAgentsMdFile" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.useAgentsMdFile' in Settings Editor"></span>chat.useAgentsMdFile</a></span></p>
+<p>An <code>AGENTS.md</code> file lets you provide context and instructions to the agent. Starting from this release, when you have an <code>AGENTS.md</code> file in your workspace root(s), it is automatically picked up as context for chat requests. This can be useful for teams that use multiple AI agents.</p>
+<p>Support for <code>AGENTS.md</code> files is enabled by default and can be controlled with the <span class="setting"><a href="vscode://settings/chat.useAgentsMdFile" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.useAgentsMdFile' in Settings Editor"></span>chat.useAgentsMdFile</a></span> setting. See <a href="https://agents.md/" class="external-link" target="_blank">https://agents.md/</a> for more information about <code>AGENTS.md</code> files.</p>
+<p>Learn more about <a href="../docs/copilot/customization/overview.html">customizing chat in VS Code</a> to your practices and team workflows.</p>
+<h3 id="_improved-changed-files-experience" data-needslink="_improved-changed-files-experience">Improved changed files experience</h3>
+<p>This iteration, the changed files list has been reworked with several quality-of-life features. These changes should improve your experience when working in agent mode!</p>
+<ul>
+<li>
+<p>The list of changed files is now collapsed by default to give more space to the chat conversation. While collapsed, you can still see the files changed count and the lines added or removed.</p>
+</li>
+<li>
+<p>When you keep or accept a suggested change, the file is removed from the files changed list.</p>
+</li>
+<li>
+<p>When you stage or commit a file using the Source Control view, this automatically accepts the proposed file changes.</p>
+</li>
+<li>
+<p>Changes <em>per file</em> (lines added or removed) are now shown for each item in the list.</p>
+</li>
+</ul>
+<p><video src="../assets/updates/1_104/changed-files-list.mp4" title="Video uncollapsing the changed files list and accepting file entries to remove them from the list." autoplay loop controls muted></video></p>
+<h3 id="_use-custom-chat-modes-in-prompt-files" data-needslink="_use-custom-chat-modes-in-prompt-files">Use custom chat modes in prompt files</h3>
+<p>Prompt files are Markdown files in which you write reusable chat prompts. To run a prompt file, type <code>/</code> followed by the prompt file name in the chat input field, or use the Play button when you have the prompt file open in the editor.</p>
+<p>You can specify which chat mode should be used for running the prompt file. Previously, you could only use built-in chat modes like <code>agent</code>, <code>edit</code>, or <code>ask</code> in your prompt files. Now, you can also reference custom chat modes in your prompt files.</p>
+<p><img src="../assets/updates/1_104/custom_modes_in_prompt_files.png" alt="Screenshot showing IntelliSense for custom chat modes in prompt files." loading="lazy"></p>
+<p>Learn more about <a href="../docs/copilot/customization/overview.html">customizing chat in VS Code</a> with prompt files, chat modes, and custom instructions.</p>
+<h3 id="_configure-prompt-file-suggestions-experimental" data-needslink="_configure-prompt-file-suggestions-experimental">Configure prompt file suggestions (Experimental)</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.promptFilesRecommendations" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.promptFilesRecommendations' in Settings Editor"></span>chat.promptFilesRecommendations</a></span></p>
+<p>Teams often create custom prompt files to standardize AI workflows, but these prompts can be hard to discover when users need them most. You can now configure which prompt files appear as suggestions in the Chat welcome view based on contextual conditions.</p>
+<p>The new <span class="setting"><a href="vscode://settings/chat.promptFilesRecommendations" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.promptFilesRecommendations' in Settings Editor"></span>chat.promptFilesRecommendations</a></span> setting supports both simple boolean values and when-clause expressions for context-aware suggestions.</p>
+<pre class="shiki" data-lang="jsonc" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "chat.promptFilesRecommendations"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: {</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">    "plan"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">true</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,                            </span><span style="--shiki-dark:#6A9955;--shiki-light:#008000">// Always suggest</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">    "a11y-audit"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"resourceExtname == .html"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">, </span><span style="--shiki-dark:#6A9955;--shiki-light:#008000">// Only for HTML files</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">    "document"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"resourceLangId == markdown"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">, </span><span style="--shiki-dark:#6A9955;--shiki-light:#008000">// Only for Markdown files</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">    "debug"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">false</span><span style="--shiki-dark:#6A9955;--shiki-light:#008000">                           // Never suggest</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<p>This helps teams surface the right AI workflows at the right time, making custom prompts more discoverable and relevant to your workspace and file type.</p>
+<h3 id="_select-tools-in-tool-sets" data-needslink="_select-tools-in-tool-sets">Select tools in tool sets</h3>
+<p><a href="../docs/copilot/chat/chat-agent-mode.html#_define-tool-sets">Tool sets</a> are a convenient way to group related tools together and VS Code has several built-in tool sets like <code>edit</code> or <code>search</code>.</p>
+<p>The tools picker now shows which tools are part of each tool set and you can individually enable or disable each tool. You can access the tools picker via the <code>Configure Tools...</code> button in the Chat view.</p>
+<p><img src="../assets/updates/1_104/tools_in_toolsets.png" alt="Screenshot showing the tools picker with an expanded edit tool set, listing all available tools." loading="lazy"></p>
+<h3 id="_configure-font-used-in-chat" data-needslink="_configure-font-used-in-chat">Configure font used in chat</h3>
+<p><strong>Settings</strong>: <span class="setting"><a href="vscode://settings/chat.fontFamily" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.fontFamily' in Settings Editor"></span>chat.fontFamily</a></span>, <span class="setting"><a href="vscode://settings/chat.fontSize" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.fontSize' in Settings Editor"></span>chat.fontSize</a></span></p>
+<p>VS Code lets you choose which font to use across the editor, however the Chat view lacked that configurability. We have now added two new settings for configuring the font family (<span class="setting"><a href="vscode://settings/chat.fontFamily" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.fontFamily' in Settings Editor"></span>chat.fontFamily</a></span>) and font size (<span class="setting"><a href="vscode://settings/chat.fontSize" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.fontSize' in Settings Editor"></span>chat.fontSize</a></span>) of chat messages.</p>
+<p><img src="../assets/updates/1_104/chat-configure-font.png" alt="Screenshot showing the Chat view with a custom font and font size." loading="lazy"></p>
+<blockquote><p><strong>Note</strong>: content for lists currently does not yet honor these settings, but this is something that we are working on fixing in the upcoming releases.</p>
+</blockquote><h3 id="_collaborate-with-coding-agents-experimental" data-needslink="_collaborate-with-coding-agents-experimental">Collaborate with coding agents (Experimental)</h3>
+<p>With coding agents, you delegate tasks to AI agents to be worked on in the background. You can have multiple such agents work in parallel. We're continuing to evolve the chat sessions experience to help you collaborate more effectively with coding agents.</p>
+<h4 id="_chat-sessions-view" data-needslink="_chat-sessions-view">Chat Sessions view</h4>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.agentSessionsViewLocation" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.agentSessionsViewLocation' in Settings Editor"></span>chat.agentSessionsViewLocation</a></span></p>
+<p>The Chat Sessions view provides a single, unified view for managing both local and contributed chat sessions. We've significantly enhanced the Chat Sessions view where you can now perform all key operations, making it easier to iterate and finalize your coding tasks.</p>
+<ul>
+<li><strong>Status Bar tracking</strong>: Monitor progress across multiple coding agents directly from the Status Bar.</li>
+<li><strong>Multi-session support</strong>: Launch and manage multiple chat sessions from the same view.</li>
+<li><strong>Expanded context menus</strong>: Access more actions to interact with your coding agents efficiently.</li>
+<li><strong>Rich descriptions</strong>: With rich description enabled, each list entry now includes detailed context to help you quickly find relevant information.</li>
+</ul>
+<h4 id="_github-coding-agent-integration" data-needslink="_github-coding-agent-integration">GitHub coding agent integration</h4>
+<p>We've improved the integration of <a href="../docs/copilot/copilot-coding-agent.html">GitHub coding agents</a> with chat sessions to deliver a smoother, more intuitive experience.</p>
+<ul>
+<li><strong>Chat editor actions</strong>: Easily view or apply code changes, and check out pull requests directly from the chat editor.</li>
+<li><strong>Seamless transitions</strong>: Move from local chats to GitHub agent tasks with improved continuity.</li>
+<li><strong>Better session rendering</strong>: Various improvements on cards and tools rendering for better visual clarity.</li>
+<li><strong>Performance boosts</strong>: Faster session loading for a more responsive experience.</li>
+</ul>
+<p><video src="../assets/updates/1_104/chat-sessions-view.mp4" title="Video showing Chat Sessions view and integration with GitHub coding agents." autoplay loop controls muted></video></p>
+<h4 id="_delegate-to-coding-agent" data-needslink="_delegate-to-coding-agent">Delegate to coding agent</h4>
+<p>We continued to expand on ways to delegate local tasks in VS Code to a Copilot coding agent:</p>
+<ul>
+<li>
+<p>Fix todos with coding agent:</p>
+<p>Comments starting with <code>TODO</code> now show a Code Action to quickly initiate a coding agent session.</p>
+<p><img src="../assets/updates/1_104/coding-agent-todo.png" alt="Screenshot of a code action above a TODO comment called Delegate to coding agent." loading="lazy"></p>
+</li>
+<li>
+<p>Delegate from chat (<span class="setting"><a href="vscode://settings/githubPullRequests.codingAgent.uiIntegration" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'githubPullRequests.codingAgent.uiIntegration' in Settings Editor"></span>githubPullRequests.codingAgent.uiIntegration</a></span>):</p>
+<p>Additional context, including file references, are now forwarded to GitHub coding agent when you perform the <strong>Delegate to coding agent</strong> action in chat. This enables you to precisely plan out a task before handing it off to coding agent to complete it. A new chat editor is opened with the coding agent's progress shown in real-time.</p>
+<p><video src="../assets/updates/1_104/delegate-to-coding-agent.mp4" title="Delegating a task from sidebar chat to coding agent" autoplay loop controls muted></video></p>
+</li>
+</ul>
+<p><em>Theme: <a href="https://marketplace.visualstudio.com/items?itemName=joshspicer.sharp-solarized" class="external-link" target="_blank">Sharp Solarized</a> (preview on <a href="https://vscode.dev/editor/theme/joshspicer.sharp-solarized" class="external-link" target="_blank">vscode.dev</a>)</em></p>
+<h3 id="_social-sign-in-with-google" data-needslink="_social-sign-in-with-google">Social sign in with Google</h3>
+<p>The option to sign in or sign up to GitHub Copilot with a Google account is now generally available and rolling out to all users in VS Code.</p>
+<p><img src="../assets/updates/1_104/google.png" alt="Screenshot showing the sign in dialog showing the option to use a Google account." loading="lazy"></p>
+<p>You can find more information about this in the <a href="https://github.blog/changelog/2025-07-15-social-login-with-google-is-now-generally-available" class="external-link" target="_blank">announcement GitHub blog post</a>.</p>
+<h3 id="_terminal-auto-approve" data-needslink="_terminal-auto-approve">Terminal auto approve</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.tools.terminal.enableAutoApprove" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.tools.terminal.enableAutoApprove' in Settings Editor"></span>chat.tools.terminal.enableAutoApprove</a></span></p>
+<p>Automatically approving terminal commands can greatly streamline agent interactions, but it also comes with <a href="../docs/copilot/security.html">security risks</a>. This release introduces several improvements to terminal auto approve to enhance both usability and security.</p>
+<ul>
+<li>
+<p>You can now enable or disable terminal auto approve with the <span class="setting"><a href="vscode://settings/chat.tools.terminal.enableAutoApprove" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.tools.terminal.enableAutoApprove' in Settings Editor"></span>chat.tools.terminal.enableAutoApprove</a></span> setting. This setting can also be set by organizations via <a href="../docs/setup/enterprise.html#_centrally-manage-vs-code-settings">device management</a>.</p>
+</li>
+<li>
+<p>Before terminal auto approve is actually enabled, you need to explicitly opt in via a dropdown in the Chat view.</p>
+<p><img src="../assets/updates/1_104/terminal-auto-approve-opt-in.png" alt="Screenshot of a terminal command in the Chat view, showing the Enable Auto Approve dropdown." loading="lazy"></p>
+</li>
+<li>
+<p>From the Chat view, you can conveniently add auto-approve rules for the command being run, or open the configuration setting:</p>
+<p><img src="../assets/updates/1_104/terminal-auto-approve-ui.png" alt="Screenshot that shows the three standard options are presented for &quot;foo --arg &amp;&amp; bar&quot;." loading="lazy"></p>
+<p><em>Theme: <a href="https://marketplace.visualstudio.com/items?itemName=Tyriar.theme-sapphire" class="external-link" target="_blank">Sapphire</a> (preview on <a href="https://vscode.dev/editor/theme/Tyriar.theme-sapphire" class="external-link" target="_blank">vscode.dev</a>)</em></p>
+<p>This has some basic support for commands to suggest sub-commands where they would be more appropriate, such as suggesting an <code>npm test</code> rule rather than <code>npm</code>.</p>
+</li>
+<li>
+<p>To improve transparency around auto-approved commands, we show which rule was applied in the Chat view, also enabling you to configure that rule:</p>
+<p><img src="../assets/updates/1_104/terminal-auto-approve-new-links.png" alt="Screenshot showing the new links added under the tool call in the Chat view for adding new auto approve rules." loading="lazy"></p>
+</li>
+<li>
+<p>We improved the defaults to provide safety and reduce noise. You can see the full list of rules by viewing the setting's default value by opening your <code>settings.json</code> file, then entering <code>chat.tools.terminal.autoApprove</code> and completing it via <span class="keybinding">Tab</span>.</p>
+</li>
+<li>
+<p>Non-regex rules that contain a backslash or forward slash character are now treated as a path and not only approve that exact path, but also allow either slash type and also a <code>./</code> prefix. When using PowerShell, all rules are forced to be case insensitive.</p>
+</li>
+<li>
+<p>When agent mode wants to pull content from the internet using <code>curl</code>, <code>wget</code>, <code>Invoke-RestMethod</code>, or <code>Invoke-WebRequest</code>, we now show a warning, as this is a common vector for prompt injection attacks.</p>
+</li>
+</ul>
+<p>Learn more about <a href="../docs/copilot/chat/chat-agent-mode.html#_autoapprove-terminal-commands">terminal auto approve</a> in our documentation.</p>
+<h3 id="_global-auto-approve" data-needslink="_global-auto-approve">Global auto approve</h3>
+<p>Global auto approve has been <a href="v1_99.html#_agent-mode-tool-approvals">an experimental setting since v1.99</a>. What we have observed is that users have been enabling this setting without thinking deeply enough about the consequences. Additionally, some users thought that enabling the <span class="setting"><a href="vscode://settings/chat.tools.autoApprove" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.tools.autoApprove' in Settings Editor"></span>chat.tools.autoApprove</a></span> setting was a prerequisite to enabling terminal auto approve, which was never the case.</p>
+<p>To combat these misconceptions and to further protect our users, there is now a deservedly scary-looking warning the first time global auto approve attempts to be used, so the user can easily back out and disable the setting:</p>
+<p><img src="../assets/updates/1_104/global-auto-approve-warning.png" alt="Screenshot of a warning dialog that appears when global auto approve is used for the first time." loading="lazy"></p>
+<p>The setting has also been changed to the clearer <span class="setting"><a href="vscode://settings/chat.tools.global.autoApprove" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.tools.global.autoApprove' in Settings Editor"></span>chat.tools.global.autoApprove</a></span> without any automatic migration, so all users (accidental or intentional) need to go and explicitly set it again.</p>
+<h3 id="_math-rendering-enabled-by-default" data-needslink="_math-rendering-enabled-by-default">Math rendering enabled by default</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.math.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.math.enabled' in Settings Editor"></span>chat.math.enabled</a></span></p>
+<p>Rendering of mathematical equations in chat responses is now generally available and enabled by default. You can disable this functionality with the <span class="setting"><a href="vscode://settings/chat.math.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.math.enabled' in Settings Editor"></span>chat.math.enabled</a></span> setting.</p>
+<p><img src="../assets/updates/1_104/chat-math.png" alt="Screenshot of the Chat view, showing inline and block equations in a chat response." loading="lazy"></p>
+<p>This feature is powered by <a href="https://katex.org/" class="external-link" target="_blank">KaTeX</a> and supports both inline and block math equations. Inline math equations can be written by wrapping the markup in single dollar signs (<code>$...$</code>), while block math equations use two dollar signs (<code>$$...$$</code>).</p>
+<h3 id="_chat-view-default-visibility" data-needslink="_chat-view-default-visibility">Chat view default visibility</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/workbench.secondarySideBar.defaultVisibility" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'workbench.secondarySideBar.defaultVisibility' in Settings Editor"></span>workbench.secondarySideBar.defaultVisibility</a></span></p>
+<p>When you first open a workspace, the Secondary Side Bar with the Chat view is visible by default, inviting you to ask questions or start an agentic session right away. You can configure this behavior with the <span class="setting"><a href="vscode://settings/workbench.secondarySideBar.defaultVisibility" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'workbench.secondarySideBar.defaultVisibility' in Settings Editor"></span>workbench.secondarySideBar.defaultVisibility</a></span> setting or by using the dropdown of the Chat view itself:</p>
+<p><img src="../assets/updates/1_104/auxview.png" alt="Screenshot showing Chat view menu with the option to set the default Secondary Side Bar visibility." loading="lazy"></p>
+<h3 id="_improved-task-support" data-needslink="_improved-task-support">Improved task support</h3>
+<ul>
+<li>
+<p>Input request detection</p>
+<p>When you run a task or terminal command in agent mode, the agent now detects when the process requests user input, and you're prompted to respond in chat. If you type in the terminal while a prompt is present, the prompt will hide automatically. When options and descriptions are provided (such as <code>[Y] Yes [N] No</code>), these are surfaced in the confirmation prompt.</p>
+<p><video src="../assets/updates/1_104/prompt-input-demo.mp4" title="Example of input being detected and responded to" autoplay loop controls muted></video></p>
+</li>
+<li>
+<p>Error detection for tasks with problem matchers</p>
+<p>For tasks that use problem matchers, the agent now collects and surfaces errors based on the problem matcher results, rather than relying on the language model to evaluate output. Problems are presented in a dropdown within the chat progress message, allowing you to navigate directly to the problem location. This ensures that errors are reported only when relevant to the current task execution.</p>
+</li>
+<li>
+<p>Compound task support</p>
+<p>Agent mode now supports running compound tasks. When you run a compound task, the agent indicates progress and output for each dependent task, including any prompts for user input. This enables more complex workflows and better visibility into multi-step task execution.</p>
+<p>In the example below, the VS Code - Build task is run. Output is assessed for each dependency task and a problem is surfaced to the user in the response and in the progress message dropdown.</p>
+<p><video src="../assets/updates/1_104/build-task.mp4" title="Example of agent running the VS Code - Build task" autoplay loop controls muted></video></p>
+</li>
+</ul>
+<h3 id="_improved-terminal-support" data-needslink="_improved-terminal-support">Improved terminal support</h3>
+<ul>
+<li>
+<p>Moved more terminal tools to core</p>
+<p>Like <a href="v1_103.html#_improved-reliability-and-performance-of-the-run-in-terminal-and-task-tools">the <code>runInTerminal</code> tool last release</a>, the <code>terminalSelection</code> and <code>terminalLastCommand</code> tools have been moved from the extension to core, which should provide general reliability improvements.</p>
+</li>
+<li>
+<p>Configurable terminal tool shell integration timeout</p>
+<p>Whenever the <code>runInTerminal</code> tool tries to create a terminal, it waits a period for shell integration to activate. If your shell is especially slow to start up, say you have a very heavy PowerShell profile, this could cause it to wait the previously fixed 5-second timeout and still end up failing in the end. This timeout is now configurable via the <span class="setting"><a href="vscode://settings/chat.tools.terminal.shellIntegrationTimeout" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.tools.terminal.shellIntegrationTimeout' in Settings Editor"></span>chat.tools.terminal.shellIntegrationTimeout</a></span> setting.</p>
+</li>
+<li>
+<p>Prevent Command Prompt usage</p>
+<p>Since shell integration isn't really possible in Command Prompt, at least with the capabilities that Copilot needs, Copilot now opts to use Windows PowerShell instead, which should have shell integration by default. This should improve the reliability of the <code>runInTerminal</code> tool when your default shell is Command Prompt.</p>
+<p>If, for some reason, you want Copilot to use Command Prompt, this is currently not possible. We will likely be adding the ability to customize the terminal profile used by Copilot soon, which is tracked in <a href="https://github.com/microsoft/vscode/issues/253945" class="external-link" target="_blank">#253945</a>.</p>
+</li>
+</ul>
+<h3 id="_todo-list-tool" data-needslink="_todo-list-tool">Todo List tool</h3>
+<p>The todo list tool helps agents break down complex multi-step tasks into smaller tasks and report progress to help you track individual items. We've made improvements to this tool, which is now enabled by default.</p>
+<p>Tool progress is displayed in the Todo control at the top of the Chat view, which automatically collapses as the todo list is worked through and shows only the current task in progress.</p>
+<h3 id="_skip-tool-calls" data-needslink="_skip-tool-calls">Skip tool calls</h3>
+<p>When the agent requests confirmation for a tool call, you can now choose to skip the tool call and let the agent continue. You can still cancel the request or enter a new request via the chat input box.</p>
+<h3 id="_improvements-to-semantic-workspace-search" data-needslink="_improvements-to-semantic-workspace-search">Improvements to semantic workspace search</h3>
+<p>We've upgraded the <code>#codebase</code> tool to use a new <a href="https://en.wikipedia.org/wiki/Embedding_(machine_learning)" class="external-link" target="_blank">embeddings</a> model for semantic searching for code in your workspace. This new model provides better results for code searches. The new embeddings also use less storage space, requiring only 6% of our previous model's on-disk storage size for each embedding.</p>
+<p>We'll be gradually rolling out this new embeddings model over the next few weeks. Your workspace will be automatically updated to use this new embeddings model, so no action is required. VS Code Insiders is already using the new model if you want to try it out before it rolls out to you.</p>
+<h3 id="_hide-and-disable-github-copilot-ai-features" data-needslink="_hide-and-disable-github-copilot-ai-features">Hide and disable GitHub Copilot AI features</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.disableAIFeatures" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.disableAIFeatures' in Settings Editor"></span>chat.disableAIFeatures</a></span></p>
+<p>We are introducing a new setting <span class="setting"><a href="vscode://settings/chat.disableAIFeatures" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.disableAIFeatures' in Settings Editor"></span>chat.disableAIFeatures</a></span> for disabling and hiding built-in AI features provided by GitHub Copilot, including chat, code completions, and next edit suggestions.</p>
+<p>The setting has the following advantages over the previous solution we had in place:</p>
+<ul>
+<li>Syncs across your devices unless you disable this explicitly</li>
+<li>Disables the Copilot extensions in case they are installed</li>
+<li>Configure the setting per-profile or per-workspace, making it easy to disable AI features selectively</li>
+</ul>
+<p>The command to &quot;Hide AI Features&quot; was renamed to reflect this change and will now reveal this new setting in the settings editor.</p>
+<blockquote><p><strong>Note</strong>: users that were hiding AI features previously will continue to see AI features hidden. You can update the setting in addition if you want to synchronize your choice across devices.</p>
+</blockquote><h2 id="_mcp" data-needslink="_mcp">MCP</h2>
+<h3 id="_support-for-server-instructions" data-needslink="_support-for-server-instructions">Support for server instructions</h3>
+<p>VS Code now reads MCP server instructions and will include them in its base prompt.</p>
+<h3 id="_mcp-auto-discovery-disabled-by-default" data-needslink="_mcp-auto-discovery-disabled-by-default">MCP auto discovery disabled by default</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.mcp.discovery.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.mcp.discovery.enabled' in Settings Editor"></span>chat.mcp.discovery.enabled</a></span></p>
+<p>VS Code supports <a href="../docs/copilot/customization/mcp-servers.html#_add-an-mcp-server">automatic discovery of MCP servers</a> installed in other apps like Claude Code. As MCP support has matured in VS Code, auto-discovery is now disabled by default, but you can re-enable it using the <span class="setting"><a href="vscode://settings/chat.mcp.discovery.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.mcp.discovery.enabled' in Settings Editor"></span>chat.mcp.discovery.enabled</a></span> setting.</p>
+<h3 id="_enable-mcp" data-needslink="_enable-mcp">Enable MCP</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.mcp.access" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.mcp.access' in Settings Editor"></span>chat.mcp.access</a></span></p>
+<p>The <code>chat.mcp.enabled</code> setting that previously controlled whether MCP servers could run in VS Code has been migrated to a new <span class="setting"><a href="vscode://settings/chat.mcp.access" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.mcp.access' in Settings Editor"></span>chat.mcp.access</a></span> setting with more descriptive options:</p>
+<ul>
+<li><code>all</code>: allow all MCP servers to run (equivalent to the previous <code>true</code> value)</li>
+<li><code>none</code>: disable MCP support entirely (equivalent to the previous <code>false</code> value)</li>
+</ul>
+<h2 id="_accessibility" data-needslink="_accessibility">Accessibility</h2>
+<h3 id="_focus-chat-confirmation-action" data-needslink="_focus-chat-confirmation-action">Focus chat confirmation action</h3>
+<p>We've added a command, <strong>Focus Chat Confirmation</strong> <code>(kb(workbench.action.chat.focusConfirmation))</code>, which focuses the confirmation dialog, if present, or announces to screen reader users that confirmation is not required.</p>
+<h2 id="_code-editing" data-needslink="_code-editing">Code Editing</h2>
+<h3 id="_configurable-inline-suggestion-delay" data-needslink="_configurable-inline-suggestion-delay">Configurable inline suggestion delay</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/editor.inlineSuggest.minShowDelay" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'editor.inlineSuggest.minShowDelay' in Settings Editor"></span>editor.inlineSuggest.minShowDelay</a></span></p>
+<p>A new setting <span class="setting"><a href="vscode://settings/editor.inlineSuggest.minShowDelay" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'editor.inlineSuggest.minShowDelay' in Settings Editor"></span>editor.inlineSuggest.minShowDelay</a></span> enables you to configure how quickly inline suggestions can appear after you type. This can be useful if you find that suggestions are appearing too quickly and getting in the way of your typing.</p>
+<h2 id="_editor-experience" data-needslink="_editor-experience">Editor Experience</h2>
+<h3 id="_window-border-color-support-on-windows" data-needslink="_window-border-color-support-on-windows">Window border color support on Windows</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/window.border" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'window.border' in Settings Editor"></span>window.border</a></span></p>
+<p>We are happy to add a new setting <span class="setting"><a href="vscode://settings/window.border" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'window.border' in Settings Editor"></span>window.border</a></span> on Windows that enables you to show a colored border around the VS Code window. The setting has the following options:</p>
+<ul>
+<li><code>default</code>: respect color theme settings, fallback to Windows settings</li>
+<li><code>system</code>: respect Windows settings only (window title accent color)</li>
+<li><code>off</code>: disable border colors</li>
+<li><code>&lt;color&gt;</code>: specific color in Hex, RGB, RGBA, HSL, HSLA format</li>
+</ul>
+<p>You can configure colors per workspace, making it easier to distinguish which workspace is opened in which window.</p>
+<p><img src="../assets/updates/1_104/border.png" alt="Screenshot of several VS Code windows with different border colors." loading="lazy"></p>
+<p>When you configure <span class="setting"><a href="vscode://settings/window.border" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'window.border' in Settings Editor"></span>window.border</a></span> as <code>default</code>, a theme is able to set the border color for active and inactive windows using the <code>window.activeBorder</code> and <code>window.inactiveBorder</code> color keys. You can further override these colors from the <span class="setting"><a href="vscode://settings/workbench.colorCustomizations" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'workbench.colorCustomizations' in Settings Editor"></span>workbench.colorCustomizations</a></span> setting.</p>
+<h3 id="_manage-extension-account-preference" data-needslink="_manage-extension-account-preference">Manage extension account preference</h3>
+<p>We've added an <strong>Accounts: Manage Extension Account Preferences</strong> command to the Command Palette. When invoked, it shows a list of extensions that have access to authentication accounts and lets you change the account that those extensions use. You are even able to sign in to a new account right from the list.</p>
+<p>This builds on the <a href="v1_94.html#_change-an-extensions-account-preference">account management functionality that we added a year ago</a>.</p>
+<h3 id="_editor-tab-index" data-needslink="_editor-tab-index">Editor tab index</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/workbench.editor.showTabIndex" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'workbench.editor.showTabIndex' in Settings Editor"></span>workbench.editor.showTabIndex</a></span></p>
+<p>You can now render the index of an editor tab in the tab's label. This can be helpful when you have many tabs open and want to quickly navigate between them using keyboard shortcuts. Enable this functionality with the <span class="setting"><a href="vscode://settings/workbench.editor.showTabIndex" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'workbench.editor.showTabIndex' in Settings Editor"></span>workbench.editor.showTabIndex</a></span> setting.</p>
+<p><img src="../assets/updates/1_104/editorTabIndex.png" alt="Screenshot of editor tabs with numbers in front of them, indicating their index." loading="lazy"></p>
+<h3 id="_editor-tab-bar-scrollbar-visibility" data-needslink="_editor-tab-bar-scrollbar-visibility">Editor tab bar scrollbar visibility</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/workbench.editor.titleScrollbarVisibility" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'workbench.editor.titleScrollbarVisibility' in Settings Editor"></span>workbench.editor.titleScrollbarVisibility</a></span></p>
+<p>The <span class="setting"><a href="vscode://settings/workbench.editor.titleScrollbarVisibility" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'workbench.editor.titleScrollbarVisibility' in Settings Editor"></span>workbench.editor.titleScrollbarVisibility</a></span> enables you to control when the scrollbar in the editor tab bar is visible. The default value <code>auto</code> shows the scrollbar only when the tabs overflow and a tab is hovered. You can also set it to <code>visible</code> to always show the scrollbar when the tabs overflow, or <code>hidden</code> to never show it.</p>
+<h3 id="_issue-reporter-improvements" data-needslink="_issue-reporter-improvements">Issue reporter improvements</h3>
+<p>When reporting issues in VS Code or extensions via the built-in issue reporter, you can now choose either <strong>Create on GitHub</strong> or <strong>Preview on GitHub</strong> via a dropdown on the report button. If the button does not populate a dropdown and only shows Create or Preview, this likely means that you are still loading extension data or need to ensure that you are signed in with a GitHub account that provides the correct scopes.</p>
+<p><img src="../assets/updates/1_104/issue-reporter-dropdown.png" alt="Screenshot of a dropdown showing Create on Github and Preview on Github in the issue reporter." loading="lazy"></p>
+<h2 id="_notebooks" data-needslink="_notebooks">Notebooks</h2>
+<h3 id="_improved-nes-suggestions-experimental" data-needslink="_improved-nes-suggestions-experimental">Improved NES suggestions (Experimental)</h3>
+<p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/github.copilot.chat.notebook.enhancedNextEditSuggestions.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'github.copilot.chat.notebook.enhancedNextEditSuggestions.enabled' in Settings Editor"></span>github.copilot.chat.notebook.enhancedNextEditSuggestions.enabled</a></span></p>
+<p>We are experimenting with improving the quality of next edit suggestions for notebooks. Currently, the language model has access to the contents of the active cell when generating suggestions. With the <span class="setting"><a href="vscode://settings/github.copilot.chat.notebook.enhancedNextEditSuggestions.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'github.copilot.chat.notebook.enhancedNextEditSuggestions.enabled' in Settings Editor"></span>github.copilot.chat.notebook.enhancedNextEditSuggestions.enabled</a></span> setting enabled, the language model has access to the entire notebook, enabling it to generate more accurate and higher-quality next edit suggestions.</p>
+<h2 id="_source-control" data-needslink="_source-control">Source Control</h2>
+<h3 id="_preview-and-migrate-git-worktree-changes" data-needslink="_preview-and-migrate-git-worktree-changes">Preview and migrate Git worktree changes</h3>
+<p>You can now preview differences between worktree files and your current workspace by right-clicking on a worktree file to open the context menu in the Source Control Changes view and selecting <strong>Compare with Workspace</strong>.</p>
+<p><img src="../assets/updates/1_104/image.png" alt="Screenshot of the context menu shown in the SCM view on a changed file in a worktree, with the Compare with Workspace option selected." loading="lazy"></p>
+<p>After reviewing your changes, you can use the <strong>Migrate Worktree Changes...</strong> command from the Command Palette (<span class="dynamic-keybinding" data-commandId="git.migrateWorktreeChanges"></span>) to merge all changes from a worktree into your current workspace. This makes it easy to work across multiple worktrees and selectively bring changes back into your main repository.</p>
+<p>Learn more about <a href="../docs/sourcecontrol/overview.html#_worktrees">Git worktrees in VS Code</a>.</p>
+<h2 id="_terminal" data-needslink="_terminal">Terminal</h2>
+<h3 id="_terminal-window-discoverability-and-polish" data-needslink="_terminal-window-discoverability-and-polish">Terminal window discoverability and polish</h3>
+<p>A common request is to allow terminals to be opened in separate windows. This functionality has existed for about one and a half years, but it has not been particularly discoverable. This iteration, we added multiple entry points for this functionality:</p>
+<ul>
+<li>The new command <span class="dynamic-keybinding" data-commandId="workbench.action.terminal.newInNewWindow" data-osx="⌃⇧⌥`" data-win="Ctrl+Shift+Alt+`" data-linux="Ctrl+Shift+Alt+`"><span class="keybinding">⌃⇧⌥`</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+Alt+`</span>)</span>.</li>
+<li>The empty editor and tab well menus now have a <strong>New Terminal</strong> entry.</li>
+<li>The new terminal dropdown has been shuffled around and now has a <strong>New Terminal Window</strong> entry.</li>
+<li>The top-level terminal menu now has a <strong>New Terminal Window</strong> entry.</li>
+</ul>
+<p>We also polished the experience where these new terminal windows open in compact mode. If you add a new tab to the window, it automatically exits compact mode.</p>
+<p><img src="../assets/updates/1_104/terminal-window.png" alt="Screenshot of the terminal window open in compact mode, hiding tabs to make more room for terminal content." loading="lazy"></p>
+<h3 id="_terminal-actions-in-terminal-editors" data-needslink="_terminal-actions-in-terminal-editors">Terminal actions in terminal editors</h3>
+<p>The actions that are available in the terminal view (new terminal dropdown, clear terminal, etc.) are now also available for terminals in the editor area and terminal windows.</p>
+<p><img src="../assets/updates/1_104/terminal-editor-actions.png" alt="Screenshot of different terminal actions in the editor actions menu." loading="lazy"></p>
+<p>Just like in the terminal view, you can right-click the actions area to move them out of the overflow menu.</p>
+<h3 id="_terminal-intellisense-improvements-preview" data-needslink="_terminal-intellisense-improvements-preview">Terminal IntelliSense improvements (Preview)</h3>
+<p>Terminal IntelliSense is getting several improvements this release:</p>
+<ul>
+<li>Multiple performance improvements, these disproportionately affect the experience on Windows.</li>
+<li><code>git</code> completions are now more reliable on Windows due to the removal of the <code>sed</code> dependency, which isn't available on Windows.</li>
+<li><code>git</code> completions now have familiar icons to represent commits, branches, remotes, stashes, and tags.
+<img src="../assets/updates/1_104/terminal-suggest.png" alt="Screenshot of new icons showing for tags and branches on completions for &quot;git checkout&quot;" loading="lazy"></li>
+<li>A large number of completion specs were added: <code>adb</code>, <code>basename</code>, <code>bundle</code>, <code>clear</code>, <code>cut</code>, <code>date</code>, <code>dd</code>, <code>diff</code>, <code>dig</code>, <code>dirname</code>, <code>docker-compose</code>, <code>docker</code>, <code>dotnet</code>, <code>env</code>, <code>export</code>, <code>fdisk</code>, <code>fmt</code>, <code>fold</code>, <code>gh</code>, <code>go</code>, <code>htop</code>, <code>id</code>, <code>jq</code>, <code>ln</code>, <code>lsblk</code>, <code>lsof</code>, <code>mount</code>, <code>nl</code>, <code>od</code>, <code>paste</code>, <code>ping</code>, <code>pkill</code>, <code>readlink</code>, <code>rsync</code>, <code>ruby</code>, <code>ruff</code>, <code>sed</code>, <code>seq</code>, <code>shred</code>, <code>sort</code>, <code>source</code>, <code>split</code>, <code>stat</code>, <code>su</code>, <code>sudo</code>, <code>tac</code>, <code>tar</code>, <code>tee</code>, <code>time</code>, <code>tr</code>, <code>traceroute</code>, <code>tree</code>, <code>truncate</code>, <code>uniq</code>, <code>unzip</code>, <code>wc</code>, <code>where</code>, <code>whereis</code>, <code>which</code>, <code>who</code>, <code>xargs</code>, <code>xxd</code>, <code>yo</code>, <code>zip</code></li>
+</ul>
+<h3 id="_terminal-sticky-scroll-improvements" data-needslink="_terminal-sticky-scroll-improvements">Terminal sticky scroll improvements</h3>
+<p>We have now enabled terminal sticky scroll by default. We have made several improvements for a better experience, such as improved behavior when using a pager. Terminal sticky scroll is now compatible with the <span class="setting"><a href="vscode://settings/editor.tabFocusMode" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'editor.tabFocusMode' in Settings Editor"></span>editor.tabFocusMode</a></span> setting.</p>
+<h2 id="_languages" data-needslink="_languages">Languages</h2>
+<h3 id="_javascript-and-typescript" data-needslink="_javascript-and-typescript">JavaScript and TypeScript</h3>
+<p>After reviewing usage numbers, we decided to remove our built-in <code>bower.json</code> IntelliSense. Bower has been <a href="https://bower.io/blog/2017/how-to-migrate-away-from-bower/" class="external-link" target="_blank">deprecated since 2017</a> and our built-in support had little usage and was not being actively maintained.</p>
+<p>Bower recommends that users migrate to <code>npm</code> or <code>yarn</code>. Continued support for Bower in VS Code can be provided by extensions.</p>
+<h3 id="_python" data-needslink="_python">Python</h3>
+<h4 id="_python-environments-extension-support-for-pipenv" data-needslink="_python-environments-extension-support-for-pipenv">Python Environments extension support for Pipenv</h4>
+<p>Pipenv environments can now be discovered and selected just like in the Python extension. In addition, they appear in the <strong>Environment Manager</strong> view in the Python sidebar, where they are grouped and displayed alongside your other environment types.</p>
+<p><img src="../assets/updates/1_104/pipenv-supported-screenshot.png" alt="Screenshot showing the Python sidebar with Pipenv environments expanded." loading="lazy"></p>
+<h4 id="_configure-environment-variable-injection" data-needslink="_configure-environment-variable-injection">Configure environment variable injection</h4>
+<p>A new setting, <span class="setting"><a href="vscode://settings/python.useEnvFile" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'python.useEnvFile' in Settings Editor"></span>python.useEnvFile</a></span>, controls whether environment variables from <code>.env</code> files and the <span class="setting"><a href="vscode://settings/python.envFile" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'python.envFile' in Settings Editor"></span>python.envFile</a></span> setting are injected into terminals when the Python Environments extension is enabled.</p>
+<h4 id="_python-environments-extension-improvements" data-needslink="_python-environments-extension-improvements">Python Environments extension improvements</h4>
+<p>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-python-envs" class="external-link" target="_blank">Python Environments Extension</a> continued to receive bug fixes and improvements as part of the controlled roll-out to stable users. To use the Python Environments extension during the roll-out, make sure the extension is installed and add the following to your VS Code <code>settings.json</code> file: <code>&quot;python.useEnvironmentsExtension&quot;: true</code>.</p>
+<h4 id="_aipowered-hover-summaries-with-pylance-experimental" data-needslink="_aipowered-hover-summaries-with-pylance-experimental">AI-powered hover summaries with Pylance (Experimental)</h4>
+<p>A new experimental AI hover summaries feature is now available for Python when using the latest pre-release version of Pylance. When you enable the <span class="setting"><a href="vscode://settings/python.analysis.aiHoverSummaries" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'python.analysis.aiHoverSummaries' in Settings Editor"></span>python.analysis.aiHoverSummaries</a></span> setting, you can get helpful summaries on-the-fly for symbols that do not already have documentation. This makes it easier to understand unfamiliar code and boosts productivity as you explore Python projects. AI hover summaries are currently available to GitHub Copilot Pro, Pro+, and Enterprise users.</p>
+<p><video src="../assets/updates/1_104/pylance-hover-summaries.mp4" title="Video showing AI-powered hover summaries with Pylance." autoplay loop controls muted></video></p>
+<p>We look forward to bringing this experimental experience to the stable extension version soon.</p>
+<h4 id="_run-code-snippet-tool" data-needslink="_run-code-snippet-tool">Run code snippet tool</h4>
+<p>Instead of relying on terminal commands like <code>python -c &quot;code&quot;</code> or creating temporary files to be executed, the Pylance run code snippets tool enables GitHub Copilot to execute Python snippets entirely in memory. It automatically uses the correct Python interpreter configured for your workspace, and it eliminates common issues with shell escaping and quoting that sometimes arise during terminal execution.</p>
+<p>One of the standout benefits is the clean, well-formatted output it provides, with both stdout and stderr interleaved for clarity. This makes it ideal when using agent mode with GitHub Copilot to test small blocks of code, run quick scripts, validate Python expressions, or check imports, all within the context of your workspace.</p>
+<p>To try it out, make sure to use the latest pre-release version of the Pylance extension. You can then select the <code>pylancerunCodeSnippet</code> tool via the <strong>Add context...</strong> &gt; <strong>Tools</strong> menu in the Chat view.</p>
+<blockquote><p><strong>Note</strong>: As with all AI-generated code, please make sure to inspect the generated code before allowing this tool to be executed. Reviewing the logic and intent of the code ensures it aligns with your project's goals and maintains safety and correctness.</p>
+</blockquote><p><video src="../assets/updates/1_104/pylance-run-code-snippet.mp4" title="Code snippet generated and executed by GitHub Copilot in the Chat panel via the pylancerunCodeSnippet tool." autoplay loop controls muted></video></p>
+<h4 id="_pylance-intellisense-enabled-in-all-python-documents" data-needslink="_pylance-intellisense-enabled-in-all-python-documents">Pylance IntelliSense enabled in all Python documents</h4>
+<p>The <code>python.analysis.supportAllPythonDocuments</code> setting has been removed from the latest Pylance pre-release version, with Pylance IntelliSense now being enabled by default in all Python documents, including terminal and diff views. This means you can get rich code completions, hover and code navigation wherever you work with Python in VS Code.</p>
+<h4 id="_activation-hooks" data-needslink="_activation-hooks">Activation hooks</h4>
+<p>Python activation hooks can now run from shell integration scripts, instead of requiring the Python environment extension to modify your shell profile. This provides more reliable terminal activation when <span class="setting"><a href="vscode://settings/python-envs.terminal.autoActivationType" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'python-envs.terminal.autoActivationType' in Settings Editor"></span>python-envs.terminal.autoActivationType</a></span> is set to <code>shellStartup</code> and, importantly, ensures Copilot terminals are activated as expected.</p>
+<h2 id="_contributions-to-extensions" data-needslink="_contributions-to-extensions">Contributions to extensions</h2>
+<h3 id="_github-pull-requests" data-needslink="_github-pull-requests">GitHub Pull Requests</h3>
+<p>There has been more progress on the <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github" class="external-link" target="_blank">GitHub Pull Requests</a> extension, which enables you to work on, create, and manage pull requests and issues. New features include:</p>
+<ul>
+<li>Side Bar content collapses on narrow windows</li>
+<li>Pull request and issue webviews restore after reload</li>
+<li>The new &quot;TODO&quot; code action lets you delegate directly to the Copilot coding agent</li>
+<li>Submodules can be ignored with <span class="setting"><a href="vscode://settings/githubPullRequests.ignoreSubmodules" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'githubPullRequests.ignoreSubmodules' in Settings Editor"></span>githubPullRequests.ignoreSubmodules</a></span></li>
+</ul>
+<p>Review the <a href="https://github.com/microsoft/vscode-pull-request-github/blob/main/CHANGELOG.md#01180" class="external-link" target="_blank">changelog for the 0.118.0</a> release of the extension to learn about everything in the release.</p>
+<h2 id="_extension-authoring" data-needslink="_extension-authoring">Extension Authoring</h2>
+<h3 id="_shellintegrationnonce-for-extension-launched-terminals" data-needslink="_shellintegrationnonce-for-extension-launched-terminals">shellIntegrationNonce for extension launched terminals</h3>
+<p><code>shellIntegrationNonce</code> can now be passed to <code>createTerminal</code> in <code>TerminalOptions</code> and <code>ExtensionTerminalOptions</code>. This enables the extension to control the nonce, which is used to verify commands <a href="../docs/terminal/shell-integration.html#_supported-escape-sequences">in shell integration escape sequences</a>.</p>
+<h3 id="_language-model-chat-provider-api" data-needslink="_language-model-chat-provider-api">Language Model Chat Provider API</h3>
+<p>This iteration, we finalized the <code>LanguageModelChatProviders</code> API. This enables extensions to contribute one or more language models, cloud-hosted or local. By installing the extension, users can select these models through the model picker in chat.</p>
+<p>There are already multiple extensions that take advantage of this API to extend chat in VS Code with additional models, including <a href="https://aka.ms/AIToolkit" class="external-link" target="_blank">AI Toolkit for VS Code</a>, <a href="https://aka.ms/vscode/cerebras" class="external-link" target="_blank">Cerebras Inference</a>, and <a href="https://aka.ms/vscode/huggingface" class="external-link" target="_blank">Hugging Face</a>.</p>
+<p>You can learn more about how to utilize this API in our <a href="../api/extension-guides/ai/language-model-chat-provider.html">Language Model Chat Provider extension guide</a> or in our <a href="https://github.com/microsoft/vscode-extension-samples/tree/main/chat-model-provider-sample" class="external-link" target="_blank">extension sample</a>.</p>
+<blockquote><p><strong>Note</strong>: Models provided through this API are currently only available to users on <a href="https://docs.github.com/en/copilot/concepts/billing/individual-plans" class="external-link" target="_blank">individual GitHub Copilot plans</a>.</p>
+</blockquote><h2 id="_proposed-apis" data-needslink="_proposed-apis">Proposed APIs</h2>
+<h3 id="_authentication-supporting-wwwauthenticate-challenges-in-getsession" data-needslink="_authentication-supporting-wwwauthenticate-challenges-in-getsession">Authentication: Supporting <code>WWW-Authenticate</code> challenges in <code>getSession</code></h3>
+<p>A well-established pattern of HTTP is that a request to an API can return a 401 Unauthorized status code with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/WWW-Authenticate" class="external-link" target="_blank">WWW-Authenticate</a> header, which defines <em>auth challenges</em>. These are essentially things that the API needs in order to resolve past the 401.</p>
+<p>We have introduced a proposed API, which allows for the passing down and handling of these challenges to authentication providers. First off, from the calling side you can now pass in a challenge like so:</p>
+<pre class="shiki" data-lang="ts" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">export</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> interface</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> AuthenticationWWWAuthenticateRequest</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">  /**</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">   * The raw WWW-Authenticate header value that triggered this challenge.</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">   */</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  readonly</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> wwwAuthenticate</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">string</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">  /**</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">   * Optional scopes for the session.</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">   */</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  readonly</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> scopes</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">?: </span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">readonly</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> string</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">[];</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">export</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> namespace</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> authentication</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">  // NOTE: The only change is the 2nd parameter, the other variations of `getSession` have the same change</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  export</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> function</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> getSession</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">    providerId</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">string</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">    scopeListOrRequest</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">ReadonlyArray</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">&#x3C;</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">string</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">> | </span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">AuthenticationWWWAuthenticateRequest</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">    options</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">?: </span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">AuthenticationGetSessionOptions</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  ): </span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">Thenable</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">&#x3C;</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">AuthenticationSession</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> | </span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">undefined</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">>;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<p>On the authentication provider side, we have added the following two new functions to <code>AuthenticationProvider</code>:</p>
+<pre class="shiki" data-lang="ts" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">getSessionsFromChallenges</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">constraint</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">AuthenticationConstraint</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">, </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">options</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">AuthenticationProviderSessionOptions</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">): </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">Thenable</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">&#x3C;</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">readonly</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> AuthenticationSession</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">[]>;</span></span>
+<span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">createSessionFromChallenges</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">constraint</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">AuthenticationConstraint</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">, </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">options</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">AuthenticationProviderSessionOptions</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">): </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">Thenable</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">&#x3C;</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">AuthenticationSession</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">>;</span></span>
+<span class="line"></span></code></pre>
+<p>and an auth provider can declare support for challenges when registered via <code>supportsChallenges: true</code> in <code>AuthenticationProviderOptions</code>.</p>
+<h4 id="_example-azure-mfa" data-needslink="_example-azure-mfa">Example: Azure MFA</h4>
+<p>This work was initially done <a href="https://learn.microsoft.com/entra/identity/authentication/concept-mandatory-multifactor-authentication" class="external-link" target="_blank">due to an upcoming change to require MFA in Azure APIs</a> so let's also use that as an example of this API.</p>
+<p>Let's say you have an extension that creates a resource in Azure. All that's doing is calling an Azure RM API, nothing fancy...  Your extension is probably already familiar with calling <code>vscode.authentication.getSession</code> to get an authentication session, mainly an access token, that can be used to call this API. Now, when you first minted that authentication session, depending on your organization, you may or may NOT have gone through multifactor authentication (MFA). If you did, then the Azure API will be happy. If you <em>didn't</em> go through MFA, then Azure's API will return a 401 and a <code>WWW-Authenticate</code> header.</p>
+<p>Now comes our new API in VS Code... all you have to do is take that header value, and pass it right in to <code>vscode.authentication.getSession</code>:</p>
+<pre class="shiki" data-lang="ts" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">const</span><span style="--shiki-dark:#4FC1FF;--shiki-light:#0070C1"> newRequest</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = {</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">  wwwAuthenticate:</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> theRawHeaderValue</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">  scopes:</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> scopesFromPreviousRequest</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">};</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">const</span><span style="--shiki-dark:#4FC1FF;--shiki-light:#0070C1"> sessionWithMFA</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">await</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> vscode</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">authentication</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">getSession</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span></span>
+<span class="line"><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">  'microsoft'</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">  newRequest</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">  options</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">);</span></span>
+<span class="line"></span></code></pre>
+<p>This will pass that header value down to the <code>microsoft</code> auth provider, and the auth provider will be responsible for minting a session in which the challenges are satisfied.</p>
+<h4 id="_next-steps" data-needslink="_next-steps">Next steps</h4>
+<p>Next iteration we will finalize the <code>getSession</code> (aka extension asking for auth) parts of this proposal so if you have any feedback on that or the shape of the <code>AuthenticationProvider</code> changes, let us know! You can <a href="https://github.com/microsoft/vscode/blob/a924f20c72bd8f9665894be8213ce7f5680ab528/src/vscode-dts/vscode.proposed.authenticationChallenges.d.ts" class="external-link" target="_blank">find the full proposal on GitHub here</a>.</p>
+<p>Another use case that will be lit up soon regarding <code>WWW-Authenticate</code>, is for MCP servers to issue a <code>WWW-Authenticate</code> header asking for a token with more scopes. There's <a href="https://github.com/modelcontextprotocol/modelcontextprotocol/pull/835" class="external-link" target="_blank">a proposal in the MCP specification for this</a>.</p>
+<h3 id="_view-containers-in-the-secondary-side-bar" data-needslink="_view-containers-in-the-secondary-side-bar">View containers in the Secondary Side Bar</h3>
+<p>Extensions can contribute view containers to the <code>activitybar</code> and <code>panel</code>. We have now added support for contributing to the <code>secondarySidebar</code> as well. This is currently behind the <code>contribSecondarySideBar</code> proposed API. We are hoping to finalize this API soon.</p>
+<h2 id="_engineering" data-needslink="_engineering">Engineering</h2>
+<h3 id="_exploring-playwright-and-playwright-mcp-in-the-inner-development-loop-of-vs-code" data-needslink="_exploring-playwright-and-playwright-mcp-in-the-inner-development-loop-of-vs-code">Exploring Playwright and Playwright MCP in the inner development loop of VS Code</h3>
+<p>Agent mode and other AI features of VS Code have become a core tool (no pun intended) for the VS Code team to build VS Code itself. We wanted to explore how we can apply these features further to make the inner development loop of VS Code even better. To that end, we have been experimenting with extending our existing smoke test <a href="https://github.com/microsoft/vscode/tree/main/test/automation" class="external-link" target="_blank">automation project</a>, which uses <a href="https://playwright.dev/" class="external-link" target="_blank">Playwright</a>, to create an MCP server that can drive a local instance of VS Code. This allows our existing agentic flows, which focused on receiving context from build/test-time artifacts (compilation, linters, tests, etc.), to now also interact with a live instance of VS Code... verifying that changes have the desired effect at runtime.</p>
+<p>The first piece of this work can be found <a href="https://github.com/microsoft/vscode/tree/main/test/mcp" class="external-link" target="_blank">in the test/mcp folder</a> of the vscode repo. If you're interested in trying it out, it's very easy to get started:</p>
+<ol>
+<li>Follow the <a href="https://github.com/microsoft/vscode/wiki/How-to-Contribute" class="external-link" target="_blank">Contribution Guidelines</a> for getting a local version of Code OSS running</li>
+<li>Then you can use <a href="https://github.com/microsoft/vscode/blob/cd7de11f65cd5ff6a491f04fc013e363780bde31/.github/prompts/playwright.prompt.md" class="external-link" target="_blank">our trivial (for now) prompt file</a> to ask a question <code>/playwright your question here</code> in Agent mode.</li>
+</ol>
+<p>This is still an early exploration, but we are excited about the possibilities this opens up for us to use AI further in our inner development loop. The ground work is now laid, and we will be iterating on this to make it more robust and useful for the team.</p>
+<p>This work was recently featured on the VS Code Insiders podcast, where we discussed the motivations behind this exploration and some of the technical details. You can listen to the episode of the <a href="https://www.vscodepodcast.com/3" class="external-link" target="_blank">VS Code Insiders podcast</a>.</p>
+<h2 id="_notable-fixes" data-needslink="_notable-fixes">Notable fixes</h2>
+<ul>
+<li><a href="https://github.com/microsoft/vscode/issues/151902" class="external-link" target="_blank">vscode#151902</a> - Terminal: Copy on selection + new highlight in 1.68 copies previous term on CMD+F</li>
+<li><a href="https://github.com/microsoft/vscode/issues/222075" class="external-link" target="_blank">vscode#222075</a> - Terminal sticky scroll can show up for 1 frame when using page down in a pager</li>
+<li><a href="https://github.com/xtermjs/xterm.js/pull/5390" class="external-link" target="_blank">xtermjs/xterm.js#5390</a> - Fix scrollbar teleport after exiting alt buffer</li>
+</ul>
+<h2 id="_thank-you" data-needslink="_thank-you">Thank you</h2>
+<p>Last but certainly not least, a big <em><strong>Thank You</strong></em> to the contributors of VS Code.</p>
+<h3 id="_issue-tracking" data-needslink="_issue-tracking">Issue tracking</h3>
+<p>Contributions to our issue tracking:</p>
+<ul>
+<li><a href="https://github.com/gjsjohnmurray" class="external-link" target="_blank">@gjsjohnmurray (John Murray)</a></li>
+<li><a href="https://github.com/RedCMD" class="external-link" target="_blank">@RedCMD (RedCMD)</a></li>
+<li><a href="https://github.com/IllusionMH" class="external-link" target="_blank">@IllusionMH (Andrii Dieiev)</a></li>
+<li><a href="https://github.com/albertosantini" class="external-link" target="_blank">@albertosantini (Alberto Santini)</a></li>
+</ul>
+<h3 id="_pull-requests" data-needslink="_pull-requests">Pull Requests</h3>
+<p>Contributions to <code>vscode</code>:</p>
+<ul>
+<li><a href="https://github.com/a-ariff" class="external-link" target="_blank">@a-ariff (Ariff)</a>: docs: fix grammar in Development Container section <a href="https://github.com/microsoft/vscode/pull/264162" class="external-link" target="_blank">PR #264162</a></li>
+<li><a href="https://github.com/alexkozy" class="external-link" target="_blank">@alexkozy (Alexey)</a>
+<ul>
+<li>fix: tiny memory leak in debugToolBar.ts <a href="https://github.com/microsoft/vscode/pull/259349" class="external-link" target="_blank">PR #259349</a></li>
+<li>fix: register WorkerTextModelSyncClient <a href="https://github.com/microsoft/vscode/pull/259442" class="external-link" target="_blank">PR #259442</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/alexvoedi" class="external-link" target="_blank">@alexvoedi (Alexander Vödisch)</a>: Fix linkedEditing desync <a href="https://github.com/microsoft/vscode/pull/242993" class="external-link" target="_blank">PR #242993</a></li>
+<li><a href="https://github.com/bluedog13" class="external-link" target="_blank">@bluedog13</a>
+<ul>
+<li>Fix OAuth redirect URI format to align with Microsoft's URL standards <a href="https://github.com/microsoft/vscode/pull/260446" class="external-link" target="_blank">PR #260446</a></li>
+<li>Fix OAuth2 resource parameter compliance with RFC 8707 <a href="https://github.com/microsoft/vscode/pull/261815" class="external-link" target="_blank">PR #261815</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/CGNonofr" class="external-link" target="_blank">@CGNonofr (Loïc Mangeonjean)</a>: Fix theme not being synchronized with external windows on firefox <a href="https://github.com/microsoft/vscode/pull/259839" class="external-link" target="_blank">PR #259839</a></li>
+<li><a href="https://github.com/Da-nie-elT" class="external-link" target="_blank">@Da-nie-elT</a>: Update for-in loop snippet with <code>Object.hasOwn()</code> <a href="https://github.com/microsoft/vscode/pull/262682" class="external-link" target="_blank">PR #262682</a></li>
+<li><a href="https://github.com/DoctorKrolic" class="external-link" target="_blank">@DoctorKrolic</a>: Add <code>.slnx</code> to <code>xml</code> language extension list <a href="https://github.com/microsoft/vscode/pull/259049" class="external-link" target="_blank">PR #259049</a></li>
+<li><a href="https://github.com/DrSergei" class="external-link" target="_blank">@DrSergei (Druzhkov Sergei)</a>: Fix memory reference handling in Watch window <a href="https://github.com/microsoft/vscode/pull/259753" class="external-link" target="_blank">PR #259753</a></li>
+<li><a href="https://github.com/gjsjohnmurray" class="external-link" target="_blank">@gjsjohnmurray (John Murray)</a>
+<ul>
+<li>Add <code>Go to Test</code> to coverage sources quickpick <a href="https://github.com/microsoft/vscode/pull/259600" class="external-link" target="_blank">PR #259600</a></li>
+<li>Set correct active entry on test coverage toolbar's quickpick <a href="https://github.com/microsoft/vscode/pull/259639" class="external-link" target="_blank">PR #259639</a></li>
+<li>Test Results: Only offer <code>Go to Test</code> with a uri (fix #260443) <a href="https://github.com/microsoft/vscode/pull/260508" class="external-link" target="_blank">PR #260508</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/hihry" class="external-link" target="_blank">@hihry (Himanshu Ravindra Iwanati)</a>: fix: update capitalization for 'Restore to Last Checkpoint' hover text <a href="https://github.com/microsoft/vscode/pull/259572" class="external-link" target="_blank">PR #259572</a></li>
+<li><a href="https://github.com/j3iiifn" class="external-link" target="_blank">@j3iiifn</a>: Prompt file name cannot contain digits <a href="https://github.com/microsoft/vscode/pull/261704" class="external-link" target="_blank">PR #261704</a></li>
+<li><a href="https://github.com/joelverhagen" class="external-link" target="_blank">@joelverhagen (Joel Verhagen)</a>
+<ul>
+<li>Allow the canonical package name and version to be sent back from the install flow <a href="https://github.com/microsoft/vscode/pull/259081" class="external-link" target="_blank">PR #259081</a></li>
+<li>Support server.json being returned by assisted MCP install <a href="https://github.com/microsoft/vscode/pull/259634" class="external-link" target="_blank">PR #259634</a></li>
+<li>Add support for a help link when MCP assisted installation fails <a href="https://github.com/microsoft/vscode/pull/260215" class="external-link" target="_blank">PR #260215</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/kenherring" class="external-link" target="_blank">@kenherring (Ken Herring)</a>: terminal.copyOnSelection and terminalFindWidget - do not copy selection on focus <a href="https://github.com/microsoft/vscode/pull/254065" class="external-link" target="_blank">PR #254065</a></li>
+<li><a href="https://github.com/kplates" class="external-link" target="_blank">@kplates (kplates)</a>: feat: Include/ Exclude file types from file search <a href="https://github.com/microsoft/vscode/pull/254285" class="external-link" target="_blank">PR #254285</a></li>
+<li><a href="https://github.com/LeftPhalange" class="external-link" target="_blank">@LeftPhalange (Ethan Bovard)</a>: Add Open Active Diff Side option to Command Palette using DIFF_OPEN_SIDE command <a href="https://github.com/microsoft/vscode/pull/261699" class="external-link" target="_blank">PR #261699</a></li>
+<li><a href="https://github.com/remcohaszing" class="external-link" target="_blank">@remcohaszing (Remco Haszing)</a>
+<ul>
+<li>Fix global access of MonacoEnvironment <a href="https://github.com/microsoft/vscode/pull/248075" class="external-link" target="_blank">PR #248075</a></li>
+<li>Highlight more languages in markdown code blocks <a href="https://github.com/microsoft/vscode/pull/263550" class="external-link" target="_blank">PR #263550</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/rwoll" class="external-link" target="_blank">@rwoll (Ross Wollman)</a>
+<ul>
+<li>Wait for agent loop to finish in automation <a href="https://github.com/microsoft/vscode/pull/262370" class="external-link" target="_blank">PR #262370</a></li>
+<li>support model switching in automation <a href="https://github.com/microsoft/vscode/pull/262420" class="external-link" target="_blank">PR #262420</a></li>
+<li>fix: parse commands in chat.open commands <a href="https://github.com/microsoft/vscode/pull/263458" class="external-link" target="_blank">PR #263458</a></li>
+<li><code>workbench.action.chat.export</code> optionally accept path <a href="https://github.com/microsoft/vscode/pull/263507" class="external-link" target="_blank">PR #263507</a></li>
+<li>fix: confirm response based on promise <a href="https://github.com/microsoft/vscode/pull/263894" class="external-link" target="_blank">PR #263894</a></li>
+<li>Revert &quot;fix: confirm response based on promise (#_263894)&quot; <a href="https://github.com/microsoft/vscode/pull/264047" class="external-link" target="_blank">PR #264047</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/SimonSiefke" class="external-link" target="_blank">@SimonSiefke (Simon Siefke)</a>
+<ul>
+<li>fix: memory leak in pattern input widget <a href="https://github.com/microsoft/vscode/pull/258152" class="external-link" target="_blank">PR #258152</a></li>
+<li>fix: memory leak in codelens controller <a href="https://github.com/microsoft/vscode/pull/263136" class="external-link" target="_blank">PR #263136</a></li>
+<li>fix: memory leak in accessibility signal scheduler <a href="https://github.com/microsoft/vscode/pull/263147" class="external-link" target="_blank">PR #263147</a></li>
+<li>fix: memory leak in QuickDiffModel <a href="https://github.com/microsoft/vscode/pull/265007" class="external-link" target="_blank">PR #265007</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/swordjjjkkk" class="external-link" target="_blank">@swordjjjkkk (Truman)</a>: Display Tab Indexes in VSCode <a href="https://github.com/microsoft/vscode/pull/209196" class="external-link" target="_blank">PR #209196</a></li>
+<li><a href="https://github.com/terreng" class="external-link" target="_blank">@terreng (Terren)</a>: Implement new option to control title scrollbar visibility <a href="https://github.com/microsoft/vscode/pull/246161" class="external-link" target="_blank">PR #246161</a></li>
+<li><a href="https://github.com/timheuer" class="external-link" target="_blank">@timheuer (Tim Heuer)</a>: Add collapse all functionality to test coverage view <a href="https://github.com/microsoft/vscode/pull/258906" class="external-link" target="_blank">PR #258906</a></li>
+<li><a href="https://github.com/tmm1" class="external-link" target="_blank">@tmm1 (Aman Karmani)</a>
+<ul>
+<li>fix some typos <a href="https://github.com/microsoft/vscode/pull/259747" class="external-link" target="_blank">PR #259747</a></li>
+<li>terminalProcessManager: fix disposable leak <a href="https://github.com/microsoft/vscode/pull/261710" class="external-link" target="_blank">PR #261710</a></li>
+<li>storage: optimize sqlite insert with upsert syntax <a href="https://github.com/microsoft/vscode/pull/261999" class="external-link" target="_blank">PR #261999</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/Tritlo" class="external-link" target="_blank">@Tritlo (Matthías Páll Gissurarson)</a>: extHostMcp: accept Content-Type parameters for SSE/JSON handling <a href="https://github.com/microsoft/vscode/pull/262787" class="external-link" target="_blank">PR #262787</a></li>
+<li><a href="https://github.com/ttttotem" class="external-link" target="_blank">@ttttotem (ttttotem)</a>: Fixes &quot;Caret jumps to column 0 when clicking between first two characters&quot; <a href="https://github.com/microsoft/vscode/pull/265131" class="external-link" target="_blank">PR #265131</a></li>
+<li><a href="https://github.com/JBlitzar" class="external-link" target="_blank">@JBlitzar (JBlitzar)</a>: Use <code>app.dock.hide</code> when connecting to an existing instance <a href="https://github.com/microsoft/vscode/pull/259352" class="external-link" target="_blank">PR #259352</a></li>
+</ul>
+<p>Contributions to <code>vscode-copilot-chat</code>:</p>
+<ul>
+<li><a href="https://github.com/24anisha" class="external-link" target="_blank">@24anisha</a>: add sku data to github telemetry <a href="https://github.com/microsoft/vscode-copilot-chat/pull/819" class="external-link" target="_blank">PR #819</a></li>
+<li><a href="https://github.com/devm33" class="external-link" target="_blank">@devm33 (Devraj Mehta)</a>: Make logprobs field optional <a href="https://github.com/microsoft/vscode-copilot-chat/pull/325" class="external-link" target="_blank">PR #325</a></li>
+<li><a href="https://github.com/iann0036" class="external-link" target="_blank">@iann0036 (Ian Mckay)</a>: fix: Case sensitive adjustment for &quot;GitHub&quot; <a href="https://github.com/microsoft/vscode-copilot-chat/pull/631" class="external-link" target="_blank">PR #631</a></li>
+<li><a href="https://github.com/joelverhagen" class="external-link" target="_blank">@joelverhagen (Joel Verhagen)</a>
+<ul>
+<li>Use .NET SDK to search for NuGet packages, emit events, add tests for all package types <a href="https://github.com/microsoft/vscode-copilot-chat/pull/546" class="external-link" target="_blank">PR #546</a></li>
+<li>Add command executor abstraction, only run dotnet CLI tests on CI <a href="https://github.com/microsoft/vscode-copilot-chat/pull/607" class="external-link" target="_blank">PR #607</a></li>
+<li>Hash package name during MCP server installation <a href="https://github.com/microsoft/vscode-copilot-chat/pull/618" class="external-link" target="_blank">PR #618</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/jwangxx" class="external-link" target="_blank">@jwangxx (James Wang)</a>
+<ul>
+<li>Add &quot;onExP&quot; tag to enableRetryAfterFilteredResponse setting <a href="https://github.com/microsoft/vscode-copilot-chat/pull/479" class="external-link" target="_blank">PR #479</a></li>
+<li>Remove experimental setting for retrying after filtered response <a href="https://github.com/microsoft/vscode-copilot-chat/pull/830" class="external-link" target="_blank">PR #830</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/lipido" class="external-link" target="_blank">@lipido (Daniel Glez-Peña)</a>: Improve agent test coverage <a href="https://github.com/microsoft/vscode-copilot-chat/pull/614" class="external-link" target="_blank">PR #614</a></li>
+<li><a href="https://github.com/m4dc4p" class="external-link" target="_blank">@m4dc4p</a>: Update getErrors (GetErrors / problems) tool <a href="https://github.com/microsoft/vscode-copilot-chat/pull/394" class="external-link" target="_blank">PR #394</a></li>
+<li><a href="https://github.com/rwoll" class="external-link" target="_blank">@rwoll (Ross Wollman)</a>
+<ul>
+<li>Fix auth for Copilot Chat running in automated VSC Extension Host <a href="https://github.com/microsoft/vscode-copilot-chat/pull/609" class="external-link" target="_blank">PR #609</a></li>
+<li>allow more services in Scenario Mode <a href="https://github.com/microsoft/vscode-copilot-chat/pull/653" class="external-link" target="_blank">PR #653</a></li>
+<li>plumb <code>code</code> on <code>ChatErrorDetails</code> <a href="https://github.com/microsoft/vscode-copilot-chat/pull/680" class="external-link" target="_blank">PR #680</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/shaunm-msft" class="external-link" target="_blank">@shaunm-msft (Shaun Miller)</a>
+<ul>
+<li>Remove the message copilot_cache_control field from a context where there is no understanding of it <a href="https://github.com/microsoft/vscode-copilot-chat/pull/554" class="external-link" target="_blank">PR #554</a></li>
+<li>port PR 665 to simulator <a href="https://github.com/microsoft/vscode-copilot-chat/pull/694" class="external-link" target="_blank">PR #694</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/sridharavinash" class="external-link" target="_blank">@sridharavinash (Avinash Sridhar)</a>: Add mode to conversation model messages <a href="https://github.com/microsoft/vscode-copilot-chat/pull/517" class="external-link" target="_blank">PR #517</a></li>
+<li><a href="https://github.com/yemohyleyemohyle" class="external-link" target="_blank">@yemohyleyemohyle</a>: Add message length events to MSFT internal telemetry  <a href="https://github.com/microsoft/vscode-copilot-chat/pull/473" class="external-link" target="_blank">PR #473</a></li>
+<li><a href="https://github.com/zhichli" class="external-link" target="_blank">@zhichli (Zhichao Li)</a>
+<ul>
+<li>Feature: add JSON export of chat prompt logs in chat debug view <a href="https://github.com/microsoft/vscode-copilot-chat/pull/672" class="external-link" target="_blank">PR #672</a></li>
+<li>Add tool and other metadata to chat debug json export  <a href="https://github.com/microsoft/vscode-copilot-chat/pull/789" class="external-link" target="_blank">PR #789</a></li>
+<li>Remove tool calls from <code>request</code> type JSON logs exported from chat debug <a href="https://github.com/microsoft/vscode-copilot-chat/pull/794" class="external-link" target="_blank">PR #794</a></li>
+</ul>
+</li>
+</ul>
+<p>Contributions to <code>vscode-eslint</code>:</p>
+<ul>
+<li><a href="https://github.com/AmarMuric04" class="external-link" target="_blank">@AmarMuric04 (AmarMuric)</a>
+<ul>
+<li>docs: Update ESLint installation and configuration instructions <a href="https://github.com/microsoft/vscode-eslint/pull/2062" class="external-link" target="_blank">PR #2062</a></li>
+<li>docs: Remove duplicate text in README.md <a href="https://github.com/microsoft/vscode-eslint/pull/2066" class="external-link" target="_blank">PR #2066</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/davidtaylorhq" class="external-link" target="_blank">@davidtaylorhq (David Taylor)</a>: Add probe support for Ember's glimmer-ts/glimmer-js format <a href="https://github.com/microsoft/vscode-eslint/pull/2069" class="external-link" target="_blank">PR #2069</a></li>
+</ul>
+<p>Contributions to <code>vscode-extension-samples</code>:</p>
+<ul>
+<li><a href="https://github.com/Sepush" class="external-link" target="_blank">@Sepush (Artea)</a>: refactor(lsp-embedded-request-forwarding): clean useless code <a href="https://github.com/microsoft/vscode-extension-samples/pull/1196" class="external-link" target="_blank">PR #1196</a></li>
+</ul>
+<p>Contributions to <code>vscode-js-debug</code>:</p>
+<ul>
+<li><a href="https://github.com/LittleLittleCloud" class="external-link" target="_blank">@LittleLittleCloud (Xiaoyun Zhang)</a>: fix: handle localhost hostname in constructInspectorWSUri function <a href="https://github.com/microsoft/vscode-js-debug/pull/2260" class="external-link" target="_blank">PR #2260</a></li>
+</ul>
+<p>Contributions to <code>vscode-jupyter</code>:</p>
+<ul>
+<li><a href="https://github.com/hunterhogan" class="external-link" target="_blank">@hunterhogan (Hunter Hogan)</a>: Typos in package.nls.json <a href="https://github.com/microsoft/vscode-jupyter/pull/16890" class="external-link" target="_blank">PR #16890</a></li>
+<li><a href="https://github.com/krassowski" class="external-link" target="_blank">@krassowski (Michał Krassowski)</a>: Add support for custom CDN URLs <a href="https://github.com/microsoft/vscode-jupyter/pull/16885" class="external-link" target="_blank">PR #16885</a></li>
+</ul>
+<p>Contributions to <code>vscode-languageserver-node</code>:</p>
+<ul>
+<li><a href="https://github.com/MariaSolOs" class="external-link" target="_blank">@MariaSolOs (Maria José Solano)</a>: Add capability information to <code>textDocument/colorPresentation</code> <a href="https://github.com/microsoft/vscode-languageserver-node/pull/1660" class="external-link" target="_blank">PR #1660</a></li>
+</ul>
+<p>Contributions to <code>vscode-markdown-languageservice</code>:</p>
+<ul>
+<li><a href="https://github.com/remcohaszing" class="external-link" target="_blank">@remcohaszing (Remco Haszing)</a>: Update @vscode/l10n to version 0.0.18 <a href="https://github.com/microsoft/vscode-markdown-languageservice/pull/199" class="external-link" target="_blank">PR #199</a></li>
+</ul>
+<p>Contributions to <code>vscode-markdown-tm-grammar</code>:</p>
+<ul>
+<li><a href="https://github.com/c-schuhmann" class="external-link" target="_blank">@c-schuhmann (Christian Schuhmann)</a>: Add support for SAP ABAP syntax <a href="https://github.com/microsoft/vscode-markdown-tm-grammar/pull/176" class="external-link" target="_blank">PR #176</a></li>
+<li><a href="https://github.com/esmasth" class="external-link" target="_blank">@esmasth (Siddharth Sharma)</a>: Add support for YANG code fence <a href="https://github.com/microsoft/vscode-markdown-tm-grammar/pull/169" class="external-link" target="_blank">PR #169</a></li>
+<li><a href="https://github.com/Morikko" class="external-link" target="_blank">@Morikko (Eric Masseran)</a>: Add restructuredtext support in markdown code block <a href="https://github.com/microsoft/vscode-markdown-tm-grammar/pull/178" class="external-link" target="_blank">PR #178</a></li>
+<li><a href="https://github.com/remcohaszing" class="external-link" target="_blank">@remcohaszing (Remco Haszing)</a>
+<ul>
+<li>Add support for jsonl code blocks <a href="https://github.com/microsoft/vscode-markdown-tm-grammar/pull/181" class="external-link" target="_blank">PR #181</a></li>
+<li>Add support for ignore code blocks <a href="https://github.com/microsoft/vscode-markdown-tm-grammar/pull/182" class="external-link" target="_blank">PR #182</a></li>
+</ul>
+</li>
+</ul>
+<p>Contributions to <code>vscode-pull-request-github</code>:</p>
+<ul>
+<li><a href="https://github.com/krassowski" class="external-link" target="_blank">@krassowski (Michał Krassowski)</a>: Fix typo &quot;will be replace&quot; → &quot;will be replaced&quot; <a href="https://github.com/microsoft/vscode-pull-request-github/pull/7540" class="external-link" target="_blank">PR #7540</a></li>
+</ul>
+<p>Contributions to <code>vscode-python-environments</code>:</p>
+<ul>
+<li><a href="https://github.com/almarouk" class="external-link" target="_blank">@almarouk (Abdelrahman AL MAROUK)</a>: fix: enhance conda executable retrieval with path existence checks <a href="https://github.com/microsoft/vscode-python-environments/pull/677" class="external-link" target="_blank">PR #677</a></li>
+<li><a href="https://github.com/sjsikora" class="external-link" target="_blank">@sjsikora (Sam Sikora)</a>: bug fix: Stricter pip list Package Parsing <a href="https://github.com/microsoft/vscode-python-environments/pull/698" class="external-link" target="_blank">PR #698</a></li>
+</ul>
+<p>Contributions to <code>vscode-vsce</code>:</p>
+<ul>
+<li><a href="https://github.com/tgrospic" class="external-link" target="_blank">@tgrospic (Tomislav Grospić)</a>: Avoid Node.js DEP0190 warning by using string form for prepublish command <a href="https://github.com/microsoft/vscode-vsce/pull/1188" class="external-link" target="_blank">PR #1188</a></li>
+</ul>
+<p>Contributions to <code>debug-adapter-protocol</code>:</p>
+<ul>
+<li><a href="https://github.com/jborean93" class="external-link" target="_blank">@jborean93 (Jordan Borean)</a>: Add Ansible implementation <a href="https://github.com/microsoft/debug-adapter-protocol/pull/552" class="external-link" target="_blank">PR #552</a></li>
+</ul>
+<p>Contributions to <code>language-server-protocol</code>:</p>
+<ul>
+<li><a href="https://github.com/aartaka" class="external-link" target="_blank">@aartaka (Artyom Bologov)</a>: Add cl-lsp (Common Lisp) to implementations list <a href="https://github.com/microsoft/language-server-protocol/pull/2179" class="external-link" target="_blank">PR #2179</a></li>
+<li><a href="https://github.com/anakin4747" class="external-link" target="_blank">@anakin4747 (Anakin Childerhose)</a>: Add kconfig-language-server <a href="https://github.com/microsoft/language-server-protocol/pull/2177" class="external-link" target="_blank">PR #2177</a></li>
+<li><a href="https://github.com/asukaminato0721" class="external-link" target="_blank">@asukaminato0721 (Asuka Minato)</a>: add ty <a href="https://github.com/microsoft/language-server-protocol/pull/2175" class="external-link" target="_blank">PR #2175</a></li>
+<li><a href="https://github.com/MariaSolOs" class="external-link" target="_blank">@MariaSolOs (Maria José Solano)</a>: Add capability information to <code>textDocument/colorPresentation</code> <a href="https://github.com/microsoft/language-server-protocol/pull/2173" class="external-link" target="_blank">PR #2173</a></li>
+<li><a href="https://github.com/notpeter" class="external-link" target="_blank">@notpeter (Peter Tripp)</a>
+<ul>
+<li>Fix broken anchor links in changelog <a href="https://github.com/microsoft/language-server-protocol/pull/2171" class="external-link" target="_blank">PR #2171</a></li>
+<li>Markdown whitespace formatting improvements  <a href="https://github.com/microsoft/language-server-protocol/pull/2172" class="external-link" target="_blank">PR #2172</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/ribru17" class="external-link" target="_blank">@ribru17 (Riley Bruins)</a>: Fix 3.18 metamodel version <a href="https://github.com/microsoft/language-server-protocol/pull/2180" class="external-link" target="_blank">PR #2180</a></li>
+<li><a href="https://github.com/skewb1k" class="external-link" target="_blank">@skewb1k</a>: correct grammar and consistency in lazy property descriptions <a href="https://github.com/microsoft/language-server-protocol/pull/2170" class="external-link" target="_blank">PR #2170</a></li>
+</ul>
+<p>Contributions to <code>node-jsonc-parser</code>:</p>
+<ul>
+<li><a href="https://github.com/operagxsasha" class="external-link" target="_blank">@operagxsasha</a>: docs: edited the link to the badge tests <a href="https://github.com/microsoft/node-jsonc-parser/pull/98" class="external-link" target="_blank">PR #98</a></li>
+<li><a href="https://github.com/pimterry" class="external-link" target="_blank">@pimterry (Tim Perry)</a>: Add startLine &amp; startCharacter to parser errors <a href="https://github.com/microsoft/node-jsonc-parser/pull/102" class="external-link" target="_blank">PR #102</a></li>
+</ul>
+<p>Contributions to <code>python-environment-tools</code>:</p>
+<ul>
+<li><a href="https://github.com/almarouk" class="external-link" target="_blank">@almarouk (Abdelrahman AL MAROUK)</a>: Fix conda env trace message <a href="https://github.com/microsoft/python-environment-tools/pull/241" class="external-link" target="_blank">PR #241</a></li>
+</ul>
+<p>We really appreciate people trying our new features as soon as they are ready, so check back here often and learn what's new.</p>
+<blockquote><p>If you'd like to read release notes for previous VS Code versions, go to <a href="v1_104.html">Updates</a> on <a href="../index.html">code.visualstudio.com</a>.</p>
+</blockquote><p><a id="scroll-to-top" role="button" title="Scroll to top" aria-label="scroll to top" href="#"><span class="icon"></span></a></p>
+
+            <div class="feedback"></div>
+        </main>
+
+        <!-- medium right nav -->
+        <div class="col-sm-3 col-md-2 hidden-xs docs-subnavbar-container">
+            <nav id="docs-subnavbar" aria-label="On Page" data-spy="affix" data-offset-top="20">
+                <h4><span class="sr-only">On this page, there are 15
+                        sections</span><span aria-hidden="true">On this page</span></h4>
+                <ul class="nav">
+                    
+                    <li><a href="#_chat">Chat</a></li>
+                    
+                    <li><a href="#_mcp">MCP</a></li>
+                    
+                    <li><a href="#_accessibility">Accessibility</a></li>
+                    
+                    <li><a href="#_code-editing">Code Editing</a></li>
+                    
+                    <li><a href="#_editor-experience">Editor Experience</a></li>
+                    
+                    <li><a href="#_notebooks">Notebooks</a></li>
+                    
+                    <li><a href="#_source-control">Source Control</a></li>
+                    
+                    <li><a href="#_terminal">Terminal</a></li>
+                    
+                    <li><a href="#_languages">Languages</a></li>
+                    
+                    <li><a href="#_contributions-to-extensions">Contributions to extensions</a></li>
+                    
+                    <li><a href="#_extension-authoring">Extension Authoring</a></li>
+                    
+                    <li><a href="#_proposed-apis">Proposed APIs</a></li>
+                    
+                    <li><a href="#_engineering">Engineering</a></li>
+                    
+                    <li><a href="#_notable-fixes">Notable fixes</a></li>
+                    
+                    <li><a href="#_thank-you">Thank you</a></li>
+                    
+                </ul>
+                <div class="connect-widget"></div>
+            </nav>
+        </div>
+        <!-- end of page connect widget -->
+        <div class="col-xs-12 visible-xs">
+            <div class="connect-widget"></div>
+        </div>
+    </div>
+</div>
+		</div>
+	</div>
+
+	<footer role="contentinfo" class="container">
+		<div class="footer-container">
+			<div class="footer-row">
+				<div class="footer-social">
+					<ul class="links">
+						<li>
+							<a href="https://github.com/microsoft/vscode"><img src="../assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+						</li>
+						<li>
+							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="../assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="../assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+						</li>
+						<li>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="../assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+						</li>
+						<li>
+							<a href="https://www.reddit.com/r/vscode/"><img src="../assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+						</li>
+						<li>
+							<a href="https://www.vscodepodcast.com/"><img src="../assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+						</li>
+						<li>
+							<a href="https://www.tiktok.com/@vscode"><img src="../assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+						</li>
+						<li>
+							<a href="https://www.youtube.com/@code"><img src="../assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+						</li>
+						<script>
+							function manageConsent() {
+								if (siteConsent && siteConsent.isConsentRequired) {
+									siteConsent.manageConsent();
+								}
+							}
+						</script>
+					</ul>
+					<a id="footer-microsoft-link" class="microsoft-logo" href="https://www.microsoft.com/">
+						<img src="../assets/icons/microsoft.svg" alt="Microsoft homepage" />
+					</a>
+				</div>
+			</div>
+			<div class="footer-row">
+				<ul class="links">
+					<li><a id="footer-support-link" href="https://support.serviceshub.microsoft.com/supportforbusiness/create?sapId=d66407ed-3967-b000-4cfb-2c318cad363d"
+							target="_blank" rel="noopener">Support</a></li>
+					<li><a id="footer-privacy-link" href="https://go.microsoft.com/fwlink/?LinkId=521839"
+							target="_blank" rel="noopener">Privacy</a></li>
+					<li style="display: none;"><a id="footer-cookie-link" style="cursor: pointer;" onclick="manageConsent()"
+							target="_blank" rel="noopener">Manage Cookies</a></li>
+					<li><a id="footer-terms-link" href="https://www.microsoft.com/legal/terms-of-use"
+							target="_blank" rel="noopener">Terms of Use</a></li>
+					<li><a id="footer-license-link" href="../License-2.html"
+							target="_blank" rel="noopener">License</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<script type="module">
+		document.addEventListener('DOMContentLoaded', () => {
+			const copilotDeepLinks = document.querySelectorAll('.copilot-deep-link');
+			if (copilotDeepLinks.length === 0) {
+				return;
+			}
+			if (window.innerWidth < 992) {
+				for (const link of copilotDeepLinks) {
+					link.href = 'https://aka.ms/vscode-activatecopilotfree';
+				}
+			}
+		});
+	</script>
+
+	<script src="../dist/index.js"></script>
+
+	
+
+	<script type="application/ld+json">
+		{
+			"@context" : "http://schema.org",
+			"@type" : "SoftwareApplication",
+			"name" : "Visual Studio Code",
+			"softwareVersion": "1.104",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			},
+			"applicationCategory": "DeveloperApplication",
+			"applicationSubCategory": "Text Editor",
+			"alternateName": "VS Code",
+			"datePublished": "2021-11-03",
+			"operatingSystem": "Mac, Linux, Windows",
+			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",
+			"screenshot": "https://code.visualstudio.com/assets/home/home-screenshot-win.png",
+			"releaseNotes": "https://code.visualstudio.com/updates",
+			"downloadUrl": "https://code.visualstudio.com/download",
+			"license": "https://code.visualstudio.com/license",
+			"softwareRequirements": "https://code.visualstudio.com/docs/supporting/requirements",
+			"url" : "https://code.visualstudio.com",
+			"author": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"maintainer": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://code.visualstudio.com/Search?q={search_term_string}",
+				"query-input": "required name=search_term_string"
+			},
+			"sameAs" : [
+				"https://en.wikipedia.org/wiki/Visual_Studio_Code",
+				"https://twitter.com/code",
+				"https://www.youtube.com/code",
+				"https://www.tiktok.com/@vscode",
+				"https://github.com/microsoft/vscode"
+			]
+		}
+	</script>
+</body>
+
+
+<!-- Mirrored from code.visualstudio.com/updates/v1_104 by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:52:09 GMT -->
+</html>

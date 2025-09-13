@@ -1,0 +1,2650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from code.visualstudio.com/docs/sourcecontrol/overview by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:54:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="awa-expId" content="vscw_aaflight1016_control:103441;" />
+	<meta name="awa-env" content="prod" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="hNs7DXrTySP_X-0P_AC0WulAXvUwgSXEmgfcO2r79dw" />
+
+	<!-- Twitter and Facebook OpenGraph Metadata-->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@code" />
+
+	<meta name="description" content="Visual Studio Code source control management with integrated Git support." />
+<meta name="keywords" content="" />
+<meta name="ms.prod" content="vs-code" />
+<meta name="ms.TOCTitle" content="" />
+<meta name="ms.ContentId" content="7E22CCC0-2AB8-4729-A4C9-BE2B16853820" />
+<meta name="ms.date" content="09/11/2025" />
+<meta name="ms.topic" content="conceptual" />
+<!-- Twitter and Facebook OpenGraph Metadata-->
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:url" content="overview.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Using Git source control in VS Code" />
+<meta property="og:description" content="Visual Studio Code source control management with integrated Git support." />
+
+<meta property="og:image" content="../../opengraphimg/opengraph-docs.png" />
+
+
+
+	<link rel="shortcut icon" href="../../assets/favicon.ico" sizes="128x128" />
+	<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+
+	<title>Using Git source control in VS Code</title>
+
+	<link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../dist/v2/style.css">
+
+	<script src="../../../consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js"></script>
+	<script type="text/javascript" src="../../../js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js"></script>
+	
+	<script type="text/javascript">
+	// Leave as var; siteConsent is initialized and referenced elsewhere.
+	var siteConsent = null;
+	
+	const GPC_DataSharingOptIn = false;
+	WcpConsent.onInitCallback(function () {
+		window.appInsights = new oneDS.ApplicationInsights();
+		window.appInsights.initialize({
+			instrumentationKey: "1a3eb3104447440391ad5f2a6ee06a0a-62879566-bc58-4741-9650-302bf2af703f-7103",
+			propertyConfiguration: {
+				userConsented: false,
+				gpcDataSharingOptIn: false,
+				callback: {
+					userConsentDetails: siteConsent ? siteConsent.getConsent : undefined
+				},
+			},
+			cookieCfg: {
+				ignoreCookies: ["MSCC"]
+			},
+			webAnalyticsConfiguration:{ // Web Analytics Plugin configuration
+				urlCollectQuery: true,
+				urlCollectHash: true,
+				autoCapture: {
+					scroll: true,
+					pageView: true,
+					onLoad: true,
+					onUnload: true,
+					click: true,
+					resize: true,
+					jsError: true
+				}
+			}
+		}, []);
+	
+		window.appInsights.getPropertyManager().getPropertiesContext().web.gpcDataSharingOptIn = GPC_DataSharingOptIn;
+	});
+	</script>
+	<link rel="alternate" type="application/atom+xml" title="RSS Feed for code.visualstudio.com" href="../../feed.xml" />
+</head>
+
+<body >
+	<!-- Setting theme here to avoid FOUC -->
+	<script>
+		function setTheme(themeName) {
+			if (themeName === 'dark') {
+				document.documentElement.removeAttribute('data-theme'); // dark is default, so no data-theme attribute needed
+			}
+
+			if (themeName === 'light') {
+				document.documentElement.setAttribute('data-theme', themeName);
+			}
+			return;
+		}
+
+		// Determine initial theme: user preference or system preference
+		let theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		setTheme(theme); // Apply the initial theme
+
+		// Listen for changes in the system theme preference
+		window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+			if (!localStorage.getItem('theme')) { // Only if no user preference is saved
+				setTheme(e.matches ? 'dark' : 'light');
+			}
+		});
+	</script>
+
+	<div id="main">
+		<div class="navbar-fixed-container">
+			<div class="navbar navbar-inverse navbar-fixed-top " data-spy="affix"
+				data-offset-top="1">
+				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
+					<div class="container">
+						<div class="nav navbar-header">
+							<a class="navbar-brand" href="../../index.html"><span>Visual Studio Code</span></a>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+								aria-label="Expand and Collapse Menu">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="navbar-collapse collapse">
+							<ul class="nav navbar-nav navbar-left">
+								<li class="active" ><a id="nav-docs" href="../../docs.html">Docs</a></li>
+								<li ><a id="nav-updates" href="../../updates/v1_104.html">Updates</a></li>
+								<li ><a id="nav-blogs" href="../../blogs.html">Blog</a></li>
+								<li ><a id="nav-extend" href="../../api.html">API</a></li>
+								<li><a href="https://marketplace.visualstudio.com/VSCode" target="_blank" rel="noopener" id="nav-extensions">Extensions</a></li>
+								<li ><a id="nav-mcp" href="../../mcp.html">MCP</a></li>
+								<li ><a id="nav-faqs" href="../supporting/faq.html">FAQ</a></li>
+								<li class='search visible-xs visible-sm'
+									><a href="../../Search.html">Search</a></li>
+								<li ><a id="nav-events" href="../../dev-days.html">Dev Days</a></li>
+							</ul>
+		
+							<ul class="nav navbar-nav navbar-right" role="presentation">
+								<li>
+									<button type="button" class="theme-switch" id="theme-toggle">
+										<img class="theme-icon-light" src="../../assets/icons/theme-light.svg"
+											alt="Switch to the dark theme" />
+										<img class="theme-icon-dark" src="../../assets/icons/theme-dark.svg"
+											alt="Switch to the light theme" />
+									</button>
+								</li>
+								<li>
+									<a href="../../Search.html" title="Search" class="btn search-btn" id="nav-search" aria-label="Open search page">
+										<img class="search-icon-light" src="../../assets/icons/search.svg" width="16px" height="16px"
+											alt="" />
+										<img class="search-icon-dark" src="../../assets/icons/search-dark.svg" width="16px"
+											height="16px" alt="" />
+									</a>
+								</li>
+								<li class="search" role="presentation">
+									<div class="nav-search search-control" role="button" tabindex="0" aria-label="Open search dialog">
+										<div class="input-group" role="presentation">
+											<span class="input-group-btn">
+												<span class="btn search-icon-container" aria-hidden="true">
+													<img class="search-icon-dark" src="../../assets/icons/search-dark.svg" alt="" />
+													<img class="search-icon-light" src="../../assets/icons/search.svg" alt="" />
+												</span>
+											</span>
+											<input type="text" name="q" class="search-box form-control" placeholder="Search Docs" aria-hidden="true" tabindex="-1" readonly/>
+											<span class="search-shortcut-overlay"></span>
+										</div>
+									</div>						</li>
+								<!-- this was hiden in the home and download page, keeping it for now -->
+								<li><a class="link-button" href="../../Download.html" id="nav-download">
+										<span>Download</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
+			<div class="container">
+				<p class="message">Join a <a href="../../dev-days.html" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+			</div>
+			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
+					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
+		</div>		<!-- This div wraps around the entire site -->
+		<!-- The body itself should already have a main tag -->
+		<div id="main-content">
+			<script>
+    function closeReportIssue() {
+        var element = document.getElementById('surveypopup');
+        element.parentElement.removeChild(element);
+    }
+
+    function reportIssue(tutorial, page) {
+        var div = document.createElement('div');
+        div.innerHTML = '<div id="surveypopup" class="overlay visible"><div class="surveypopup"><div id="surveytitle">Tell us more<a href="javascript:void(0)" onclick="closeReportIssue()">X</a></div><div id="surveydiv"><iframe frameBorder="0" scrolling="0" src="https://www.research.net/r/PWZWZ52?tutorial=' + tutorial + '&step=' + page + '"></iframe></div></div></div>';
+        document.body.appendChild(div.children[0]);
+    }
+</script>
+
+<div class="container body-content docs">
+    <div class="row">
+        <!-- left nav -->
+        <div class="col-xs-12 col-md-2 docs-navbar-container">
+            <nav id="docs-navbar" aria-label="Topics" class="docs-nav visible-md visible-lg">
+              <ul class="nav" id="main-nav">
+              <li >
+                <a class="docs-home" href="../../docs.html" >Overview</a>
+              </li>
+              
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#setup-articles" data-parent="#main-nav" data-toggle="collapse">Setup</a>
+              <ul id="setup-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../setup/setup-overview.html" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../setup/linux.html" >Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../setup/mac.html" >macOS</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../setup/windows.html" >Windows</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../setup/vscode-web.html" >VS Code for the Web</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../setup/raspberry-pi.html" >Raspberry Pi</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../setup/network.html" >Network</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../setup/additional-components.html" >Additional Components</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../setup/enterprise.html" >Enterprise</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../setup/uninstall.html" >Uninstall</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#getstarted-articles" data-parent="#main-nav" data-toggle="collapse">Get Started</a>
+              <ul id="getstarted-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../getstarted/getting-started.html" >VS Code Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/getting-started.html" >Copilot Quickstart</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../getstarted/userinterface.html" >User Interface</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../getstarted/personalize-vscode.html" >Personalize VS Code</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../getstarted/extensions.html" >Install Extensions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../getstarted/tips-and-tricks.html" >Tips and Tricks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../getstarted/introvideos.html" >Intro Videos</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#configure-articles" data-parent="#main-nav" data-toggle="collapse">Configure</a>
+              <ul id="configure-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../configure/locales.html" >Display Language</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../configure/custom-layout.html" >Layout</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../configure/keybindings.html" >Keyboard Shortcuts</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../configure/settings.html" >Settings</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../configure/settings-sync.html" >Settings Sync</a>
+                    </li>
+                      
+            <li class="panel">
+              <a class="area disabled" tabindex="-1" aria-disabled="true">Extensions</a>
+              <ul id="configure-extensions-articles" class="collapse in">
+            
+                    <li >
+                      <a href="../configure/extensions/extension-marketplace.html" >Extension Marketplace</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../configure/extensions/extension-runtime-security.html" >Extension Runtime Security</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+                    <li >
+                      <a href="../configure/themes.html" >Themes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../configure/profiles.html" >Profiles</a>
+                    </li>
+                      
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#configure-accessibility-articles"  data-toggle="collapse">Accessibility</a>
+              <ul id="configure-accessibility-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../configure/accessibility/accessibility.html" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../configure/accessibility/voice.html" >Voice Interactions</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+                    <li >
+                      <a href="../configure/command-line.html" >Command Line Interface</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../configure/telemetry.html" >Telemetry</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#editing-articles" data-parent="#main-nav" data-toggle="collapse">Edit code</a>
+              <ul id="editing-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../editing/codebasics.html" >Basic Editing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../editing/intellisense.html" >IntelliSense</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../editing/editingevolved.html" >Code Navigation</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../editing/refactoring.html" >Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../editing/userdefinedsnippets.html" >Snippets</a>
+                    </li>
+                      
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#editing-workspaces-articles"  data-toggle="collapse">Workspaces</a>
+              <ul id="editing-workspaces-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../editing/workspaces/workspaces.html" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../editing/workspaces/multi-root-workspaces.html" >Multi-root Workspaces</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../editing/workspaces/workspace-trust.html" >Workspace Trust</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#debugtest-articles" data-parent="#main-nav" data-toggle="collapse">Build, Debug, Test</a>
+              <ul id="debugtest-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../debugtest/tasks.html" >Tasks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../debugtest/debugging.html" >Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../debugtest/debugging-configuration.html" >Debug Configuration</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../debugtest/testing.html" >Testing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../debugtest/port-forwarding.html" >Port Forwarding</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#copilot-articles" data-parent="#main-nav" data-toggle="collapse">GitHub Copilot</a>
+              <ul id="copilot-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../copilot/overview.html" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/setup.html" >Setup</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/getting-started.html" >Quickstart</a>
+                    </li>
+                      
+            <li class="panel">
+              <a class="area disabled" tabindex="-1" aria-disabled="true">Chat</a>
+              <ul id="copilot-chat-articles" class="collapse in">
+            
+                    <li >
+                      <a href="../copilot/chat/copilot-chat.html" >Chat Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/chat/copilot-chat-context.html" >Manage Context</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/chat/chat-ask-mode.html" >Ask Mode</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/chat/copilot-edits.html" >Edit Mode</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/chat/chat-agent-mode.html" >Agent Mode</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/chat/inline-chat.html" >Inline Chat</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/chat/prompt-crafting.html" >Prompt Engineering</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+                    <li >
+                      <a href="../copilot/ai-powered-suggestions.html" >Code Completions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/copilot-coding-agent.html" >Copilot Coding Agent</a>
+                    </li>
+                      
+            <li class="panel">
+              <a class="area disabled" tabindex="-1" aria-disabled="true">Customize Copilot</a>
+              <ul id="copilot-customization-articles" class="collapse in">
+            
+                    <li >
+                      <a href="../copilot/customization/overview.html" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/customization/custom-instructions.html" >Custom Instructions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/customization/prompt-files.html" >Prompt Files</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/customization/custom-chat-modes.html" >Chat Modes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/customization/language-models.html" >Language Models</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/customization/mcp-servers.html" >MCP</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+            <li class="panel">
+              <a class="area disabled" tabindex="-1" aria-disabled="true">Guides</a>
+              <ul id="copilot-guides-articles" class="collapse in">
+            
+                    <li >
+                      <a href="../copilot/guides/notebooks-with-ai.html" >Edit Notebooks with AI</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/guides/test-with-copilot.html" >Test with AI</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/guides/debug-with-copilot.html" >Debug with AI</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../../api/extension-guides/ai/mcp.html" >MCP Dev Guide</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+                    <li >
+                      <a href="../copilot/copilot-smart-actions.html" >Smart Actions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/copilot-tips-and-tricks.html" >Tips and Tricks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/security.html" >Security</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/faq.html" >FAQ</a>
+                    </li>
+                      
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#copilot-reference-articles"  data-toggle="collapse">Reference</a>
+              <ul id="copilot-reference-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../copilot/reference/copilot-vscode-features.html" >Cheat Sheet</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/reference/copilot-settings.html" >Settings Reference</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../copilot/reference/workspace-context.html" >Workspace Context</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+              </ul>
+            </li>
+                
+            <li class="panel active expanded">
+              <a class="area" role="button" href="#sourcecontrol-articles" data-parent="#main-nav" data-toggle="collapse">Source Control</a>
+              <ul id="sourcecontrol-articles" class="collapse in">
+            
+                    <li class="active">
+                      <a href="overview.html" aria-label="Current Page: Overview">Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="intro-to-git.html" >Introduction to Git</a>
+                    </li>
+                      
+                    <li >
+                      <a href="github.html" >Collaborate on GitHub</a>
+                    </li>
+                      
+                    <li >
+                      <a href="faq.html" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#terminal-articles" data-parent="#main-nav" data-toggle="collapse">Terminal</a>
+              <ul id="terminal-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../terminal/getting-started.html" >Getting Started Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../terminal/basics.html" >Terminal Basics</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../terminal/profiles.html" >Terminal Profiles</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../terminal/shell-integration.html" >Shell Integration</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../terminal/appearance.html" >Appearance</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../terminal/advanced.html" >Advanced</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#languages-articles" data-parent="#main-nav" data-toggle="collapse">Languages</a>
+              <ul id="languages-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../languages/overview.html" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/javascript.html" >JavaScript</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/json.html" >JSON</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/html.html" >HTML</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/emmet.html" >Emmet</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/css.html" >CSS, SCSS and Less</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/typescript.html" >TypeScript</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/markdown.html" >Markdown</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/powershell.html" >PowerShell</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/cpp.html" >C++</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/java.html" >Java</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/php.html" >PHP</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/python.html" >Python</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/julia.html" >Julia</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/r.html" >R</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/ruby.html" >Ruby</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/rust.html" >Rust</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/go.html" >Go</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/tsql.html" >T-SQL</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/csharp.html" >C#</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/dotnet.html" >.NET</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/polyglot.html" >Polyglot</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../languages/swift.html" >Swift</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#nodejs-articles" data-parent="#main-nav" data-toggle="collapse">Node.js / JavaScript</a>
+              <ul id="nodejs-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../nodejs/working-with-javascript.html" >Working with JavaScript</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../nodejs/nodejs-tutorial.html" >Node.js Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../nodejs/nodejs-debugging.html" >Node.js Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../nodejs/nodejs-deployment.html" >Deploy Node.js Apps</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../nodejs/browser-debugging.html" >Browser Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../nodejs/angular-tutorial.html" >Angular Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../nodejs/reactjs-tutorial.html" >React Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../nodejs/vuejs-tutorial.html" >Vue Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../nodejs/debugging-recipes.html" >Debugging Recipes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../nodejs/profiling.html" >Performance Profiling</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../nodejs/extensions.html" >Extensions</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#typescript-articles" data-parent="#main-nav" data-toggle="collapse">TypeScript</a>
+              <ul id="typescript-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../typescript/typescript-tutorial.html" >Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../typescript/typescript-compiling.html" >Compiling</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../typescript/typescript-editing.html" >Editing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../typescript/typescript-refactoring.html" >Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../typescript/typescript-debugging.html" >Debugging</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#python-articles" data-parent="#main-nav" data-toggle="collapse">Python</a>
+              <ul id="python-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../python/python-quick-start.html" >Quick Start</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/python-tutorial.html" >Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/run.html" >Run Python Code</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/editing.html" >Editing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/linting.html" >Linting</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/formatting.html" >Formatting</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/debugging.html" >Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/environments.html" >Environments</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/testing.html" >Testing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/jupyter-support-py.html" >Python Interactive</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/tutorial-django.html" >Django Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/tutorial-fastapi.html" >FastAPI Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/tutorial-flask.html" >Flask Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../containers/quickstart-python.html" >Create Containers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/python-on-azure.html" >Deploy Python Apps</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/python-web.html" >Python in the Web</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/settings-reference.html" >Settings Reference</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#java-articles" data-parent="#main-nav" data-toggle="collapse">Java</a>
+              <ul id="java-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../java/java-tutorial.html" >Getting Started</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../java/java-editing.html" >Navigate and Edit</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../java/java-refactoring.html" >Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../java/java-linting.html" >Formatting and Linting</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../java/java-project.html" >Project Management</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../java/java-build.html" >Build Tools</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../java/java-debugging.html" >Run and Debug</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../java/java-testing.html" >Testing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../java/java-spring-boot.html" >Spring Boot</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../java/java-tomcat-jetty.html" >Application Servers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../java/java-on-azure.html" >Deploy Java Apps</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../java/java-gui.html" >GUI Applications</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../java/extensions.html" >Extensions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../java/java-faq.html" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#cpp-articles" data-parent="#main-nav" data-toggle="collapse">C++</a>
+              <ul id="cpp-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../cpp/introvideos-cpp.html" >Intro Videos</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/config-linux.html" >GCC on Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/config-mingw.html" >GCC on Windows</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/config-wsl.html" >GCC on Windows Subsystem for Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/config-clang-mac.html" >Clang on macOS</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/config-msvc.html" >Microsoft C++ on Windows</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/README.md" >Build with CMake</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/cmake-linux.html" >CMake Tools on Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/cmake-quickstart.html" >CMake Quick Start</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/cpp-ide.html" >Editing and Navigating</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/cpp-debug.html" >Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/launch-json-reference.html" >Configure Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/cpp-refactoring.html" >Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/customize-cpp-settings.html" >Settings Reference</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/configure-intellisense.html" >Configure IntelliSense</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/configure-intellisense-crosscompilation.html" >Configure IntelliSense for Cross-Compiling</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../cpp/faq-cpp.html" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#csharp-articles" data-parent="#main-nav" data-toggle="collapse">C#</a>
+              <ul id="csharp-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../csharp/introvideos-csharp.html" >Intro Videos</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../csharp/get-started.html" >Get Started</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../csharp/navigate-edit.html" >Navigate and Edit</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../csharp/intellicode.html" >IntelliCode</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../csharp/refactoring.html" >Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../csharp/formatting-linting.html" >Formatting and Linting</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../csharp/project-management.html" >Project Management</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../csharp/build-tools.html" >Build Tools</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../csharp/package-management.html" >Package Management</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../csharp/debugging.html" >Run and Debug</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../csharp/testing.html" >Testing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../csharp/cs-dev-kit-faq.html" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#containers-articles" data-parent="#main-nav" data-toggle="collapse">Container Tools</a>
+              <ul id="containers-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../containers/overview.html" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../containers/quickstart-node.html" >Node.js</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../containers/quickstart-python.html" >Python</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../containers/quickstart-aspnet-core.html" >ASP.NET Core</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../containers/debug-common.html" >Debug</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../containers/docker-compose.html" >Docker Compose</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../containers/quickstart-container-registries.html" >Registries</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../containers/app-service.html" >Deploy to Azure</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../containers/choosing-dev-environment.html" >Choose a Dev Environment</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../containers/reference.html" >Customize</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://learn.microsoft.com/visualstudio/bridge/bridge-to-kubernetes-vs-code" >Develop with Kubernetes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../containers/troubleshooting.html" >Tips and Tricks</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#datascience-articles" data-parent="#main-nav" data-toggle="collapse">Data Science</a>
+              <ul id="datascience-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../datascience/overview.html" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../datascience/jupyter-notebooks.html" >Jupyter Notebooks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../datascience/data-science-tutorial.html" >Data Science Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../python/jupyter-support-py.html" >Python Interactive</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../datascience/data-wrangler-quick-start.html" >Data Wrangler Quick Start</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../datascience/data-wrangler.html" >Data Wrangler</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../datascience/pytorch-support.html" >PyTorch Support</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../datascience/azure-machine-learning.html" >Azure Machine Learning</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../datascience/jupyter-kernel-management.html" >Manage Jupyter Kernels</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../datascience/notebooks-web.html" >Jupyter Notebooks on the Web</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#intelligentapps-articles" data-parent="#main-nav" data-toggle="collapse">Intelligent Apps</a>
+              <ul id="intelligentapps-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../intelligentapps/overview.html" >AI Toolkit Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../intelligentapps/models.html" >Models</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../intelligentapps/playground.html" >Playground</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../intelligentapps/agentbuilder.html" >Agent Builder</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../intelligentapps/bulkrun.html" >Bulk Run</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../intelligentapps/evaluation.html" >Evaluation</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../intelligentapps/finetune.html" >Fine-tune</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../intelligentapps/modelconversion.html" >Model Conversion</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../intelligentapps/tracing.html" >Tracing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../intelligentapps/faq.html" >FAQ</a>
+                    </li>
+                      
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#intelligentapps-reference-articles"  data-toggle="collapse">Reference</a>
+              <ul id="intelligentapps-reference-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../intelligentapps/reference/FileStructure.html" >File Structure</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../intelligentapps/reference/ManualModelConversion.html" >Manual Model Conversion</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../intelligentapps/reference/ManualConversionOnGPU.html" >Manual Model Conversion On GPU</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../intelligentapps/reference/SetupWithoutAITK.html" >Setup Environment Without AI Toolkit</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../intelligentapps/reference/TemplateProject.html" >Template Project</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#azure-articles" data-parent="#main-nav" data-toggle="collapse">Azure</a>
+              <ul id="azure-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../azure/overview.html" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../azure/gettingstarted.html" >Getting Started</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../azure/resourcesextension.html" >Resources View</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../azure/deployment.html" >Deployment</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../azure/vscodeforweb.html" >VS Code for the Web - Azure</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../containers/overview.html" >Containers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../azure/aksextensions.html" >Azure Kubernetes Service</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../azure/kubernetes.html" >Kubernetes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../azure/mongodb.html" >MongoDB</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../azure/remote-debugging.html" >Remote Debugging for Node.js</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#remote-articles" data-parent="#main-nav" data-toggle="collapse">Remote</a>
+              <ul id="remote-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../remote/remote-overview.html" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../remote/ssh.html" >SSH</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../devcontainers/containers.html" >Dev Containers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../remote/wsl.html" >Windows Subsystem for Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../remote/codespaces.html" >GitHub Codespaces</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../remote/vscode-server.html" >VS Code Server</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../remote/tunnels.html" >Tunnels</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../remote/ssh-tutorial.html" >SSH Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../remote/wsl-tutorial.html" >WSL Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../remote/troubleshooting.html" >Tips and Tricks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../remote/faq.html" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#devcontainers-articles" data-parent="#main-nav" data-toggle="collapse">Dev Containers</a>
+              <ul id="devcontainers-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../devcontainers/containers.html" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../devcontainers/tutorial.html" >Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../devcontainers/attach-container.html" >Attach to Container</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../devcontainers/create-dev-container.html" >Create Dev Container</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../../remote/advancedcontainers/overview.html" >Advanced Containers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://containers.dev/implementors/json_reference" >devcontainer.json</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../devcontainers/devcontainer-cli.html" >Dev Container CLI</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../devcontainers/tips-and-tricks.html" >Tips and Tricks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../devcontainers/faq.html" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#reference-articles" data-parent="#main-nav" data-toggle="collapse">Reference</a>
+              <ul id="reference-articles" class="collapse ">
+            
+                    <li >
+                      <a href="../reference/default-keybindings.html" >Default Keyboard Shortcuts</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../reference/default-settings.html" >Default Settings</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../reference/variables-reference.html" >Substitution Variables</a>
+                    </li>
+                      
+                    <li >
+                      <a href="../reference/tasks-appendix.html" >Tasks Schema</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+              </ul>
+            </nav>
+            
+            <nav id="small-nav" aria-label="Topics" class="docs-nav hidden-md hidden-lg">
+              <label class="faux-h4" for="small-nav-dropdown">Topics</label>
+              <select id="small-nav-dropdown" aria-label="topics">
+                <option value="/docs" >Overview</option>
+            
+              <optgroup label="Setup">
+            
+                    <option value="/docs/setup/setup-overview" >Overview</option>
+                    
+                    <option value="/docs/setup/linux" >Linux</option>
+                    
+                    <option value="/docs/setup/mac" >macOS</option>
+                    
+                    <option value="/docs/setup/windows" >Windows</option>
+                    
+                    <option value="/docs/setup/vscode-web" >VS Code for the Web</option>
+                    
+                    <option value="/docs/setup/raspberry-pi" >Raspberry Pi</option>
+                    
+                    <option value="/docs/setup/network" >Network</option>
+                    
+                    <option value="/docs/setup/additional-components" >Additional Components</option>
+                    
+                    <option value="/docs/setup/enterprise" >Enterprise</option>
+                    
+                    <option value="/docs/setup/uninstall" >Uninstall</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Get Started">
+            
+                    <option value="/docs/getstarted/getting-started" >VS Code Tutorial</option>
+                    
+                    <option value="/docs/getstarted/copilot-quickstart" >Copilot Quickstart</option>
+                    
+                    <option value="/docs/getstarted/userinterface" >User Interface</option>
+                    
+                    <option value="/docs/getstarted/personalize-vscode" >Personalize VS Code</option>
+                    
+                    <option value="/docs/getstarted/extensions" >Install Extensions</option>
+                    
+                    <option value="/docs/getstarted/tips-and-tricks" >Tips and Tricks</option>
+                    
+                    <option value="/docs/getstarted/introvideos" >Intro Videos</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Configure">
+            
+                    <option value="/docs/configure/locales" >Display Language</option>
+                    
+                    <option value="/docs/configure/custom-layout" >Layout</option>
+                    
+                    <option value="/docs/configure/keybindings" >Keyboard Shortcuts</option>
+                    
+                    <option value="/docs/configure/settings" >Settings</option>
+                    
+                    <option value="/docs/configure/settings-sync" >Settings Sync</option>
+                    
+                    <optgroup label="Configure - Extensions">
+            
+                      <option value="/docs/configure/extensions/extension-marketplace" >Extension Marketplace</option>
+                      
+                      <option value="/docs/configure/extensions/extension-runtime-security" >Extension Runtime Security</option>
+                      
+                    </optgroup>
+            
+                    <option value="/docs/configure/themes" >Themes</option>
+                    
+                    <option value="/docs/configure/profiles" >Profiles</option>
+                    
+                    <optgroup label="Configure - Accessibility">
+            
+                      <option value="/docs/configure/accessibility/accessibility" >Overview</option>
+                      
+                      <option value="/docs/configure/accessibility/voice" >Voice Interactions</option>
+                      
+                    </optgroup>
+            
+                    <option value="/docs/configure/command-line" >Command Line Interface</option>
+                    
+                    <option value="/docs/configure/telemetry" >Telemetry</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Edit code">
+            
+                    <option value="/docs/editing/codebasics" >Basic Editing</option>
+                    
+                    <option value="/docs/editing/intellisense" >IntelliSense</option>
+                    
+                    <option value="/docs/editing/editingevolved" >Code Navigation</option>
+                    
+                    <option value="/docs/editing/refactoring" >Refactoring</option>
+                    
+                    <option value="/docs/editing/userdefinedsnippets" >Snippets</option>
+                    
+                    <optgroup label="Edit code - Workspaces">
+            
+                      <option value="/docs/editing/workspaces/workspaces" >Overview</option>
+                      
+                      <option value="/docs/editing/workspaces/multi-root-workspaces" >Multi-root Workspaces</option>
+                      
+                      <option value="/docs/editing/workspaces/workspace-trust" >Workspace Trust</option>
+                      
+                    </optgroup>
+            
+              </optgroup>
+              
+              <optgroup label="Build, Debug, Test">
+            
+                    <option value="/docs/debugtest/tasks" >Tasks</option>
+                    
+                    <option value="/docs/debugtest/debugging" >Debugging</option>
+                    
+                    <option value="/docs/debugtest/debugging-configuration" >Debug Configuration</option>
+                    
+                    <option value="/docs/debugtest/testing" >Testing</option>
+                    
+                    <option value="/docs/debugtest/port-forwarding" >Port Forwarding</option>
+                    
+              </optgroup>
+              
+              <optgroup label="GitHub Copilot">
+            
+                    <option value="/docs/copilot/overview" >Overview</option>
+                    
+                    <option value="/docs/copilot/setup" >Setup</option>
+                    
+                    <option value="/docs/copilot/getting-started" >Quickstart</option>
+                    
+                    <optgroup label="GitHub Copilot - Chat">
+            
+                      <option value="/docs/copilot/chat/copilot-chat" >Chat Overview</option>
+                      
+                      <option value="/docs/copilot/chat/copilot-chat-context" >Manage Context</option>
+                      
+                      <option value="/docs/copilot/chat/chat-ask-mode" >Ask Mode</option>
+                      
+                      <option value="/docs/copilot/chat/copilot-edits" >Edit Mode</option>
+                      
+                      <option value="/docs/copilot/chat/chat-agent-mode" >Agent Mode</option>
+                      
+                      <option value="/docs/copilot/chat/inline-chat" >Inline Chat</option>
+                      
+                      <option value="/docs/copilot/chat/prompt-crafting" >Prompt Engineering</option>
+                      
+                    </optgroup>
+            
+                    <option value="/docs/copilot/ai-powered-suggestions" >Code Completions</option>
+                    
+                    <option value="/docs/copilot/copilot-coding-agent" >Copilot Coding Agent</option>
+                    
+                    <optgroup label="GitHub Copilot - Customize Copilot">
+            
+                      <option value="/docs/copilot/customization/overview" >Overview</option>
+                      
+                      <option value="/docs/copilot/customization/custom-instructions" >Custom Instructions</option>
+                      
+                      <option value="/docs/copilot/customization/prompt-files" >Prompt Files</option>
+                      
+                      <option value="/docs/copilot/customization/custom-chat-modes" >Chat Modes</option>
+                      
+                      <option value="/docs/copilot/customization/language-models" >Language Models</option>
+                      
+                      <option value="/docs/copilot/customization/mcp-servers" >MCP</option>
+                      
+                    </optgroup>
+            
+                    <optgroup label="GitHub Copilot - Guides">
+            
+                      <option value="/docs/copilot/guides/notebooks-with-ai" >Edit Notebooks with AI</option>
+                      
+                      <option value="/docs/copilot/guides/test-with-copilot" >Test with AI</option>
+                      
+                      <option value="/docs/copilot/guides/debug-with-copilot" >Debug with AI</option>
+                      
+                      <option value="/docs/copilot/guides/mcp-developer-guide" >MCP Dev Guide</option>
+                      
+                    </optgroup>
+            
+                    <option value="/docs/copilot/copilot-smart-actions" >Smart Actions</option>
+                    
+                    <option value="/docs/copilot/copilot-tips-and-tricks" >Tips and Tricks</option>
+                    
+                    <option value="/docs/copilot/security" >Security</option>
+                    
+                    <option value="/docs/copilot/faq" >FAQ</option>
+                    
+                    <optgroup label="GitHub Copilot - Reference">
+            
+                      <option value="/docs/copilot/reference/copilot-vscode-features" >Cheat Sheet</option>
+                      
+                      <option value="/docs/copilot/reference/copilot-settings" >Settings Reference</option>
+                      
+                      <option value="/docs/copilot/reference/workspace-context" >Workspace Context</option>
+                      
+                    </optgroup>
+            
+              </optgroup>
+              
+              <optgroup label="Source Control">
+            
+                    <option value="/docs/sourcecontrol/overview" selected>Overview</option>
+                    
+                    <option value="/docs/sourcecontrol/intro-to-git" >Introduction to Git</option>
+                    
+                    <option value="/docs/sourcecontrol/github" >Collaborate on GitHub</option>
+                    
+                    <option value="/docs/sourcecontrol/faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Terminal">
+            
+                    <option value="/docs/terminal/getting-started" >Getting Started Tutorial</option>
+                    
+                    <option value="/docs/terminal/basics" >Terminal Basics</option>
+                    
+                    <option value="/docs/terminal/profiles" >Terminal Profiles</option>
+                    
+                    <option value="/docs/terminal/shell-integration" >Shell Integration</option>
+                    
+                    <option value="/docs/terminal/appearance" >Appearance</option>
+                    
+                    <option value="/docs/terminal/advanced" >Advanced</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Languages">
+            
+                    <option value="/docs/languages/overview" >Overview</option>
+                    
+                    <option value="/docs/languages/javascript" >JavaScript</option>
+                    
+                    <option value="/docs/languages/json" >JSON</option>
+                    
+                    <option value="/docs/languages/html" >HTML</option>
+                    
+                    <option value="/docs/languages/emmet" >Emmet</option>
+                    
+                    <option value="/docs/languages/css" >CSS, SCSS and Less</option>
+                    
+                    <option value="/docs/languages/typescript" >TypeScript</option>
+                    
+                    <option value="/docs/languages/markdown" >Markdown</option>
+                    
+                    <option value="/docs/languages/powershell" >PowerShell</option>
+                    
+                    <option value="/docs/languages/cpp" >C++</option>
+                    
+                    <option value="/docs/languages/java" >Java</option>
+                    
+                    <option value="/docs/languages/php" >PHP</option>
+                    
+                    <option value="/docs/languages/python" >Python</option>
+                    
+                    <option value="/docs/languages/julia" >Julia</option>
+                    
+                    <option value="/docs/languages/r" >R</option>
+                    
+                    <option value="/docs/languages/ruby" >Ruby</option>
+                    
+                    <option value="/docs/languages/rust" >Rust</option>
+                    
+                    <option value="/docs/languages/go" >Go</option>
+                    
+                    <option value="/docs/languages/tsql" >T-SQL</option>
+                    
+                    <option value="/docs/languages/csharp" >C#</option>
+                    
+                    <option value="/docs/languages/dotnet" >.NET</option>
+                    
+                    <option value="/docs/languages/polyglot" >Polyglot</option>
+                    
+                    <option value="/docs/languages/swift" >Swift</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Node.js / JavaScript">
+            
+                    <option value="/docs/nodejs/working-with-javascript" >Working with JavaScript</option>
+                    
+                    <option value="/docs/nodejs/nodejs-tutorial" >Node.js Tutorial</option>
+                    
+                    <option value="/docs/nodejs/nodejs-debugging" >Node.js Debugging</option>
+                    
+                    <option value="/docs/nodejs/nodejs-deployment" >Deploy Node.js Apps</option>
+                    
+                    <option value="/docs/nodejs/browser-debugging" >Browser Debugging</option>
+                    
+                    <option value="/docs/nodejs/angular-tutorial" >Angular Tutorial</option>
+                    
+                    <option value="/docs/nodejs/reactjs-tutorial" >React Tutorial</option>
+                    
+                    <option value="/docs/nodejs/vuejs-tutorial" >Vue Tutorial</option>
+                    
+                    <option value="/docs/nodejs/debugging-recipes" >Debugging Recipes</option>
+                    
+                    <option value="/docs/nodejs/profiling" >Performance Profiling</option>
+                    
+                    <option value="/docs/nodejs/extensions" >Extensions</option>
+                    
+              </optgroup>
+              
+              <optgroup label="TypeScript">
+            
+                    <option value="/docs/typescript/typescript-tutorial" >Tutorial</option>
+                    
+                    <option value="/docs/typescript/typescript-compiling" >Compiling</option>
+                    
+                    <option value="/docs/typescript/typescript-editing" >Editing</option>
+                    
+                    <option value="/docs/typescript/typescript-refactoring" >Refactoring</option>
+                    
+                    <option value="/docs/typescript/typescript-debugging" >Debugging</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Python">
+            
+                    <option value="/docs/python/python-quick-start" >Quick Start</option>
+                    
+                    <option value="/docs/python/python-tutorial" >Tutorial</option>
+                    
+                    <option value="/docs/python/run" >Run Python Code</option>
+                    
+                    <option value="/docs/python/editing" >Editing</option>
+                    
+                    <option value="/docs/python/linting" >Linting</option>
+                    
+                    <option value="/docs/python/formatting" >Formatting</option>
+                    
+                    <option value="/docs/python/debugging" >Debugging</option>
+                    
+                    <option value="/docs/python/environments" >Environments</option>
+                    
+                    <option value="/docs/python/testing" >Testing</option>
+                    
+                    <option value="/docs/python/jupyter-support-py" >Python Interactive</option>
+                    
+                    <option value="/docs/python/tutorial-django" >Django Tutorial</option>
+                    
+                    <option value="/docs/python/tutorial-fastapi" >FastAPI Tutorial</option>
+                    
+                    <option value="/docs/python/tutorial-flask" >Flask Tutorial</option>
+                    
+                    <option value="/docs/python/tutorial-create-containers" >Create Containers</option>
+                    
+                    <option value="/docs/python/python-on-azure" >Deploy Python Apps</option>
+                    
+                    <option value="/docs/python/python-web" >Python in the Web</option>
+                    
+                    <option value="/docs/python/settings-reference" >Settings Reference</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Java">
+            
+                    <option value="/docs/java/java-tutorial" >Getting Started</option>
+                    
+                    <option value="/docs/java/java-editing" >Navigate and Edit</option>
+                    
+                    <option value="/docs/java/java-refactoring" >Refactoring</option>
+                    
+                    <option value="/docs/java/java-linting" >Formatting and Linting</option>
+                    
+                    <option value="/docs/java/java-project" >Project Management</option>
+                    
+                    <option value="/docs/java/java-build" >Build Tools</option>
+                    
+                    <option value="/docs/java/java-debugging" >Run and Debug</option>
+                    
+                    <option value="/docs/java/java-testing" >Testing</option>
+                    
+                    <option value="/docs/java/java-spring-boot" >Spring Boot</option>
+                    
+                    <option value="/docs/java/java-tomcat-jetty" >Application Servers</option>
+                    
+                    <option value="/docs/java/java-on-azure" >Deploy Java Apps</option>
+                    
+                    <option value="/docs/java/java-gui" >GUI Applications</option>
+                    
+                    <option value="/docs/java/extensions" >Extensions</option>
+                    
+                    <option value="/docs/java/java-faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="C++">
+            
+                    <option value="/docs/cpp/introvideos-cpp" >Intro Videos</option>
+                    
+                    <option value="/docs/cpp/config-linux" >GCC on Linux</option>
+                    
+                    <option value="/docs/cpp/config-mingw" >GCC on Windows</option>
+                    
+                    <option value="/docs/cpp/config-wsl" >GCC on Windows Subsystem for Linux</option>
+                    
+                    <option value="/docs/cpp/config-clang-mac" >Clang on macOS</option>
+                    
+                    <option value="/docs/cpp/config-msvc" >Microsoft C++ on Windows</option>
+                    
+                    <option value="/docs/cpp/build-with-cmake" >Build with CMake</option>
+                    
+                    <option value="/docs/cpp/cmake-linux" >CMake Tools on Linux</option>
+                    
+                    <option value="/docs/cpp/cmake-quickstart" >CMake Quick Start</option>
+                    
+                    <option value="/docs/cpp/cpp-ide" >Editing and Navigating</option>
+                    
+                    <option value="/docs/cpp/cpp-debug" >Debugging</option>
+                    
+                    <option value="/docs/cpp/launch-json-reference" >Configure Debugging</option>
+                    
+                    <option value="/docs/cpp/cpp-refactoring" >Refactoring</option>
+                    
+                    <option value="/docs/cpp/customize-cpp-settings" >Settings Reference</option>
+                    
+                    <option value="/docs/cpp/configure-intellisense" >Configure IntelliSense</option>
+                    
+                    <option value="/docs/cpp/configure-intellisense-crosscompilation" >Configure IntelliSense for Cross-Compiling</option>
+                    
+                    <option value="/docs/cpp/faq-cpp" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="C#">
+            
+                    <option value="/docs/csharp/introvideos-csharp" >Intro Videos</option>
+                    
+                    <option value="/docs/csharp/get-started" >Get Started</option>
+                    
+                    <option value="/docs/csharp/navigate-edit" >Navigate and Edit</option>
+                    
+                    <option value="/docs/csharp/intellicode" >IntelliCode</option>
+                    
+                    <option value="/docs/csharp/refactoring" >Refactoring</option>
+                    
+                    <option value="/docs/csharp/formatting-linting" >Formatting and Linting</option>
+                    
+                    <option value="/docs/csharp/project-management" >Project Management</option>
+                    
+                    <option value="/docs/csharp/build-tools" >Build Tools</option>
+                    
+                    <option value="/docs/csharp/package-management" >Package Management</option>
+                    
+                    <option value="/docs/csharp/debugging" >Run and Debug</option>
+                    
+                    <option value="/docs/csharp/testing" >Testing</option>
+                    
+                    <option value="/docs/csharp/cs-dev-kit-faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Container Tools">
+            
+                    <option value="/docs/containers/overview" >Overview</option>
+                    
+                    <option value="/docs/containers/quickstart-node" >Node.js</option>
+                    
+                    <option value="/docs/containers/quickstart-python" >Python</option>
+                    
+                    <option value="/docs/containers/quickstart-aspnet-core" >ASP.NET Core</option>
+                    
+                    <option value="/docs/containers/debug-common" >Debug</option>
+                    
+                    <option value="/docs/containers/docker-compose" >Docker Compose</option>
+                    
+                    <option value="/docs/containers/quickstart-container-registries" >Registries</option>
+                    
+                    <option value="/docs/containers/app-service" >Deploy to Azure</option>
+                    
+                    <option value="/docs/containers/choosing-dev-environment" >Choose a Dev Environment</option>
+                    
+                    <option value="/docs/containers/reference" >Customize</option>
+                    
+                    <option value="/docs/containers/bridge-to-kubernetes" >Develop with Kubernetes</option>
+                    
+                    <option value="/docs/containers/troubleshooting" >Tips and Tricks</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Data Science">
+            
+                    <option value="/docs/datascience/overview" >Overview</option>
+                    
+                    <option value="/docs/datascience/jupyter-notebooks" >Jupyter Notebooks</option>
+                    
+                    <option value="/docs/datascience/data-science-tutorial" >Data Science Tutorial</option>
+                    
+                    <option value="/docs/datascience/python-interactive" >Python Interactive</option>
+                    
+                    <option value="/docs/datascience/data-wrangler-quick-start" >Data Wrangler Quick Start</option>
+                    
+                    <option value="/docs/datascience/data-wrangler" >Data Wrangler</option>
+                    
+                    <option value="/docs/datascience/pytorch-support" >PyTorch Support</option>
+                    
+                    <option value="/docs/datascience/azure-machine-learning" >Azure Machine Learning</option>
+                    
+                    <option value="/docs/datascience/jupyter-kernel-management" >Manage Jupyter Kernels</option>
+                    
+                    <option value="/docs/datascience/notebooks-web" >Jupyter Notebooks on the Web</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Intelligent Apps">
+            
+                    <option value="/docs/intelligentapps/overview" >AI Toolkit Overview</option>
+                    
+                    <option value="/docs/intelligentapps/models" >Models</option>
+                    
+                    <option value="/docs/intelligentapps/playground" >Playground</option>
+                    
+                    <option value="/docs/intelligentapps/agentbuilder" >Agent Builder</option>
+                    
+                    <option value="/docs/intelligentapps/bulkrun" >Bulk Run</option>
+                    
+                    <option value="/docs/intelligentapps/evaluation" >Evaluation</option>
+                    
+                    <option value="/docs/intelligentapps/finetune" >Fine-tune</option>
+                    
+                    <option value="/docs/intelligentapps/modelconversion" >Model Conversion</option>
+                    
+                    <option value="/docs/intelligentapps/tracing" >Tracing</option>
+                    
+                    <option value="/docs/intelligentapps/faq" >FAQ</option>
+                    
+                    <optgroup label="Intelligent Apps - Reference">
+            
+                      <option value="/docs/intelligentapps/reference/FileStructure" >File Structure</option>
+                      
+                      <option value="/docs/intelligentapps/reference/ManualModelConversion" >Manual Model Conversion</option>
+                      
+                      <option value="/docs/intelligentapps/reference/ManualConversionOnGPU" >Manual Model Conversion On GPU</option>
+                      
+                      <option value="/docs/intelligentapps/reference/SetupWithoutAITK" >Setup Environment Without AI Toolkit</option>
+                      
+                      <option value="/docs/intelligentapps/reference/TemplateProject" >Template Project</option>
+                      
+                    </optgroup>
+            
+              </optgroup>
+              
+              <optgroup label="Azure">
+            
+                    <option value="/docs/azure/overview" >Overview</option>
+                    
+                    <option value="/docs/azure/gettingstarted" >Getting Started</option>
+                    
+                    <option value="/docs/azure/resourcesextension" >Resources View</option>
+                    
+                    <option value="/docs/azure/deployment" >Deployment</option>
+                    
+                    <option value="/docs/azure/vscodeforweb" >VS Code for the Web - Azure</option>
+                    
+                    <option value="/docs/azure/containers" >Containers</option>
+                    
+                    <option value="/docs/azure/aksextensions" >Azure Kubernetes Service</option>
+                    
+                    <option value="/docs/azure/kubernetes" >Kubernetes</option>
+                    
+                    <option value="/docs/azure/mongodb" >MongoDB</option>
+                    
+                    <option value="/docs/azure/remote-debugging" >Remote Debugging for Node.js</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Remote">
+            
+                    <option value="/docs/remote/remote-overview" >Overview</option>
+                    
+                    <option value="/docs/remote/ssh" >SSH</option>
+                    
+                    <option value="/docs/remote/dev-containers" >Dev Containers</option>
+                    
+                    <option value="/docs/remote/wsl" >Windows Subsystem for Linux</option>
+                    
+                    <option value="/docs/remote/codespaces" >GitHub Codespaces</option>
+                    
+                    <option value="/docs/remote/vscode-server" >VS Code Server</option>
+                    
+                    <option value="/docs/remote/tunnels" >Tunnels</option>
+                    
+                    <option value="/docs/remote/ssh-tutorial" >SSH Tutorial</option>
+                    
+                    <option value="/docs/remote/wsl-tutorial" >WSL Tutorial</option>
+                    
+                    <option value="/docs/remote/troubleshooting" >Tips and Tricks</option>
+                    
+                    <option value="/docs/remote/faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Dev Containers">
+            
+                    <option value="/docs/devcontainers/containers" >Overview</option>
+                    
+                    <option value="/docs/devcontainers/tutorial" >Tutorial</option>
+                    
+                    <option value="/docs/devcontainers/attach-container" >Attach to Container</option>
+                    
+                    <option value="/docs/devcontainers/create-dev-container" >Create Dev Container</option>
+                    
+                    <option value="/docs/devcontainers/containers-advanced" >Advanced Containers</option>
+                    
+                    <option value="/docs/devcontainers/devcontainerjson-reference" >devcontainer.json</option>
+                    
+                    <option value="/docs/devcontainers/devcontainer-cli" >Dev Container CLI</option>
+                    
+                    <option value="/docs/devcontainers/tips-and-tricks" >Tips and Tricks</option>
+                    
+                    <option value="/docs/devcontainers/faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Reference">
+            
+                    <option value="/docs/reference/default-keybindings" >Default Keyboard Shortcuts</option>
+                    
+                    <option value="/docs/reference/default-settings" >Default Settings</option>
+                    
+                    <option value="/docs/reference/variables-reference" >Substitution Variables</option>
+                    
+                    <option value="/docs/reference/tasks-appendix" >Tasks Schema</option>
+                    
+              </optgroup>
+              
+              </select>
+            </nav>        </div>
+
+        <!-- main content -->
+        <main class="col-xs-12 col-sm-9 col-md-8 body">
+            <div class="edit-github pull-right">
+                <a href="https://vscode.dev/github/microsoft/vscode-docs/blob/main/docs/sourcecontrol/overview.md"
+                    class="btn btn-default hidden-xs hidden-sm hidden-md" title="Edit this document in vscode.dev">
+                    Edit
+                </a>
+            </div>
+            <h1>Using Git source control in VS Code</h1>
+<p>Visual Studio Code has integrated source control management (SCM) and includes <a href="https://git-scm.com/" class="external-link" target="_blank">Git</a> support out-of-the-box. Many other source control providers are available through extensions on the <a href="https://marketplace.visualstudio.com/search?target=VSCode&amp;category=SCM%20Providers&amp;sortBy=Installs" class="external-link" target="_blank">Visual Studio Marketplace</a>.</p>
+<p>With GitHub Copilot in VS Code, you can get suggestions for commit messages, pull requests, and review code changes before committing them. Learn more about <a href="../copilot/overview.html">GitHub Copilot in VS Code</a>.</p>
+<div class="markdown-alert tip" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z">
+          </path>
+        </svg>
+        Tip
+      </span><p>If you don't have a Copilot subscription yet, use Copilot for free by signing up for the <a href="https://github.com/github-copilot/signup" class="external-link" target="_blank">Copilot Free plan</a>. You'll get a monthly limit of completions and chat interactions.</p>
+</div><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/i_23KUAEtUM" title="Using Git with Visual Studio Code (Official Beginner Tutorial)" frameborder="0" allowfullscreen></iframe>
+<div class="markdown-alert tip" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z">
+          </path>
+        </svg>
+        Tip
+      </span><p>If you're just getting started with Git, the <a href="https://git-scm.com/doc" class="external-link" target="_blank">git-scm</a> website is a good place to start, with a popular online <a href="https://git-scm.com/book" class="external-link" target="_blank">book</a>, Getting Started <a href="https://git-scm.com/video/what-is-git" class="external-link" target="_blank">videos</a> and <a href="https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf" class="external-link" target="_blank">cheat sheets</a>. The VS Code documentation assumes you are already familiar with Git.</p>
+</div><h2 id="_working-in-a-git-repository" data-needslink="_working-in-a-git-repository">Working in a Git repository</h2>
+<p>VS Code recognizes when you open a folder that is a Git repository. The Source Control view enables you to perform most of the Git operations without using the command line.</p>
+<div class="markdown-alert important" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z">
+          </path>
+        </svg>
+        Important
+      </span><p><strong>Make sure that Git is installed on your machine.</strong> VS Code uses your machine's Git installation (at least version <code>2.0.0</code>), so you need to <a href="https://git-scm.com/download" class="external-link" target="_blank">install Git</a> first before you get these features.</p>
+</div><p>You can access the Source Control view from the by selecting the <strong>Source Control</strong> icon in the Activity Bar or by using the <span class="dynamic-keybinding" data-commandId="workbench.view.scm" data-osx="⌃⇧G" data-win="Ctrl+Shift+G" data-linux="Ctrl+Shift+G"><span class="keybinding">⌃⇧G</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+G</span>)</span> keyboard shortcut. If you have changes, the Source Control icon indicates <strong>how many changes</strong> you currently have in your repository.</p>
+<p>The Source Control view shows the details of your current repository changes: <strong>CHANGES</strong>, <strong>STAGED CHANGES</strong> and <strong>MERGE CHANGES</strong>. You can also view the <a href="#_source-control-graph"><strong>source control graph</strong></a> to see how your changes relate to the repository's history.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/overview.png" alt="Overview of Git" loading="lazy"></p>
+<p>When you select a file in the Source Control view, you will see the changes that you have made to that file in a diff editor.</p>
+<div class="markdown-alert tip" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z">
+          </path>
+        </svg>
+        Tip
+      </span><p>For unstaged changes, the editor on the right still lets you edit the file: feel free to use it!</p>
+</div><p>You can also find indicators of the <strong>status of your repository</strong> in the bottom-left of the VS Code Status Bar: the <strong>current branch</strong>, <strong>dirty indicators</strong>, and the number of <strong>incoming and outgoing commits</strong> of the current branch. To <strong>check out</strong> any branch in your repository, select the status indicator and select the Git reference from the list.</p>
+<div class="markdown-alert tip" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z">
+          </path>
+        </svg>
+        Tip
+      </span><p>You can open VS Code in a sub-directory of a Git repository. VS Code's Git services will still work as usual, showing all changes within the repository, but file changes outside of the scoped directory are shaded with a tool tip indicating they are located outside the current workspace.</p>
+</div><h2 id="_cloning-a-repository" data-needslink="_cloning-a-repository">Cloning a repository</h2>
+<p>If you haven't opened a folder yet, the Source Control view will give you the options to <strong>Open Folder</strong> from your local machine or <strong>Clone Repository</strong>.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/firstrun-source-control.png" alt="First run Source Control experience" loading="lazy"></p>
+<p>If you select <strong>Clone Repository</strong>, you will be asked for the URL of the remote repository (for example on <a href="https://github.com/" class="external-link" target="_blank">GitHub</a>) and the parent directory under which to put the local repository.</p>
+<p>For a GitHub repository, you would find the URL from the GitHub <strong>Code</strong> dialog.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/GitHub-clone-dialog.png" alt="clone repository dialog" loading="lazy"></p>
+<p>You would then paste that URL into the <strong>Git: Clone</strong> prompt.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/set-repo-URL.png" alt="set repository URL" loading="lazy"></p>
+<p>You'll also see the option to <strong>Clone from GitHub</strong>. Once you authenticate with your GitHub account in VS Code, you'll be able to search through repositories by name, and select any repo to clone it. You can also start the flow to clone a Git repository with the <strong>Git: Clone</strong> command in the <strong>Command Palette</strong> (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>). To see a step-by-step walkthrough, check out our <a href="https://www.youtube.com/watch?v=bz1KauFlbQI" class="external-link" target="_blank">Clone repos from VS Code</a> video.</p>
+<div class="markdown-alert note" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z">
+          </path>
+        </svg>
+        Note
+      </span><p>If you'd like to work on a repository without cloning the contents to your local machine, you can install the <a href="https://marketplace.visualstudio.com/items?itemName=github.remotehub" class="external-link" target="_blank">GitHub Repositories</a> extension to browse and edit directly on GitHub. You can learn more in the <a href="github.html#_github-repositories-extension">GitHub Repositories extension</a> section.</p>
+</div><h2 id="_initialize-a-repository" data-needslink="_initialize-a-repository">Initialize a repository</h2>
+<p>If your workspace is on your local machine, you can enable Git source control by creating a Git repository with the <strong>Initialize Repository</strong> command. When VS Code doesn't detect an existing Git repository, the Source Control view will give you the options to <strong>Initialize Repository</strong> or <strong>Publish to GitHub</strong>.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/initialize-repository.png" alt="Git initialize repository" loading="lazy"></p>
+<p>You can also run the <strong>Git: Initialize Repository</strong> and <strong>Publish to GitHub</strong> commands from the <strong>Command Palette</strong> (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>).</p>
+<ul>
+<li><strong>Initialize Repository</strong>: creates the necessary Git repository metadata files and shows your workspace files as untracked changes ready to be staged.</li>
+<li><strong>Publish to GitHub</strong>: directly publishes your workspace folder to a GitHub repository, allowing you to choose between private and public repositories. Check out our <a href="https://www.youtube.com/watch?v=3BBvBwDW4CY" class="external-link" target="_blank">publishing repos</a> video for more information about publishing to GitHub.</li>
+</ul>
+<h2 id="_commit" data-needslink="_commit">Commit</h2>
+<p><strong>Staging</strong> (<code>git add</code>) and <strong>unstaging</strong> (<code>git reset</code>) can be done via contextual actions in the files or by drag-and-drop.</p>
+<div class="markdown-alert note" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z">
+          </path>
+        </svg>
+        Note
+      </span><p><strong>Configure your Git username and email.</strong> When you commit, be aware that if your username and/or email is not set in your Git configuration, Git will fall back to using information from your local machine. You can find the details in <a href="https://git-scm.com/docs/git-commit#_commit_information" class="external-link" target="_blank">Git commit information</a>.</p>
+</div><p><img src="../../assets/docs/sourcecontrol/overview/stage-changes.png" alt="Stage all changes button" loading="lazy"></p>
+<p>You can type a commit message above the changes and press <span class="keybinding">Ctrl+Enter</span> (macOS: <span class="keybinding">⌘+Enter</span>) to commit them. If there are any staged changes, only those changes will be committed. Otherwise, you'll get a prompt asking you to select what changes you'd like to commit and get the option to change your commit settings.</p>
+<p>We've found this to be a great workflow. For example, in the earlier screenshot, only the staged changes to <code>overview.png</code> will be included in the commit. Later staging and commit actions could include the changes to <code>versioncontrol.md</code> and the two other <code>.png</code> images as a separate commit.</p>
+<p>More specific <strong>Commit</strong> actions can be found in the <strong>Views and More Actions</strong> <code>...</code> menu on the top of the Source Control view.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/scm-more-actions.png" alt="views and more actions button" loading="lazy"></p>
+<div class="markdown-alert tip" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z">
+          </path>
+        </svg>
+        Tip
+      </span><p>If you commit your change to the wrong branch, undo your commit using the <strong>Git: Undo Last Commit</strong> command in the <strong>Command Palette</strong> (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>).</p>
+</div><iframe src="https://www.youtube-nocookie.com/embed/E6ADS2k8oNQ" width="640" height="320" allowFullScreen="true" frameBorder="0" title="Git: Commits in Visual Studio Code"></iframe>
+<h3 id="_generate-a-commit-message-with-ai" data-needslink="_generate-a-commit-message-with-ai">Generate a commit message with AI</h3>
+<p>GitHub Copilot in VS Code can generate a commit message for you, based on the code changes you've made. In the Source Control view, select the <strong>Generate Commit Message with Copilot</strong> button (<i class="codicon codicon-sparkle"></i>) in the commit message input box.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/copilot-generate-commit-message.png" alt="Screenshot that shows the Generate Commit Message with Copilot button in the commit message input box." loading="lazy"></p>
+<p>If you have specific requirements for your commit message for your organization or project, you can use Copilot custom instructions for generating commit messages. For example, <em>commit messages have a maximum length of 60 chars and should start with a verb in the present tense</em>. Get more details about <a href="../copilot/customization/overview.html">Copilot custom instructions for generating commit messages</a>.</p>
+<h3 id="_author-commit-messages-using-an-editor" data-needslink="_author-commit-messages-using-an-editor">Author commit messages using an editor</h3>
+<p>If you don't enter a commit message when committing changes, VS Code opens an editor for the <code>COMMIT_EDITMSG</code> file where you can author the commit message in the editor. After you provide a commit message, either close the editor tab, or select the <strong>Accept Commit Message</strong> button in the editor toolbar to commit the changes.</p>
+<p>To cancel the commit operation, you can either clear the contents of the text editor and close the editor tab, or select the <strong>Discard Commit Message</strong> button in the editor toolbar.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/scm-git-editor.gif" alt="Author commit message in a full text editor" loading="lazy"></p>
+<p>You can disable this functionality by toggling the <span class="setting"><a href="vscode://settings/git.useEditorAsCommitInput" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'git.useEditorAsCommitInput' in Settings Editor"></span>git.useEditorAsCommitInput</a></span> setting. After the setting is changed, you have to restart VS Code for the change to take effect.</p>
+<p>To use the same flow for git commit commands executed in the integrated terminal, enable the <span class="setting"><a href="vscode://settings/git.terminalGitEditor" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'git.terminalGitEditor' in Settings Editor"></span>git.terminalGitEditor</a></span> setting.</p>
+<h2 id="_git-blame-information" data-needslink="_git-blame-information">Git blame information</h2>
+<p>VS Code can show git blame information inline in the editor and in the Status Bar. Hover over the Status Bar item or inline hint to view detailed git blame information.</p>
+<p>To enable or disable git blame information, use the <strong>Git: Toggle Git Blame Editor Decoration</strong> and <strong>Git: Toggle Git Blame Status Bar Item</strong> commands, or configure these settings:</p>
+<ul>
+<li><span class="setting"><a href="vscode://settings/git.blame.statusBarItem.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'git.blame.statusBarItem.enabled' in Settings Editor"></span>git.blame.statusBarItem.enabled</a></span> (enabled by default)</li>
+<li><span class="setting"><a href="vscode://settings/git.blame.editorDecoration.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'git.blame.editorDecoration.enabled' in Settings Editor"></span>git.blame.editorDecoration.enabled</a></span></li>
+</ul>
+<p><video src="../../assets/docs/sourcecontrol/overview/git-blame.mp4" title="Show git blame information in editor and Status Bar." autoplay loop controls muted></video></p>
+<p>You can customize the format of the message that is shown in the editor and in the Status Bar with the <span class="setting"><a href="vscode://settings/git.blame.editorDecoration.template" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'git.blame.editorDecoration.template' in Settings Editor"></span>git.blame.editorDecoration.template</a></span> and <span class="setting"><a href="vscode://settings/git.blame.statusBarItem.template" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'git.blame.statusBarItem.template' in Settings Editor"></span>git.blame.statusBarItem.template</a></span> settings. You can use variables for the most common information.</p>
+<p>For example, the following template shows the subject of the commit, the author's name, and the author's date relative to now:</p>
+<pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "git.blame.editorDecoration.template"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"${subject}, ${authorName} (${authorDateAgo})"</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<p>To adjust the color of the editor decoration, use the <code>git.blame.editorDecorationForeground</code> theme color.</p>
+<h2 id="_review-uncommitted-code-changes-with-ai" data-needslink="_review-uncommitted-code-changes-with-ai">Review uncommitted code changes with AI</h2>
+<p>GitHub Copilot in VS Code can help you review your uncommitted code changes.</p>
+<ol>
+<li>
+<p>In the Source Control view, select the <strong>Code Review</strong> button to start a code review of the uncommitted changes</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/copilot-code-review.png" alt="Screenshot that shows the Code Review button in the Source Control view." loading="lazy"></p>
+</li>
+<li>
+<p>Copilot generates code review comments and suggestions as overlays in the editor</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/copilot-code-review-results.png" alt="Screenshot that shows the code review comments generated by Copilot." loading="lazy"></p>
+<p>You can also view a list of all code review comments in the <strong>Comments</strong> panel.</p>
+</li>
+<li>
+<p>You apply or discard suggestions by using the corresponding buttons, or context menu actions in the Comments panel</p>
+</li>
+</ol>
+<p>Get more details about <a href="https://docs.github.com/en/copilot/using-github-copilot/code-review/using-copilot-code-review?tool=vscode" class="external-link" target="_blank">reviewing code changes with Copilot</a> in the GitHub documentation.</p>
+<h2 id="_branches-and-tags" data-needslink="_branches-and-tags">Branches and Tags</h2>
+<iframe src="https://www.youtube-nocookie.com/embed/b9LTz6joMf8?clip=Ugkxcq7zDGA4aMi8p7lICNMzTANn_8ozU5gK&amp;clipt=EPiBAxj08QU" width="640" height="320" allowFullScreen="true" frameBorder="0" title="Create Git Branches in Visual Studio Code"></iframe>
+<p>You can create and checkout branches directly within VS Code through the <strong>Git: Create Branch</strong> and <strong>Git: Checkout to</strong> commands in the <strong>Command Palette</strong> (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>).</p>
+<p>If you run <strong>Git: Checkout to</strong>, you will see a dropdown list containing all of the branches or tags in the current repository. It will also give you the option to create a new branch if you decide that's a better option, or checkout a branch in detached mode.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/gitbranches.png" alt="Git checkout" loading="lazy"></p>
+<p>The <strong>Git: Create Branch</strong> command lets you quickly create a new branch. Just provide the name of your new branch and VS Code will create the branch and switch to it. If you choose to <strong>Create new branch from...</strong>, you'll get an extra prompt that allows you to specify which commit the new branch should be pointing to.</p>
+<div class="markdown-alert tip" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z">
+          </path>
+        </svg>
+        Tip
+      </span><p>VS Code can automatically save and restore open editors when you switch to another branch. Use the <span class="setting"><a href="vscode://settings/scm.workingSets.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'scm.workingSets.enabled' in Settings Editor"></span>scm.workingSets.enabled</a></span> setting to enable this feature. To control the open editors when switching to a branch for the first time, you can use the <span class="setting"><a href="vscode://settings/scm.workingSets.default" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'scm.workingSets.default' in Settings Editor"></span>scm.workingSets.default</a></span> setting.</p>
+</div><h2 id="_worktrees" data-needslink="_worktrees">Worktrees</h2>
+<p>VS Code has built-in support for <a href="https://git-scm.com/docs/git-worktree" class="external-link" target="_blank">Git worktrees</a>, making it easy to manage and work with multiple branches at the same time.</p>
+<div class="markdown-alert note" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z">
+          </path>
+        </svg>
+        Note
+      </span><p>You can disable automatic worktree detection by toggling the <span class="setting"><a href="vscode://settings/git.detectWorktrees" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'git.detectWorktrees' in Settings Editor"></span>git.detectWorktrees</a></span> setting.</p>
+</div><h3 id="_create-a-worktree" data-needslink="_create-a-worktree">Create a worktree</h3>
+<p>You can create a new worktree directly from the <strong>Source Control Repositories</strong> view or by using the <strong>Git: Create Worktree</strong> command in the Command Palette (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>).</p>
+<ol>
+<li>
+<p>In the Source Control view, select <strong>...</strong> &gt; <strong>Repositories</strong> to open the Source Control Repositories view.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/source-control-view-repositories.png" alt="Screenshot that shows the Repositories option in the Source Control view." loading="lazy"></p>
+</li>
+<li>
+<p>Right-click on a repository, and select <strong>Worktrees</strong> &gt; <strong>Create Worktree...</strong></p>
+<p><img src="../../assets/docs/sourcecontrol/overview/worktree-create.png" alt="Screenshot that shows the Create Worktree option in the context menu of a repository in the Source Control Repositories view." loading="lazy"></p>
+</li>
+<li>
+<p>Follow the prompts to choose a branch and location for the new worktree.</p>
+<p>VS Code creates a new folder for the worktree at the specified location and checks out the selected branch into that folder.</p>
+<p>The Source Control Repositories view shows the newly created worktree under its parent repository. VS Code distinguishes between repositories, submodules, and worktrees, showing their relationships for better clarity.</p>
+</li>
+</ol>
+<h3 id="_open-a-worktree" data-needslink="_open-a-worktree">Open a worktree</h3>
+<p>There are multiple ways to open a worktree:</p>
+<ul>
+<li>
+<p>Directly open the folder associated with the worktree in VS Code. VS Code automatically detects that it's a worktree of an existing repository.</p>
+</li>
+<li>
+<p>Right-click the worktree in the Source Control Repositories view and select <strong>Open Worktree in New Window</strong> or <strong>Open Worktree in Current Window</strong>.</p>
+</li>
+<li>
+<p>Run the <strong>Git: Open Worktree in Current Window</strong> or <strong>Git: Open Worktree in New Window</strong> command in the Command Palette and select the desired worktree.</p>
+</li>
+</ul>
+<h3 id="_manage-worktrees" data-needslink="_manage-worktrees">Manage worktrees</h3>
+<p>All detected worktrees are shown in the Source Control Repositories view, grouped under their parent repository.</p>
+<p>When you select a worktree in the list, the Changes view shows the pending changes for that worktree.</p>
+<p>To delete a worktree, right-click it in the list and select <strong>Delete Worktree</strong>. Alternatively, run the <strong>Git: Delete Worktree</strong> command in the Command Palette.</p>
+<h3 id="_compare-and-migrate-changes-from-a-worktree" data-needslink="_compare-and-migrate-changes-from-a-worktree">Compare and migrate changes from a worktree</h3>
+<p>When you make changes in a worktree, you can compare those changes with your main workspace and bring worktree changes back into your main repository.</p>
+<ol>
+<li>
+<p>In the <strong>Source Control</strong> view, right-click a changed file in the worktree and select <strong>Compare with Workspace</strong> to see the differences side-by-side.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/worktree-compare-changes.png" alt="Screenshot that shows the Compare with Workspace option in the context menu of a changed file in a worktree." loading="lazy"></p>
+</li>
+<li>
+<p>After reviewing, use the <strong>Migrate Worktree Changes...</strong> command from the Command Palette to merge all changes from a worktree into your current workspace.</p>
+</li>
+</ol>
+<h2 id="_remotes" data-needslink="_remotes">Remotes</h2>
+<p>Given that your repository is connected to some remote and that your checked out branch has an <a href="https://git-scm.com/book/ch3-5.html" class="external-link" target="_blank">upstream link</a> to a branch in that remote, VS Code offers you useful actions to <strong>push</strong>, <strong>pull</strong>, and <strong>sync</strong> that branch (the latter will run a <strong>pull</strong> command followed by a <strong>push</strong> command). You can find these actions in the <strong>Views and More Actions</strong> <code>...</code> menu, along with the option to <strong>add or remove a remote</strong>.</p>
+<p>VS Code is able to periodically fetch changes from your remotes. This enables VS Code to show how many changes your local repository is ahead or behind the remote. This feature is disabled by default and you can use the <span class="setting"><a href="vscode://settings/git.autofetch" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'git.autofetch' in Settings Editor"></span>git.autofetch</a></span> <a href="../configure/settings.html">setting</a> to enable it.</p>
+<div class="markdown-alert tip" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z">
+          </path>
+        </svg>
+        Tip
+      </span><p>You should <a href="https://docs.github.com/get-started/getting-started-with-git/caching-your-github-credentials-in-git" class="external-link" target="_blank">set up a credential helper</a> to avoid getting asked for credentials every time VS Code talks to your Git remotes.  If you don't do this, you may want to consider disabling automatic fetching via the <span class="setting"><a href="vscode://settings/git.autofetch" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'git.autofetch' in Settings Editor"></span>git.autofetch</a></span> <a href="../configure/settings.html">setting</a> to reduce the number of prompts you get.</p>
+</div><h2 id="_source-control-graph" data-needslink="_source-control-graph">Source control graph</h2>
+<p>When you have a remote repository configured, you can see how many commits you are ahead or behind the remote. The <strong>Graph</strong> view in the Source Control view shows a graphical representation of the commits that are incoming and outgoing.</p>
+<p>The graph contains the current branch, the current branch's upstream branch, and an optional base branch. The root of the graph is the common ancestor of these branches.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/incoming-outgoing-changes.png" alt="Source control view showing a graph visualization of the incoming and outgoing changes." loading="lazy"></p>
+<p>The graph provides the following functionality:</p>
+<ul>
+<li>Select an entry to see the files that are changed in that commit. Select the <strong>Open Changes</strong> action to see the diff of the commit in the editor.</li>
+<li>Right-click on a commit to perform actions such as checkout, cherry-pick, adding it as context to chat, and more.</li>
+<li>Select a file to see the diff of that file in the editor.</li>
+</ul>
+<p>Use the actions in the Graph view tool bar to select the branch, fetch, pull, push, and sync changes.</p>
+<h2 id="_git-status-bar-actions" data-needslink="_git-status-bar-actions">Git Status Bar actions</h2>
+<p>There is a <strong>Synchronize Changes</strong> action in the Status Bar, next to the branch indicator, when the current checked out branch has an upstream branch configured. <strong>Synchronize Changes</strong> will pull remote changes down to your local repository and then push local commits to the upstream branch.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/git-status-bar-sync.png" alt="git status bar sync" loading="lazy"></p>
+<p>If there is no upstream branch configured and the Git repository has remotes set up, the <strong>Publish</strong> action is enabled. This will let you publish the current branch to a remote.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/git-status-bar-publish.png" alt="git status bar publish" loading="lazy"></p>
+<p>If your workspace contains multiple Git repositories, the Status Bar will show the current repository. When you select the Status Bar item, you can choose the behavior of which repository should be active.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/git-status-bar-repository.png" alt="git status bar repo name" loading="lazy"></p>
+<h2 id="_gutter-indicators" data-needslink="_gutter-indicators">Gutter indicators</h2>
+<p>If you open a folder that is a Git repository and begin making changes, VS Code will add useful annotations to the gutter and to the overview ruler.</p>
+<ul>
+<li>A red triangle indicates where lines have been deleted</li>
+<li>A green bar indicates new added lines</li>
+<li>A blue bar indicates modified lines</li>
+</ul>
+<p><img src="../../assets/docs/sourcecontrol/overview/gutter.png" alt="Gutter indicators" loading="lazy"></p>
+<h2 id="_merge-conflicts" data-needslink="_merge-conflicts">Merge conflicts</h2>
+<p><img src="../../assets/docs/sourcecontrol/overview/merge-conflict.png" alt="Git merge" loading="lazy"></p>
+<p>Merge conflicts are recognized by VS Code. Differences are highlighted and there are inline actions to accept either one or both changes. Once the conflicts are resolved, stage the conflicting file so you can commit those changes.</p>
+<h2 id="_3way-merge-editor" data-needslink="_3way-merge-editor">3-way merge editor</h2>
+<p>To help you resolve merge conflicts, VS Code provides a 3-way merge editor where you can interactively accept incoming and current changes and view and edit the resulting merged file. The 3-way merge editor is opened by selecting the <strong>Resolve in Merge Editor</strong> button in the bottom right corner of a file with Git merge conflicts.</p>
+<p>The 3-way merge editor displays separate views for <strong>Incoming</strong> changes (on the left), <strong>Current</strong> changes (on the right), and the <strong>Result</strong> of the merge (at the bottom). Conflicts are highlighted and can be resolved by using the CodeLens buttons.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/merge-editor-overview.png" alt="3-way merge editor" loading="lazy"></p>
+<h3 id="_resolving-conflicts" data-needslink="_resolving-conflicts">Resolving conflicts</h3>
+<p>The 3-way merge editor allows you to resolve conflicts by accepting either one or both changes. You can also manually edit the result of the merge.</p>
+<p>For some conflicts, the merge editor shows an <strong>Accept Combination</strong> button. Accepting the combination resolves the current conflict by smartly merging both changes. This is especially useful for changes in the same line that don't touch the same characters.</p>
+<p>Use the <strong>Ignore</strong> buttons to accept neither the incoming nor current change, but mark the conflict as resolved. This resets the conflicting area to the state before any changes were made.</p>
+<h3 id="_completing-the-merge" data-needslink="_completing-the-merge">Completing the merge</h3>
+<p>You can use the conflict counter in the right of the result editor to keep track of how many unresolved conflicts are remaining. Clicking on the counter jumps to the next unresolved conflict. Once all conflicts are resolved, you can complete the merge by selecting <strong>Complete Merge</strong> in the bottom right corner. This stages the file and closes the merge editor.</p>
+<h3 id="_alternative-layouts-and-more" data-needslink="_alternative-layouts-and-more">Alternative layouts and more</h3>
+<p>Selecting the three dots (<strong>···</strong>) in the top right corner of the merge editor opens a context menu with additional options. You can switch to a vertical layout and display the base view, which shows the state of the file before any changes were made.</p>
+<p>The three dots next to <strong>Incoming</strong>, <strong>Current</strong>, and <strong>Result</strong> offer options for each view, such as showing a side-by-side diff against base, accepting all changes, or resetting the result.</p>
+<h3 id="_understanding-conflicts" data-needslink="_understanding-conflicts">Understanding conflicts</h3>
+<p>If you want to learn more about the details of how 3-way merge editors work, we can recommend the following video:</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/HosPml1qkrg" title="The EXTREMELY helpful guide to merge conflicts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<h2 id="_viewing-diffs" data-needslink="_viewing-diffs">Viewing diffs</h2>
+<p>Our Git tooling supports viewing of diffs within VS Code.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/diff.png" alt="A File Diff in VS Code" loading="lazy"></p>
+<p>The Diff editor has a separate gutter in the middle, which enables you to <strong>Stage</strong> or <strong>Revert</strong> changes code blocks. If you select a block of text, you can revert or stage the changes that are included in the selection.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/diffEditor-stage-revert-demo.gif" alt="Screenshot of the Diff editor, showing the Stage and Revert controls in the gutter" loading="lazy"></p>
+<div class="markdown-alert tip" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z">
+          </path>
+        </svg>
+        Tip
+      </span><p>You can diff any two files by first right-clicking on a file in the Explorer view and selecting <strong>Select for Compare</strong> and then right-click on the second file to compare with and select <strong>Compare with Selected</strong>. Alternatively, open the Command Palette (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>), and select ay of the <strong>File: Compare</strong> commands. Learn more about the different options to <a href="../editing/codebasics.html#_compare-files">compare files in VS Code</a>.</p>
+</div><h3 id="_accessible-diff-viewer" data-needslink="_accessible-diff-viewer">Accessible Diff Viewer</h3>
+<p>There is an Accessible Diff Viewer in the Diff editor that presents changes in a unified patch format. You can navigate between changes with <strong>Go to Next Difference</strong> (<span class="dynamic-keybinding" data-commandId="editor.action.accessibleDiffViewer.next" data-osx="F7" data-win="F7" data-linux="F7"><span class="keybinding">F7</span></span>) and <strong>Go to Previous Difference</strong> (<span class="dynamic-keybinding" data-commandId="editor.action.accessibleDiffViewer.prev" data-osx="⇧F7" data-win="Shift+F7" data-linux="Shift+F7"><span class="keybinding">⇧F7</span> (Windows, Linux <span class="keybinding">Shift+F7</span>)</span>). Lines can be navigated with arrow keys and pressing <span class="keybinding">Enter</span> will jump back in the Diff editor and the selected line.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/diff-review-pane.png" alt="diff-review-pane" loading="lazy"></p>
+<div class="markdown-alert note" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z">
+          </path>
+        </svg>
+        Note
+      </span><p>This experience is especially helpful for screen reader users.</p>
+</div><h2 id="_timeline-view" data-needslink="_timeline-view">Timeline view</h2>
+<p>The Timeline view, accessible at the bottom of the File Explorer by default, is a unified view for visualizing time-series events (for example, Git commits) for a file.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/timeline-view.png" alt="Timeline view" loading="lazy"></p>
+<p>VS Code's built-in Git support provides the Git commit history of the specified file. Selecting a commit will open a diff view of the changes introduced by that commit. When you right-click on a commit, you'll get options to <strong>Copy Commit ID</strong> and <strong>Copy Commit Message</strong>.</p>
+<p>Visual Studio Code supports more Git history workflows through <a href="../configure/extensions/extension-marketplace.html">extensions</a> available on the VS Code Marketplace.</p>
+<div class="marketplace-extensions-scm-history-curated"></div>
+<div class="markdown-alert tip" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z">
+          </path>
+        </svg>
+        Tip
+      </span><p>Click on an extension tile to read the description and reviews in the Marketplace.</p>
+</div><h2 id="_git-output-window" data-needslink="_git-output-window">Git output window</h2>
+<p>You can always peek under the hood to see the Git commands we are using.  This is helpful if something strange is happening or if you are just curious. :)</p>
+<p>To open the Git output window, run <strong>View</strong> &gt; <strong>Output</strong> and select <strong>Log (Git)</strong> from the dropdown list.</p>
+<h2 id="_vs-code-as-git-editor" data-needslink="_vs-code-as-git-editor">VS Code as Git editor</h2>
+<p>When you launch VS Code from the command line, you can pass the <code>--wait</code> argument to make the launch command wait until you have closed the new VS Code instance. This can be useful when you configure VS Code as your Git external editor so Git will wait until you close the launched VS Code instance.</p>
+<p>Here are the steps to do so:</p>
+<ol>
+<li>Make sure you can run <code>code --help</code> from the command line and you get help.
+<ul>
+<li>if you do not see help, please follow these steps:
+<ul>
+<li>macOS: Select <strong>Shell Command: Install 'Code' command in path</strong> from the <strong>Command Palette</strong>.</li>
+<li>Windows: Make sure you selected <strong>Add to PATH</strong> during the installation.</li>
+<li>Linux: Make sure you installed Code via our new <code>.deb</code> or <code>.rpm</code> packages.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>From the command line, run <code>git config --global core.editor &quot;code --wait&quot;</code></li>
+</ol>
+<p>Now you can run <code>git config --global -e</code> and use VS Code as editor for configuring Git.</p>
+<h3 id="_vs-code-as-git-difftool-and-mergetool" data-needslink="_vs-code-as-git-difftool-and-mergetool">VS Code as Git difftool and mergetool</h3>
+<p>You can use VS Code's diff and merge capabilities even when using Git from command-line. Add the following to your Git configurations to use VS Code as the diff and merge tool:</p>
+<pre class="shiki" data-lang="ini" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">[diff]</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">    tool</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = default-difftool</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">[difftool "default-difftool"]</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">    cmd</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = code --wait --diff $LOCAL $REMOTE</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">[merge]</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">    tool</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = code</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">[mergetool "code"]</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">    cmd</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = code --wait --merge $REMOTE $LOCAL $BASE $MERGED</span></span>
+<span class="line"></span></code></pre>
+<p>This uses the <code>--diff</code> option that can be passed to VS Code to compare two files side by side. The merge tool will be used the next time Git discovers a merge conflict.</p>
+<p>To summarize, here are some examples of where you can use VS Code as the editor:</p>
+<ul>
+<li><code>git rebase HEAD~3 -i</code> do interactive rebase using VS Code</li>
+<li><code>git commit</code> use VS Code for the commit message</li>
+<li><code>git add -p</code> followed by <span class="keybinding">e</span> for interactive add</li>
+<li><code>git difftool &lt;commit&gt;^ &lt;commit&gt;</code> use VS Code as the diff editor for changes</li>
+</ul>
+<h2 id="_working-with-github-pull-requests-and-issues" data-needslink="_working-with-github-pull-requests-and-issues">Working with GitHub Pull Requests and Issues</h2>
+<p>Visual Studio Code can also bring in GitHub's pull requests and issues. Create your PRs in VS Code, review with comments, and approve them without switching context. Learn more about <a href="github.html">GitHub PRs and Issues in VS Code</a>.</p>
+<h2 id="_scm-providers" data-needslink="_scm-providers">SCM Providers</h2>
+<div class="marketplace-extensions-scm-curated"></div>
+<div class="markdown-alert tip" dir="auto">
+      <span>
+        <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z">
+          </path>
+        </svg>
+        Tip
+      </span><p>Click on an extension tile to read the description and reviews in the Marketplace.</p>
+</div><p>VS Code has support for handling multiple Source Control providers simultaneously. For example, you can open multiple Git repositories alongside your Azure DevOps Server local workspace and seamlessly work across your projects. To turn on the <strong>Source Control Providers</strong> view, select the overflow menu in the <strong>Source Control</strong> view (<span class="dynamic-keybinding" data-commandId="workbench.view.scm" data-osx="⌃⇧G" data-win="Ctrl+Shift+G" data-linux="Ctrl+Shift+G"><span class="keybinding">⌃⇧G</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+G</span>)</span>), hover over <strong>Views</strong>, and make sure that <strong>Source Control Repositories</strong> is marked with a check. The <strong>Source Control Providers</strong> view shows the detected providers and repositories, and you can scope the display of your changes by selecting a specific provider.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/scm-providers-list.png" alt="Source Control Repositories view option in overflow menu" loading="lazy"></p>
+<h3 id="_scm-provider-extensions" data-needslink="_scm-provider-extensions">SCM Provider extensions</h3>
+<p>If you would like to install another SCM provider, you can search on the <strong>scm providers</strong> extension category in the <strong>Extensions</strong> view (<span class="dynamic-keybinding" data-commandId="workbench.view.extensions" data-osx="⇧⌘X" data-win="Ctrl+Shift+X" data-linux="Ctrl+Shift+X"><span class="keybinding">⇧⌘X</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+X</span>)</span>). Start typing '@ca' and you will see suggestions for extension categories like debuggers and linters. Select <code>@category:&quot;scm providers&quot;</code> to see available SCM providers.</p>
+<p><img src="../../assets/docs/sourcecontrol/overview/scm-provider-category.png" alt="SCM Provider category in the marketplace" loading="lazy"></p>
+<h2 id="_next-steps" data-needslink="_next-steps">Next steps</h2>
+<ul>
+<li>
+<p><a href="../introvideos/versioncontrol.html">Intro Video - Git Version Control</a> - An introductory video providing an overview of VS Code Git support.</p>
+</li>
+<li>
+<p><a href="github.html">Intro to collaborating on GitHub</a> - Learn how to use GitHub with VS Code.</p>
+</li>
+<li>
+<p>Learn more about <a href="../copilot/overview.html">Copilot VS Code</a> - Learn about Copilot in VS Code.</p>
+</li>
+<li>
+<p><a href="../../api/extension-guides/scm-provider.html">Source Control API</a> - If you want to integrate another Source Control provider into VS Code, see our Source Control API.</p>
+</li>
+</ul>
+
+            <div class="feedback"></div>
+            
+            <div class="body-footer">09/11/2025</div>
+            
+        </main>
+
+        <!-- medium right nav -->
+        <div class="col-sm-3 col-md-2 hidden-xs docs-subnavbar-container">
+            <nav id="docs-subnavbar" aria-label="On Page" data-spy="affix" data-offset-top="20">
+                
+                <h4><span class="sr-only">On this page there are 21 sections</span><span
+                        aria-hidden="true">On this page</span></h4>
+                <ul class="nav">
+                    
+                    <li><a href="#_working-in-a-git-repository">Working in a Git repository</a></li>
+                    
+                    <li><a href="#_cloning-a-repository">Cloning a repository</a></li>
+                    
+                    <li><a href="#_initialize-a-repository">Initialize a repository</a></li>
+                    
+                    <li><a href="#_commit">Commit</a></li>
+                    
+                    <li><a href="#_git-blame-information">Git blame information</a></li>
+                    
+                    <li><a href="#_review-uncommitted-code-changes-with-ai">Review uncommitted code changes with AI</a></li>
+                    
+                    <li><a href="#_branches-and-tags">Branches and Tags</a></li>
+                    
+                    <li><a href="#_worktrees">Worktrees</a></li>
+                    
+                    <li><a href="#_remotes">Remotes</a></li>
+                    
+                    <li><a href="#_source-control-graph">Source control graph</a></li>
+                    
+                    <li><a href="#_git-status-bar-actions">Git Status Bar actions</a></li>
+                    
+                    <li><a href="#_gutter-indicators">Gutter indicators</a></li>
+                    
+                    <li><a href="#_merge-conflicts">Merge conflicts</a></li>
+                    
+                    <li><a href="#_3way-merge-editor">3-way merge editor</a></li>
+                    
+                    <li><a href="#_viewing-diffs">Viewing diffs</a></li>
+                    
+                    <li><a href="#_timeline-view">Timeline view</a></li>
+                    
+                    <li><a href="#_git-output-window">Git output window</a></li>
+                    
+                    <li><a href="#_vs-code-as-git-editor">VS Code as Git editor</a></li>
+                    
+                    <li><a href="#_working-with-github-pull-requests-and-issues">Working with GitHub Pull Requests and Issues</a></li>
+                    
+                    <li><a href="#_scm-providers">SCM Providers</a></li>
+                    
+                    <li><a href="#_next-steps">Next steps</a></li>
+                    
+                </ul>
+                
+                <div class="connect-widget"></div>
+            </nav>
+        </div>
+        <!-- end of page connect widget -->
+        <div class="col-xs-12 visible-xs">
+            <div class="connect-widget"></div>
+        </div>
+    </div>
+</div>
+		</div>
+	</div>
+
+	<footer role="contentinfo" class="container">
+		<div class="footer-container">
+			<div class="footer-row">
+				<div class="footer-social">
+					<ul class="links">
+						<li>
+							<a href="https://github.com/microsoft/vscode"><img src="../../assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+						</li>
+						<li>
+							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="../../assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="../../assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+						</li>
+						<li>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="../../assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+						</li>
+						<li>
+							<a href="https://www.reddit.com/r/vscode/"><img src="../../assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+						</li>
+						<li>
+							<a href="https://www.vscodepodcast.com/"><img src="../../assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+						</li>
+						<li>
+							<a href="https://www.tiktok.com/@vscode"><img src="../../assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+						</li>
+						<li>
+							<a href="https://www.youtube.com/@code"><img src="../../assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+						</li>
+						<script>
+							function manageConsent() {
+								if (siteConsent && siteConsent.isConsentRequired) {
+									siteConsent.manageConsent();
+								}
+							}
+						</script>
+					</ul>
+					<a id="footer-microsoft-link" class="microsoft-logo" href="https://www.microsoft.com/">
+						<img src="../../assets/icons/microsoft.svg" alt="Microsoft homepage" />
+					</a>
+				</div>
+			</div>
+			<div class="footer-row">
+				<ul class="links">
+					<li><a id="footer-support-link" href="https://support.serviceshub.microsoft.com/supportforbusiness/create?sapId=d66407ed-3967-b000-4cfb-2c318cad363d"
+							target="_blank" rel="noopener">Support</a></li>
+					<li><a id="footer-privacy-link" href="https://go.microsoft.com/fwlink/?LinkId=521839"
+							target="_blank" rel="noopener">Privacy</a></li>
+					<li style="display: none;"><a id="footer-cookie-link" style="cursor: pointer;" onclick="manageConsent()"
+							target="_blank" rel="noopener">Manage Cookies</a></li>
+					<li><a id="footer-terms-link" href="https://www.microsoft.com/legal/terms-of-use"
+							target="_blank" rel="noopener">Terms of Use</a></li>
+					<li><a id="footer-license-link" href="../../License-2.html"
+							target="_blank" rel="noopener">License</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<script type="module">
+		document.addEventListener('DOMContentLoaded', () => {
+			const copilotDeepLinks = document.querySelectorAll('.copilot-deep-link');
+			if (copilotDeepLinks.length === 0) {
+				return;
+			}
+			if (window.innerWidth < 992) {
+				for (const link of copilotDeepLinks) {
+					link.href = 'https://aka.ms/vscode-activatecopilotfree';
+				}
+			}
+		});
+	</script>
+
+	<script src="../../dist/index.js"></script>
+
+	
+
+	<script type="application/ld+json">
+		{
+			"@context" : "http://schema.org",
+			"@type" : "SoftwareApplication",
+			"name" : "Visual Studio Code",
+			"softwareVersion": "1.104",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			},
+			"applicationCategory": "DeveloperApplication",
+			"applicationSubCategory": "Text Editor",
+			"alternateName": "VS Code",
+			"datePublished": "2021-11-03",
+			"operatingSystem": "Mac, Linux, Windows",
+			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",
+			"screenshot": "https://code.visualstudio.com/assets/home/home-screenshot-win.png",
+			"releaseNotes": "https://code.visualstudio.com/updates",
+			"downloadUrl": "https://code.visualstudio.com/download",
+			"license": "https://code.visualstudio.com/license",
+			"softwareRequirements": "https://code.visualstudio.com/docs/supporting/requirements",
+			"url" : "https://code.visualstudio.com",
+			"author": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"maintainer": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://code.visualstudio.com/Search?q={search_term_string}",
+				"query-input": "required name=search_term_string"
+			},
+			"sameAs" : [
+				"https://en.wikipedia.org/wiki/Visual_Studio_Code",
+				"https://twitter.com/code",
+				"https://www.youtube.com/code",
+				"https://www.tiktok.com/@vscode",
+				"https://github.com/microsoft/vscode"
+			]
+		}
+	</script>
+</body>
+
+
+<!-- Mirrored from code.visualstudio.com/docs/sourcecontrol/overview by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:55:12 GMT -->
+</html>

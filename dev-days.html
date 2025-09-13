@@ -1,0 +1,3244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from code.visualstudio.com/dev-days by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:53:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="awa-expId" content="vscw_aaflight1016_control:103441;" />
+	<meta name="awa-env" content="prod" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="hNs7DXrTySP_X-0P_AC0WulAXvUwgSXEmgfcO2r79dw" />
+
+	<!-- Twitter and Facebook OpenGraph Metadata-->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@code" />
+
+	<link rel="stylesheet" href="../unpkg.com/leaflet%401.9.4/dist/leaflet.css"
+	integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+
+
+	<link rel="shortcut icon" href="assets/favicon.ico" sizes="128x128" />
+	<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+	<title>VS Code Dev Days - Community Events Series</title>
+
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="dist/v2/style.css">
+
+	<script src="../consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js"></script>
+	<script type="text/javascript" src="../js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js"></script>
+	
+	<script type="text/javascript">
+	// Leave as var; siteConsent is initialized and referenced elsewhere.
+	var siteConsent = null;
+	
+	const GPC_DataSharingOptIn = false;
+	WcpConsent.onInitCallback(function () {
+		window.appInsights = new oneDS.ApplicationInsights();
+		window.appInsights.initialize({
+			instrumentationKey: "1a3eb3104447440391ad5f2a6ee06a0a-62879566-bc58-4741-9650-302bf2af703f-7103",
+			propertyConfiguration: {
+				userConsented: false,
+				gpcDataSharingOptIn: false,
+				callback: {
+					userConsentDetails: siteConsent ? siteConsent.getConsent : undefined
+				},
+			},
+			cookieCfg: {
+				ignoreCookies: ["MSCC"]
+			},
+			webAnalyticsConfiguration:{ // Web Analytics Plugin configuration
+				urlCollectQuery: true,
+				urlCollectHash: true,
+				autoCapture: {
+					scroll: true,
+					pageView: true,
+					onLoad: true,
+					onUnload: true,
+					click: true,
+					resize: true,
+					jsError: true
+				}
+			}
+		}, []);
+	
+		window.appInsights.getPropertyManager().getPropertiesContext().web.gpcDataSharingOptIn = GPC_DataSharingOptIn;
+	});
+	</script>
+	<link rel="alternate" type="application/atom+xml" title="RSS Feed for code.visualstudio.com" href="feed.xml" />
+</head>
+
+<body >
+	<!-- Setting theme here to avoid FOUC -->
+	<script>
+		function setTheme(themeName) {
+			if (themeName === 'dark') {
+				document.documentElement.removeAttribute('data-theme'); // dark is default, so no data-theme attribute needed
+			}
+
+			if (themeName === 'light') {
+				document.documentElement.setAttribute('data-theme', themeName);
+			}
+			return;
+		}
+
+		// Determine initial theme: user preference or system preference
+		let theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		setTheme(theme); // Apply the initial theme
+
+		// Listen for changes in the system theme preference
+		window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+			if (!localStorage.getItem('theme')) { // Only if no user preference is saved
+				setTheme(e.matches ? 'dark' : 'light');
+			}
+		});
+	</script>
+
+	<div id="main">
+		<div class="navbar-fixed-container">
+			<div class="navbar navbar-inverse navbar-fixed-top " data-spy="affix"
+				data-offset-top="1">
+				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
+					<div class="container">
+						<div class="nav navbar-header">
+							<a class="navbar-brand" href="index.html"><span>Visual Studio Code</span></a>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+								aria-label="Expand and Collapse Menu">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="navbar-collapse collapse">
+							<ul class="nav navbar-nav navbar-left">
+								<li ><a id="nav-docs" href="docs.html">Docs</a></li>
+								<li ><a id="nav-updates" href="updates/v1_104.html">Updates</a></li>
+								<li ><a id="nav-blogs" href="blogs.html">Blog</a></li>
+								<li ><a id="nav-extend" href="api.html">API</a></li>
+								<li><a href="https://marketplace.visualstudio.com/VSCode" target="_blank" rel="noopener" id="nav-extensions">Extensions</a></li>
+								<li ><a id="nav-mcp" href="mcp.html">MCP</a></li>
+								<li ><a id="nav-faqs" href="docs/supporting/faq.html">FAQ</a></li>
+								<li class='search visible-xs visible-sm'
+									><a href="Search.html">Search</a></li>
+								<li class="active" ><a id="nav-events" href="dev-days.html">Dev Days</a></li>
+							</ul>
+		
+							<ul class="nav navbar-nav navbar-right" role="presentation">
+								<li>
+									<button type="button" class="theme-switch" id="theme-toggle">
+										<img class="theme-icon-light" src="assets/icons/theme-light.svg"
+											alt="Switch to the dark theme" />
+										<img class="theme-icon-dark" src="assets/icons/theme-dark.svg"
+											alt="Switch to the light theme" />
+									</button>
+								</li>
+								<li>
+									<a href="Search.html" title="Search" class="btn search-btn" id="nav-search" aria-label="Open search page">
+										<img class="search-icon-light" src="assets/icons/search.svg" width="16px" height="16px"
+											alt="" />
+										<img class="search-icon-dark" src="assets/icons/search-dark.svg" width="16px"
+											height="16px" alt="" />
+									</a>
+								</li>
+								<li class="search" role="presentation">
+									<div class="nav-search search-control" role="button" tabindex="0" aria-label="Open search dialog">
+										<div class="input-group" role="presentation">
+											<span class="input-group-btn">
+												<span class="btn search-icon-container" aria-hidden="true">
+													<img class="search-icon-dark" src="assets/icons/search-dark.svg" alt="" />
+													<img class="search-icon-light" src="assets/icons/search.svg" alt="" />
+												</span>
+											</span>
+											<input type="text" name="q" class="search-box form-control" placeholder="Search Docs" aria-hidden="true" tabindex="-1" readonly/>
+											<span class="search-shortcut-overlay"></span>
+										</div>
+									</div>						</li>
+								<!-- this was hiden in the home and download page, keeping it for now -->
+								<li><a class="link-button" href="Download.html" id="nav-download">
+										<span>Download</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
+			<div class="container">
+				<p class="message">Join a <a href="dev-days.html" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+			</div>
+			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
+					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
+		</div>		<!-- This div wraps around the entire site -->
+		<!-- The body itself should already have a main tag -->
+		<div id="main-content">
+			<div class="container body-content dev-days-page">
+	<div class="row">
+		<div class="col-xs-12">
+			<div>
+				<h1>VS Code Dev Days</h1>
+				<p>Join us this September & October for VS Code Dev Days, <strong>a global series of community events designed for
+						developers</strong> passionate about the future of AI-assisted coding. From Sao Paulo to Seoul,
+					local dev communities are coming together to explore how Visual Studio Code and GitHub Copilot are
+					transforming the way we build software with autonomous AI.</p>
+
+				<p>Whether you're just getting started with Copilot or already experimenting with intelligent agents,
+					join us for sessions from team members at Microsoft and the developer community in addition to a
+					hands-on workshop that will help you sharpen your skills, connect with peers, and unlock new levels
+					of productivity with AI.</p>
+
+				<p>*Event details are subject to change. Check the local event registration page for the most up to date
+					information.</p>
+
+				<div class="sr-only">
+					<p>This page contains an interactive map showing event locations, followed by navigation links to
+						jump between regions, and detailed event listings organized by geographical region. Each event
+						listing includes date, location, organizer information, and registration links.</p>
+				</div>
+			</div>
+
+			<div class="dev-days-map" id="devDaysMap"
+				aria-label="Interactive map showing locations of upcoming VS Code Dev Days events worldwide"></div>
+
+
+			<div class="event-summary" aria-label="Event statistics">
+				<div class="summary-stats">
+					<div class="stat-item upcoming">
+						<span class="stat-number">72</span>
+						<span class="stat-label">Upcoming Events</span>
+					</div>
+					<div class="stat-divider" aria-hidden="true">•</div>
+					<div class="stat-item past">
+						<span class="stat-number">13</span>
+						<span class="stat-label">Past Events</span>
+					</div>
+				</div>
+			</div>
+
+			<nav class="regions-nav" role="navigation" aria-label="Jump to regions">
+				<a href="#apac-asia-pacific" class="region-pill" aria-describedby="region-nav-desc">APAC (Asia-Pacific)</a>
+				<a href="#emea-europe-middle-east-and-africa" class="region-pill" aria-describedby="region-nav-desc">EMEA (Europe, Middle East, and Africa)</a>
+				<a href="#latin-america" class="region-pill" aria-describedby="region-nav-desc">Latin America</a>
+				<a href="#north-america" class="region-pill" aria-describedby="region-nav-desc">North America</a>
+				<a href="#online" class="region-pill" aria-describedby="region-nav-desc">Online</a>
+				<span id="region-nav-desc" class="sr-only">Navigate to event listings by region</span>
+			</nav>
+
+			<main id="main-content">
+				<div id="live-region" aria-live="polite" aria-atomic="false" class="sr-only"></div>
+
+				<section class="region-section" id="apac-asia-pacific" aria-labelledby="region-apac-asia-pacific-title">
+					<h2 class="region-title" id="region-apac-asia-pacific-title">APAC (Asia-Pacific)</h2>
+					<div class="events-grid" role="list" aria-label="APAC (Asia-Pacific) events">
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/chennai" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-0-desc">
+												Chennai, India
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-0-desc">
+											<div class="event-date">
+												Sep 13, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; TechNexus Community
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/chennai" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Chennai, India event on Sep 13, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/karachi" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-1-desc">
+												Karachi, Pakistan
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-1-desc">
+											<div class="event-date">
+												Sep 13, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				GitHub Campus Expert Munsif Raza &amp; MVP Muhammad Samiullah
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/karachi" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Karachi, Pakistan event on Sep 13, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/kaohsiung" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-2-desc">
+												Kaohsiung, Taiwan
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-2-desc">
+											<div class="event-date">
+												Sep 13, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Global AI Kaohsiung
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/kaohsiung" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Kaohsiung, Taiwan event on Sep 13, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/tokyo" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-3-desc">
+												Tokyo, Japan
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-3-desc">
+											<div class="event-date">
+												Sep 14, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				VS Code Meetup
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/tokyo" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Tokyo, Japan event on Sep 14, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/hyderabad" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-4-desc">
+												Hyderabad, India
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-4-desc">
+											<div class="event-date">
+												Sep 19, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Dot Net Learners House
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/hyderabad" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Hyderabad, India event on Sep 19, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/nepal" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-5-desc">
+												Kathmandu, Nepal
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-5-desc">
+											<div class="event-date">
+												Sep 19, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Nepal Tek Community
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/nepal" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Kathmandu, Nepal event on Sep 19, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/bengaluru" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-6-desc">
+												Bengaluru, India
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-6-desc">
+											<div class="event-date">
+												Sep 20, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; TechNexus Community
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/bengaluru" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Bengaluru, India event on Sep 20, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/daegu" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-7-desc">
+												Daegu, South Korea
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-7-desc">
+											<div class="event-date">
+												Sep 20, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Daegu AI Developer Community
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/daegu" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Daegu, South Korea event on Sep 20, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/beijing" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-8-desc">
+												Beijing, China
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-8-desc">
+											<div class="event-date">
+												Sep 20, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				微软技术直通车社区
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/beijing" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Beijing, China event on Sep 20, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/ningbo" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-9-desc">
+												Ningbo, China
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-9-desc">
+											<div class="event-date">
+												Sep 22, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Microsoft MVP Jiong Shi
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/ningbo" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Ningbo, China event on Sep 22, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/sydney" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-10-desc">
+												Sydney, Australia
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-10-desc">
+											<div class="event-date">
+												Sep 24, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; MVPs
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/sydney" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Sydney, Australia event on Sep 24, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/perth" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-11-desc">
+												Perth, Australia
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-11-desc">
+											<div class="event-date">
+												Sep 25, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Microsoft MVPs
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/perth" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Perth, Australia event on Sep 25, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/auckland" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-12-desc">
+												Auckland, New Zealand
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-12-desc">
+											<div class="event-date">
+												Sep 25, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Coding Night NZ
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/auckland" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Auckland, New Zealand event on Sep 25, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/kochi" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-13-desc">
+												Kochi, India
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-13-desc">
+											<div class="event-date">
+												Sep 26, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Kerala Microsoft Technology Meetup
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/kochi" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Kochi, India event on Sep 26, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/seoul" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-14-desc">
+												Seoul, South Korea
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-14-desc">
+											<div class="event-date">
+												Sep 26, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/seoul" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Seoul, South Korea event on Sep 26, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/pune" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-15-desc">
+												Pune, India
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-15-desc">
+											<div class="event-date">
+												Sep 27, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Pune Tech Community
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/pune" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Pune, India event on Sep 27, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/lucknow" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-16-desc">
+												Lucknow, India
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-16-desc">
+											<div class="event-date">
+												Sep 27, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				GitHub Campus Expert Nitya Pandey
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/lucknow" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Lucknow, India event on Sep 27, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/chattogram" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-17-desc">
+												Chattogram, Bangladesh
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-17-desc">
+											<div class="event-date">
+												Sep 28, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Azure Tech Group Bangladesh
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/chattogram" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Chattogram, Bangladesh event on Sep 28, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/mumbai" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-18-desc">
+												Mumbai, India
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-18-desc">
+											<div class="event-date">
+												Oct 4, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Mumbai Technology Meetup
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/mumbai" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Mumbai, India event on Oct 4, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/hongkong" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-19-desc">
+												Hong Kong, China
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-19-desc">
+											<div class="event-date">
+												Oct 8, 2025
+											</div>
+											<div class="event-format">Hybrid</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Microsoft MVP Cyrus Wong &amp; Co-organized by HKIIT at IVE (Lee Wai Lee)
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/hongkong" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Hong Kong, China event on Oct 8, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/jeju" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-0-20-desc">
+												Jeju, South Korea
+											</a>
+										</h3>
+										<div class="event-meta" id="event-0-20-desc">
+											<div class="event-date">
+												Oct 11, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/jeju" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Jeju, South Korea event on Oct 11, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+					</div>
+				</section>
+				<section class="region-section" id="emea-europe-middle-east-and-africa" aria-labelledby="region-emea-europe-middle-east-and-africa-title">
+					<h2 class="region-title" id="region-emea-europe-middle-east-and-africa-title">EMEA (Europe, Middle East, and Africa)</h2>
+					<div class="events-grid" role="list" aria-label="EMEA (Europe, Middle East, and Africa) events">
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/capetown" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-0-desc">
+												Cape Town, South Africa
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-0-desc">
+											<div class="event-date">
+												Sep 13, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Cape Town MS Developer User Group
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/capetown" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Cape Town, South Africa event on Sep 13, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/gembloux" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-1-desc">
+												Gembloux, Belgium
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-1-desc">
+											<div class="event-date">
+												Sep 15, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Microsoft MVP Adrien Clerbois
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/gembloux" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Gembloux, Belgium event on Sep 15, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/london" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-2-desc">
+												London, United Kingdom
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-2-desc">
+											<div class="event-date">
+												Sep 15, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/london" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for London, United Kingdom event on Sep 15, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/paris" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-3-desc">
+												Paris, France
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-3-desc">
+											<div class="event-date">
+												Sep 18, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/paris" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Paris, France event on Sep 18, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/nyeri" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-4-desc">
+												Nyeri, Kenya
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-4-desc">
+											<div class="event-date">
+												Sep 19, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Teach2Give
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/nyeri" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Nyeri, Kenya event on Sep 19, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/nyahururu" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-5-desc">
+												Nyahururu, Kenya
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-5-desc">
+											<div class="event-date">
+												Sep 19, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Teach2Give
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/nyahururu" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Nyahururu, Kenya event on Sep 19, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/milan" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-6-desc">
+												Milan, Italy
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-6-desc">
+											<div class="event-date">
+												Sep 19, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; UGIdotNET
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/milan" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Milan, Italy event on Sep 19, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/minna" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-7-desc">
+												Minna, Nigeria
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-7-desc">
+											<div class="event-date">
+												Sep 20, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				GitHub Campus Expert Rasheed Mudasiru
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/minna" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Minna, Nigeria event on Sep 20, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/mallorca" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-8-desc">
+												Mallorca, Spain
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-8-desc">
+											<div class="event-date">
+												Sep 25, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Travelgate
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/mallorca" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Mallorca, Spain event on Sep 25, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/tanger" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-9-desc">
+												Tanger, Morocco
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-9-desc">
+											<div class="event-date">
+												Sep 26, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Morocco Microsoft Community
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/tanger" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Tanger, Morocco event on Sep 26, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/jalingo" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-10-desc">
+												Jalingo, Nigeria
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-10-desc">
+											<div class="event-date">
+												Sep 27, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				GitHub Campus Expert Lucky Hassan
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/jalingo" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Jalingo, Nigeria event on Sep 27, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/bordeaux" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-11-desc">
+												Bordeaux, France
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-11-desc">
+											<div class="event-date">
+												Sep 29, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Microsoft MVP Alexandre Nédélec
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/bordeaux" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Bordeaux, France event on Sep 29, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/sofia" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-12-desc">
+												Sofia, Bulgaria
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-12-desc">
+											<div class="event-date">
+												Sep 30, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Progress Telerik
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/sofia" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Sofia, Bulgaria event on Sep 30, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/copenhagen" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-13-desc">
+												Copenhagen, Denmark
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-13-desc">
+											<div class="event-date">
+												Sep 30, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/copenhagen" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Copenhagen, Denmark event on Sep 30, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/lubumbashi" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-1-14-desc">
+												Lubumbashi, Democratic Republic of Congo
+											</a>
+										</h3>
+										<div class="event-meta" id="event-1-14-desc">
+											<div class="event-date">
+												Oct 29, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Community member Jean Luc Kabulu
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/lubumbashi" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Lubumbashi, Democratic Republic of Congo event on Oct 29, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+					</div>
+				</section>
+				<section class="region-section" id="latin-america" aria-labelledby="region-latin-america-title">
+					<h2 class="region-title" id="region-latin-america-title">Latin America</h2>
+					<div class="events-grid" role="list" aria-label="Latin America events">
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="http://aka.ms/vscodedevdays/bsas" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-0-desc">
+												Buenos Aires, Argentina
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-0-desc">
+											<div class="event-date">
+												Sep 13, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team, MVPs &amp; UBA
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="http://aka.ms/vscodedevdays/bsas" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Buenos Aires, Argentina event on Sep 13, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/cordoba" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-1-desc">
+												Cordoba, Argentina
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-1-desc">
+											<div class="event-date">
+												Sep 16, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Technet Argentina Interior
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/cordoba" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Cordoba, Argentina event on Sep 16, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/recife" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-2-desc">
+												Recife, Brazil
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-2-desc">
+											<div class="event-date">
+												Sep 17, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/recife" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Recife, Brazil event on Sep 17, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/lima" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-3-desc">
+												Lima, Peru
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-3-desc">
+											<div class="event-date">
+												Sep 20, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Microsoft User Group Perú
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/lima" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Lima, Peru event on Sep 20, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/lima-2" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-4-desc">
+												Lima, Peru
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-4-desc">
+											<div class="event-date">
+												Sep 20, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Cloud Experts Community
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/lima-2" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Lima, Peru event on Sep 20, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/mogi" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-5-desc">
+												Mogi das Cruzes, Brazil
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-5-desc">
+											<div class="event-date">
+												Sep 20, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Cloud Expert
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/mogi" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Mogi das Cruzes, Brazil event on Sep 20, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/tuxtla" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-6-desc">
+												Tuxtla Gutiérrez, Mexico
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-6-desc">
+											<div class="event-date">
+												Sep 24, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Microsoft MVP Héctor Pérez
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/tuxtla" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Tuxtla Gutiérrez, Mexico event on Sep 24, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/caracas" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-7-desc">
+												Caracas, Venezuela
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-7-desc">
+											<div class="event-date">
+												Sep 24, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				GitHub Campus Experts David Jose &amp; Jaimes Henriquez
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/caracas" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Caracas, Venezuela event on Sep 24, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/cdmx" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-8-desc">
+												Ciudad de México, México
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-8-desc">
+											<div class="event-date">
+												Sep 24, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Código Facilito
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/cdmx" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Ciudad de México, México event on Sep 24, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/sunchales" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-9-desc">
+												Sunchales, Argentina
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-9-desc">
+											<div class="event-date">
+												Sep 26, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Microsoft MVP Pablo Piovano
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/sunchales" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Sunchales, Argentina event on Sep 26, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/lima-3" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-10-desc">
+												Lima, Peru
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-10-desc">
+											<div class="event-date">
+												Sep 27, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				My Bots LATAM
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/lima-3" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Lima, Peru event on Sep 27, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/sjc" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-11-desc">
+												São José Dos Campos, Brazil
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-11-desc">
+											<div class="event-date">
+												Sep 27, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				GitTogether Brasil
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/sjc" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for São José Dos Campos, Brazil event on Sep 27, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/saopaulo" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-12-desc">
+												Sao Paulo, Brazil
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-12-desc">
+											<div class="event-date">
+												Sep 27, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; WoMakersCode
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/saopaulo" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Sao Paulo, Brazil event on Sep 27, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/jundiai" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-13-desc">
+												Jundiai, Brazil
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-13-desc">
+											<div class="event-date">
+												Sep 27, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				Microsoft MVP Elton Bordim
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/jundiai" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Jundiai, Brazil event on Sep 27, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/sanjose" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-2-14-desc">
+												San José, Costa Rica
+											</a>
+										</h3>
+										<div class="event-meta" id="event-2-14-desc">
+											<div class="event-date">
+												Oct 10, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Progress Telerik
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/sanjose" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for San José, Costa Rica event on Oct 10, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+					</div>
+				</section>
+				<section class="region-section" id="north-america" aria-labelledby="region-north-america-title">
+					<h2 class="region-title" id="region-north-america-title">North America</h2>
+					<div class="events-grid" role="list" aria-label="North America events">
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/malvern" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-0-desc">
+												Malvern, PA USA
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-0-desc">
+											<div class="event-date">
+												Sep 17, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; philly.NET
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/malvern" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Malvern, PA USA event on Sep 17, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/austin" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-1-desc">
+												Austin, TX USA
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-1-desc">
+											<div class="event-date">
+												Sep 19, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/austin" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Austin, TX USA event on Sep 19, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://docs.google.com/forms/d/e/1FAIpQLScuZ17T5416hZPVIS0MwWTdY2aa2ZZPNbmokUccWVV2L0LHFw/viewform" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-2-desc">
+												Newark, NJ USA
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-2-desc">
+											<div class="event-date">
+												Sep 20, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				GitHub Campus Expert David Jose
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://docs.google.com/forms/d/e/1FAIpQLScuZ17T5416hZPVIS0MwWTdY2aa2ZZPNbmokUccWVV2L0LHFw/viewform" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Newark, NJ USA event on Sep 20, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/central-oregon" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-3-desc">
+												Bend, OR USA
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-3-desc">
+											<div class="event-date">
+												Sep 23, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Deschutes Tech Guild
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/central-oregon" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Bend, OR USA event on Sep 23, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/atlanta" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-4-desc">
+												Atlanta, GA USA
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-4-desc">
+											<div class="event-date">
+												Sep 23, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/atlanta" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Atlanta, GA USA event on Sep 23, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/chicago" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-5-desc">
+												Chicago, IL USA
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-5-desc">
+											<div class="event-date">
+												Sep 24, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Progress Telerik
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/chicago" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Chicago, IL USA event on Sep 24, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/losangeles" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-6-desc">
+												Los Angeles, CA USA
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-6-desc">
+											<div class="event-date">
+												Sep 25, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/losangeles" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Los Angeles, CA USA event on Sep 25, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/redmond" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-7-desc">
+												Redmond, WA USA
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-7-desc">
+											<div class="event-date">
+												Sep 27, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/redmond" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Redmond, WA USA event on Sep 27, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/spokane" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-8-desc">
+												Spokane, WA USA
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-8-desc">
+											<div class="event-date">
+												Sep 30, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				IntelliTect
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/spokane" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Spokane, WA USA event on Sep 30, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/raleigh" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-9-desc">
+												Raleigh, NC USA
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-9-desc">
+											<div class="event-date">
+												Sep 30, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Progress Telerik
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/raleigh" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Raleigh, NC USA event on Sep 30, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/nyc" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-10-desc">
+												New York City, NY USA
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-10-desc">
+											<div class="event-date">
+												Oct 2, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/nyc" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for New York City, NY USA event on Oct 2, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/vancouver" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-11-desc">
+												Vancouver, Canada
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-11-desc">
+											<div class="event-date">
+												Oct 2, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/vancouver" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Vancouver, Canada event on Oct 2, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/toronto-2" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-12-desc">
+												Toronto, Canada
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-12-desc">
+											<div class="event-date">
+												Oct 6, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; North Toronto Cloud &amp; DevOps User Group
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/toronto-2" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Toronto, Canada event on Oct 6, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/boston" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-13-desc">
+												Boston, MA USA
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-13-desc">
+											<div class="event-date">
+												Oct 7, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Progress Telerik
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/boston" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Boston, MA USA event on Oct 7, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/tulsa" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-3-14-desc">
+												Tulsa, OK USA
+											</a>
+										</h3>
+										<div class="event-meta" id="event-3-14-desc">
+											<div class="event-date">
+												Oct 13, 2025
+											</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										<img src="assets/icons/microsoft.svg"
+											alt="Microsoft logo" class="organizer-ms-logo" /> 
+																				Microsoft team &amp; Progress Telerik
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/tulsa" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Tulsa, OK USA event on Oct 13, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+					</div>
+				</section>
+				<section class="region-section" id="online" aria-labelledby="region-online-title">
+					<h2 class="region-title" id="region-online-title">Online</h2>
+					<div class="events-grid" role="list" aria-label="Online events">
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/brighton" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-4-0-desc">
+												United Kingdom
+											</a>
+										</h3>
+										<div class="event-meta" id="event-4-0-desc">
+											<div class="event-date">
+												Sep 17, 2025
+											</div>
+											<div class="event-format">Online Only</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+																				DevOps &amp; GitHub Meetup Brighton
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/brighton" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for United Kingdom event on Sep 17, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/guangzhou" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-4-1-desc">
+												Guangzhou, China
+											</a>
+										</h3>
+										<div class="event-meta" id="event-4-1-desc">
+											<div class="event-date">
+												Sep 21, 2025
+											</div>
+											<div class="event-format">Online Only, 中文</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+										<span aria-hidden="true">💻</span>
+										Microsoft Reactor
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/guangzhou" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Guangzhou, China event on Sep 21, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/apac" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-4-2-desc">
+												APAC Region
+											</a>
+										</h3>
+										<div class="event-meta" id="event-4-2-desc">
+											<div class="event-date">
+												Sep 23, 2025 • 06 PM IST
+											</div>
+											<div class="event-format">Online Only</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+										<span aria-hidden="true">💻</span>
+										Microsoft Reactor
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/apac" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for APAC Region event on Sep 23, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/latam" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-4-3-desc">
+												LATAM Region
+											</a>
+										</h3>
+										<div class="event-meta" id="event-4-3-desc">
+											<div class="event-date">
+												Sep 24, 2025 • 09 AM CDMX
+											</div>
+											<div class="event-format">Online Only, Español</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+										<span aria-hidden="true">💻</span>
+										Microsoft Reactor
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/latam" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for LATAM Region event on Sep 24, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscodedevdays/brasil" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-4-4-desc">
+												Brazil Region
+											</a>
+										</h3>
+										<div class="event-meta" id="event-4-4-desc">
+											<div class="event-date">
+												Sep 24, 2025 • 12 PM BRT
+											</div>
+											<div class="event-format">Online Only, Português </div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+										<span aria-hidden="true">💻</span>
+										Microsoft Reactor
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscodedevdays/brasil" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Brazil Region event on Sep 24, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+						<div class="event-card-container" role="listitem">
+							<article class="event-card">
+								<header class="event-header">
+									<div class="event-info">
+										<h3 class="event-name">
+											<a href="https://aka.ms/vscode/devdays/ww-r" target="_blank" rel="noopener noreferrer"
+												aria-describedby="event-4-5-desc">
+												Worldwide
+											</a>
+										</h3>
+										<div class="event-meta" id="event-4-5-desc">
+											<div class="event-date">
+												Sep 25, 2025
+											</div>
+											<div class="event-format">Online Only</div>
+										</div>
+									</div>
+								</header>
+								<div class="event-organizer">
+									<span class="organizer-label">Organized by:</span>
+									<span class="organizer-name">
+										
+										<span aria-hidden="true">💻</span>
+										Microsoft Reactor
+									</span>
+								</div>
+								<div class="event-actions">
+									<a class="register-button" href="https://aka.ms/vscode/devdays/ww-r" target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Register for Worldwide event on Sep 25, 2025">
+										Register
+									</a>
+								</div>
+							</article>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+	</div>
+</div>
+<section class="container body-content dev-days-sponsors" aria-labelledby="sponsors-heading">
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 id="sponsors-heading">Event Partners</h2>
+			<div class="sponsors-grid" role="list" aria-label="Event sponsors and partners">
+				<div role="listitem">
+					<a class="sponsor-card" href="https://githubcampus.expert/" target="_blank" rel="noopener noreferrer"
+						aria-label="Visit GitHub Campus Experts website">
+						<div class="sponsor-logo-wrapper">
+							<img src="assets/dev-days/github-campus-experts.png" alt="GitHub Campus Experts logo" class="sponsor-logo" loading="lazy" />
+						</div>
+						<div class="sponsor-name">GitHub Campus Experts</div>
+					</a>
+				</div>
+				<div role="listitem">
+					<a class="sponsor-card" href="https://stars.github.com/" target="_blank" rel="noopener noreferrer"
+						aria-label="Visit GitHub Stars website">
+						<div class="sponsor-logo-wrapper">
+							<img src="assets/dev-days/github-stars.png" alt="GitHub Stars logo" class="sponsor-logo" loading="lazy" />
+						</div>
+						<div class="sponsor-name">GitHub Stars</div>
+					</a>
+				</div>
+				<div role="listitem">
+					<a class="sponsor-card" href="https://mvp.microsoft.com/" target="_blank" rel="noopener noreferrer"
+						aria-label="Visit Microsoft MVP website">
+						<div class="sponsor-logo-wrapper">
+							<img src="assets/dev-days/microsoft-mvp.png" alt="Microsoft MVP logo" class="sponsor-logo" loading="lazy" />
+						</div>
+						<div class="sponsor-name">Microsoft MVP</div>
+					</a>
+				</div>
+				<div role="listitem">
+					<a class="sponsor-card" href="https://studentambassadors.microsoft.com/" target="_blank" rel="noopener noreferrer"
+						aria-label="Visit Microsoft Student Ambassadors website">
+						<div class="sponsor-logo-wrapper">
+							<img src="assets/dev-days/microsoft-student-ambassador.png" alt="Microsoft Student Ambassadors logo" class="sponsor-logo" loading="lazy" />
+						</div>
+						<div class="sponsor-name">Microsoft Student Ambassadors</div>
+					</a>
+				</div>
+				<div role="listitem">
+					<a class="sponsor-card" href="https://microsoft.com/" target="_blank" rel="noopener noreferrer"
+						aria-label="Visit Microsoft website">
+						<div class="sponsor-logo-wrapper">
+							<img src="assets/dev-days/microsoft.png" alt="Microsoft logo" class="sponsor-logo" loading="lazy" />
+						</div>
+						<div class="sponsor-name">Microsoft</div>
+					</a>
+				</div>
+				<div role="listitem">
+					<a class="sponsor-card" href="https://www.progress.com/" target="_blank" rel="noopener noreferrer"
+						aria-label="Visit Progress website">
+						<div class="sponsor-logo-wrapper">
+							<img src="assets/dev-days/progress.png" alt="Progress logo" class="sponsor-logo" loading="lazy" />
+						</div>
+						<div class="sponsor-name">Progress</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="container body-content dev-days-past" aria-labelledby="past-events-heading">
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 id="past-events-heading">Past Events</h2>
+			<p>Thank you to all the organizers and participants who made these events possible!</p>
+			
+			<div class="past-events-grid" role="list" aria-label="Past events">
+				<div class="past-event-card" role="listitem">
+					<article class="past-card">
+						<div class="past-event-info">
+							<h3 class="past-event-name">Seoul, South Korea</h3>
+							<div class="past-event-date">Aug 31, 2025</div>
+							<div class="past-event-organizer">
+								
+																파워 플랫폼 한국 유저 그룹
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="past-event-card" role="listitem">
+					<article class="past-card">
+						<div class="past-event-info">
+							<h3 class="past-event-name">Islamabad, Pakistan</h3>
+							<div class="past-event-date">Sep 1, 2025</div>
+							<div class="past-event-organizer">
+								
+																Hamza Khattak (MVP)
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="past-event-card" role="listitem">
+					<article class="past-card">
+						<div class="past-event-info">
+							<h3 class="past-event-name">Skopje, North Macedonia</h3>
+							<div class="past-event-date">Sep 1, 2025</div>
+							<div class="past-event-organizer">
+								
+																Macedonian .NET Community
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="past-event-card" role="listitem">
+					<article class="past-card">
+						<div class="past-event-info">
+							<h3 class="past-event-name">Monterrey, Mexico</h3>
+							<div class="past-event-date">Sep 2, 2025</div>
+							<div class="past-event-organizer">
+								
+																Roborregos
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="past-event-card" role="listitem">
+					<article class="past-card">
+						<div class="past-event-info">
+							<h3 class="past-event-name">Nairobi, Kenya</h3>
+							<div class="past-event-date">Sep 3, 2025</div>
+							<div class="past-event-organizer">
+								
+																Microsoft Africa Development Center
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="past-event-card" role="listitem">
+					<article class="past-card">
+						<div class="past-event-info">
+							<h3 class="past-event-name">Toronto, Canada</h3>
+							<div class="past-event-date">Sep 4, 2025</div>
+							<div class="past-event-organizer">
+								<img src="assets/icons/microsoft.svg"
+									alt="Microsoft logo" class="organizer-ms-logo" /> 
+																Microsoft team &amp; Metro Toronto Azure Community
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="past-event-card" role="listitem">
+					<article class="past-card">
+						<div class="past-event-info">
+							<h3 class="past-event-name">Johannesburg, South Africa</h3>
+							<div class="past-event-date">Sep 6, 2025</div>
+							<div class="past-event-organizer">
+								
+																Johannesburg Microsoft Developer User Group
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="past-event-card" role="listitem">
+					<article class="past-card">
+						<div class="past-event-info">
+							<h3 class="past-event-name">Taboão da Serra, Brazil</h3>
+							<div class="past-event-date">Sep 6, 2025</div>
+							<div class="past-event-organizer">
+								
+																Microsoft MVP Elton Bordim
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="past-event-card" role="listitem">
+					<article class="past-card">
+						<div class="past-event-info">
+							<h3 class="past-event-name">Zurich, Switzerland</h3>
+							<div class="past-event-date">Sep 9, 2025</div>
+							<div class="past-event-organizer">
+								<img src="assets/icons/microsoft.svg"
+									alt="Microsoft logo" class="organizer-ms-logo" /> 
+																Microsoft team
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="past-event-card" role="listitem">
+					<article class="past-card">
+						<div class="past-event-info">
+							<h3 class="past-event-name">Makati, Philippines</h3>
+							<div class="past-event-date">Sep 11, 2025</div>
+							<div class="past-event-organizer">
+								
+																Global AI Manila
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="past-event-card" role="listitem">
+					<article class="past-card">
+						<div class="past-event-info">
+							<h3 class="past-event-name">Fukuoka City, Japan</h3>
+							<div class="past-event-date">Sep 11, 2025</div>
+							<div class="past-event-organizer">
+								
+																Microsoft MVP Takashi Kawamoto &amp; GitHub Copilot Meetup
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="past-event-card" role="listitem">
+					<article class="past-card">
+						<div class="past-event-info">
+							<h3 class="past-event-name">Dhule, India</h3>
+							<div class="past-event-date">Sep 11, 2025</div>
+							<div class="past-event-organizer">
+								
+																Microsoft Student Ambassador Abdullah Bandukwala
+							</div>
+						</div>
+					</article>
+				</div>
+				<div class="past-event-card" role="listitem">
+					<article class="past-card">
+						<div class="past-event-info">
+							<h3 class="past-event-name">Coimbatore, India</h3>
+							<div class="past-event-date">Sep 11, 2025</div>
+							<div class="past-event-organizer">
+								<img src="assets/icons/microsoft.svg"
+									alt="Microsoft logo" class="organizer-ms-logo" /> 
+																Microsoft team &amp; Azure User Group Coimbatore
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<script src="../unpkg.com/leaflet%401.9.4/dist/leaflet.js"
+	integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		if (!window.L) {
+			return; // Leaflet not loaded
+		}
+
+		const events = [{"name":"Islamabad, Pakistan","date":"Sep 1, 2025","registrationPage":"https://aka.ms/vscodedevdays/islamabad","organizer":"Hamza Khattak (MVP)","format":"","lat":33.6844,"lng":73.0479,"isPast":true},{"name":"Perth, Australia","date":"Sep 25, 2025","registrationPage":"https://aka.ms/vscodedevdays/perth","organizer":"Microsoft team & Microsoft MVPs","format":"","lat":-31.9505,"lng":115.8605,"isPast":false},{"name":"Tokyo, Japan","date":"Sep 14, 2025","registrationPage":"https://aka.ms/vscodedevdays/tokyo","organizer":"VS Code Meetup","format":"","lat":35.6762,"lng":139.6503,"isPast":false},{"name":"Chennai, India","date":"Sep 13, 2025","registrationPage":"https://aka.ms/vscodedevdays/chennai","organizer":"TechNexus Community & Microsoft team","format":"","lat":13.0827,"lng":80.2707,"isPast":false},{"name":"Kochi, India","date":"Sep 26, 2025","registrationPage":"https://aka.ms/vscodedevdays/kochi","organizer":"Kerala Microsoft Technology Meetup","format":"","lat":9.9312,"lng":76.2673,"isPast":false},{"name":"Bengaluru, India","date":"Sep 20, 2025","registrationPage":"https://aka.ms/vscodedevdays/bengaluru","organizer":"TechNexus Community & Microsoft team","format":"","lat":12.9716,"lng":77.5946,"isPast":false},{"name":"Daegu, South Korea","date":"Sep 20, 2025","registrationPage":"https://aka.ms/vscodedevdays/daegu","organizer":"Daegu AI Developer Community & Microsoft team","format":"","lat":35.8714,"lng":128.6014,"isPast":false},{"name":"Hyderabad, India","date":"Sep 19, 2025","registrationPage":"https://aka.ms/vscodedevdays/hyderabad","organizer":"Dot Net Learners House & Microsoft team","format":"","lat":17.385,"lng":78.4867,"isPast":false},{"name":"Kathmandu, Nepal","date":"Sep 19, 2025","registrationPage":"https://aka.ms/vscodedevdays/nepal","organizer":"Nepal Tek Community","format":"","lat":27.7172,"lng":85.324,"isPast":false},{"name":"Ningbo, China","date":"Sep 22, 2025","registrationPage":"https://aka.ms/vscodedevdays/ningbo","organizer":"Microsoft MVP Jiong Shi","format":"","lat":29.8683,"lng":121.544,"isPast":false},{"name":"Auckland, New Zealand","date":"Sep 25, 2025","registrationPage":"https://aka.ms/vscodedevdays/auckland","organizer":"Coding Night NZ","format":"","lat":-36.8485,"lng":174.7633,"isPast":false},{"name":"Seoul, South Korea","date":"Sep 26, 2025","registrationPage":"https://aka.ms/vscodedevdays/seoul","organizer":"Microsoft team","format":"","lat":37.5665,"lng":126.978,"isPast":false},{"name":"Chattogram, Bangladesh","date":"Sep 28, 2025","registrationPage":"https://aka.ms/vscodedevdays/chattogram","organizer":"Azure Tech Group Bangladesh","format":"","lat":22.3569,"lng":91.7832,"isPast":false},{"name":"Pune, India","date":"Sep 27, 2025","registrationPage":"https://aka.ms/vscodedevdays/pune","organizer":"Pune Tech Community & Microsoft team","format":"","lat":18.5204,"lng":73.8567,"isPast":false},{"name":"Lucknow, India","date":"Sep 27, 2025","registrationPage":"https://aka.ms/vscodedevdays/lucknow","organizer":"GitHub Campus Expert Nitya Pandey","format":"","lat":26.8467,"lng":80.9462,"isPast":false},{"name":"Makati, Philippines","date":"Sep 11, 2025","registrationPage":"https://aka.ms/vscodedevdays/makati","organizer":"Global AI Manila","format":"","lat":14.5547,"lng":121.0244,"isPast":true},{"name":"Karachi, Pakistan","date":"Sep 13, 2025","registrationPage":"https://aka.ms/vscodedevdays/karachi","organizer":"GitHub Campus Expert Munsif Raza & MVP Muhammad Samiullah","format":"","lat":24.8607,"lng":67.0011,"isPast":false},{"name":"Beijing, China","date":"Sep 20, 2025","registrationPage":"https://aka.ms/vscodedevdays/beijing","organizer":"微软技术直通车社区","format":"","lat":39.9042,"lng":116.4074,"isPast":false},{"name":"Seoul, South Korea","date":"Aug 31, 2025","registrationPage":"https://aka.ms/vscodedevdays/seoul-2","organizer":"파워 플랫폼 한국 유저 그룹","format":"","lat":37.5665,"lng":126.978,"isPast":true},{"name":"Fukuoka City, Japan","date":"Sep 11, 2025","registrationPage":"https://aka.ms/vscodedevdays/japan","organizer":"Microsoft MVP Takashi Kawamoto & GitHub Copilot Meetup","format":"","lat":33.5904,"lng":130.4017,"isPast":true},{"name":"Dhule, India","date":"Sep 11, 2025","registrationPage":"https://aka.ms/vscodedevdays/dhule","organizer":"Microsoft Student Ambassador Abdullah Bandukwala","format":"","lat":20.9014,"lng":74.7742,"isPast":true},{"name":"Coimbatore, India","date":"Sep 11, 2025","registrationPage":"https://aka.ms/vscodedevdays/coimbatore","organizer":"Microsoft team & Azure User Group Coimbatore","format":"","lat":11.0168,"lng":76.9558,"isPast":true},{"name":"Kaohsiung, Taiwan","date":"Sep 13, 2025","registrationPage":"https://aka.ms/vscodedevdays/kaohsiung","organizer":"Global AI Kaohsiung","format":"","lat":22.6273,"lng":120.3014,"isPast":false},{"name":"Mumbai, India","date":"Oct 4, 2025","registrationPage":"https://aka.ms/vscodedevdays/mumbai","organizer":"Mumbai Technology Meetup","format":"","lat":19.076,"lng":72.8777,"isPast":false},{"name":"Hong Kong, China","date":"Oct 8, 2025","registrationPage":"https://aka.ms/vscodedevdays/hongkong","organizer":"Microsoft MVP Cyrus Wong & Co-organized by HKIIT at IVE (Lee Wai Lee)","format":"Hybrid","lat":22.3193,"lng":114.1694,"isPast":false},{"name":"Jeju, South Korea","date":"Oct 11, 2025","registrationPage":"https://aka.ms/vscodedevdays/jeju","organizer":"Microsoft team","format":"","lat":33.4996,"lng":126.5312,"isPast":false},{"name":"Sydney, Australia","date":"Sep 24, 2025","registrationPage":"https://aka.ms/vscodedevdays/sydney","organizer":"Microsoft team & MVPs","format":"","lat":-33.8688,"lng":151.2093,"isPast":false},{"name":"Skopje, North Macedonia","date":"Sep 1, 2025","registrationPage":"https://aka.ms/vscodedevdays/skopje","organizer":"Macedonian .NET Community","format":"","lat":41.9973,"lng":21.428,"isPast":true},{"name":"Nairobi, Kenya","date":"Sep 3, 2025","registrationPage":"https://aka.ms/vscodedevdays/nairobi","organizer":"Microsoft Africa Development Center","format":"Hybrid","lat":-1.2921,"lng":36.8219,"isPast":true},{"name":"Cape Town, South Africa","date":"Sep 13, 2025","registrationPage":"https://aka.ms/vscodedevdays/capetown","organizer":"Cape Town MS Developer User Group & Microsoft team","format":"","lat":-33.9249,"lng":18.4241,"isPast":false},{"name":"Johannesburg, South Africa","date":"Sep 6, 2025","registrationPage":"https://aka.ms/vscodedevdays/johannesburg","organizer":"Johannesburg Microsoft Developer User Group","format":"","lat":-26.2041,"lng":28.0473,"isPast":true},{"name":"Gembloux, Belgium","date":"Sep 15, 2025","registrationPage":"https://aka.ms/vscodedevdays/gembloux","organizer":"Microsoft MVP Adrien Clerbois","format":"","lat":50.5616,"lng":4.6911,"isPast":false},{"name":"London, United Kingdom","date":"Sep 15, 2025","registrationPage":"https://aka.ms/vscodedevdays/london","organizer":"Microsoft team","format":"","lat":51.5074,"lng":-0.1278,"isPast":false},{"name":"Paris, France","date":"Sep 18, 2025","registrationPage":"https://aka.ms/vscodedevdays/paris","organizer":"Microsoft team","format":"","lat":48.8566,"lng":2.3522,"isPast":false},{"name":"Nyeri, Kenya","date":"Sep 19, 2025","registrationPage":"https://aka.ms/vscodedevdays/nyeri","organizer":"Teach2Give","format":"","lat":-0.4201,"lng":36.9476,"isPast":false},{"name":"Zurich, Switzerland","date":"Sep 9, 2025","registrationPage":"https://aka.ms/vscodedevdays/zurich","organizer":"Microsoft team","format":"","lat":47.3769,"lng":8.5417,"isPast":true},{"name":"Nyahururu, Kenya","date":"Sep 19, 2025","registrationPage":"https://aka.ms/vscodedevdays/nyahururu","organizer":"Teach2Give","format":"","lat":0.0382,"lng":36.3639,"isPast":false},{"name":"Milan, Italy","date":"Sep 19, 2025","registrationPage":"https://aka.ms/vscodedevdays/milan","organizer":"UGIdotNET & Microsoft team","format":"","lat":45.4642,"lng":9.19,"isPast":false},{"name":"Minna, Nigeria","date":"Sep 20, 2025","registrationPage":"https://aka.ms/vscodedevdays/minna","organizer":"GitHub Campus Expert Rasheed Mudasiru","format":"","lat":9.6148,"lng":6.5565,"isPast":false},{"name":"Tanger, Morocco","date":"Sep 26, 2025","registrationPage":"https://aka.ms/vscodedevdays/tanger","organizer":"Morocco Microsoft Community","format":"","lat":35.7595,"lng":-5.834,"isPast":false},{"name":"Jalingo, Nigeria","date":"Sep 27, 2025","registrationPage":"https://aka.ms/vscodedevdays/jalingo","organizer":"GitHub Campus Expert Lucky Hassan","format":"","lat":8.8937,"lng":11.3599,"isPast":false},{"name":"Sofia, Bulgaria","date":"Sep 30, 2025","registrationPage":"https://aka.ms/vscodedevdays/sofia","organizer":"Microsoft team & Progress Telerik","format":"","lat":42.6977,"lng":23.3219,"isPast":false},{"name":"Bordeaux, France","date":"Sep 29, 2025","registrationPage":"https://aka.ms/vscodedevdays/bordeaux","organizer":"Microsoft MVP Alexandre Nédélec","format":"","lat":44.8378,"lng":-0.5792,"isPast":false},{"name":"Mallorca, Spain","date":"Sep 25, 2025","registrationPage":"https://aka.ms/vscodedevdays/mallorca","organizer":"Microsoft team & Travelgate","format":"","lat":39.6953,"lng":3.0176,"isPast":false},{"name":"Copenhagen, Denmark","date":"Sep 30, 2025","registrationPage":"https://aka.ms/vscodedevdays/copenhagen","organizer":"Microsoft team","format":"","lat":55.6761,"lng":12.5683,"isPast":false},{"name":"Lubumbashi, Democratic Republic of Congo","date":"Oct 29, 2025","registrationPage":"https://aka.ms/vscodedevdays/lubumbashi","organizer":"Community member Jean Luc Kabulu","format":"","lat":-11.6609,"lng":27.4794,"isPast":false},{"name":"Monterrey, Mexico","date":"Sep 2, 2025","registrationPage":"https://aka.ms/vscodedevdays/monterrey","organizer":"Roborregos","format":"Hybrid","lat":25.6866,"lng":-100.3161,"isPast":true},{"name":"Taboão da Serra, Brazil","date":"Sep 6, 2025","registrationPage":"https://aka.ms/vscodedevdays/taboao","organizer":"Microsoft MVP Elton Bordim","format":"","lat":-23.6019,"lng":-46.7526,"isPast":true},{"name":"Cordoba, Argentina","date":"Sep 16, 2025","registrationPage":"https://aka.ms/vscodedevdays/cordoba","organizer":"Technet Argentina Interior & Microsoft team","format":"","lat":-31.4201,"lng":-64.1888,"isPast":false},{"name":"Recife, Brazil","date":"Sep 17, 2025","registrationPage":"https://aka.ms/vscodedevdays/recife","organizer":"Microsoft team","format":"","lat":-8.0543,"lng":-34.8813,"isPast":false},{"name":"Lima, Peru","date":"Sep 20, 2025","registrationPage":"https://aka.ms/vscodedevdays/lima","organizer":"Microsoft User Group Perú","format":"","lat":-12.0464,"lng":-77.0428,"isPast":false},{"name":"Lima, Peru","date":"Sep 20, 2025","registrationPage":"https://aka.ms/vscodedevdays/lima-2","organizer":"Cloud Experts Community","format":"","lat":-12.0464,"lng":-77.0428,"isPast":false},{"name":"Lima, Peru","date":"Sep 27, 2025","registrationPage":"https://aka.ms/vscodedevdays/lima-3","organizer":"My Bots LATAM","format":"","lat":-12.0464,"lng":-77.0428,"isPast":false},{"name":"Mogi das Cruzes, Brazil","date":"Sep 20, 2025","registrationPage":"https://aka.ms/vscodedevdays/mogi","organizer":"Cloud Expert","format":"","lat":-23.5226,"lng":-46.1883,"isPast":false},{"name":"São José Dos Campos, Brazil","date":"Sep 27, 2025","registrationPage":"https://aka.ms/vscodedevdays/sjc","organizer":"GitTogether Brasil","format":"","lat":-23.2237,"lng":-45.9009,"isPast":false},{"name":"Sao Paulo, Brazil","date":"Sep 27, 2025","registrationPage":"https://aka.ms/vscodedevdays/saopaulo","organizer":"WoMakersCode & Microsoft team","format":"","lat":-23.5505,"lng":-46.6333,"isPast":false},{"name":"Tuxtla Gutiérrez, Mexico","date":"Sep 24, 2025","registrationPage":"https://aka.ms/vscodedevdays/tuxtla","organizer":"Microsoft MVP Héctor Pérez","format":"","lat":16.752,"lng":-93.1167,"isPast":false},{"name":"Caracas, Venezuela","date":"Sep 24, 2025","registrationPage":"https://aka.ms/vscodedevdays/caracas","organizer":"GitHub Campus Experts David Jose & Jaimes Henriquez","format":"","lat":10.4806,"lng":-66.9036,"isPast":false},{"name":"Sunchales, Argentina","date":"Sep 26, 2025","registrationPage":"https://aka.ms/vscodedevdays/sunchales","organizer":"Microsoft MVP Pablo Piovano & Microsoft team","format":"","lat":-30.9444,"lng":-61.5611,"isPast":false},{"name":"Jundiai, Brazil","date":"Sep 27, 2025","registrationPage":"https://aka.ms/vscodedevdays/jundiai","organizer":"Microsoft MVP Elton Bordim","format":"","lat":-23.1857,"lng":-46.8978,"isPast":false},{"name":"Buenos Aires, Argentina","date":"Sep 13, 2025","registrationPage":"http://aka.ms/vscodedevdays/bsas","organizer":"Microsoft team, MVPs & UBA","format":"","lat":-34.6118,"lng":-58.396,"isPast":false},{"name":"San José, Costa Rica","date":"Oct 10, 2025","registrationPage":"https://aka.ms/vscodedevdays/sanjose","organizer":"Microsoft team & Progress Telerik","format":"","lat":9.9281,"lng":-84.0907,"isPast":false},{"name":"Ciudad de México, México","date":"Sep 24, 2025","registrationPage":"https://aka.ms/vscodedevdays/cdmx","organizer":"Microsoft team & Código Facilito","format":"","lat":19.4326,"lng":-99.1332,"isPast":false},{"name":"Toronto, Canada","date":"Oct 6, 2025","registrationPage":"https://aka.ms/vscodedevdays/toronto-2","organizer":"Microsoft team & North Toronto Cloud & DevOps User Group","format":"","lat":43.6532,"lng":-79.3832,"isPast":false},{"name":"Toronto, Canada","date":"Sep 4, 2025","registrationPage":"https://aka.ms/vscodedevdays/toronto","organizer":"Metro Toronto Azure Community & Microsoft team","format":"","lat":43.6532,"lng":-79.3832,"isPast":true},{"name":"Redmond, WA USA","date":"Sep 27, 2025","registrationPage":"https://aka.ms/vscodedevdays/redmond","organizer":"Microsoft team","format":"","lat":47.673988,"lng":-122.121513,"isPast":false},{"name":"Malvern, PA USA","date":"Sep 17, 2025","registrationPage":"https://aka.ms/vscodedevdays/malvern","organizer":"Microsoft team & philly.NET","format":"","lat":40.0362,"lng":-75.5133,"isPast":false},{"name":"Austin, TX USA","date":"Sep 19, 2025","registrationPage":"https://aka.ms/vscodedevdays/austin","organizer":"Microsoft team","format":"","lat":30.2672,"lng":-97.7431,"isPast":false},{"name":"Newark, NJ USA","date":"Sep 20, 2025","registrationPage":"https://docs.google.com/forms/d/e/1FAIpQLScuZ17T5416hZPVIS0MwWTdY2aa2ZZPNbmokUccWVV2L0LHFw/viewform","organizer":"GitHub Campus Expert David Jose","format":"","lat":40.7357,"lng":-74.1724,"isPast":false},{"name":"Bend, OR USA","date":"Sep 23, 2025","registrationPage":"https://aka.ms/vscodedevdays/central-oregon","organizer":"Deschutes Tech Guild & Microsoft team","format":"","lat":44.0582,"lng":-121.3153,"isPast":false},{"name":"Atlanta, GA USA","date":"Sep 23, 2025","registrationPage":"https://aka.ms/vscodedevdays/atlanta","organizer":"Microsoft team","format":"","lat":33.749,"lng":-84.388,"isPast":false},{"name":"Los Angeles, CA USA","date":"Sep 25, 2025","registrationPage":"https://aka.ms/vscodedevdays/losangeles","organizer":"Microsoft team","format":"","lat":34.0522,"lng":-118.2437,"isPast":false},{"name":"Spokane, WA USA","date":"Sep 30, 2025","registrationPage":"https://aka.ms/vscodedevdays/spokane","organizer":"IntelliTect","format":"","lat":47.6588,"lng":-117.426,"isPast":false},{"name":"New York City, NY USA","date":"Oct 2, 2025","registrationPage":"https://aka.ms/vscodedevdays/nyc","organizer":"Microsoft team","format":"","lat":40.7128,"lng":-74.006,"isPast":false},{"name":"Vancouver, Canada","date":"Oct 2, 2025","registrationPage":"https://aka.ms/vscodedevdays/vancouver","organizer":"Microsoft team","format":"","lat":49.2827,"lng":-123.1207,"isPast":false},{"name":"Raleigh, NC USA","date":"Sep 30, 2025","registrationPage":"https://aka.ms/vscodedevdays/raleigh","organizer":"Microsoft team & Progress Telerik","format":"","lat":35.7796,"lng":-78.6382,"isPast":false},{"name":"Boston, MA USA","date":"Oct 7, 2025","registrationPage":"https://aka.ms/vscodedevdays/boston","organizer":"Microsoft team & Progress Telerik","format":"","lat":42.3601,"lng":-71.0589,"isPast":false},{"name":"Chicago, IL USA","date":"Sep 24, 2025","registrationPage":"https://aka.ms/vscodedevdays/chicago","organizer":"Microsoft team & Progress Telerik","format":"","lat":41.8781,"lng":-87.6298,"isPast":false},{"name":"Tulsa, OK USA","date":"Oct 13, 2025","registrationPage":"https://aka.ms/vscodedevdays/tulsa","organizer":"Microsoft team & Progress Telerik","format":"","lat":36.154,"lng":-95.9928,"isPast":false}];
+	if (!Array.isArray(events) || events.length === 0) {
+		return; // No events
+	}
+
+	const mapContainer = document.getElementById('devDaysMap');
+	if (!mapContainer) {
+		return; // Container missing
+	}
+
+	const map = L.map('devDaysMap', {
+		scrollWheelZoom: false,
+		keyboard: true,
+		keyboardPanDelta: 80,
+		closePopupOnClick: true
+	});
+	const bounds = L.latLngBounds([]);
+
+	// Set up proper accessibility for interactive map
+	mapContainer.setAttribute('role', 'application');
+	mapContainer.setAttribute('aria-label', 'Interactive map with event locations. Use Tab to navigate markers, Enter or Space to view details.');
+
+	const htmlEl = document.documentElement;
+	const bodyEl = document.body;
+	let tileLayer; // current tile layer reference
+
+	function computeIsDark() {
+		const attrTheme = htmlEl.getAttribute('data-theme');
+		const explicitDark = attrTheme === 'dark' || htmlEl.classList.contains('dark') || bodyEl.classList.contains('dark');
+		const explicitLight = attrTheme === 'light' || htmlEl.classList.contains('light') || bodyEl.classList.contains('light');
+		if (explicitDark) return true;
+		if (explicitLight) return false;
+		return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+	}
+
+	function applyThemeTiles(force = false) {
+		const isDark = computeIsDark();
+		const desiredUrl = isDark
+			? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+			: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+		if (tileLayer && !force) {
+			// If URL already matches desired, skip
+			// @ts-ignore accessing _url internal
+			if (tileLayer._url === desiredUrl) return;
+			map.removeLayer(tileLayer);
+		}
+		tileLayer = L.tileLayer(desiredUrl, {
+			maxZoom: 6,
+			minZoom: 1,
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+		}).addTo(map);
+	}
+
+	applyThemeTiles(true);
+
+	// Observe theme changes (class or attribute mutations)
+	const observer = new MutationObserver((mutations) => {
+		for (const m of mutations) {
+			if (m.attributeName === 'class' || m.attributeName === 'data-theme') {
+				applyThemeTiles();
+				break;
+			}
+		}
+	});
+	observer.observe(htmlEl, { attributes: true, attributeFilter: ['class', 'data-theme'] });
+	observer.observe(bodyEl, { attributes: true, attributeFilter: ['class'] });
+
+	if (window.matchMedia) {
+		const mq = window.matchMedia('(prefers-color-scheme: dark)');
+		if (mq.addEventListener) mq.addEventListener('change', () => applyThemeTiles());
+		else if (mq.addListener) mq.addListener(() => applyThemeTiles());
+	}
+
+	events.forEach(ev => {
+		if (typeof ev.lat === 'number' && typeof ev.lng === 'number') {
+			const color = ev.isPast ? '#666' : '#1877F2';
+			const fill = ev.isPast ? '#bbb' : '#1877F2';
+			const marker = L.circleMarker([ev.lat, ev.lng], {
+				radius: 6,
+				color,
+				fillColor: fill,
+				fillOpacity: ev.isPast ? 0.35 : 0.85,
+				weight: 2
+			}).addTo(map);
+
+			const lines = [];
+			lines.push(`<div class="map-popup-title">${ev.name}</div>`);
+			let dateLine = `<div class="map-popup-date">${ev.date}`;
+			if (ev.time) dateLine += ` • ${ev.time}`;
+			if (ev.isPast) dateLine += ' <span class="map-popup-past">(Past)</span>';
+			dateLine += '</div>';
+			lines.push(dateLine);
+			if (ev.location) lines.push(`<div class="map-popup-location">📍 ${ev.location}</div>`);
+			if (ev.format) lines.push(`<div class="map-popup-format">${ev.format}</div>`);
+			if (ev.organizer) lines.push(`<div class="map-popup-organizer">Organizer: ${ev.organizer}</div>`);
+			lines.push(`<div class="map-popup-register"><a href="${ev.registrationPage}" target="_blank" rel="noopener" aria-label="Register for ${ev.name} event">Register</a></div>`);
+			marker.bindPopup(lines.join(''), {
+				className: 'custom-popup',
+				closeButton: true,
+				closePopupOnClick: true,
+				autoClose: true
+			});
+
+			// Add keyboard accessibility to marker
+			marker.on('add', function () {
+				const markerElement = marker.getElement();
+				if (markerElement) {
+					markerElement.setAttribute('tabindex', '0');
+					markerElement.setAttribute('role', 'button');
+					markerElement.setAttribute('aria-label', `${ev.name} event on ${ev.date}. Click to view details.`);
+					markerElement.addEventListener('keydown', function (e) {
+						if (e.key === 'Enter' || e.key === ' ') {
+							e.preventDefault();
+							marker.openPopup();
+						}
+					});
+				}
+			});
+			bounds.extend([ev.lat, ev.lng]);
+		}
+	});
+
+	const legend = L.control({ position: 'bottomleft' });
+	legend.onAdd = function () {
+		const div = L.DomUtil.create('div', 'devdays-legend');
+		div.setAttribute('aria-label', 'Map legend showing upcoming events in blue and past events in gray');
+		div.innerHTML = '<strong>Legend</strong><br/>' +
+			'<svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="#1877F2" stroke-width="2" fill="#1877F2" fill-opacity="0.85"/></svg> Upcoming<br/>' +
+			'<svg width="14" height="14" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="#666" stroke-width="2" fill="#bbb" fill-opacity="0.35"/></svg> Past';
+		return div;
+	};
+	legend.addTo(map);
+
+	if (bounds.isValid()) {
+		map.fitBounds(bounds.pad(0.2));
+		// Increase zoom by one level (not exceeding maxZoom) for a closer default view
+		const currentZoom = map.getZoom();
+		map.setZoom(Math.min(currentZoom + 1, map.getMaxZoom()));
+
+		// Announce to screen readers that map has loaded
+		setTimeout(() => {
+			const liveRegion = document.getElementById('live-region');
+			if (liveRegion) {
+				liveRegion.textContent = `Interactive map loaded with ${events.length} event locations. Use Tab key to navigate map markers, Enter to view event details.`;
+			}
+		}, 1000);
+	} else {
+		// Default view zoom increased from 2 to 3
+		map.setView([20, 0], 3);
+	}
+	
+});
+
+	// Add live region announcements for region navigation
+	document.addEventListener('DOMContentLoaded', function () {
+		const liveRegion = document.getElementById('live-region');
+		const regionLinks = document.querySelectorAll('.region-pill');
+
+		if (liveRegion && regionLinks.length > 0) {
+			regionLinks.forEach(link => {
+				link.addEventListener('click', function (e) {
+					const regionName = this.textContent.trim();
+					setTimeout(() => {
+						liveRegion.textContent = `Navigated to ${regionName} region events`;
+					}, 100);
+				});
+			});
+		}
+
+		// Handle hash changes (direct navigation)
+		window.addEventListener('hashchange', function () {
+			const hash = window.location.hash.substring(1);
+			if (hash && liveRegion) {
+				const targetElement = document.getElementById(hash);
+				if (targetElement) {
+					const heading = targetElement.querySelector('.region-title');
+					if (heading) {
+						liveRegion.textContent = `Viewing ${heading.textContent.trim()} events`;
+					}
+				}
+			}
+		});
+	});
+</script>
+		</div>
+	</div>
+
+	<footer role="contentinfo" class="container">
+		<div class="footer-container">
+			<div class="footer-row">
+				<div class="footer-social">
+					<ul class="links">
+						<li>
+							<a href="https://github.com/microsoft/vscode"><img src="assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+						</li>
+						<li>
+							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+						</li>
+						<li>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+						</li>
+						<li>
+							<a href="https://www.reddit.com/r/vscode/"><img src="assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+						</li>
+						<li>
+							<a href="https://www.vscodepodcast.com/"><img src="assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+						</li>
+						<li>
+							<a href="https://www.tiktok.com/@vscode"><img src="assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+						</li>
+						<li>
+							<a href="https://www.youtube.com/@code"><img src="assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+						</li>
+						<script>
+							function manageConsent() {
+								if (siteConsent && siteConsent.isConsentRequired) {
+									siteConsent.manageConsent();
+								}
+							}
+						</script>
+					</ul>
+					<a id="footer-microsoft-link" class="microsoft-logo" href="https://www.microsoft.com/">
+						<img src="assets/icons/microsoft.svg" alt="Microsoft homepage" />
+					</a>
+				</div>
+			</div>
+			<div class="footer-row">
+				<ul class="links">
+					<li><a id="footer-support-link" href="https://support.serviceshub.microsoft.com/supportforbusiness/create?sapId=d66407ed-3967-b000-4cfb-2c318cad363d"
+							target="_blank" rel="noopener">Support</a></li>
+					<li><a id="footer-privacy-link" href="https://go.microsoft.com/fwlink/?LinkId=521839"
+							target="_blank" rel="noopener">Privacy</a></li>
+					<li style="display: none;"><a id="footer-cookie-link" style="cursor: pointer;" onclick="manageConsent()"
+							target="_blank" rel="noopener">Manage Cookies</a></li>
+					<li><a id="footer-terms-link" href="https://www.microsoft.com/legal/terms-of-use"
+							target="_blank" rel="noopener">Terms of Use</a></li>
+					<li><a id="footer-license-link" href="License-2.html"
+							target="_blank" rel="noopener">License</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<script type="module">
+		document.addEventListener('DOMContentLoaded', () => {
+			const copilotDeepLinks = document.querySelectorAll('.copilot-deep-link');
+			if (copilotDeepLinks.length === 0) {
+				return;
+			}
+			if (window.innerWidth < 992) {
+				for (const link of copilotDeepLinks) {
+					link.href = 'https://aka.ms/vscode-activatecopilotfree';
+				}
+			}
+		});
+	</script>
+
+	<script src="dist/index.js"></script>
+
+	
+
+	<script type="application/ld+json">
+		{
+			"@context" : "http://schema.org",
+			"@type" : "SoftwareApplication",
+			"name" : "Visual Studio Code",
+			"softwareVersion": "1.104",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			},
+			"applicationCategory": "DeveloperApplication",
+			"applicationSubCategory": "Text Editor",
+			"alternateName": "VS Code",
+			"datePublished": "2021-11-03",
+			"operatingSystem": "Mac, Linux, Windows",
+			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",
+			"screenshot": "https://code.visualstudio.com/assets/home/home-screenshot-win.png",
+			"releaseNotes": "https://code.visualstudio.com/updates",
+			"downloadUrl": "https://code.visualstudio.com/download",
+			"license": "https://code.visualstudio.com/license",
+			"softwareRequirements": "https://code.visualstudio.com/docs/supporting/requirements",
+			"url" : "https://code.visualstudio.com",
+			"author": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"maintainer": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://code.visualstudio.com/Search?q={search_term_string}",
+				"query-input": "required name=search_term_string"
+			},
+			"sameAs" : [
+				"https://en.wikipedia.org/wiki/Visual_Studio_Code",
+				"https://twitter.com/code",
+				"https://www.youtube.com/code",
+				"https://www.tiktok.com/@vscode",
+				"https://github.com/microsoft/vscode"
+			]
+		}
+	</script>
+</body>
+
+
+<!-- Mirrored from code.visualstudio.com/dev-days by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:53:40 GMT -->
+</html>

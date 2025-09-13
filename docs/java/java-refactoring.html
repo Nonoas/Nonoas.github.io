@@ -1,0 +1,2802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from code.visualstudio.com/docs/java/java-refactoring by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:55:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="awa-expId" content="vscw_aaflight1016_control:103441;" />
+	<meta name="awa-env" content="prod" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="hNs7DXrTySP_X-0P_AC0WulAXvUwgSXEmgfcO2r79dw" />
+
+	<!-- Twitter and Facebook OpenGraph Metadata-->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@code" />
+
+	<meta name="description" content="Java code refactoring and Source Actions for Visual Studio Code" />
+<meta name="keywords" content="" />
+<meta name="ms.prod" content="vs-code" />
+<meta name="ms.TOCTitle" content="" />
+<meta name="ms.ContentId" content="36ee3e12-9bcc-4f01-9672-857ad2733c2d" />
+<meta name="ms.date" content="12/9/2021" />
+<meta name="ms.topic" content="conceptual" />
+<!-- Twitter and Facebook OpenGraph Metadata-->
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:url" content="https://code.visualstudio.com/docs/java/java-refactoring" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Java refactoring and Source Actions" />
+<meta property="og:description" content="Java code refactoring and Source Actions for Visual Studio Code" />
+
+<meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" />
+
+
+
+	<link rel="shortcut icon" href="https://code.visualstudio.com/assets/favicon.ico" sizes="128x128" />
+	<link rel="apple-touch-icon" href="https://code.visualstudio.com/assets/apple-touch-icon.png">
+
+	<title>Java refactoring and Source Actions</title>
+
+	<link rel="stylesheet" href="https://code.visualstudio.com/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://code.visualstudio.com/dist/v2/style.css">
+
+	<script src="https://consentdeliveryfd.azurefd.net/mscc/lib/v2/wcp-consent.js"></script>
+	<script type="text/javascript" src="https://js.monitor.azure.com/scripts/c/ms.analytics-web-4.min.js"></script>
+	
+	<script type="text/javascript">
+	// Leave as var; siteConsent is initialized and referenced elsewhere.
+	var siteConsent = null;
+	
+	const GPC_DataSharingOptIn = false;
+	WcpConsent.onInitCallback(function () {
+		window.appInsights = new oneDS.ApplicationInsights();
+		window.appInsights.initialize({
+			instrumentationKey: "1a3eb3104447440391ad5f2a6ee06a0a-62879566-bc58-4741-9650-302bf2af703f-7103",
+			propertyConfiguration: {
+				userConsented: false,
+				gpcDataSharingOptIn: false,
+				callback: {
+					userConsentDetails: siteConsent ? siteConsent.getConsent : undefined
+				},
+			},
+			cookieCfg: {
+				ignoreCookies: ["MSCC"]
+			},
+			webAnalyticsConfiguration:{ // Web Analytics Plugin configuration
+				urlCollectQuery: true,
+				urlCollectHash: true,
+				autoCapture: {
+					scroll: true,
+					pageView: true,
+					onLoad: true,
+					onUnload: true,
+					click: true,
+					resize: true,
+					jsError: true
+				}
+			}
+		}, []);
+	
+		window.appInsights.getPropertyManager().getPropertiesContext().web.gpcDataSharingOptIn = GPC_DataSharingOptIn;
+	});
+	</script>
+	<link rel="alternate" type="application/atom+xml" title="RSS Feed for code.visualstudio.com" href="https://code.visualstudio.com/feed.xml" />
+</head>
+
+<body >
+	<!-- Setting theme here to avoid FOUC -->
+	<script>
+		function setTheme(themeName) {
+			if (themeName === 'dark') {
+				document.documentElement.removeAttribute('data-theme'); // dark is default, so no data-theme attribute needed
+			}
+
+			if (themeName === 'light') {
+				document.documentElement.setAttribute('data-theme', themeName);
+			}
+			return;
+		}
+
+		// Determine initial theme: user preference or system preference
+		let theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		setTheme(theme); // Apply the initial theme
+
+		// Listen for changes in the system theme preference
+		window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+			if (!localStorage.getItem('theme')) { // Only if no user preference is saved
+				setTheme(e.matches ? 'dark' : 'light');
+			}
+		});
+	</script>
+
+	<div id="main">
+		<div class="navbar-fixed-container">
+			<div class="navbar navbar-inverse navbar-fixed-top " data-spy="affix"
+				data-offset-top="1">
+				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
+					<div class="container">
+						<div class="nav navbar-header">
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>Visual Studio Code</span></a>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+								aria-label="Expand and Collapse Menu">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="navbar-collapse collapse">
+							<ul class="nav navbar-nav navbar-left">
+								<li class="active" ><a id="nav-docs" href="https://code.visualstudio.com/docs">Docs</a></li>
+								<li ><a id="nav-updates" href="https://code.visualstudio.com/updates">Updates</a></li>
+								<li ><a id="nav-blogs" href="https://code.visualstudio.com/blogs">Blog</a></li>
+								<li ><a id="nav-extend" href="https://code.visualstudio.com/api">API</a></li>
+								<li><a href="https://marketplace.visualstudio.com/VSCode" target="_blank" rel="noopener" id="nav-extensions">Extensions</a></li>
+								<li ><a id="nav-mcp" href="https://code.visualstudio.com/mcp">MCP</a></li>
+								<li ><a id="nav-faqs" href="https://code.visualstudio.com/docs/supporting/faq">FAQ</a></li>
+								<li class='search visible-xs visible-sm'
+									><a href="https://code.visualstudio.com/Search">Search</a></li>
+								<li ><a id="nav-events" href="https://code.visualstudio.com/dev-days">Dev Days</a></li>
+							</ul>
+		
+							<ul class="nav navbar-nav navbar-right" role="presentation">
+								<li>
+									<button type="button" class="theme-switch" id="theme-toggle">
+										<img class="theme-icon-light" src="https://code.visualstudio.com/assets/icons/theme-light.svg"
+											alt="Switch to the dark theme" />
+										<img class="theme-icon-dark" src="https://code.visualstudio.com/assets/icons/theme-dark.svg"
+											alt="Switch to the light theme" />
+									</button>
+								</li>
+								<li>
+									<a href="https://code.visualstudio.com/Search" title="Search" class="btn search-btn" id="nav-search" aria-label="Open search page">
+										<img class="search-icon-light" src="https://code.visualstudio.com/assets/icons/search.svg" width="16px" height="16px"
+											alt="" />
+										<img class="search-icon-dark" src="https://code.visualstudio.com/assets/icons/search-dark.svg" width="16px"
+											height="16px" alt="" />
+									</a>
+								</li>
+								<li class="search" role="presentation">
+									<div class="nav-search search-control" role="button" tabindex="0" aria-label="Open search dialog">
+										<div class="input-group" role="presentation">
+											<span class="input-group-btn">
+												<span class="btn search-icon-container" aria-hidden="true">
+													<img class="search-icon-dark" src="https://code.visualstudio.com/assets/icons/search-dark.svg" alt="" />
+													<img class="search-icon-light" src="https://code.visualstudio.com/assets/icons/search.svg" alt="" />
+												</span>
+											</span>
+											<input type="text" name="q" class="search-box form-control" placeholder="Search Docs" aria-hidden="true" tabindex="-1" readonly/>
+											<span class="search-shortcut-overlay"></span>
+										</div>
+									</div>						</li>
+								<!-- this was hiden in the home and download page, keeping it for now -->
+								<li><a class="link-button" href="https://code.visualstudio.com/Download" id="nav-download">
+										<span>Download</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
+			<div class="container">
+				<p class="message">Join a <a href="https://code.visualstudio.com/dev-days" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+			</div>
+			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
+					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
+		</div>		<!-- This div wraps around the entire site -->
+		<!-- The body itself should already have a main tag -->
+		<div id="main-content">
+			<script>
+    function closeReportIssue() {
+        var element = document.getElementById('surveypopup');
+        element.parentElement.removeChild(element);
+    }
+
+    function reportIssue(tutorial, page) {
+        var div = document.createElement('div');
+        div.innerHTML = '<div id="surveypopup" class="overlay visible"><div class="surveypopup"><div id="surveytitle">Tell us more<a href="javascript:void(0)" onclick="closeReportIssue()">X</a></div><div id="surveydiv"><iframe frameBorder="0" scrolling="0" src="https://www.research.net/r/PWZWZ52?tutorial=' + tutorial + '&step=' + page + '"></iframe></div></div></div>';
+        document.body.appendChild(div.children[0]);
+    }
+</script>
+
+<div class="container body-content docs">
+    <div class="row">
+        <!-- left nav -->
+        <div class="col-xs-12 col-md-2 docs-navbar-container">
+            <nav id="docs-navbar" aria-label="Topics" class="docs-nav visible-md visible-lg">
+              <ul class="nav" id="main-nav">
+              <li >
+                <a class="docs-home" href="https://code.visualstudio.com/docs" >Overview</a>
+              </li>
+              
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#setup-articles" data-parent="#main-nav" data-toggle="collapse">Setup</a>
+              <ul id="setup-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/setup-overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/linux" >Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/mac" >macOS</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/windows" >Windows</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/vscode-web" >VS Code for the Web</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/raspberry-pi" >Raspberry Pi</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/network" >Network</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/additional-components" >Additional Components</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/enterprise" >Enterprise</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/setup/uninstall" >Uninstall</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#getstarted-articles" data-parent="#main-nav" data-toggle="collapse">Get Started</a>
+              <ul id="getstarted-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/getting-started" >VS Code Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/copilot-quickstart" >Copilot Quickstart</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/userinterface" >User Interface</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/personalize-vscode" >Personalize VS Code</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/extensions" >Install Extensions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/tips-and-tricks" >Tips and Tricks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/getstarted/introvideos" >Intro Videos</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#configure-articles" data-parent="#main-nav" data-toggle="collapse">Configure</a>
+              <ul id="configure-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/locales" >Display Language</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/custom-layout" >Layout</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/keybindings" >Keyboard Shortcuts</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/settings" >Settings</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/settings-sync" >Settings Sync</a>
+                    </li>
+                      
+            <li class="panel">
+              <a class="area disabled" tabindex="-1" aria-disabled="true">Extensions</a>
+              <ul id="configure-extensions-articles" class="collapse in">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/extensions/extension-marketplace" >Extension Marketplace</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/extensions/extension-runtime-security" >Extension Runtime Security</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/themes" >Themes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/profiles" >Profiles</a>
+                    </li>
+                      
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#configure-accessibility-articles"  data-toggle="collapse">Accessibility</a>
+              <ul id="configure-accessibility-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/accessibility/accessibility" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/accessibility/voice" >Voice Interactions</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/command-line" >Command Line Interface</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/configure/telemetry" >Telemetry</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#editing-articles" data-parent="#main-nav" data-toggle="collapse">Edit code</a>
+              <ul id="editing-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/codebasics" >Basic Editing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/intellisense" >IntelliSense</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/editingevolved" >Code Navigation</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/refactoring" >Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/userdefinedsnippets" >Snippets</a>
+                    </li>
+                      
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#editing-workspaces-articles"  data-toggle="collapse">Workspaces</a>
+              <ul id="editing-workspaces-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/workspaces/workspaces" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/workspaces/multi-root-workspaces" >Multi-root Workspaces</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/editing/workspaces/workspace-trust" >Workspace Trust</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#debugtest-articles" data-parent="#main-nav" data-toggle="collapse">Build, Debug, Test</a>
+              <ul id="debugtest-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/debugtest/tasks" >Tasks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/debugtest/debugging" >Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/debugtest/debugging-configuration" >Debug Configuration</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/debugtest/testing" >Testing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/debugtest/port-forwarding" >Port Forwarding</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#copilot-articles" data-parent="#main-nav" data-toggle="collapse">GitHub Copilot</a>
+              <ul id="copilot-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/setup" >Setup</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/getting-started" >Quickstart</a>
+                    </li>
+                      
+            <li class="panel">
+              <a class="area disabled" tabindex="-1" aria-disabled="true">Chat</a>
+              <ul id="copilot-chat-articles" class="collapse in">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat" >Chat Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-chat-context" >Manage Context</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/chat-ask-mode" >Ask Mode</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/copilot-edits" >Edit Mode</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode" >Agent Mode</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/inline-chat" >Inline Chat</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/chat/prompt-crafting" >Prompt Engineering</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/ai-powered-suggestions" >Code Completions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/copilot-coding-agent" >Copilot Coding Agent</a>
+                    </li>
+                      
+            <li class="panel">
+              <a class="area disabled" tabindex="-1" aria-disabled="true">Customize Copilot</a>
+              <ul id="copilot-customization-articles" class="collapse in">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/customization/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/customization/custom-instructions" >Custom Instructions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/customization/prompt-files" >Prompt Files</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/customization/custom-chat-modes" >Chat Modes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/customization/language-models" >Language Models</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/customization/mcp-servers" >MCP</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+            <li class="panel">
+              <a class="area disabled" tabindex="-1" aria-disabled="true">Guides</a>
+              <ul id="copilot-guides-articles" class="collapse in">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/guides/notebooks-with-ai" >Edit Notebooks with AI</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/guides/test-with-copilot" >Test with AI</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/guides/debug-with-copilot" >Debug with AI</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/guides/mcp-developer-guide" >MCP Dev Guide</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/copilot-smart-actions" >Smart Actions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/copilot-tips-and-tricks" >Tips and Tricks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/security" >Security</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/faq" >FAQ</a>
+                    </li>
+                      
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#copilot-reference-articles"  data-toggle="collapse">Reference</a>
+              <ul id="copilot-reference-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/reference/copilot-vscode-features" >Cheat Sheet</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/reference/copilot-settings" >Settings Reference</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/copilot/reference/workspace-context" >Workspace Context</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#sourcecontrol-articles" data-parent="#main-nav" data-toggle="collapse">Source Control</a>
+              <ul id="sourcecontrol-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/sourcecontrol/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/sourcecontrol/intro-to-git" >Introduction to Git</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/sourcecontrol/github" >Collaborate on GitHub</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/sourcecontrol/faq" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#terminal-articles" data-parent="#main-nav" data-toggle="collapse">Terminal</a>
+              <ul id="terminal-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/terminal/getting-started" >Getting Started Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/terminal/basics" >Terminal Basics</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/terminal/profiles" >Terminal Profiles</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/terminal/shell-integration" >Shell Integration</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/terminal/appearance" >Appearance</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/terminal/advanced" >Advanced</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#languages-articles" data-parent="#main-nav" data-toggle="collapse">Languages</a>
+              <ul id="languages-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/javascript" >JavaScript</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/json" >JSON</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/html" >HTML</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/emmet" >Emmet</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/css" >CSS, SCSS and Less</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/typescript" >TypeScript</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/markdown" >Markdown</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/powershell" >PowerShell</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/cpp" >C++</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/java" >Java</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/php" >PHP</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/python" >Python</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/julia" >Julia</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/r" >R</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/ruby" >Ruby</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/rust" >Rust</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/go" >Go</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/tsql" >T-SQL</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/csharp" >C#</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/dotnet" >.NET</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/polyglot" >Polyglot</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/languages/swift" >Swift</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#nodejs-articles" data-parent="#main-nav" data-toggle="collapse">Node.js / JavaScript</a>
+              <ul id="nodejs-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/working-with-javascript" >Working with JavaScript</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/nodejs-tutorial" >Node.js Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging" >Node.js Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/nodejs-deployment" >Deploy Node.js Apps</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/browser-debugging" >Browser Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/angular-tutorial" >Angular Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/reactjs-tutorial" >React Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/vuejs-tutorial" >Vue Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/debugging-recipes" >Debugging Recipes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/profiling" >Performance Profiling</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/nodejs/extensions" >Extensions</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#typescript-articles" data-parent="#main-nav" data-toggle="collapse">TypeScript</a>
+              <ul id="typescript-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/typescript/typescript-tutorial" >Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/typescript/typescript-compiling" >Compiling</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/typescript/typescript-editing" >Editing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/typescript/typescript-refactoring" >Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/typescript/typescript-debugging" >Debugging</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#python-articles" data-parent="#main-nav" data-toggle="collapse">Python</a>
+              <ul id="python-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/python-quick-start" >Quick Start</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/python-tutorial" >Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/run" >Run Python Code</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/editing" >Editing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/linting" >Linting</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/formatting" >Formatting</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/debugging" >Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/environments" >Environments</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/testing" >Testing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/jupyter-support-py" >Python Interactive</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/tutorial-django" >Django Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/tutorial-fastapi" >FastAPI Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/tutorial-flask" >Flask Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/tutorial-create-containers" >Create Containers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/python-on-azure" >Deploy Python Apps</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/python-web" >Python in the Web</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/python/settings-reference" >Settings Reference</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel active expanded">
+              <a class="area" role="button" href="#java-articles" data-parent="#main-nav" data-toggle="collapse">Java</a>
+              <ul id="java-articles" class="collapse in">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-tutorial" >Getting Started</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-editing" >Navigate and Edit</a>
+                    </li>
+                      
+                    <li class="active">
+                      <a href="https://code.visualstudio.com/docs/java/java-refactoring" aria-label="Current Page: Refactoring">Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-linting" >Formatting and Linting</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-project" >Project Management</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-build" >Build Tools</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-debugging" >Run and Debug</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-testing" >Testing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-spring-boot" >Spring Boot</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-tomcat-jetty" >Application Servers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-on-azure" >Deploy Java Apps</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-gui" >GUI Applications</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/extensions" >Extensions</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/java/java-faq" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#cpp-articles" data-parent="#main-nav" data-toggle="collapse">C++</a>
+              <ul id="cpp-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/introvideos-cpp" >Intro Videos</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/config-linux" >GCC on Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/config-mingw" >GCC on Windows</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/config-wsl" >GCC on Windows Subsystem for Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/config-clang-mac" >Clang on macOS</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/config-msvc" >Microsoft C++ on Windows</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/build-with-cmake" >Build with CMake</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/cmake-linux" >CMake Tools on Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/cmake-quickstart" >CMake Quick Start</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/cpp-ide" >Editing and Navigating</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/cpp-debug" >Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/launch-json-reference" >Configure Debugging</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/cpp-refactoring" >Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/customize-cpp-settings" >Settings Reference</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/configure-intellisense" >Configure IntelliSense</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/configure-intellisense-crosscompilation" >Configure IntelliSense for Cross-Compiling</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/cpp/faq-cpp" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#csharp-articles" data-parent="#main-nav" data-toggle="collapse">C#</a>
+              <ul id="csharp-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/introvideos-csharp" >Intro Videos</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/get-started" >Get Started</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/navigate-edit" >Navigate and Edit</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/intellicode" >IntelliCode</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/refactoring" >Refactoring</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/formatting-linting" >Formatting and Linting</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/project-management" >Project Management</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/build-tools" >Build Tools</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/package-management" >Package Management</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/debugging" >Run and Debug</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/testing" >Testing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/csharp/cs-dev-kit-faq" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#containers-articles" data-parent="#main-nav" data-toggle="collapse">Container Tools</a>
+              <ul id="containers-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/quickstart-node" >Node.js</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/quickstart-python" >Python</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/quickstart-aspnet-core" >ASP.NET Core</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/debug-common" >Debug</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/docker-compose" >Docker Compose</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/quickstart-container-registries" >Registries</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/app-service" >Deploy to Azure</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/choosing-dev-environment" >Choose a Dev Environment</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/reference" >Customize</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/bridge-to-kubernetes" >Develop with Kubernetes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/containers/troubleshooting" >Tips and Tricks</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#datascience-articles" data-parent="#main-nav" data-toggle="collapse">Data Science</a>
+              <ul id="datascience-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks" >Jupyter Notebooks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/data-science-tutorial" >Data Science Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/python-interactive" >Python Interactive</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/data-wrangler-quick-start" >Data Wrangler Quick Start</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/data-wrangler" >Data Wrangler</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/pytorch-support" >PyTorch Support</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/azure-machine-learning" >Azure Machine Learning</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/jupyter-kernel-management" >Manage Jupyter Kernels</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/datascience/notebooks-web" >Jupyter Notebooks on the Web</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#intelligentapps-articles" data-parent="#main-nav" data-toggle="collapse">Intelligent Apps</a>
+              <ul id="intelligentapps-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/overview" >AI Toolkit Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/models" >Models</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/playground" >Playground</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/agentbuilder" >Agent Builder</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/bulkrun" >Bulk Run</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/evaluation" >Evaluation</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/finetune" >Fine-tune</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/modelconversion" >Model Conversion</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/tracing" >Tracing</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/faq" >FAQ</a>
+                    </li>
+                      
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#intelligentapps-reference-articles"  data-toggle="collapse">Reference</a>
+              <ul id="intelligentapps-reference-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/reference/FileStructure" >File Structure</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/reference/ManualModelConversion" >Manual Model Conversion</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/reference/ManualConversionOnGPU" >Manual Model Conversion On GPU</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/reference/SetupWithoutAITK" >Setup Environment Without AI Toolkit</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/intelligentapps/reference/TemplateProject" >Template Project</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                    
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#azure-articles" data-parent="#main-nav" data-toggle="collapse">Azure</a>
+              <ul id="azure-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/gettingstarted" >Getting Started</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/resourcesextension" >Resources View</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/deployment" >Deployment</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/vscodeforweb" >VS Code for the Web - Azure</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/containers" >Containers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/aksextensions" >Azure Kubernetes Service</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/kubernetes" >Kubernetes</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/mongodb" >MongoDB</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/azure/remote-debugging" >Remote Debugging for Node.js</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#remote-articles" data-parent="#main-nav" data-toggle="collapse">Remote</a>
+              <ul id="remote-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/remote-overview" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/ssh" >SSH</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/dev-containers" >Dev Containers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/wsl" >Windows Subsystem for Linux</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/codespaces" >GitHub Codespaces</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/vscode-server" >VS Code Server</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/tunnels" >Tunnels</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/ssh-tutorial" >SSH Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/wsl-tutorial" >WSL Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/troubleshooting" >Tips and Tricks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/remote/faq" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#devcontainers-articles" data-parent="#main-nav" data-toggle="collapse">Dev Containers</a>
+              <ul id="devcontainers-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/containers" >Overview</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/tutorial" >Tutorial</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/attach-container" >Attach to Container</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/create-dev-container" >Create Dev Container</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/containers-advanced" >Advanced Containers</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/devcontainerjson-reference" >devcontainer.json</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/devcontainer-cli" >Dev Container CLI</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/tips-and-tricks" >Tips and Tricks</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/devcontainers/faq" >FAQ</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+            <li class="panel collapsed">
+              <a class="area" role="button" href="#reference-articles" data-parent="#main-nav" data-toggle="collapse">Reference</a>
+              <ul id="reference-articles" class="collapse ">
+            
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/reference/default-keybindings" >Default Keyboard Shortcuts</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/reference/default-settings" >Default Settings</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/reference/variables-reference" >Substitution Variables</a>
+                    </li>
+                      
+                    <li >
+                      <a href="https://code.visualstudio.com/docs/reference/tasks-appendix" >Tasks Schema</a>
+                    </li>
+                      
+              </ul>
+            </li>
+                
+              </ul>
+            </nav>
+            
+            <nav id="small-nav" aria-label="Topics" class="docs-nav hidden-md hidden-lg">
+              <label class="faux-h4" for="small-nav-dropdown">Topics</label>
+              <select id="small-nav-dropdown" aria-label="topics">
+                <option value="/docs" >Overview</option>
+            
+              <optgroup label="Setup">
+            
+                    <option value="/docs/setup/setup-overview" >Overview</option>
+                    
+                    <option value="/docs/setup/linux" >Linux</option>
+                    
+                    <option value="/docs/setup/mac" >macOS</option>
+                    
+                    <option value="/docs/setup/windows" >Windows</option>
+                    
+                    <option value="/docs/setup/vscode-web" >VS Code for the Web</option>
+                    
+                    <option value="/docs/setup/raspberry-pi" >Raspberry Pi</option>
+                    
+                    <option value="/docs/setup/network" >Network</option>
+                    
+                    <option value="/docs/setup/additional-components" >Additional Components</option>
+                    
+                    <option value="/docs/setup/enterprise" >Enterprise</option>
+                    
+                    <option value="/docs/setup/uninstall" >Uninstall</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Get Started">
+            
+                    <option value="/docs/getstarted/getting-started" >VS Code Tutorial</option>
+                    
+                    <option value="/docs/getstarted/copilot-quickstart" >Copilot Quickstart</option>
+                    
+                    <option value="/docs/getstarted/userinterface" >User Interface</option>
+                    
+                    <option value="/docs/getstarted/personalize-vscode" >Personalize VS Code</option>
+                    
+                    <option value="/docs/getstarted/extensions" >Install Extensions</option>
+                    
+                    <option value="/docs/getstarted/tips-and-tricks" >Tips and Tricks</option>
+                    
+                    <option value="/docs/getstarted/introvideos" >Intro Videos</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Configure">
+            
+                    <option value="/docs/configure/locales" >Display Language</option>
+                    
+                    <option value="/docs/configure/custom-layout" >Layout</option>
+                    
+                    <option value="/docs/configure/keybindings" >Keyboard Shortcuts</option>
+                    
+                    <option value="/docs/configure/settings" >Settings</option>
+                    
+                    <option value="/docs/configure/settings-sync" >Settings Sync</option>
+                    
+                    <optgroup label="Configure - Extensions">
+            
+                      <option value="/docs/configure/extensions/extension-marketplace" >Extension Marketplace</option>
+                      
+                      <option value="/docs/configure/extensions/extension-runtime-security" >Extension Runtime Security</option>
+                      
+                    </optgroup>
+            
+                    <option value="/docs/configure/themes" >Themes</option>
+                    
+                    <option value="/docs/configure/profiles" >Profiles</option>
+                    
+                    <optgroup label="Configure - Accessibility">
+            
+                      <option value="/docs/configure/accessibility/accessibility" >Overview</option>
+                      
+                      <option value="/docs/configure/accessibility/voice" >Voice Interactions</option>
+                      
+                    </optgroup>
+            
+                    <option value="/docs/configure/command-line" >Command Line Interface</option>
+                    
+                    <option value="/docs/configure/telemetry" >Telemetry</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Edit code">
+            
+                    <option value="/docs/editing/codebasics" >Basic Editing</option>
+                    
+                    <option value="/docs/editing/intellisense" >IntelliSense</option>
+                    
+                    <option value="/docs/editing/editingevolved" >Code Navigation</option>
+                    
+                    <option value="/docs/editing/refactoring" >Refactoring</option>
+                    
+                    <option value="/docs/editing/userdefinedsnippets" >Snippets</option>
+                    
+                    <optgroup label="Edit code - Workspaces">
+            
+                      <option value="/docs/editing/workspaces/workspaces" >Overview</option>
+                      
+                      <option value="/docs/editing/workspaces/multi-root-workspaces" >Multi-root Workspaces</option>
+                      
+                      <option value="/docs/editing/workspaces/workspace-trust" >Workspace Trust</option>
+                      
+                    </optgroup>
+            
+              </optgroup>
+              
+              <optgroup label="Build, Debug, Test">
+            
+                    <option value="/docs/debugtest/tasks" >Tasks</option>
+                    
+                    <option value="/docs/debugtest/debugging" >Debugging</option>
+                    
+                    <option value="/docs/debugtest/debugging-configuration" >Debug Configuration</option>
+                    
+                    <option value="/docs/debugtest/testing" >Testing</option>
+                    
+                    <option value="/docs/debugtest/port-forwarding" >Port Forwarding</option>
+                    
+              </optgroup>
+              
+              <optgroup label="GitHub Copilot">
+            
+                    <option value="/docs/copilot/overview" >Overview</option>
+                    
+                    <option value="/docs/copilot/setup" >Setup</option>
+                    
+                    <option value="/docs/copilot/getting-started" >Quickstart</option>
+                    
+                    <optgroup label="GitHub Copilot - Chat">
+            
+                      <option value="/docs/copilot/chat/copilot-chat" >Chat Overview</option>
+                      
+                      <option value="/docs/copilot/chat/copilot-chat-context" >Manage Context</option>
+                      
+                      <option value="/docs/copilot/chat/chat-ask-mode" >Ask Mode</option>
+                      
+                      <option value="/docs/copilot/chat/copilot-edits" >Edit Mode</option>
+                      
+                      <option value="/docs/copilot/chat/chat-agent-mode" >Agent Mode</option>
+                      
+                      <option value="/docs/copilot/chat/inline-chat" >Inline Chat</option>
+                      
+                      <option value="/docs/copilot/chat/prompt-crafting" >Prompt Engineering</option>
+                      
+                    </optgroup>
+            
+                    <option value="/docs/copilot/ai-powered-suggestions" >Code Completions</option>
+                    
+                    <option value="/docs/copilot/copilot-coding-agent" >Copilot Coding Agent</option>
+                    
+                    <optgroup label="GitHub Copilot - Customize Copilot">
+            
+                      <option value="/docs/copilot/customization/overview" >Overview</option>
+                      
+                      <option value="/docs/copilot/customization/custom-instructions" >Custom Instructions</option>
+                      
+                      <option value="/docs/copilot/customization/prompt-files" >Prompt Files</option>
+                      
+                      <option value="/docs/copilot/customization/custom-chat-modes" >Chat Modes</option>
+                      
+                      <option value="/docs/copilot/customization/language-models" >Language Models</option>
+                      
+                      <option value="/docs/copilot/customization/mcp-servers" >MCP</option>
+                      
+                    </optgroup>
+            
+                    <optgroup label="GitHub Copilot - Guides">
+            
+                      <option value="/docs/copilot/guides/notebooks-with-ai" >Edit Notebooks with AI</option>
+                      
+                      <option value="/docs/copilot/guides/test-with-copilot" >Test with AI</option>
+                      
+                      <option value="/docs/copilot/guides/debug-with-copilot" >Debug with AI</option>
+                      
+                      <option value="/docs/copilot/guides/mcp-developer-guide" >MCP Dev Guide</option>
+                      
+                    </optgroup>
+            
+                    <option value="/docs/copilot/copilot-smart-actions" >Smart Actions</option>
+                    
+                    <option value="/docs/copilot/copilot-tips-and-tricks" >Tips and Tricks</option>
+                    
+                    <option value="/docs/copilot/security" >Security</option>
+                    
+                    <option value="/docs/copilot/faq" >FAQ</option>
+                    
+                    <optgroup label="GitHub Copilot - Reference">
+            
+                      <option value="/docs/copilot/reference/copilot-vscode-features" >Cheat Sheet</option>
+                      
+                      <option value="/docs/copilot/reference/copilot-settings" >Settings Reference</option>
+                      
+                      <option value="/docs/copilot/reference/workspace-context" >Workspace Context</option>
+                      
+                    </optgroup>
+            
+              </optgroup>
+              
+              <optgroup label="Source Control">
+            
+                    <option value="/docs/sourcecontrol/overview" >Overview</option>
+                    
+                    <option value="/docs/sourcecontrol/intro-to-git" >Introduction to Git</option>
+                    
+                    <option value="/docs/sourcecontrol/github" >Collaborate on GitHub</option>
+                    
+                    <option value="/docs/sourcecontrol/faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Terminal">
+            
+                    <option value="/docs/terminal/getting-started" >Getting Started Tutorial</option>
+                    
+                    <option value="/docs/terminal/basics" >Terminal Basics</option>
+                    
+                    <option value="/docs/terminal/profiles" >Terminal Profiles</option>
+                    
+                    <option value="/docs/terminal/shell-integration" >Shell Integration</option>
+                    
+                    <option value="/docs/terminal/appearance" >Appearance</option>
+                    
+                    <option value="/docs/terminal/advanced" >Advanced</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Languages">
+            
+                    <option value="/docs/languages/overview" >Overview</option>
+                    
+                    <option value="/docs/languages/javascript" >JavaScript</option>
+                    
+                    <option value="/docs/languages/json" >JSON</option>
+                    
+                    <option value="/docs/languages/html" >HTML</option>
+                    
+                    <option value="/docs/languages/emmet" >Emmet</option>
+                    
+                    <option value="/docs/languages/css" >CSS, SCSS and Less</option>
+                    
+                    <option value="/docs/languages/typescript" >TypeScript</option>
+                    
+                    <option value="/docs/languages/markdown" >Markdown</option>
+                    
+                    <option value="/docs/languages/powershell" >PowerShell</option>
+                    
+                    <option value="/docs/languages/cpp" >C++</option>
+                    
+                    <option value="/docs/languages/java" >Java</option>
+                    
+                    <option value="/docs/languages/php" >PHP</option>
+                    
+                    <option value="/docs/languages/python" >Python</option>
+                    
+                    <option value="/docs/languages/julia" >Julia</option>
+                    
+                    <option value="/docs/languages/r" >R</option>
+                    
+                    <option value="/docs/languages/ruby" >Ruby</option>
+                    
+                    <option value="/docs/languages/rust" >Rust</option>
+                    
+                    <option value="/docs/languages/go" >Go</option>
+                    
+                    <option value="/docs/languages/tsql" >T-SQL</option>
+                    
+                    <option value="/docs/languages/csharp" >C#</option>
+                    
+                    <option value="/docs/languages/dotnet" >.NET</option>
+                    
+                    <option value="/docs/languages/polyglot" >Polyglot</option>
+                    
+                    <option value="/docs/languages/swift" >Swift</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Node.js / JavaScript">
+            
+                    <option value="/docs/nodejs/working-with-javascript" >Working with JavaScript</option>
+                    
+                    <option value="/docs/nodejs/nodejs-tutorial" >Node.js Tutorial</option>
+                    
+                    <option value="/docs/nodejs/nodejs-debugging" >Node.js Debugging</option>
+                    
+                    <option value="/docs/nodejs/nodejs-deployment" >Deploy Node.js Apps</option>
+                    
+                    <option value="/docs/nodejs/browser-debugging" >Browser Debugging</option>
+                    
+                    <option value="/docs/nodejs/angular-tutorial" >Angular Tutorial</option>
+                    
+                    <option value="/docs/nodejs/reactjs-tutorial" >React Tutorial</option>
+                    
+                    <option value="/docs/nodejs/vuejs-tutorial" >Vue Tutorial</option>
+                    
+                    <option value="/docs/nodejs/debugging-recipes" >Debugging Recipes</option>
+                    
+                    <option value="/docs/nodejs/profiling" >Performance Profiling</option>
+                    
+                    <option value="/docs/nodejs/extensions" >Extensions</option>
+                    
+              </optgroup>
+              
+              <optgroup label="TypeScript">
+            
+                    <option value="/docs/typescript/typescript-tutorial" >Tutorial</option>
+                    
+                    <option value="/docs/typescript/typescript-compiling" >Compiling</option>
+                    
+                    <option value="/docs/typescript/typescript-editing" >Editing</option>
+                    
+                    <option value="/docs/typescript/typescript-refactoring" >Refactoring</option>
+                    
+                    <option value="/docs/typescript/typescript-debugging" >Debugging</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Python">
+            
+                    <option value="/docs/python/python-quick-start" >Quick Start</option>
+                    
+                    <option value="/docs/python/python-tutorial" >Tutorial</option>
+                    
+                    <option value="/docs/python/run" >Run Python Code</option>
+                    
+                    <option value="/docs/python/editing" >Editing</option>
+                    
+                    <option value="/docs/python/linting" >Linting</option>
+                    
+                    <option value="/docs/python/formatting" >Formatting</option>
+                    
+                    <option value="/docs/python/debugging" >Debugging</option>
+                    
+                    <option value="/docs/python/environments" >Environments</option>
+                    
+                    <option value="/docs/python/testing" >Testing</option>
+                    
+                    <option value="/docs/python/jupyter-support-py" >Python Interactive</option>
+                    
+                    <option value="/docs/python/tutorial-django" >Django Tutorial</option>
+                    
+                    <option value="/docs/python/tutorial-fastapi" >FastAPI Tutorial</option>
+                    
+                    <option value="/docs/python/tutorial-flask" >Flask Tutorial</option>
+                    
+                    <option value="/docs/python/tutorial-create-containers" >Create Containers</option>
+                    
+                    <option value="/docs/python/python-on-azure" >Deploy Python Apps</option>
+                    
+                    <option value="/docs/python/python-web" >Python in the Web</option>
+                    
+                    <option value="/docs/python/settings-reference" >Settings Reference</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Java">
+            
+                    <option value="/docs/java/java-tutorial" >Getting Started</option>
+                    
+                    <option value="/docs/java/java-editing" >Navigate and Edit</option>
+                    
+                    <option value="/docs/java/java-refactoring" selected>Refactoring</option>
+                    
+                    <option value="/docs/java/java-linting" >Formatting and Linting</option>
+                    
+                    <option value="/docs/java/java-project" >Project Management</option>
+                    
+                    <option value="/docs/java/java-build" >Build Tools</option>
+                    
+                    <option value="/docs/java/java-debugging" >Run and Debug</option>
+                    
+                    <option value="/docs/java/java-testing" >Testing</option>
+                    
+                    <option value="/docs/java/java-spring-boot" >Spring Boot</option>
+                    
+                    <option value="/docs/java/java-tomcat-jetty" >Application Servers</option>
+                    
+                    <option value="/docs/java/java-on-azure" >Deploy Java Apps</option>
+                    
+                    <option value="/docs/java/java-gui" >GUI Applications</option>
+                    
+                    <option value="/docs/java/extensions" >Extensions</option>
+                    
+                    <option value="/docs/java/java-faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="C++">
+            
+                    <option value="/docs/cpp/introvideos-cpp" >Intro Videos</option>
+                    
+                    <option value="/docs/cpp/config-linux" >GCC on Linux</option>
+                    
+                    <option value="/docs/cpp/config-mingw" >GCC on Windows</option>
+                    
+                    <option value="/docs/cpp/config-wsl" >GCC on Windows Subsystem for Linux</option>
+                    
+                    <option value="/docs/cpp/config-clang-mac" >Clang on macOS</option>
+                    
+                    <option value="/docs/cpp/config-msvc" >Microsoft C++ on Windows</option>
+                    
+                    <option value="/docs/cpp/build-with-cmake" >Build with CMake</option>
+                    
+                    <option value="/docs/cpp/cmake-linux" >CMake Tools on Linux</option>
+                    
+                    <option value="/docs/cpp/cmake-quickstart" >CMake Quick Start</option>
+                    
+                    <option value="/docs/cpp/cpp-ide" >Editing and Navigating</option>
+                    
+                    <option value="/docs/cpp/cpp-debug" >Debugging</option>
+                    
+                    <option value="/docs/cpp/launch-json-reference" >Configure Debugging</option>
+                    
+                    <option value="/docs/cpp/cpp-refactoring" >Refactoring</option>
+                    
+                    <option value="/docs/cpp/customize-cpp-settings" >Settings Reference</option>
+                    
+                    <option value="/docs/cpp/configure-intellisense" >Configure IntelliSense</option>
+                    
+                    <option value="/docs/cpp/configure-intellisense-crosscompilation" >Configure IntelliSense for Cross-Compiling</option>
+                    
+                    <option value="/docs/cpp/faq-cpp" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="C#">
+            
+                    <option value="/docs/csharp/introvideos-csharp" >Intro Videos</option>
+                    
+                    <option value="/docs/csharp/get-started" >Get Started</option>
+                    
+                    <option value="/docs/csharp/navigate-edit" >Navigate and Edit</option>
+                    
+                    <option value="/docs/csharp/intellicode" >IntelliCode</option>
+                    
+                    <option value="/docs/csharp/refactoring" >Refactoring</option>
+                    
+                    <option value="/docs/csharp/formatting-linting" >Formatting and Linting</option>
+                    
+                    <option value="/docs/csharp/project-management" >Project Management</option>
+                    
+                    <option value="/docs/csharp/build-tools" >Build Tools</option>
+                    
+                    <option value="/docs/csharp/package-management" >Package Management</option>
+                    
+                    <option value="/docs/csharp/debugging" >Run and Debug</option>
+                    
+                    <option value="/docs/csharp/testing" >Testing</option>
+                    
+                    <option value="/docs/csharp/cs-dev-kit-faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Container Tools">
+            
+                    <option value="/docs/containers/overview" >Overview</option>
+                    
+                    <option value="/docs/containers/quickstart-node" >Node.js</option>
+                    
+                    <option value="/docs/containers/quickstart-python" >Python</option>
+                    
+                    <option value="/docs/containers/quickstart-aspnet-core" >ASP.NET Core</option>
+                    
+                    <option value="/docs/containers/debug-common" >Debug</option>
+                    
+                    <option value="/docs/containers/docker-compose" >Docker Compose</option>
+                    
+                    <option value="/docs/containers/quickstart-container-registries" >Registries</option>
+                    
+                    <option value="/docs/containers/app-service" >Deploy to Azure</option>
+                    
+                    <option value="/docs/containers/choosing-dev-environment" >Choose a Dev Environment</option>
+                    
+                    <option value="/docs/containers/reference" >Customize</option>
+                    
+                    <option value="/docs/containers/bridge-to-kubernetes" >Develop with Kubernetes</option>
+                    
+                    <option value="/docs/containers/troubleshooting" >Tips and Tricks</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Data Science">
+            
+                    <option value="/docs/datascience/overview" >Overview</option>
+                    
+                    <option value="/docs/datascience/jupyter-notebooks" >Jupyter Notebooks</option>
+                    
+                    <option value="/docs/datascience/data-science-tutorial" >Data Science Tutorial</option>
+                    
+                    <option value="/docs/datascience/python-interactive" >Python Interactive</option>
+                    
+                    <option value="/docs/datascience/data-wrangler-quick-start" >Data Wrangler Quick Start</option>
+                    
+                    <option value="/docs/datascience/data-wrangler" >Data Wrangler</option>
+                    
+                    <option value="/docs/datascience/pytorch-support" >PyTorch Support</option>
+                    
+                    <option value="/docs/datascience/azure-machine-learning" >Azure Machine Learning</option>
+                    
+                    <option value="/docs/datascience/jupyter-kernel-management" >Manage Jupyter Kernels</option>
+                    
+                    <option value="/docs/datascience/notebooks-web" >Jupyter Notebooks on the Web</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Intelligent Apps">
+            
+                    <option value="/docs/intelligentapps/overview" >AI Toolkit Overview</option>
+                    
+                    <option value="/docs/intelligentapps/models" >Models</option>
+                    
+                    <option value="/docs/intelligentapps/playground" >Playground</option>
+                    
+                    <option value="/docs/intelligentapps/agentbuilder" >Agent Builder</option>
+                    
+                    <option value="/docs/intelligentapps/bulkrun" >Bulk Run</option>
+                    
+                    <option value="/docs/intelligentapps/evaluation" >Evaluation</option>
+                    
+                    <option value="/docs/intelligentapps/finetune" >Fine-tune</option>
+                    
+                    <option value="/docs/intelligentapps/modelconversion" >Model Conversion</option>
+                    
+                    <option value="/docs/intelligentapps/tracing" >Tracing</option>
+                    
+                    <option value="/docs/intelligentapps/faq" >FAQ</option>
+                    
+                    <optgroup label="Intelligent Apps - Reference">
+            
+                      <option value="/docs/intelligentapps/reference/FileStructure" >File Structure</option>
+                      
+                      <option value="/docs/intelligentapps/reference/ManualModelConversion" >Manual Model Conversion</option>
+                      
+                      <option value="/docs/intelligentapps/reference/ManualConversionOnGPU" >Manual Model Conversion On GPU</option>
+                      
+                      <option value="/docs/intelligentapps/reference/SetupWithoutAITK" >Setup Environment Without AI Toolkit</option>
+                      
+                      <option value="/docs/intelligentapps/reference/TemplateProject" >Template Project</option>
+                      
+                    </optgroup>
+            
+              </optgroup>
+              
+              <optgroup label="Azure">
+            
+                    <option value="/docs/azure/overview" >Overview</option>
+                    
+                    <option value="/docs/azure/gettingstarted" >Getting Started</option>
+                    
+                    <option value="/docs/azure/resourcesextension" >Resources View</option>
+                    
+                    <option value="/docs/azure/deployment" >Deployment</option>
+                    
+                    <option value="/docs/azure/vscodeforweb" >VS Code for the Web - Azure</option>
+                    
+                    <option value="/docs/azure/containers" >Containers</option>
+                    
+                    <option value="/docs/azure/aksextensions" >Azure Kubernetes Service</option>
+                    
+                    <option value="/docs/azure/kubernetes" >Kubernetes</option>
+                    
+                    <option value="/docs/azure/mongodb" >MongoDB</option>
+                    
+                    <option value="/docs/azure/remote-debugging" >Remote Debugging for Node.js</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Remote">
+            
+                    <option value="/docs/remote/remote-overview" >Overview</option>
+                    
+                    <option value="/docs/remote/ssh" >SSH</option>
+                    
+                    <option value="/docs/remote/dev-containers" >Dev Containers</option>
+                    
+                    <option value="/docs/remote/wsl" >Windows Subsystem for Linux</option>
+                    
+                    <option value="/docs/remote/codespaces" >GitHub Codespaces</option>
+                    
+                    <option value="/docs/remote/vscode-server" >VS Code Server</option>
+                    
+                    <option value="/docs/remote/tunnels" >Tunnels</option>
+                    
+                    <option value="/docs/remote/ssh-tutorial" >SSH Tutorial</option>
+                    
+                    <option value="/docs/remote/wsl-tutorial" >WSL Tutorial</option>
+                    
+                    <option value="/docs/remote/troubleshooting" >Tips and Tricks</option>
+                    
+                    <option value="/docs/remote/faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Dev Containers">
+            
+                    <option value="/docs/devcontainers/containers" >Overview</option>
+                    
+                    <option value="/docs/devcontainers/tutorial" >Tutorial</option>
+                    
+                    <option value="/docs/devcontainers/attach-container" >Attach to Container</option>
+                    
+                    <option value="/docs/devcontainers/create-dev-container" >Create Dev Container</option>
+                    
+                    <option value="/docs/devcontainers/containers-advanced" >Advanced Containers</option>
+                    
+                    <option value="/docs/devcontainers/devcontainerjson-reference" >devcontainer.json</option>
+                    
+                    <option value="/docs/devcontainers/devcontainer-cli" >Dev Container CLI</option>
+                    
+                    <option value="/docs/devcontainers/tips-and-tricks" >Tips and Tricks</option>
+                    
+                    <option value="/docs/devcontainers/faq" >FAQ</option>
+                    
+              </optgroup>
+              
+              <optgroup label="Reference">
+            
+                    <option value="/docs/reference/default-keybindings" >Default Keyboard Shortcuts</option>
+                    
+                    <option value="/docs/reference/default-settings" >Default Settings</option>
+                    
+                    <option value="/docs/reference/variables-reference" >Substitution Variables</option>
+                    
+                    <option value="/docs/reference/tasks-appendix" >Tasks Schema</option>
+                    
+              </optgroup>
+              
+              </select>
+            </nav>        </div>
+
+        <!-- main content -->
+        <main class="col-xs-12 col-sm-9 col-md-8 body">
+            <div class="edit-github pull-right">
+                <a href="https://vscode.dev/github/microsoft/vscode-docs/blob/main/docs/java/java-refactoring.md"
+                    class="btn btn-default hidden-xs hidden-sm hidden-md" title="Edit this document in vscode.dev">
+                    Edit
+                </a>
+            </div>
+            <h1>Java refactoring and Source Actions</h1>
+<p>Visual Studio Code provides many options to refactor your source code as well as Source Actions to generate code and fix issues while you're coding. To access them, click on the <code>light bulb</code> 💡 whenever you see it. Or right-click the editor view and pick <strong>Source Action...</strong>.</p>
+<h2 id="_list-of-supported-code-actions" data-needslink="_list-of-supported-code-actions">List of Supported Code Actions</h2>
+<ul>
+<li><a href="#_refactoring">Refactoring</a>
+<ul>
+<li><a href="#_assign-to-variable">Assign to variable</a></li>
+<li><a href="#_convert-anonymous-to-nested-class">Convert anonymous to nested class</a></li>
+<li><a href="#_convert-to-anonymous-class-creation">Convert to anonymous class creation</a></li>
+<li><a href="#_convert-to-enhanced-for-loop">Convert to enhanced for loop</a></li>
+<li><a href="#_convert-to-lambda-expression">Convert to lambda expression</a></li>
+<li><a href="#_convert-to-static-import">Convert to static import</a></li>
+<li>Extract refactorings
+<ul>
+<li><a href="#_extract-to-constant">Extract to constant</a></li>
+<li><a href="#_extract-to-field">Extract to field</a></li>
+<li><a href="#_extract-to-method">Extract to method</a></li>
+<li><a href="#_extract-to-local-variable">Extract to local variable</a></li>
+</ul>
+</li>
+<li>Inline refactorings
+<ul>
+<li><a href="#_inline-constant">Inline constant</a></li>
+<li><a href="#_inline-local-variable">Inline local variable</a></li>
+<li><a href="#_inline-method">Inline method</a></li>
+</ul>
+</li>
+<li>Invert boolean
+<ul>
+<li><a href="#_invert-conditions">Invert conditions</a></li>
+<li><a href="#_invert-local-variable">Invert local variable</a></li>
+</ul>
+</li>
+<li><a href="#_move">Move</a></li>
+<li><a href="#_rename">Rename</a></li>
+<li>Type change
+<ul>
+<li><a href="#_change-resolved-type-to-var-type">Change resolved type to var type</a></li>
+<li><a href="#_change-var-type-to-resolved-type">Change var type to resolved type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_source-actions">Source Actions</a>
+<ul>
+<li><a href="#_generate-constructors">Generate constructors</a></li>
+<li><a href="#_generate-delegate-methods">Generate delegate methods</a></li>
+<li><a href="#_overrideimplement-methods">Override/implement methods</a></li>
+<li><a href="#_organize-imports">Organize imports</a></li>
+<li><a href="#_generate-getters-and-setters">Generate getters and setters</a></li>
+<li><a href="#_generate-hashcode-and-equals">Generate <code>hashCode()</code> and <code>equals()</code></a></li>
+<li><a href="#_generate-tostring">Generate <code>toString()</code></a></li>
+<li><a href="#_change-modifiers-to-final-where-possible">Change modifiers to final where possible</a></li>
+</ul>
+</li>
+<li>Other Code Actions supported
+<ul>
+<li><a href="#_fix-nonaccessible-reference">Fix non-accessible reference</a></li>
+<li><a href="#_create-non-existing-package">Create non-existing package</a></li>
+<li><a href="#_other-code-actions-supported">More...</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="_refactoring" data-needslink="_refactoring">Refactoring</h2>
+<p>The goal of the Java program refactoring is to make system-wide code changes without affecting behavior of the program. The Java Language Support for VS Code provides many easily accessible refactoring options.</p>
+<h3 id="_invoke-refactoring" data-needslink="_invoke-refactoring">Invoke refactoring</h3>
+<p>Refactoring commands are available from the context menu of the editor. Select the element you want to refactor, right-click to open the context menu, and choose <strong>Refactor...</strong>:</p>
+<p><img src="https://code.visualstudio.com/assets/docs/java/java-refactoring/refactoring_menu.png" alt="Invoke Refactoring" loading="lazy"></p>
+<p>Then you will see all the available refactoring options.</p>
+<h3 id="_assign-to-variable" data-needslink="_assign-to-variable">Assign to variable</h3>
+<p>Assigns an expression to a local variable or a field.</p>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">Arrays</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">asList</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"apple"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">, </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"lemon"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">, </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"banana"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">);</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">List</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">&#x3C;</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">String</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">> </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">fruits</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">Arrays</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">asList</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"apple"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">, </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"lemon"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">, </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"banana"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">);</span></span>
+<span class="line"></span></code></pre>
+<p>It can also be used to assign a parameter to a new field for unused parameter(s) in a constructor.</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/assign-to-field.mp4" autoplay loop muted playsinline controls title="Assign a parameter to a new field">
+</video>
+<h3 id="_convert-anonymous-to-nested-class" data-needslink="_convert-anonymous-to-nested-class">Convert anonymous to nested class</h3>
+<p>Converts an anonymous inner class to a member class.</p>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<p>Let's convert the anonymous class <code>Interface(){...}</code> to a member of the class <code>Clazz</code>.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> class</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Clazz</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Interface</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">    final</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> boolean</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> isValid</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">true</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">    return</span><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB"> new</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> Interface</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">      public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> boolean</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> isValid</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">        return</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> isValid;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">      }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    };</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> class</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Clazz</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  private</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> final</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> class</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> MyInterface</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> extends</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Interface</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">    private</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> final</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> boolean</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> isValid</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">    private</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> MyInterface</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">boolean</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> isValid</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">) {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">      this</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">isValid</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = isValid;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">    public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> boolean</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> isValid</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">      return</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> isValid;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Interface</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">    final</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> boolean</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> isValid</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">true</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">    return</span><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB"> new</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> MyInterface</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(isValid);</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="_convert-to-anonymous-class-creation" data-needslink="_convert-to-anonymous-class-creation">Convert to anonymous class creation</h3>
+<p>Converts lambda expression to anonymous class creation.</p>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<p>The variable <code>runnable</code> is assigned with a lambda expression. Let's convert it to an anonymous class creation.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  Runnable</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> runnable</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = () </span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">-></span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">    // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  };</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  Runnable</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> runnable</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">new</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> Runnable</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    @</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">Override</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">    public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> run</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">      // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  };</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<blockquote><p>Also see: <a href="#_convert-to-lambda-expression">Convert to lambda expression</a></p>
+</blockquote><h3 id="_convert-to-enhanced-for-loop" data-needslink="_convert-to-enhanced-for-loop">Convert to enhanced for loop</h3>
+<p>Converts the simple <code>for</code> loop to <code>for-each</code> style.</p>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> order</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">String</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">[] books) {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  for</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> (</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> i</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">0</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">; i &#x3C; </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">books</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">length</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">; i++) {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">    // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> order</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">String</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">[] books) {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  for</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> (</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">String</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> book</span><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB"> :</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> books) {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">    // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/convert-for-loop.mp4" autoplay loop muted playsinline controls title="Convert to enhanced for loop">
+</video>
+<h3 id="_convert-to-lambda-expression" data-needslink="_convert-to-lambda-expression">Convert to lambda expression</h3>
+<p>Converts an anonymous class creation to the lambda expression.</p>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<p>Let's convert the anonymous class <code>Runnable(){...}</code> to a lambda expression.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  Runnable</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> runnable</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">new</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> Runnable</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(){</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    @</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">Override</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">    public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> run</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">      // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  };</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">    Runnable</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> runnable</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = () </span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">-></span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">      // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    };</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"></span></code></pre>
+<blockquote><p>Also see: <a href="#_convert-to-anonymous-class-creation">Convert to anonymous class creation</a></p>
+</blockquote><h3 id="_convert-to-static-import" data-needslink="_convert-to-static-import">Convert to static import</h3>
+<p>Converts the field or method to static import.</p>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<p>Let's transform the <code>Assert.assertEquals()</code> invocation to a static import.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">import</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> org.junit.Assert;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">...</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> test</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">  Assert</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">assertEquals</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(expected, actual);</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">import</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> static</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> org.junit.Assert.assertEquals;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">...</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> test</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">  assertEquals</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(expected, actual);</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/convert-static-imports.mp4" autoplay loop muted playsinline controls title="Convert to static import">
+</video>
+<h3 id="_extract-to-constant" data-needslink="_extract-to-constant">Extract to constant</h3>
+<p>Creates a static final field from the selected expression and substitutes a field reference, then rewrites other places where the same expression occurs.</p>
+<h4 id="_examples" data-needslink="_examples">Examples</h4>
+<p>Let's extract the value of π: <code>3.14</code> to a constant.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> double</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> getArea</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">double</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> r) {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  return</span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658"> 3.14</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> * r * r;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">private</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> static</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> final</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> double</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> PI</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">3.14</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> double</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> getArea</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">double</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> r) {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  return</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> PI * r * r;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<blockquote><p>Also see: <a href="#_inline-constant">Inline constant</a></p>
+</blockquote><h3 id="_extract-to-field" data-needslink="_extract-to-field">Extract to field</h3>
+<p>Declares a new field and initializes it with the selected expression. The original expression is replaced with the usage of the field.</p>
+<h4 id="_examples" data-needslink="_examples">Examples</h4>
+<p>Let's extract the variable <code>area</code> to a field of the class <code>Square</code>.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">class</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Square</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> calculateArea</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">    int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> height</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">1</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">    int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> width</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">2</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">    int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> area</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = height * width;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">class</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Square</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  private</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> area</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> calculateArea</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">    int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> height</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">1</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">    int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> width</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">2</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    area = height * width;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/extract-field.mp4" autoplay loop muted playsinline controls title="Extract to field">
+</video>
+<p>When selecting a variable declaration, convert the variable to field.</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/convert-field.mp4" autoplay loop muted playsinline controls title="Convert the variable to field">
+</video>
+<h3 id="_extract-to-method" data-needslink="_extract-to-method">Extract to method</h3>
+<p>Creates a new method containing the statements or expressions currently selected and replaces the selection with a reference to the new method. This feature is useful for cleaning up lengthy, cluttered, or overly complicated methods.</p>
+<h4 id="_examples" data-needslink="_examples">Examples</h4>
+<p>Let's extract the expression <code>height * width</code> to a new method.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> height</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">1</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> width</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">2</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> area</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = height * width;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> height</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">1</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> width</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">2</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> area</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">getArea</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(height, width);</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">private</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> int</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> getArea</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">int</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> height, </span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">int</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> width) {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  return</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> height * width;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/refactor.mp4" autoplay loop muted playsinline controls title="Extract to method">
+</video>
+<blockquote><p>Also see: <a href="#_inline-method">Inline method</a></p>
+</blockquote><h3 id="_extract-to-local-variable" data-needslink="_extract-to-local-variable">Extract to local variable</h3>
+<p>Creates a new variable assigned to the expression currently selected and replaces the selection with a reference to the new variable.</p>
+<h4 id="_examples" data-needslink="_examples">Examples</h4>
+<p>Let's extract the expression <code>platform.equalsIgnoreCase(&quot;MAC&quot;)</code> to a new variable.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  if</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> (</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">platform</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">equalsIgnoreCase</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"MAC"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">)) {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">    // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  boolean</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> isMac</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">platform</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">equalsIgnoreCase</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"MAC"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">);</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  if</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> (isMac) {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">    // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/extract-local-variable.mp4" autoplay loop muted playsinline controls title="Extract to local variable">
+</video>
+<p>After the extraction, you can also perform a rename in the same transaction.</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/extract-rename.mp4" autoplay loop muted playsinline controls title="Rename local variable after extraction">
+</video>
+<blockquote><p>Also see: <a href="#_inline-local-variable">Inline local variable</a></p>
+</blockquote><h3 id="_inline-constant" data-needslink="_inline-constant">Inline constant</h3>
+<p>Replaces a constant reference with its defined value.</p>
+<h4 id="_examples" data-needslink="_examples">Examples</h4>
+<p>Let's replace the constant <code>PI</code> to its defined value: <code>3.14</code>.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">private</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> static</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> final</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> double</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> PI</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">3.14</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> double</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> getArea</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">double</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> r) {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  return</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> PI * r * r;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">private</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> static</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> final</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> double</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> PI</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">3.14</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> double</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> getArea</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">double</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> r) {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  return</span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658"> 3.14</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> * r * r;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<blockquote><p>Also see: <a href="#_extract-to-constant">Extract to constant</a></p>
+</blockquote><h3 id="_inline-local-variable" data-needslink="_inline-local-variable">Inline local variable</h3>
+<p>Replaces redundant variable usage with its initializer.</p>
+<h4 id="_examples" data-needslink="_examples">Examples</h4>
+<p>Let's replace the variable <code>isMac</code> directly to the boolean expression.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  boolean</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> isMac</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">platform</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">equalsIgnoreCase</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"MAC"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">);</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  if</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> (isMac) {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">    // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  if</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> (</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">platform</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">equalsIgnoreCase</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"MAC"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">)) {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">    // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<blockquote><p>Also see: <a href="#_extract-to-local-variable">Extract to local variable</a></p>
+</blockquote><h3 id="_inline-method" data-needslink="_inline-method">Inline method</h3>
+<p>Replaces calls to the method with the method’s body.</p>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<p>Let's replace the method <code>getArea(int height, int width)</code> directly to the expression <code>height * width</code>.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> height</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">1</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> width</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">2</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> area</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">getArea</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(height, width);</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">private</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> int</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> getArea</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">int</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> height, </span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">int</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> width) {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  return</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> height * width;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> height</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">1</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> width</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">2</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> area</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = height * width;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/inline.mp4" autoplay loop muted playsinline controls title="Replace calls to the method with method's body">
+</video>
+<blockquote><p>Also see: <a href="#_extract-to-method">Extract to method</a></p>
+</blockquote><h3 id="_invert-conditions" data-needslink="_invert-conditions">Invert conditions</h3>
+<p>Inverts the boolean expression in the conditions.</p>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<p>Let's invert the boolean expression in the if statement.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">int</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> value) {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  if</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> (value > </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">5</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> &#x26;&#x26; value &#x3C; </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">15</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">) {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">    // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">int</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> value) {</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">  if</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> (value &#x3C;= </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">5</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> || value >= </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">15</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">) {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">    // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="_invert-local-variable" data-needslink="_invert-local-variable">Invert local variable</h3>
+<p>Inverts the local boolean variable.</p>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<p>Let's invert the variable <code>valid</code>.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">int</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> value) {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  boolean</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> valid</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = value > </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">5</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> &#x26;&#x26; value &#x3C; </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">15</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">int</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> value) {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  boolean</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> notValid</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = value &#x3C;= </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">5</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> || value >= </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">15</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/invert-variable.mp4" autoplay loop muted playsinline controls title="Invert local variable">
+</video>
+<h3 id="_move" data-needslink="_move">Move</h3>
+<p>Moves the selected elements and corrects all references to the elements (also in other files). Available actions are:</p>
+<ul>
+<li>Move class to another package</li>
+<li>Move static or instance method to another class</li>
+<li>Move inner class to a new file</li>
+</ul>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<p>Let's move the static method <code>print()</code> from class <code>Office</code> to class <code>Printer</code>.</p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> class</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Office</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  public</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> static</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> main</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">String</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">[] </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">args</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">) {</span></span>
+<span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">    print</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">();</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  public</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> static</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> print</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">    System</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">out</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">println</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"This is printer"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">);</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  static</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> class</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Printer</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> { }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> class</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Office</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  public</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> static</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> main</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">String</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">[] </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">args</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">) {</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">    Printer</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">print</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">();</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  static</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> class</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Printer</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">    public</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> static</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> print</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">      System</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">out</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">.</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">println</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"This is printer"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">);</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<p>Move refactoring on a static method if it is used more in another class than in its own class.</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/move-static-method.mp4" autoplay loop muted playsinline controls title="Refactoring on a static method">
+</video>
+<p>Move a class to another package. Currently, move refactoring is not supported from the File Explorer.</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/move-class.mp4" autoplay loop muted playsinline controls title="Move a class to another package">
+</video>
+<p>Move an inner class to a new file.</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/move-inner-type.mp4" autoplay loop muted playsinline controls title="Move an inner class to a new File">
+</video>
+<h3 id="_rename" data-needslink="_rename">Rename</h3>
+<p>Default shortcut: <span class="dynamic-keybinding" data-commandId="editor.action.rename" data-osx="F2" data-win="F2" data-linux="F2"><span class="keybinding">F2</span></span></p>
+<p>Renames the selected element and corrects all references to the elements (also in other files).</p>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<p>Let's rename the class <code>Foo</code> to <code>Bar</code></p>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> class</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Foo</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">  // ...</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> myMethod</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  Foo</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> myClass</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">new</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> Foo</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">();</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> class</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Bar</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">  // ...</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> myMethod</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">() {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">  Bar</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> myClass</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">new</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> Bar</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">();</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<p>The shortcut to invoke the Rename refactoring is <span class="dynamic-keybinding" data-commandId="editor.action.rename" data-osx="F2" data-win="F2" data-linux="F2"><span class="keybinding">F2</span></span>. When you invoke the shortcut on an identifier in the editor, a small box displays within the editor itself where you can change the identifier name. When you press <span class="keybinding">Enter</span>, all references to that identifier are changed too.</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/rename.mp4" autoplay loop muted playsinline controls title="Shortcut to invoke the Rename refactoring">
+</video>
+<p>Rename refactoring is also supported from the File Explorer for folders and files. After requesting the change, a preview of impacted files will be provided and you can decide how to apply those changes.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/java/java-refactoring/rename-explorer.gif" alt="Rename from Explorer" loading="lazy"></p>
+<h3 id="_change-resolved-type-to-var-type" data-needslink="_change-resolved-type-to-var-type">Change resolved type to var type</h3>
+<p>Uses <code>var</code> to declare local variables.</p>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">String</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> s</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">""</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">var</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> s</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">""</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"></span></code></pre>
+<blockquote><p>Also see: <a href="#_change-var-type-to-resolved-type">Change var type to resolved type</a></p>
+</blockquote><hr>
+<h3 id="_change-var-type-to-resolved-type" data-needslink="_change-var-type-to-resolved-type">Change var type to resolved type</h3>
+<p>Uses the resolved type to declare local variables.</p>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">var</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> s</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">""</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">String</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> s</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">""</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"></span></code></pre>
+<blockquote><p>Also see: <a href="#_change-resolved-type-to-var-type">Change resolved type to var type</a></p>
+</blockquote><h2 id="_source-actions" data-needslink="_source-actions">Source Actions</h2>
+<p>Source Actions could be used to generate common code structures and recurring elements. Some of them are Quick Fixes that help you fix code issues on the fly.</p>
+<h3 id="_generate-constructors" data-needslink="_generate-constructors">Generate constructors</h3>
+<p>Add a constructor for the class.</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/generate-constructor.mp4" autoplay loop muted playsinline controls title="Generate constructors">
+</video>
+<h3 id="_generate-delegate-methods" data-needslink="_generate-delegate-methods">Generate delegate methods</h3>
+<p>Generate delegate methods</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/generate-delegate-methods.mp4" autoplay loop muted playsinline controls title="Generate delegate methods">
+</video>
+<h3 id="_overrideimplement-methods" data-needslink="_overrideimplement-methods">Override/implement methods</h3>
+<p>With this Source Action, all the candidates are presented to you with a checklist. You can then decide what to override or implement.</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/override-implement-methods.mp4" autoplay loop muted playsinline controls title="Override/implement methods">
+</video>
+<h3 id="_organize-imports" data-needslink="_organize-imports">Organize imports</h3>
+<p>You can use this Source Action to clean up your imports. It can also deal with ambiguous imports, in that case, a dropdown list will be presented for you to pick the right one. The code line with the unresolved type is also presented to you to help you decide.</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/resolve-ambiguous-imports.mp4" autoplay loop muted playsinline controls title="Organize imports">
+</video>
+<h3 id="_generate-getters-and-setters" data-needslink="_generate-getters-and-setters">Generate getters and setters</h3>
+<p>You can bulk generate getters and setters for all new member variables. If the class has more than one field, the Source Action will prompt a Quick Pick for you to select the target fields to use to generate the accessor methods.</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/advancedgettersetter.mp4" autoplay loop muted playsinline controls title="Generate getters and setters">
+</video>
+<h3 id="_generate-hashcode-and-equals" data-needslink="_generate-hashcode-and-equals">Generate <code>hashCode()</code> and <code>equals()</code></h3>
+<p><code>hashCode()</code> and <code>equals()</code> can be generated with default implementations. All the non-static member variables are listed, and you can customize the generated code using the check list.</p>
+<p>There are two options for you to customize the generated code:</p>
+<ul>
+<li>If you use Java 7+, you can set <code>java.codeGeneration.hashCodeEquals.useJava7Objects</code> to <code>true</code> to generate shorter code that calls <code>Objects.hash</code> and <code>Objects.equals</code>.</li>
+<li>You can also set <code>java.codeGeneration.hashCodeEquals.useInstanceof</code> to <code>true</code> to use <code>instanceOf</code> operator to check the object types instead of calling <code>Object.getClass()</code>.</li>
+</ul>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/generate-hashcode-equals.mp4" autoplay loop muted playsinline controls title="Generate hashCode() and equals()">
+</video>
+<h3 id="_generate-tostring" data-needslink="_generate-tostring">Generate <code>toString()</code></h3>
+<p>There is a new Source Action to generate the <code>toString()</code> method. Customization is possible with a check list of all the member variables.</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/generate-tostring.mp4" autoplay loop muted playsinline controls title="Generate toString()">
+  <source type="video/mp4">
+</video>
+<h3 id="_change-modifiers-to-final-where-possible" data-needslink="_change-modifiers-to-final-where-possible">Change modifiers to final where possible</h3>
+<p>Adds <code>final</code> modifier to all the variables and parameters in the current source file.</p>
+<h4 id="_example" data-needslink="_example">Example</h4>
+<h5>Before</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> class</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Clazz</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> value</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">) {</span></span>
+<span class="line"><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99">    boolean</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> notValid</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = value > </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">5</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">    if</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> (notValid) {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">      // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h5>After</h5>
+<pre class="shiki" data-lang="java" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">public</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> class</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> Clazz</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">  public</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> void</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26"> method</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">final</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> int</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> value</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">) {</span></span>
+<span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">    final</span><span style="--shiki-dark:#4EC9B0;--shiki-light:#267F99"> boolean</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> notValid</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = value > </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">5</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">;</span></span>
+<span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">    if</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> (notValid) {</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">      // do something</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  }</span></span>
+<span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
+<span class="line"></span></code></pre>
+<h3 id="_fix-nonaccessible-reference" data-needslink="_fix-nonaccessible-reference">Fix non-accessible reference</h3>
+<p>This Quick Fix helps you fix non-accessible reference.</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/fix-non-access-reference.mp4" autoplay loop muted playsinline controls title="Fix non-accessible references">
+</video>
+<h3 id="_create-nonexisting-package" data-needslink="_create-nonexisting-package">Create non-existing package</h3>
+<p>When your package name doesn't match the folder name, you have the options to either change the package name in your source code, or move the folder in the file system (even when the destination folder doesn't exist yet).</p>
+<video src="https://code.visualstudio.com/assets/docs/java/java-refactoring/create-non-exist-package.mp4" autoplay loop muted playsinline controls title="Create non-existing package">
+</video>
+<h3 id="_other-code-actions-supported" data-needslink="_other-code-actions-supported">Other Code Actions supported</h3>
+<p>The list of Code Actions supported by VS Code keeps growing and only lists the most popular ones above. Other notable supported actions include (but not limited to):</p>
+<ul>
+<li>Create unresolved types</li>
+<li>Remove the <code>final</code> modifier</li>
+<li>Remove unnecessary cast</li>
+<li>Remove redundant interfaces</li>
+<li>Add missing case labels in switch statements</li>
+<li>Jump to definition on break/continue</li>
+<li>Correct access to static elements</li>
+</ul>
+
+            <div class="feedback"></div>
+            
+            <div class="body-footer">12/9/2021</div>
+            
+        </main>
+
+        <!-- medium right nav -->
+        <div class="col-sm-3 col-md-2 hidden-xs docs-subnavbar-container">
+            <nav id="docs-subnavbar" aria-label="On Page" data-spy="affix" data-offset-top="20">
+                
+                <h4><span class="sr-only">On this page there are 3 sections</span><span
+                        aria-hidden="true">On this page</span></h4>
+                <ul class="nav">
+                    
+                    <li><a href="#_list-of-supported-code-actions">List of Supported Code Actions</a></li>
+                    
+                    <li><a href="#_refactoring">Refactoring</a></li>
+                    
+                    <li><a href="#_source-actions">Source Actions</a></li>
+                    
+                </ul>
+                
+                <div class="connect-widget"></div>
+            </nav>
+        </div>
+        <!-- end of page connect widget -->
+        <div class="col-xs-12 visible-xs">
+            <div class="connect-widget"></div>
+        </div>
+    </div>
+</div>
+		</div>
+	</div>
+
+	<footer role="contentinfo" class="container">
+		<div class="footer-container">
+			<div class="footer-row">
+				<div class="footer-social">
+					<ul class="links">
+						<li>
+							<a href="https://github.com/microsoft/vscode"><img src="https://code.visualstudio.com/assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+						</li>
+						<li>
+							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="https://code.visualstudio.com/assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="https://code.visualstudio.com/assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+						</li>
+						<li>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="https://code.visualstudio.com/assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+						</li>
+						<li>
+							<a href="https://www.reddit.com/r/vscode/"><img src="https://code.visualstudio.com/assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+						</li>
+						<li>
+							<a href="https://www.vscodepodcast.com/"><img src="https://code.visualstudio.com/assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+						</li>
+						<li>
+							<a href="https://www.tiktok.com/@vscode"><img src="https://code.visualstudio.com/assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+						</li>
+						<li>
+							<a href="https://www.youtube.com/@code"><img src="https://code.visualstudio.com/assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+						</li>
+						<script>
+							function manageConsent() {
+								if (siteConsent && siteConsent.isConsentRequired) {
+									siteConsent.manageConsent();
+								}
+							}
+						</script>
+					</ul>
+					<a id="footer-microsoft-link" class="microsoft-logo" href="https://www.microsoft.com/">
+						<img src="https://code.visualstudio.com/assets/icons/microsoft.svg" alt="Microsoft homepage" />
+					</a>
+				</div>
+			</div>
+			<div class="footer-row">
+				<ul class="links">
+					<li><a id="footer-support-link" href="https://support.serviceshub.microsoft.com/supportforbusiness/create?sapId=d66407ed-3967-b000-4cfb-2c318cad363d"
+							target="_blank" rel="noopener">Support</a></li>
+					<li><a id="footer-privacy-link" href="https://go.microsoft.com/fwlink/?LinkId=521839"
+							target="_blank" rel="noopener">Privacy</a></li>
+					<li style="display: none;"><a id="footer-cookie-link" style="cursor: pointer;" onclick="manageConsent()"
+							target="_blank" rel="noopener">Manage Cookies</a></li>
+					<li><a id="footer-terms-link" href="https://www.microsoft.com/legal/terms-of-use"
+							target="_blank" rel="noopener">Terms of Use</a></li>
+					<li><a id="footer-license-link" href="https://code.visualstudio.com/License"
+							target="_blank" rel="noopener">License</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<script type="module">
+		document.addEventListener('DOMContentLoaded', () => {
+			const copilotDeepLinks = document.querySelectorAll('.copilot-deep-link');
+			if (copilotDeepLinks.length === 0) {
+				return;
+			}
+			if (window.innerWidth < 992) {
+				for (const link of copilotDeepLinks) {
+					link.href = 'https://aka.ms/vscode-activatecopilotfree';
+				}
+			}
+		});
+	</script>
+
+	<script src="https://code.visualstudio.com/dist/index.js"></script>
+
+	
+
+	<script type="application/ld+json">
+		{
+			"@context" : "http://schema.org",
+			"@type" : "SoftwareApplication",
+			"name" : "Visual Studio Code",
+			"softwareVersion": "1.104",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			},
+			"applicationCategory": "DeveloperApplication",
+			"applicationSubCategory": "Text Editor",
+			"alternateName": "VS Code",
+			"datePublished": "2021-11-03",
+			"operatingSystem": "Mac, Linux, Windows",
+			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",
+			"screenshot": "https://code.visualstudio.com/assets/home/home-screenshot-win.png",
+			"releaseNotes": "https://code.visualstudio.com/updates",
+			"downloadUrl": "https://code.visualstudio.com/download",
+			"license": "https://code.visualstudio.com/license",
+			"softwareRequirements": "https://code.visualstudio.com/docs/supporting/requirements",
+			"url" : "https://code.visualstudio.com",
+			"author": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"maintainer": {
+				"@type": "Organization",
+				"name": "Microsoft"
+			},
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://code.visualstudio.com/Search?q={search_term_string}",
+				"query-input": "required name=search_term_string"
+			},
+			"sameAs" : [
+				"https://en.wikipedia.org/wiki/Visual_Studio_Code",
+				"https://twitter.com/code",
+				"https://www.youtube.com/code",
+				"https://www.tiktok.com/@vscode",
+				"https://github.com/microsoft/vscode"
+			]
+		}
+	</script>
+</body>
+
+
+<!-- Mirrored from code.visualstudio.com/docs/java/java-refactoring by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 13 Sep 2025 16:55:25 GMT -->
+</html>
