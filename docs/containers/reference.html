@@ -15,7 +15,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@code" />
 
-	<meta name="description" content="Reference for Docker build and Docker run tasks and properties in the Visual Studio Code Container Tools extension." />
+	<meta name="description" content="Reference for Docker build and Docker run tasks and properties in the LT Serial Tool Container Tools extension." />
 <meta name="keywords" content="" />
 <meta name="ms.prod" content="vs-code" />
 <meta name="ms.TOCTitle" content="" />
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://code.visualstudio.com/docs/containers/reference" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Customize the Container Tools extension" />
-<meta property="og:description" content="Reference for Docker build and Docker run tasks and properties in the Visual Studio Code Container Tools extension." />
+<meta property="og:description" content="Reference for Docker build and Docker run tasks and properties in the LT Serial Tool Container Tools extension." />
 
 <meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" />
 
@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>Visual Studio Code</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2071,9 +2071,9 @@
                 </a>
             </div>
             <h1>Customize the Container Tools extension</h1>
-<p>The Container Tools extension includes several Visual Studio Code tasks to control the behavior of Docker <a href="#_docker-build-task">build</a> and <a href="#_docker-run-task">run</a>, and form the basis of container startup for debugging.</p>
+<p>The Container Tools extension includes several LT Serial Tool tasks to control the behavior of Docker <a href="#_docker-build-task">build</a> and <a href="#_docker-run-task">run</a>, and form the basis of container startup for debugging.</p>
 <p>The tasks allow for a great deal of control and customization. The final configuration is a combination of general defaults, platform-specific defaults (such as Node.js, Python, or .NET), and user input. User input takes precedence when it conflicts with defaults.</p>
-<p>All common features of Visual Studio Code tasks (for example, grouping tasks into compound tasks) are supported by Container Tools extension tasks. For more information on common task features and properties, see the Visual Studio Code <a href="https://code.visualstudio.com/docs/debugtest/tasks#_custom-tasks">custom task</a> documentation.</p>
+<p>All common features of LT Serial Tool tasks (for example, grouping tasks into compound tasks) are supported by Container Tools extension tasks. For more information on common task features and properties, see the LT Serial Tool <a href="https://code.visualstudio.com/docs/debugtest/tasks#_custom-tasks">custom task</a> documentation.</p>
 <h2 id="_docker-build-task" data-needslink="_docker-build-task">Docker build task</h2>
 <p>The <code>docker-build</code> task builds images using the Docker command line (CLI). The task can be used by itself, or as part of a chain of tasks to run and/or debug an application within a container.</p>
 <p>The most important configuration settings for the <code>docker-build</code> task are <code>dockerBuild</code> and <code>platform</code>:</p>
@@ -2933,7 +2933,7 @@
 </tbody>
 </table>
 <h2 id="_command-customization" data-needslink="_command-customization">Command customization</h2>
-<p>The Container Tools extension executes a number of Docker CLI commands when you perform various operations, such as to build images, run containers, attach to containers, and view container logs. Some of these commands have a large number of optional arguments, often used in very specific scenarios. As an alternative to the above Visual Studio Code tasks, several commands can be customized when tasks are not in use.</p>
+<p>The Container Tools extension executes a number of Docker CLI commands when you perform various operations, such as to build images, run containers, attach to containers, and view container logs. Some of these commands have a large number of optional arguments, often used in very specific scenarios. As an alternative to the above LT Serial Tool tasks, several commands can be customized when tasks are not in use.</p>
 <p>For example, the tokens <code>${serviceList}</code> and <code>${profileList}</code> in the <a href="#_docker-compose-up">Compose Up</a> command allows for easily starting a subset of the services within your Docker Compose YAML file(s).</p>
 <p>For each of these customizable Docker commands, a configuration setting is available to set the template of what to execute. Alternatively, you can define multiple templates, optionally with a regular expression, which when matched, hints the context in which a template should be used. The templates support some tokens similar to <code>launch.json</code> and <code>tasks.json</code>, for example, <code>${workspaceFolder}</code>.</p>
 <h3 id="_settings-json-schema" data-needslink="_settings-json-schema">Settings JSON schema</h3>
@@ -3233,7 +3233,7 @@
 </tr>
 <tr>
 <td><code>${config:some.setting.identifier}</code></td>
-<td>The value of any configuration setting, as long as it is a string, number, or boolean. These setting identifiers can be arbitrarily defined and do not need to belong to Visual Studio Code or to any extension.</td>
+<td>The value of any configuration setting, as long as it is a string, number, or boolean. These setting identifiers can be arbitrarily defined and do not need to belong to LT Serial Tool or to any extension.</td>
 </tr>
 <tr>
 <td><code>${env:Name}</code></td>
@@ -3368,7 +3368,7 @@
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "Visual Studio Code",
+			"name" : "LT Serial Tool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",

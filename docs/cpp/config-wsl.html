@@ -15,7 +15,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@code" />
 
-	<meta name="description" content="Configuring the C++ extension in Visual Studio Code to target g++ and GDB on WSL installation with Ubuntu" />
+	<meta name="description" content="Configuring the C++ extension in LT Serial Tool to target g++ and GDB on WSL installation with Ubuntu" />
 <meta name="keywords" content="" />
 <meta name="ms.prod" content="vs-code" />
 <meta name="ms.TOCTitle" content="" />
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://code.visualstudio.com/docs/cpp/config-wsl" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Using C++ and WSL in VS Code" />
-<meta property="og:description" content="Configuring the C++ extension in Visual Studio Code to target g++ and GDB on WSL installation with Ubuntu" />
+<meta property="og:description" content="Configuring the C++ extension in LT Serial Tool to target g++ and GDB on WSL installation with Ubuntu" />
 
 <meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" />
 
@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>Visual Studio Code</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2071,16 +2071,16 @@
                 </a>
             </div>
             <h1>Using C++ and WSL in VS Code</h1>
-<p>In this tutorial, you will configure Visual Studio Code to use the GCC C++ compiler (g++) and GDB debugger on Ubuntu in the <a href="https://learn.microsoft.com/windows/wsl/install" class="external-link" target="_blank">Windows Subsystem for Linux</a> (WSL). GCC stands for GNU Compiler Collection; GDB is the GNU debugger. WSL is a Linux environment within Windows that runs directly on the machine hardware, not in a virtual machine.</p>
+<p>In this tutorial, you will configure LT Serial Tool to use the GCC C++ compiler (g++) and GDB debugger on Ubuntu in the <a href="https://learn.microsoft.com/windows/wsl/install" class="external-link" target="_blank">Windows Subsystem for Linux</a> (WSL). GCC stands for GNU Compiler Collection; GDB is the GNU debugger. WSL is a Linux environment within Windows that runs directly on the machine hardware, not in a virtual machine.</p>
 <blockquote><p><strong>Note</strong>: Much of this tutorial is applicable to working with C++ and VS Code directly on a Linux machine.</p>
-</blockquote><p>Visual Studio Code has support for working directly in WSL with the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl" class="external-link" target="_blank">WSL extension</a>. We recommend this mode of <a href="https://code.visualstudio.com/docs/remote/wsl">WSL development</a>, where all your source code files, in addition to the compiler, are hosted on the Linux distro. For more background, see <a href="https://code.visualstudio.com/docs/remote/remote-overview">VS Code Remote Development</a>.</p>
+</blockquote><p>LT Serial Tool has support for working directly in WSL with the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl" class="external-link" target="_blank">WSL extension</a>. We recommend this mode of <a href="https://code.visualstudio.com/docs/remote/wsl">WSL development</a>, where all your source code files, in addition to the compiler, are hosted on the Linux distro. For more background, see <a href="https://code.visualstudio.com/docs/remote/remote-overview">VS Code Remote Development</a>.</p>
 <p>After completing this tutorial, you will be ready to create and configure your own C++ project, and to explore the VS Code documentation for further information about its many features. This tutorial does not teach you about GCC or Linux or the C++ language. For those subjects, there are many good resources available on the Web.</p>
 <p>If you have any problems, feel free to file an issue for this tutorial in the <a href="https://github.com/microsoft/vscode-docs/issues" class="external-link" target="_blank">VS Code documentation repository</a>.</p>
 <h2 id="_prerequisites" data-needslink="_prerequisites">Prerequisites</h2>
 <p>To successfully complete this tutorial, you must do the following steps:</p>
 <ol>
 <li>
-<p>Install <a href="https://code.visualstudio.com/download">Visual Studio Code</a>.</p>
+<p>Install <a href="https://code.visualstudio.com/download">LT Serial Tool</a>.</p>
 </li>
 <li>
 <p>Install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl" class="external-link" target="_blank">WSL extension</a>.</p>
@@ -2356,7 +2356,7 @@ The <code>args</code> array specifies the command-line arguments that will be pa
 <p>This opens the <strong>C/C++ Configurations</strong> page. When you make changes here, VS Code writes them to a file called <code>c_cpp_properties.json</code> in the <code>.vscode</code> folder.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/cpp/wsl/intellisense-configurations-wsl.png" alt="Command Palette" loading="lazy"></p>
 <p>You only need to modify the <strong>Include path</strong> setting if your program includes header files that are not in your workspace or in the standard library path.</p>
-<p>Visual Studio Code places these settings in <code>.vscode/c_cpp_properties.json</code>. If you open that file directly, it should look something like this:</p>
+<p>LT Serial Tool places these settings in <code>.vscode/c_cpp_properties.json</code>. If you open that file directly, it should look something like this:</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "configurations"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: [</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    {</span></span>
@@ -2517,7 +2517,7 @@ The <code>args</code> array specifies the command-line arguments that will be pa
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "Visual Studio Code",
+			"name" : "LT Serial Tool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",

@@ -15,7 +15,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@code" />
 
-	<meta name="description" content="Visual Studio Code container development troubleshooting tips and tricks" />
+	<meta name="description" content="LT Serial Tool container development troubleshooting tips and tricks" />
 <meta name="keywords" content="" />
 <meta name="ms.prod" content="vs-code" />
 <meta name="ms.TOCTitle" content="" />
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://code.visualstudio.com/docs/containers/troubleshooting" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Container Tools Tips and Tricks" />
-<meta property="og:description" content="Visual Studio Code container development troubleshooting tips and tricks" />
+<meta property="og:description" content="LT Serial Tool container development troubleshooting tips and tricks" />
 
 <meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" />
 
@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>Visual Studio Code</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2071,7 +2071,7 @@
                 </a>
             </div>
             <h1>Container Tools Tips and Tricks</h1>
-<p>This article covers troubleshooting tips and tricks for the Visual Studio Code <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-containers" class="external-link" target="_blank">Container Tools</a> extension. See the <a href="https://code.visualstudio.com/docs/containers/overview">Overview</a> and quickstart articles for <a href="https://code.visualstudio.com/docs/containers/quickstart-node">Node.js</a>, <a href="https://code.visualstudio.com/docs/containers/quickstart-python">Python</a>, or <a href="https://code.visualstudio.com/docs/containers/quickstart-aspnet-core">ASP.NET</a> for details on setting up and working with containers.</p>
+<p>This article covers troubleshooting tips and tricks for the LT Serial Tool <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-containers" class="external-link" target="_blank">Container Tools</a> extension. See the <a href="https://code.visualstudio.com/docs/containers/overview">Overview</a> and quickstart articles for <a href="https://code.visualstudio.com/docs/containers/quickstart-node">Node.js</a>, <a href="https://code.visualstudio.com/docs/containers/quickstart-python">Python</a>, or <a href="https://code.visualstudio.com/docs/containers/quickstart-aspnet-core">ASP.NET</a> for details on setting up and working with containers.</p>
 <h2 id="_running-as-a-nonroot-user" data-needslink="_running-as-a-nonroot-user">Running as a non-root user</h2>
 <p>For security reasons, we recommend selecting the default ports when executing the <strong>Containers: Add Docker Files to Workspace...</strong> command, or otherwise opting for a port <strong>greater than</strong> 1023 whenever possible. This will allow VS Code to configure the Dockerfile with non-root access and prevent a malicious user from elevating permissions in the container. In some cases, there is no port selection, so the Container Tools extension configures non-root access by default. In all cases, you must ensure each resource (such as ports and files) modified or used by your application can be accessed by a non-root user in your container.</p>
 <p>If you select a port less than 1024 when adding Dockerfiles to the workspace, the Container Tools extension <strong>cannot</strong> create a Dockerfile that runs the container as a non-root user. This is because ports in this range are called <strong>well-known</strong> or <strong>system</strong> ports and must execute with root privileges in order to bind a network socket to an IP address.</p>
@@ -2246,7 +2246,7 @@
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "Visual Studio Code",
+			"name" : "LT Serial Tool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",

@@ -15,7 +15,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@code" />
 
-	<meta name="description" content="Synchronize your user settings across all your Visual Studio Code instances." />
+	<meta name="description" content="Synchronize your user settings across all your LT Serial Tool instances." />
 <meta name="keywords" content="" />
 <meta name="ms.prod" content="vs-code" />
 <meta name="ms.TOCTitle" content="" />
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://code.visualstudio.com/docs/configure/settings-sync" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Settings Sync" />
-<meta property="og:description" content="Synchronize your user settings across all your Visual Studio Code instances." />
+<meta property="og:description" content="Synchronize your user settings across all your LT Serial Tool instances." />
 
 <meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" />
 
@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>Visual Studio Code</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2071,7 +2071,7 @@
                 </a>
             </div>
             <h1>Settings Sync</h1>
-<p>Settings Sync lets you share your Visual Studio Code configurations such as settings, keyboard shortcuts, and installed extensions across your machines so you are always working with your favorite setup.</p>
+<p>Settings Sync lets you share your LT Serial Tool configurations such as settings, keyboard shortcuts, and installed extensions across your machines so you are always working with your favorite setup.</p>
 <blockquote><p><strong>Note</strong>: VS Code does not synchronize your extensions to or from a <a href="https://code.visualstudio.com/docs/remote/remote-overview">remote</a> window, such as when you're connected to SSH, a development container (devcontainer), or WSL.</p>
 </blockquote><h2 id="_turning-on-settings-sync" data-needslink="_turning-on-settings-sync">Turning on Settings Sync</h2>
 <p>You can turn on Settings Sync by using the <strong>Backup and Sync Settings...</strong> entry in the <strong>Manage</strong> gear menu or the <strong>Accounts</strong> menu at the bottom of the Activity Bar.</p>
@@ -2179,7 +2179,7 @@
 <h4 id="_gnome-or-unity-or-similar" data-needslink="_gnome-or-unity-or-similar">GNOME or UNITY (or similar)</h4>
 <p>If the error you're seeing is &quot;Cannot create an item in a locked collection&quot;, chances are your keyring's <code>Login</code> keyring is locked. You should launch your OS's keyring (<a href="https://wiki.gnome.org/Apps/Seahorse" class="external-link" target="_blank">Seahorse</a> is the commonly used GUI for seeing keyrings) and ensure the default keyring (usually referred to as <code>Login</code> keyring) is unlocked. This keyring needs to be unlocked when you log into your system.</p>
 <h4 id="_kde" data-needslink="_kde">KDE</h4>
-<blockquote><p>KDE 6 is not yet fully supported by Visual Studio Code. As a workaround: The latest kwallet6 is also accessible as kwallet5, so you can force it to use kwallet5 by setting the password store to <code>kwallet5</code> as explained below in <a href="#_other-linux-desktop-environments">Configure the keyring to use with VS Code</a>.</p>
+<blockquote><p>KDE 6 is not yet fully supported by LT Serial Tool. As a workaround: The latest kwallet6 is also accessible as kwallet5, so you can force it to use kwallet5 by setting the password store to <code>kwallet5</code> as explained below in <a href="#_other-linux-desktop-environments">Configure the keyring to use with VS Code</a>.</p>
 </blockquote><p>It's possible that your wallet (aka keyring) is closed. If you open <a href="https://apps.kde.org/kwalletmanager5" class="external-link" target="_blank">KWalletManager</a>, you can see if the default <code>kdewallet</code> is closed and if it is, make sure you open it.</p>
 <p>If you are using KDE5 or higher and are having trouble connecting to <code>kwallet5</code> (like users of the unofficial VS Code Flatpak in <a href="https://github.com/microsoft/vscode/issues/189672" class="external-link" target="_blank">issue #189672</a>), you can try <a href="#_other-linux-desktop-environments">configuring the keyring</a> to <code>gnome-libsecret</code> as this will use the <a href="https://www.gnu.org/software/emacs/manual/html_node/auth/Secret-Service-API.html" class="external-link" target="_blank">Secret Service API</a> to communicate with any valid keyring. <code>kwallet5</code> implements the Secret Service API and can be accessed using this method.</p>
 <p>If you're still experiencing trouble connecting to <code>kwallet5</code>, some users have reported that granting the specific D-Bus service permissions proved a viable fix:</p>
@@ -2343,7 +2343,7 @@
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "Visual Studio Code",
+			"name" : "LT Serial Tool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",

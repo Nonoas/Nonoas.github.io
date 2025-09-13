@@ -15,7 +15,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@code" />
 
-	<meta name="description" content="Get Visual Studio Code up and running on Linux." />
+	<meta name="description" content="Get LT Serial Tool up and running on Linux." />
 <meta name="keywords" content="" />
 <meta name="ms.prod" content="vs-code" />
 <meta name="ms.TOCTitle" content="" />
@@ -26,8 +26,8 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="og:url" content="https://code.visualstudio.com/docs/setup/linux" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Visual Studio Code on Linux" />
-<meta property="og:description" content="Get Visual Studio Code up and running on Linux." />
+<meta property="og:title" content="LT Serial Tool on Linux" />
+<meta property="og:description" content="Get LT Serial Tool up and running on Linux." />
 
 <meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" />
 
@@ -36,7 +36,7 @@
 	<link rel="shortcut icon" href="https://code.visualstudio.com/assets/favicon.ico" sizes="128x128" />
 	<link rel="apple-touch-icon" href="https://code.visualstudio.com/assets/apple-touch-icon.png">
 
-	<title>Visual Studio Code on Linux</title>
+	<title>LT Serial Tool on Linux</title>
 
 	<link rel="stylesheet" href="https://code.visualstudio.com/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://code.visualstudio.com/dist/v2/style.css">
@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>Visual Studio Code</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2070,11 +2070,11 @@
                     Edit
                 </a>
             </div>
-            <h1>Visual Studio Code on Linux</h1>
+            <h1>LT Serial Tool on Linux</h1>
 <h2 id="_installation" data-needslink="_installation">Installation</h2>
 <ol>
 <li>
-<p><a href="#_install-vs-code-on-linux">Download and install Visual Studio Code for your Linux distribution</a></p>
+<p><a href="#_install-vs-code-on-linux">Download and install LT Serial Tool for your Linux distribution</a></p>
 <div class="markdown-alert note" dir="auto">
       <span>
         <svg class="markdown-alert-icon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
@@ -2112,7 +2112,7 @@
 <h3 id="_debian-and-ubuntu-based-distributions" data-needslink="_debian-and-ubuntu-based-distributions">Debian and Ubuntu based distributions</h3>
 <ol>
 <li>
-<p>The easiest way to install Visual Studio Code for Debian/Ubuntu based distributions is to download and install the <a href="https://go.microsoft.com/fwlink/?LinkID=760868" class="external-link" target="_blank">.deb package (64-bit)</a>, either through the graphical software center if it's available, or through the command line with:</p>
+<p>The easiest way to install LT Serial Tool for Debian/Ubuntu based distributions is to download and install the <a href="https://go.microsoft.com/fwlink/?LinkID=760868" class="external-link" target="_blank">.deb package (64-bit)</a>, either through the graphical software center if it's available, or through the command line with:</p>
 <pre class="shiki" data-lang="bash" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">sudo</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> apt</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> install</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> ./</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">&#x3C;</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">fil</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">e></span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">.deb</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000"># If you're on an older Linux distribution, you will need to run this instead:</span></span>
@@ -2179,7 +2179,7 @@
 <li>
 <p>Install the key and yum repository by running the following script:</p>
 <pre class="shiki" data-lang="bash" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">sudo</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> rpm</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> --import</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> https://packages.microsoft.com/keys/microsoft.asc</span></span>
-<span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">echo</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> -e</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> | </span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">sudo</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> tee</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> /etc/yum.repos.d/vscode.repo</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> > </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">/dev/null</span></span>
+<span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">echo</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> -e</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> "[code]\nname=LT Serial Tool\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> | </span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">sudo</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> tee</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> /etc/yum.repos.d/vscode.repo</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> > </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">/dev/null</span></span>
 <span class="line"></span></code></pre>
 </li>
 <li>
@@ -2223,7 +2223,7 @@
 <li>
 <p>Install the  key and yum repository by running the following script:</p>
 <pre class="shiki" data-lang="bash" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">sudo</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> rpm</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> --import</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> https://packages.microsoft.com/keys/microsoft.asc</span></span>
-<span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">echo</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> -e</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> |</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">sudo</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> tee</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> /etc/zypp/repos.d/vscode.repo</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> > </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">/dev/null</span></span>
+<span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">echo</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> -e</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> "[code]\nname=LT Serial Tool\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> |</span><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">sudo</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> tee</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> /etc/zypp/repos.d/vscode.repo</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> > </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">/dev/null</span></span>
 <span class="line"></span></code></pre>
 </li>
 <li>
@@ -2317,7 +2317,7 @@
 <span class="line"><span>Pin: origin "packages.microsoft.com"</span></span>
 <span class="line"><span>Pin-Priority: 9999</span></span>
 <span class="line"><span></span></span></code></pre>
-<h3 id="_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc" data-needslink="_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc">&quot;Visual Studio Code is unable to watch for file changes in this large workspace&quot; (error ENOSPC)</h3>
+<h3 id="_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc" data-needslink="_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc">&quot;LT Serial Tool is unable to watch for file changes in this large workspace&quot; (error ENOSPC)</h3>
 <p>When you see this notification, it indicates that the VS Code file watcher is running out of file handles that are needed to implement file watching. Most often this can happen when opening a workspace that is large and contains many files. Before adjusting platform limits, make sure that potentially large folders, such as Python <code>.venv</code>, are added to the <span class="setting"><a href="vscode://settings/files.watcherExclude" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'files.watcherExclude' in Settings Editor"></span>files.watcherExclude</a></span> setting (more details below). It is also possible that other running applications consume so many file handles that none are left for VS Code to use. In that case, it might help to close these other applications.</p>
 <p>The current limit can be viewed by running:</p>
 <pre class="shiki" data-lang="bash" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">cat</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> /proc/sys/fs/inotify/max_user_watches</span></span>
@@ -2500,7 +2500,7 @@
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "Visual Studio Code",
+			"name" : "LT Serial Tool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",

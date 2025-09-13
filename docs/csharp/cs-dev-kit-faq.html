@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>Visual Studio Code</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2074,7 +2074,7 @@
 <p>Use this FAQ (Frequently Asked Questions) topic to learn more about the C# Dev Kit extension and troubleshoot issues you may be experiencing.</p>
 <h2 id="_general" data-needslink="_general">General</h2>
 <h3 id="_what-is-chash-dev-kit" data-needslink="_what-is-chash-dev-kit">What is C# Dev Kit?</h3>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit" class="external-link" target="_blank">C# Dev Kit</a> is an extension created to enhance your C# development experience in Visual Studio Code. It aims to bring a more expansive, productive, and reliable C# experience to VS Code. C# Dev Kit does not replace the <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp" class="external-link" target="_blank">existing C# extension</a> but adds on top of the great language service features it provides. Developers can choose to continue using the updated version of the existing C# extension or enhance their experience by adding C# Dev Kit.</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit" class="external-link" target="_blank">C# Dev Kit</a> is an extension created to enhance your C# development experience in LT Serial Tool. It aims to bring a more expansive, productive, and reliable C# experience to VS Code. C# Dev Kit does not replace the <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp" class="external-link" target="_blank">existing C# extension</a> but adds on top of the great language service features it provides. Developers can choose to continue using the updated version of the existing C# extension or enhance their experience by adding C# Dev Kit.</p>
 <h3 id="_what-project-types-are-currently-supported" data-needslink="_what-project-types-are-currently-supported">What project types are currently supported?</h3>
 <p>C# Dev Kit supports building web apps, console apps, class library projects, and test projects for .NET Core, often also called .NET. The <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.dotnet-maui" class="external-link" target="_blank">.NET MAUI extension</a> and the <a href="https://marketplace.visualstudio.com/items?itemName=visualstudiotoolsforunity.vstuc" class="external-link" target="_blank">Unity extension</a> are built on top of C# Dev Kit and provide additional support for building <a href="https://dotnet.microsoft.com/apps/maui" class="external-link" target="_blank">.NET Multi-platform App UI (MAUI)</a> apps and Unity apps. These extensions support the modern .NET project format, also known as &quot;sdk-style&quot; projects. If you are building non-SDK-format projects such as <a href="https://learn.microsoft.com/dotnet/standard/choosing-core-framework-server" class="external-link" target="_blank">.NET Framework</a> apps and Xamarin apps, see the <a href="#_project-system">Project System</a> section.</p>
 <h3 id="_what-extensions-are-included-in-chash-dev-kit" data-needslink="_what-extensions-are-included-in-chash-dev-kit">What extensions are included in C# Dev Kit?</h3>
@@ -2189,7 +2189,7 @@
 <p>C# Dev Kit requires that it has built your project successfully before tests will appear in the Test Explorer panel.</p>
 <p>Build your solution by right-clicking on the solution in the Solution Explorer and select <strong>Build</strong> or <span class="dynamic-keybinding" data-commandId="workbench.action.tasks.build" data-osx="⇧⌘B" data-win="Ctrl+Shift+B" data-linux="Ctrl+Shift+B"><span class="keybinding">⇧⌘B</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+B</span>)</span>. Once the build has been completed, your tests will appear in the Test Explorer panel.</p>
 <h3 id="_why-are-my-tests-not-being-discovered-or-run-in-the-test-explorer" data-needslink="_why-are-my-tests-not-being-discovered-or-run-in-the-test-explorer">Why are my tests not being discovered or run in the Test Explorer?</h3>
-<p>If your test project is using the Microsoft Testing Platform (MTP), either via MSTest, NUnit, xUnit v3, or the TUnit test framework, your tests might not be discovered or run in the Test Explorer because MTP differs from the traditional VSTest platform. To resolve this, you need to enable the &quot;Use Testing Platform Protocol&quot; setting in Visual Studio Code to allow the C# Dev Kit to communicate with MTP test projects.</p>
+<p>If your test project is using the Microsoft Testing Platform (MTP), either via MSTest, NUnit, xUnit v3, or the TUnit test framework, your tests might not be discovered or run in the Test Explorer because MTP differs from the traditional VSTest platform. To resolve this, you need to enable the &quot;Use Testing Platform Protocol&quot; setting in LT Serial Tool to allow the C# Dev Kit to communicate with MTP test projects.</p>
 <p>Follow these steps to enable the setting:</p>
 <ol>
 <li>Open Settings in VS Code: Go to <span class="filePreferencesPath"><strong>File</strong> &gt; <strong>Preferences</strong></span> &gt; <strong>Settings</strong> (or press <span class="dynamic-keybinding" data-commandId="workbench.action.openSettings" data-osx="⌘," data-win="Ctrl+," data-linux="Ctrl+,"><span class="keybinding">⌘,</span> (Windows, Linux <span class="keybinding">Ctrl+,</span>)</span>).</li>
@@ -2205,7 +2205,7 @@
 <li>Increase Test Explorer verbosity:
 Navigate to the C# Dev Kit settings and increase the Test Explorer Verbosity setting from <code>minimal</code> to <code>diagnostic</code>. This will generate more detailed logs.</li>
 <li>Check the Output Window:
-Open the Output window in Visual Studio Code, and select <strong>C# Dev Kit - Test Explorer</strong> from the dropdown. Diagnostic messages will appear with a <code>[dev]</code> prefix.</li>
+Open the Output window in LT Serial Tool, and select <strong>C# Dev Kit - Test Explorer</strong> from the dropdown. Diagnostic messages will appear with a <code>[dev]</code> prefix.</li>
 <li>Collect the following information:
 When reporting an issue, ensure you include:
 <ul>
@@ -2401,7 +2401,7 @@ When reporting an issue, ensure you include:
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "Visual Studio Code",
+			"name" : "LT Serial Tool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",

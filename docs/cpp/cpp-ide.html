@@ -15,7 +15,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@code" />
 
-	<meta name="description" content="How to edit and navigate C++ source files in Visual Studio Code." />
+	<meta name="description" content="How to edit and navigate C++ source files in LT Serial Tool." />
 <meta name="keywords" content="" />
 <meta name="ms.prod" content="vs-code" />
 <meta name="ms.TOCTitle" content="" />
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://code.visualstudio.com/docs/cpp/cpp-ide" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Editing and Navigating C++ Code" />
-<meta property="og:description" content="How to edit and navigate C++ source files in Visual Studio Code." />
+<meta property="og:description" content="How to edit and navigate C++ source files in LT Serial Tool." />
 
 <meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" />
 
@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>Visual Studio Code</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2071,7 +2071,7 @@
                 </a>
             </div>
             <h1>Editing and Navigating C++ Code</h1>
-<p>This article provides an overview of code editing and navigating features specific to the C/C++ extension. For more information about general editing and navigating in Visual Studio Code, see <a href="https://code.visualstudio.com/docs/editing/codebasics">Basic Editing</a> and <a href="https://code.visualstudio.com/docs/editing/editingevolved">Code Navigation</a>.</p>
+<p>This article provides an overview of code editing and navigating features specific to the C/C++ extension. For more information about general editing and navigating in LT Serial Tool, see <a href="https://code.visualstudio.com/docs/editing/codebasics">Basic Editing</a> and <a href="https://code.visualstudio.com/docs/editing/editingevolved">Code Navigation</a>.</p>
 <h2 id="_editing-c-code" data-needslink="_editing-c-code">Editing C++ code</h2>
 <p>The source code editing features provided by the C/C++ extension are powerful tools for editing, formatting, and understanding your codebase.</p>
 <h3 id="_identifying-header-files" data-needslink="_identifying-header-files">Identifying header files</h3>
@@ -2087,7 +2087,7 @@
 <p>When you type a member access symbol (<code>.</code> or <code>-&gt;</code>), the editor displays a list of members. As you type more letters, the list is filtered in real time:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/cpp/cpp/list-members-cpp.png" alt="List members" loading="lazy"></p>
 <h3 id="_code-formatting" data-needslink="_code-formatting">Code formatting</h3>
-<p>The C/C++ extension for Visual Studio Code supports source code formatting using <a href="https://clang.llvm.org/docs/ClangFormat.html" class="external-link" target="_blank">clang-format</a> and vc_format. Both of these formatting options are included in the extension, with clang-format being the default.</p>
+<p>The C/C++ extension for LT Serial Tool supports source code formatting using <a href="https://clang.llvm.org/docs/ClangFormat.html" class="external-link" target="_blank">clang-format</a> and vc_format. Both of these formatting options are included in the extension, with clang-format being the default.</p>
 <p>You can format an entire file with <strong>Format Document</strong> (<span class="dynamic-keybinding" data-commandId="editor.action.formatDocument" data-osx="⇧⌥F" data-win="Shift+Alt+F" data-linux="Ctrl+Shift+I"><span class="keybinding">⇧⌥F</span> (Windows <span class="keybinding">Shift+Alt+F</span>, Linux <span class="keybinding">Ctrl+Shift+I</span>)</span>) or just the current selection with <strong>Format Selection</strong> (<span class="dynamic-keybinding" data-commandId="editor.action.formatSelection" data-osx="⌘K ⌘F" data-win="Ctrl+K Ctrl+F" data-linux="Ctrl+K Ctrl+F"><span class="keybinding">⌘K ⌘F</span> (Windows, Linux <span class="keybinding">Ctrl+K Ctrl+F</span>)</span>) in right-click context menu. You can also trigger formatting based on user gestures such as typing, saving, and pasting with the following <a href="https://code.visualstudio.com/docs/configure/settings">settings</a>:</p>
 <ul>
 <li><code>editor.formatOnSave</code> - to format when you save your file.</li>
@@ -2111,7 +2111,7 @@
 <h3 id="_vcformat" data-needslink="_vcformat">vc_format</h3>
 <p>By default, if an <code>.editorconfig</code> file with relevant settings is identified near the code being formatted, the Visual C++ formatting engine is used instead of clang-format. Otherwise, navigate to the <code>C_Cpp.formatting</code> <a href="https://code.visualstudio.com/docs/configure/settings">setting</a> and set it to <code>vc_format</code> to use the Visual C++ formatting engine.</p>
 <h3 id="_enhanced-semantic-colorization" data-needslink="_enhanced-semantic-colorization">Enhanced semantic colorization</h3>
-<p>When IntelliSense is enabled, the Visual Studio Code C/C++ extension supports semantic colorization. For more information about setting colors for classes, functions, variables, and more, see <a href="https://code.visualstudio.com/docs/cpp/colorization-cpp">Enhanced colorization</a>. For more information on configuring IntelliSense, see <a href="https://code.visualstudio.com/docs/cpp/configure-intellisense">IntelliSense configuration</a>.</p>
+<p>When IntelliSense is enabled, the LT Serial Tool C/C++ extension supports semantic colorization. For more information about setting colors for classes, functions, variables, and more, see <a href="https://code.visualstudio.com/docs/cpp/colorization-cpp">Enhanced colorization</a>. For more information on configuring IntelliSense, see <a href="https://code.visualstudio.com/docs/cpp/configure-intellisense">IntelliSense configuration</a>.</p>
 <h3 id="_quick-info" data-needslink="_quick-info">Quick Info</h3>
 <p>You can hover over a symbol to see an inline view of its definition:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/cpp/mingw/quickinfo.png" alt="Quick info" loading="lazy"></p>
@@ -2277,7 +2277,7 @@
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "Visual Studio Code",
+			"name" : "LT Serial Tool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",

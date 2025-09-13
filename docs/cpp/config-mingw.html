@@ -15,7 +15,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@code" />
 
-	<meta name="description" content="Configuring the C++ extension in Visual Studio Code to target g++ and gdb on a MinGW-w64 installation" />
+	<meta name="description" content="Configuring the C++ extension in LT Serial Tool to target g++ and gdb on a MinGW-w64 installation" />
 <meta name="keywords" content="" />
 <meta name="ms.prod" content="vs-code" />
 <meta name="ms.TOCTitle" content="" />
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://code.visualstudio.com/docs/cpp/config-mingw" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Using GCC with MinGW" />
-<meta property="og:description" content="Configuring the C++ extension in Visual Studio Code to target g++ and gdb on a MinGW-w64 installation" />
+<meta property="og:description" content="Configuring the C++ extension in LT Serial Tool to target g++ and gdb on a MinGW-w64 installation" />
 
 <meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" />
 
@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>Visual Studio Code</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2071,14 +2071,14 @@
                 </a>
             </div>
             <h1>Using GCC with MinGW</h1>
-<p>In this tutorial, you configure Visual Studio Code to use the GCC C++ compiler (g++) and GDB debugger from <a href="http://mingw-w64.org/" class="external-link" target="_blank">mingw-w64</a> to create programs that run on Windows. After configuring VS Code, you will compile, run, and debug a Hello World program.</p>
+<p>In this tutorial, you configure LT Serial Tool to use the GCC C++ compiler (g++) and GDB debugger from <a href="http://mingw-w64.org/" class="external-link" target="_blank">mingw-w64</a> to create programs that run on Windows. After configuring VS Code, you will compile, run, and debug a Hello World program.</p>
 <p>This tutorial does not teach you about GCC, GDB, minGW-w64, or the C++ language. For those subjects, there are many good resources available on the Web.</p>
 <p>If you have any problems, feel free to file an issue for this tutorial in the <a href="https://github.com/microsoft/vscode-docs/issues/new" class="external-link" target="_blank">VS Code documentation repository</a>.</p>
 <h2 id="_prerequisites" data-needslink="_prerequisites">Prerequisites</h2>
 <p>To successfully complete this tutorial, you must do the following steps:</p>
 <ol>
 <li>
-<p>Install <a href="https://code.visualstudio.com/download">Visual Studio Code</a>.</p>
+<p>Install <a href="https://code.visualstudio.com/download">LT Serial Tool</a>.</p>
 </li>
 <li>
 <p>Install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" class="external-link" target="_blank">C/C++ extension for VS Code</a>. You can install the C/C++ extension by searching for 'C++' in the Extensions view (<span class="dynamic-keybinding" data-commandId="workbench.view.extensions" data-osx="⇧⌘X" data-win="Ctrl+Shift+X" data-linux="Ctrl+Shift+X"><span class="keybinding">⇧⌘X</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+X</span>)</span>).</p>
@@ -2383,7 +2383,7 @@ hover over <code>vector</code> or <code>string</code> to see their type informat
 <p>This opens the <strong>C/C++ Configurations</strong> page. When you make changes here, VS Code writes them to a file called <code>c_cpp_properties.json</code> in the <code>.vscode</code> folder.</p>
 <p>Here, we've changed the <strong>Configuration name</strong> to <strong>GCC</strong>, set the <strong>Compiler  path</strong> dropdown to the g++ compiler, and the <strong>IntelliSense mode</strong> to match the compiler (<strong>gcc-x64</strong>).</p>
 <p><img src="https://code.visualstudio.com/assets/docs/cpp/mingw/intellisense-configurations-mingw.png" alt="Command Palette" loading="lazy"></p>
-<p>Visual Studio Code places these settings in <code>.vscode\c_cpp_properties.json</code>. If you open that file directly, it should look something like this:</p>
+<p>LT Serial Tool places these settings in <code>.vscode\c_cpp_properties.json</code>. If you open that file directly, it should look something like this:</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "configurations"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: [</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    {</span></span>
@@ -2552,7 +2552,7 @@ hover over <code>vector</code> or <code>string</code> to see their type informat
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "Visual Studio Code",
+			"name" : "LT Serial Tool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",
