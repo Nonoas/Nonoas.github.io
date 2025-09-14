@@ -174,7 +174,7 @@
 			</div>
 		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
 			<div class="container">
-				<p class="message">Join a <a href="../dev-days.html" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+				<p class="message">Join a <a href="../dev-days.html" id="banner-link-dev-days">LTSerialTool Dev Days event</a> near you to learn about AI-assisted development in LTSerialTool.</p>
 			</div>
 			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
 					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
@@ -377,8 +377,8 @@
 <li>
 <p><strong>Model flexibility</strong></p>
 <ul>
-<li>Let VS Code select the best model <a href="#_auto-model-selection-preview">(Show more)</a></li>
-<li>Contribute models through VS Code extensions <a href="#_language-model-chat-provider-api">(Show more)</a></li>
+<li>Let LTSerialTool select the best model <a href="#_auto-model-selection-preview">(Show more)</a></li>
+<li>Contribute models through LTSerialTool extensions <a href="#_language-model-chat-provider-api">(Show more)</a></li>
 </ul>
 </li>
 <li>
@@ -427,13 +427,13 @@ You can download the nightly Insiders build and try the latest updates as soon a
 Navigation End -->
 <h2 id="_chat" data-needslink="_chat">Chat</h2>
 <h3 id="_auto-model-selection-preview" data-needslink="_auto-model-selection-preview">Auto model selection (Preview)</h3>
-<p>This iteration, we're introducing auto model selection in chat. When you choose the <strong>Auto</strong> model in the model picker, VS Code automatically selects a model to ensure that you get the optimal performance and reduce rate limits.</p>
-<p>Auto model selection is currently in preview and we are rolling it out to all GitHub Copilot users in VS Code in the following weeks, starting with the individual Copilot plans.</p>
+<p>This iteration, we're introducing auto model selection in chat. When you choose the <strong>Auto</strong> model in the model picker, LTSerialTool automatically selects a model to ensure that you get the optimal performance and reduce rate limits.</p>
+<p>Auto model selection is currently in preview and we are rolling it out to all GitHub Copilot users in LTSerialTool in the following weeks, starting with the individual Copilot plans.</p>
 <p><img src="../assets/updates/1_104/model-dropdown-auto.png" alt="Screenshot that shows the model picker in the Chat view, showing the Auto option." loading="lazy"></p>
-<p>Auto will choose between Claude Sonnet 4, GPT-5, GPT-5 mini, and GPT-4.1, unless your organization has disabled access to these models. When using auto model selection, VS Code uses a variable model multiplier, based on the selected model. If you are a paid user, auto will apply a 10% request discount.</p>
+<p>Auto will choose between Claude Sonnet 4, GPT-5, GPT-5 mini, and GPT-4.1, unless your organization has disabled access to these models. When using auto model selection, LTSerialTool uses a variable model multiplier, based on the selected model. If you are a paid user, auto will apply a 10% request discount.</p>
 <p>You can view the selected model and the model multiplier by hovering over the response in the Chat view.</p>
 <p><img src="../assets/updates/1_104/auto-model-multiplier.png" alt="Screenshot of a chat response, showing the selected model on hover." loading="lazy"></p>
-<p>Learn more about <a href="../docs/copilot/customization/language-models.html">auto model selection in VS Code</a>.</p>
+<p>Learn more about <a href="../docs/copilot/customization/language-models.html">auto model selection in LTSerialTool</a>.</p>
 <h3 id="_confirm-edits-to-sensitive-files" data-needslink="_confirm-edits-to-sensitive-files">Confirm edits to sensitive files</h3>
 <p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.tools.edits.autoApprove" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.tools.edits.autoApprove' in Settings Editor"></span>chat.tools.edits.autoApprove</a></span></p>
 <p>In agent mode, the agent can autonomously make edits to files in your workspace. This might include accidentally or maliciously modifying or deleting important files such as configuration files, which could cause immediate negative side-effects on your machine. Learn more about <a href="../docs/copilot/security.html">security considerations when using AI-powered development tools</a>.</p>
@@ -444,7 +444,7 @@ Navigation End -->
 <p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.useAgentsMdFile" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.useAgentsMdFile' in Settings Editor"></span>chat.useAgentsMdFile</a></span></p>
 <p>An <code>AGENTS.md</code> file lets you provide context and instructions to the agent. Starting from this release, when you have an <code>AGENTS.md</code> file in your workspace root(s), it is automatically picked up as context for chat requests. This can be useful for teams that use multiple AI agents.</p>
 <p>Support for <code>AGENTS.md</code> files is enabled by default and can be controlled with the <span class="setting"><a href="vscode://settings/chat.useAgentsMdFile" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.useAgentsMdFile' in Settings Editor"></span>chat.useAgentsMdFile</a></span> setting. See <a href="https://agents.md/" class="external-link" target="_blank">https://agents.md/</a> for more information about <code>AGENTS.md</code> files.</p>
-<p>Learn more about <a href="../docs/copilot/customization/overview.html">customizing chat in VS Code</a> to your practices and team workflows.</p>
+<p>Learn more about <a href="../docs/copilot/customization/overview.html">customizing chat in LTSerialTool</a> to your practices and team workflows.</p>
 <h3 id="_improved-changed-files-experience" data-needslink="_improved-changed-files-experience">Improved changed files experience</h3>
 <p>This iteration, the changed files list has been reworked with several quality-of-life features. These changes should improve your experience when working in agent mode!</p>
 <ul>
@@ -466,7 +466,7 @@ Navigation End -->
 <p>Prompt files are Markdown files in which you write reusable chat prompts. To run a prompt file, type <code>/</code> followed by the prompt file name in the chat input field, or use the Play button when you have the prompt file open in the editor.</p>
 <p>You can specify which chat mode should be used for running the prompt file. Previously, you could only use built-in chat modes like <code>agent</code>, <code>edit</code>, or <code>ask</code> in your prompt files. Now, you can also reference custom chat modes in your prompt files.</p>
 <p><img src="../assets/updates/1_104/custom_modes_in_prompt_files.png" alt="Screenshot showing IntelliSense for custom chat modes in prompt files." loading="lazy"></p>
-<p>Learn more about <a href="../docs/copilot/customization/overview.html">customizing chat in VS Code</a> with prompt files, chat modes, and custom instructions.</p>
+<p>Learn more about <a href="../docs/copilot/customization/overview.html">customizing chat in LTSerialTool</a> with prompt files, chat modes, and custom instructions.</p>
 <h3 id="_configure-prompt-file-suggestions-experimental" data-needslink="_configure-prompt-file-suggestions-experimental">Configure prompt file suggestions (Experimental)</h3>
 <p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.promptFilesRecommendations" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.promptFilesRecommendations' in Settings Editor"></span>chat.promptFilesRecommendations</a></span></p>
 <p>Teams often create custom prompt files to standardize AI workflows, but these prompts can be hard to discover when users need them most. You can now configure which prompt files appear as suggestions in the Chat welcome view based on contextual conditions.</p>
@@ -482,12 +482,12 @@ Navigation End -->
 <span class="line"></span></code></pre>
 <p>This helps teams surface the right AI workflows at the right time, making custom prompts more discoverable and relevant to your workspace and file type.</p>
 <h3 id="_select-tools-in-tool-sets" data-needslink="_select-tools-in-tool-sets">Select tools in tool sets</h3>
-<p><a href="../docs/copilot/chat/chat-agent-mode.html#_define-tool-sets">Tool sets</a> are a convenient way to group related tools together and VS Code has several built-in tool sets like <code>edit</code> or <code>search</code>.</p>
+<p><a href="../docs/copilot/chat/chat-agent-mode.html#_define-tool-sets">Tool sets</a> are a convenient way to group related tools together and LTSerialTool has several built-in tool sets like <code>edit</code> or <code>search</code>.</p>
 <p>The tools picker now shows which tools are part of each tool set and you can individually enable or disable each tool. You can access the tools picker via the <code>Configure Tools...</code> button in the Chat view.</p>
 <p><img src="../assets/updates/1_104/tools_in_toolsets.png" alt="Screenshot showing the tools picker with an expanded edit tool set, listing all available tools." loading="lazy"></p>
 <h3 id="_configure-font-used-in-chat" data-needslink="_configure-font-used-in-chat">Configure font used in chat</h3>
 <p><strong>Settings</strong>: <span class="setting"><a href="vscode://settings/chat.fontFamily" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.fontFamily' in Settings Editor"></span>chat.fontFamily</a></span>, <span class="setting"><a href="vscode://settings/chat.fontSize" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.fontSize' in Settings Editor"></span>chat.fontSize</a></span></p>
-<p>VS Code lets you choose which font to use across the editor, however the Chat view lacked that configurability. We have now added two new settings for configuring the font family (<span class="setting"><a href="vscode://settings/chat.fontFamily" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.fontFamily' in Settings Editor"></span>chat.fontFamily</a></span>) and font size (<span class="setting"><a href="vscode://settings/chat.fontSize" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.fontSize' in Settings Editor"></span>chat.fontSize</a></span>) of chat messages.</p>
+<p>LTSerialTool lets you choose which font to use across the editor, however the Chat view lacked that configurability. We have now added two new settings for configuring the font family (<span class="setting"><a href="vscode://settings/chat.fontFamily" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.fontFamily' in Settings Editor"></span>chat.fontFamily</a></span>) and font size (<span class="setting"><a href="vscode://settings/chat.fontSize" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.fontSize' in Settings Editor"></span>chat.fontSize</a></span>) of chat messages.</p>
 <p><img src="../assets/updates/1_104/chat-configure-font.png" alt="Screenshot showing the Chat view with a custom font and font size." loading="lazy"></p>
 <blockquote><p><strong>Note</strong>: content for lists currently does not yet honor these settings, but this is something that we are working on fixing in the upcoming releases.</p>
 </blockquote><h3 id="_collaborate-with-coding-agents-experimental" data-needslink="_collaborate-with-coding-agents-experimental">Collaborate with coding agents (Experimental)</h3>
@@ -511,7 +511,7 @@ Navigation End -->
 </ul>
 <p><video src="../assets/updates/1_104/chat-sessions-view.mp4" title="Video showing Chat Sessions view and integration with GitHub coding agents." autoplay loop controls muted></video></p>
 <h4 id="_delegate-to-coding-agent" data-needslink="_delegate-to-coding-agent">Delegate to coding agent</h4>
-<p>We continued to expand on ways to delegate local tasks in VS Code to a Copilot coding agent:</p>
+<p>We continued to expand on ways to delegate local tasks in LTSerialTool to a Copilot coding agent:</p>
 <ul>
 <li>
 <p>Fix todos with coding agent:</p>
@@ -526,7 +526,7 @@ Navigation End -->
 </ul>
 <p><em>Theme: <a href="https://marketplace.visualstudio.com/items?itemName=joshspicer.sharp-solarized" class="external-link" target="_blank">Sharp Solarized</a> (preview on <a href="https://vscode.dev/editor/theme/joshspicer.sharp-solarized" class="external-link" target="_blank">vscode.dev</a>)</em></p>
 <h3 id="_social-sign-in-with-google" data-needslink="_social-sign-in-with-google">Social sign in with Google</h3>
-<p>The option to sign in or sign up to GitHub Copilot with a Google account is now generally available and rolling out to all users in VS Code.</p>
+<p>The option to sign in or sign up to GitHub Copilot with a Google account is now generally available and rolling out to all users in LTSerialTool.</p>
 <p><img src="../assets/updates/1_104/google.png" alt="Screenshot showing the sign in dialog showing the option to use a Google account." loading="lazy"></p>
 <p>You can find more information about this in the <a href="https://github.blog/changelog/2025-07-15-social-login-with-google-is-now-generally-available" class="external-link" target="_blank">announcement GitHub blog post</a>.</p>
 <h3 id="_terminal-auto-approve" data-needslink="_terminal-auto-approve">Terminal auto approve</h3>
@@ -588,9 +588,9 @@ Navigation End -->
 </li>
 <li>
 <p>Compound task support</p>
-<p>Agent mode now supports running compound tasks. When you run a compound task, the agent indicates progress and output for each dependent task, including any prompts for user input. This enables more complex workflows and better visibility into multi-step task execution.</p>
-<p>In the example below, the VS Code - Build task is run. Output is assessed for each dependency task and a problem is surfaced to the user in the response and in the progress message dropdown.</p>
-<p><video src="../assets/updates/1_104/build-task.mp4" title="Example of agent running the VS Code - Build task" autoplay loop controls muted></video></p>
+<p>发送模式 now supports running compound tasks. When you run a compound task, the agent indicates progress and output for each dependent task, including any prompts for user input. This enables more complex workflows and better visibility into multi-step task execution.</p>
+<p>In the example below, the LTSerialTool - Build task is run. Output is assessed for each dependency task and a problem is surfaced to the user in the response and in the progress message dropdown.</p>
+<p><video src="../assets/updates/1_104/build-task.mp4" title="Example of agent running the LTSerialTool - Build task" autoplay loop controls muted></video></p>
 </li>
 </ul>
 <h3 id="_improved-terminal-support" data-needslink="_improved-terminal-support">Improved terminal support</h3>
@@ -616,7 +616,7 @@ Navigation End -->
 <p>When the agent requests confirmation for a tool call, you can now choose to skip the tool call and let the agent continue. You can still cancel the request or enter a new request via the chat input box.</p>
 <h3 id="_improvements-to-semantic-workspace-search" data-needslink="_improvements-to-semantic-workspace-search">Improvements to semantic workspace search</h3>
 <p>We've upgraded the <code>#codebase</code> tool to use a new <a href="https://en.wikipedia.org/wiki/Embedding_(machine_learning)" class="external-link" target="_blank">embeddings</a> model for semantic searching for code in your workspace. This new model provides better results for code searches. The new embeddings also use less storage space, requiring only 6% of our previous model's on-disk storage size for each embedding.</p>
-<p>We'll be gradually rolling out this new embeddings model over the next few weeks. Your workspace will be automatically updated to use this new embeddings model, so no action is required. VS Code Insiders is already using the new model if you want to try it out before it rolls out to you.</p>
+<p>We'll be gradually rolling out this new embeddings model over the next few weeks. Your workspace will be automatically updated to use this new embeddings model, so no action is required. LTSerialTool Insiders is already using the new model if you want to try it out before it rolls out to you.</p>
 <h3 id="_hide-and-disable-github-copilot-ai-features" data-needslink="_hide-and-disable-github-copilot-ai-features">Hide and disable GitHub Copilot AI features</h3>
 <p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.disableAIFeatures" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.disableAIFeatures' in Settings Editor"></span>chat.disableAIFeatures</a></span></p>
 <p>We are introducing a new setting <span class="setting"><a href="vscode://settings/chat.disableAIFeatures" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.disableAIFeatures' in Settings Editor"></span>chat.disableAIFeatures</a></span> for disabling and hiding built-in AI features provided by GitHub Copilot, including chat, code completions, and next edit suggestions.</p>
@@ -630,13 +630,13 @@ Navigation End -->
 <blockquote><p><strong>Note</strong>: users that were hiding AI features previously will continue to see AI features hidden. You can update the setting in addition if you want to synchronize your choice across devices.</p>
 </blockquote><h2 id="_mcp" data-needslink="_mcp">MCP</h2>
 <h3 id="_support-for-server-instructions" data-needslink="_support-for-server-instructions">Support for server instructions</h3>
-<p>VS Code now reads MCP server instructions and will include them in its base prompt.</p>
+<p>LTSerialTool now reads MCP server instructions and will include them in its base prompt.</p>
 <h3 id="_mcp-auto-discovery-disabled-by-default" data-needslink="_mcp-auto-discovery-disabled-by-default">MCP auto discovery disabled by default</h3>
 <p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.mcp.discovery.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.mcp.discovery.enabled' in Settings Editor"></span>chat.mcp.discovery.enabled</a></span></p>
-<p>VS Code supports <a href="../docs/copilot/customization/mcp-servers.html#_add-an-mcp-server">automatic discovery of MCP servers</a> installed in other apps like Claude Code. As MCP support has matured in VS Code, auto-discovery is now disabled by default, but you can re-enable it using the <span class="setting"><a href="vscode://settings/chat.mcp.discovery.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.mcp.discovery.enabled' in Settings Editor"></span>chat.mcp.discovery.enabled</a></span> setting.</p>
+<p>LTSerialTool supports <a href="../docs/copilot/customization/mcp-servers.html#_add-an-mcp-server">automatic discovery of MCP servers</a> installed in other apps like Claude Code. As MCP support has matured in LTSerialTool, auto-discovery is now disabled by default, but you can re-enable it using the <span class="setting"><a href="vscode://settings/chat.mcp.discovery.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.mcp.discovery.enabled' in Settings Editor"></span>chat.mcp.discovery.enabled</a></span> setting.</p>
 <h3 id="_enable-mcp" data-needslink="_enable-mcp">Enable MCP</h3>
 <p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/chat.mcp.access" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.mcp.access' in Settings Editor"></span>chat.mcp.access</a></span></p>
-<p>The <code>chat.mcp.enabled</code> setting that previously controlled whether MCP servers could run in VS Code has been migrated to a new <span class="setting"><a href="vscode://settings/chat.mcp.access" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.mcp.access' in Settings Editor"></span>chat.mcp.access</a></span> setting with more descriptive options:</p>
+<p>The <code>chat.mcp.enabled</code> setting that previously controlled whether MCP servers could run in LTSerialTool has been migrated to a new <span class="setting"><a href="vscode://settings/chat.mcp.access" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'chat.mcp.access' in Settings Editor"></span>chat.mcp.access</a></span> setting with more descriptive options:</p>
 <ul>
 <li><code>all</code>: allow all MCP servers to run (equivalent to the previous <code>true</code> value)</li>
 <li><code>none</code>: disable MCP support entirely (equivalent to the previous <code>false</code> value)</li>
@@ -651,7 +651,7 @@ Navigation End -->
 <h2 id="_editor-experience" data-needslink="_editor-experience">Editor Experience</h2>
 <h3 id="_window-border-color-support-on-windows" data-needslink="_window-border-color-support-on-windows">Window border color support on Windows</h3>
 <p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/window.border" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'window.border' in Settings Editor"></span>window.border</a></span></p>
-<p>We are happy to add a new setting <span class="setting"><a href="vscode://settings/window.border" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'window.border' in Settings Editor"></span>window.border</a></span> on Windows that enables you to show a colored border around the VS Code window. The setting has the following options:</p>
+<p>We are happy to add a new setting <span class="setting"><a href="vscode://settings/window.border" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'window.border' in Settings Editor"></span>window.border</a></span> on Windows that enables you to show a colored border around the LTSerialTool window. The setting has the following options:</p>
 <ul>
 <li><code>default</code>: respect color theme settings, fallback to Windows settings</li>
 <li><code>system</code>: respect Windows settings only (window title accent color)</li>
@@ -659,7 +659,7 @@ Navigation End -->
 <li><code>&lt;color&gt;</code>: specific color in Hex, RGB, RGBA, HSL, HSLA format</li>
 </ul>
 <p>You can configure colors per workspace, making it easier to distinguish which workspace is opened in which window.</p>
-<p><img src="../assets/updates/1_104/border.png" alt="Screenshot of several VS Code windows with different border colors." loading="lazy"></p>
+<p><img src="../assets/updates/1_104/border.png" alt="Screenshot of several LTSerialTool windows with different border colors." loading="lazy"></p>
 <p>When you configure <span class="setting"><a href="vscode://settings/window.border" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'window.border' in Settings Editor"></span>window.border</a></span> as <code>default</code>, a theme is able to set the border color for active and inactive windows using the <code>window.activeBorder</code> and <code>window.inactiveBorder</code> color keys. You can further override these colors from the <span class="setting"><a href="vscode://settings/workbench.colorCustomizations" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'workbench.colorCustomizations' in Settings Editor"></span>workbench.colorCustomizations</a></span> setting.</p>
 <h3 id="_manage-extension-account-preference" data-needslink="_manage-extension-account-preference">Manage extension account preference</h3>
 <p>We've added an <strong>Accounts: Manage Extension Account Preferences</strong> command to the Command Palette. When invoked, it shows a list of extensions that have access to authentication accounts and lets you change the account that those extensions use. You are even able to sign in to a new account right from the list.</p>
@@ -672,7 +672,7 @@ Navigation End -->
 <p><strong>Setting</strong>: <span class="setting"><a href="vscode://settings/workbench.editor.titleScrollbarVisibility" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'workbench.editor.titleScrollbarVisibility' in Settings Editor"></span>workbench.editor.titleScrollbarVisibility</a></span></p>
 <p>The <span class="setting"><a href="vscode://settings/workbench.editor.titleScrollbarVisibility" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'workbench.editor.titleScrollbarVisibility' in Settings Editor"></span>workbench.editor.titleScrollbarVisibility</a></span> enables you to control when the scrollbar in the editor tab bar is visible. The default value <code>auto</code> shows the scrollbar only when the tabs overflow and a tab is hovered. You can also set it to <code>visible</code> to always show the scrollbar when the tabs overflow, or <code>hidden</code> to never show it.</p>
 <h3 id="_issue-reporter-improvements" data-needslink="_issue-reporter-improvements">Issue reporter improvements</h3>
-<p>When reporting issues in VS Code or extensions via the built-in issue reporter, you can now choose either <strong>Create on GitHub</strong> or <strong>Preview on GitHub</strong> via a dropdown on the report button. If the button does not populate a dropdown and only shows Create or Preview, this likely means that you are still loading extension data or need to ensure that you are signed in with a GitHub account that provides the correct scopes.</p>
+<p>When reporting issues in LTSerialTool or extensions via the built-in issue reporter, you can now choose either <strong>Create on GitHub</strong> or <strong>Preview on GitHub</strong> via a dropdown on the report button. If the button does not populate a dropdown and only shows Create or Preview, this likely means that you are still loading extension data or need to ensure that you are signed in with a GitHub account that provides the correct scopes.</p>
 <p><img src="../assets/updates/1_104/issue-reporter-dropdown.png" alt="Screenshot of a dropdown showing Create on Github and Preview on Github in the issue reporter." loading="lazy"></p>
 <h2 id="_notebooks" data-needslink="_notebooks">Notebooks</h2>
 <h3 id="_improved-nes-suggestions-experimental" data-needslink="_improved-nes-suggestions-experimental">Improved NES suggestions (Experimental)</h3>
@@ -683,7 +683,7 @@ Navigation End -->
 <p>You can now preview differences between worktree files and your current workspace by right-clicking on a worktree file to open the context menu in the Source Control Changes view and selecting <strong>Compare with Workspace</strong>.</p>
 <p><img src="../assets/updates/1_104/image.png" alt="Screenshot of the context menu shown in the SCM view on a changed file in a worktree, with the Compare with Workspace option selected." loading="lazy"></p>
 <p>After reviewing your changes, you can use the <strong>Migrate Worktree Changes...</strong> command from the Command Palette (<span class="dynamic-keybinding" data-commandId="git.migrateWorktreeChanges"></span>) to merge all changes from a worktree into your current workspace. This makes it easy to work across multiple worktrees and selectively bring changes back into your main repository.</p>
-<p>Learn more about <a href="../docs/sourcecontrol/overview.html#_worktrees">Git worktrees in VS Code</a>.</p>
+<p>Learn more about <a href="../docs/sourcecontrol/overview.html#_worktrees">Git worktrees in LTSerialTool</a>.</p>
 <h2 id="_terminal" data-needslink="_terminal">Terminal</h2>
 <h3 id="_terminal-window-discoverability-and-polish" data-needslink="_terminal-window-discoverability-and-polish">Terminal window discoverability and polish</h3>
 <p>A common request is to allow terminals to be opened in separate windows. This functionality has existed for about one and a half years, but it has not been particularly discoverable. This iteration, we added multiple entry points for this functionality:</p>
@@ -713,7 +713,7 @@ Navigation End -->
 <h2 id="_languages" data-needslink="_languages">Languages</h2>
 <h3 id="_javascript-and-typescript" data-needslink="_javascript-and-typescript">JavaScript and TypeScript</h3>
 <p>After reviewing usage numbers, we decided to remove our built-in <code>bower.json</code> IntelliSense. Bower has been <a href="https://bower.io/blog/2017/how-to-migrate-away-from-bower/" class="external-link" target="_blank">deprecated since 2017</a> and our built-in support had little usage and was not being actively maintained.</p>
-<p>Bower recommends that users migrate to <code>npm</code> or <code>yarn</code>. Continued support for Bower in VS Code can be provided by extensions.</p>
+<p>Bower recommends that users migrate to <code>npm</code> or <code>yarn</code>. Continued support for Bower in LTSerialTool can be provided by extensions.</p>
 <h3 id="_python" data-needslink="_python">Python</h3>
 <h4 id="_python-environments-extension-support-for-pipenv" data-needslink="_python-environments-extension-support-for-pipenv">Python Environments extension support for Pipenv</h4>
 <p>Pipenv environments can now be discovered and selected just like in the Python extension. In addition, they appear in the <strong>Environment Manager</strong> view in the Python sidebar, where they are grouped and displayed alongside your other environment types.</p>
@@ -721,7 +721,7 @@ Navigation End -->
 <h4 id="_configure-environment-variable-injection" data-needslink="_configure-environment-variable-injection">Configure environment variable injection</h4>
 <p>A new setting, <span class="setting"><a href="vscode://settings/python.useEnvFile" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'python.useEnvFile' in Settings Editor"></span>python.useEnvFile</a></span>, controls whether environment variables from <code>.env</code> files and the <span class="setting"><a href="vscode://settings/python.envFile" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'python.envFile' in Settings Editor"></span>python.envFile</a></span> setting are injected into terminals when the Python Environments extension is enabled.</p>
 <h4 id="_python-environments-extension-improvements" data-needslink="_python-environments-extension-improvements">Python Environments extension improvements</h4>
-<p>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-python-envs" class="external-link" target="_blank">Python Environments Extension</a> continued to receive bug fixes and improvements as part of the controlled roll-out to stable users. To use the Python Environments extension during the roll-out, make sure the extension is installed and add the following to your VS Code <code>settings.json</code> file: <code>&quot;python.useEnvironmentsExtension&quot;: true</code>.</p>
+<p>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-python-envs" class="external-link" target="_blank">Python Environments Extension</a> continued to receive bug fixes and improvements as part of the controlled roll-out to stable users. To use the Python Environments extension during the roll-out, make sure the extension is installed and add the following to your LTSerialTool <code>settings.json</code> file: <code>&quot;python.useEnvironmentsExtension&quot;: true</code>.</p>
 <h4 id="_aipowered-hover-summaries-with-pylance-experimental" data-needslink="_aipowered-hover-summaries-with-pylance-experimental">AI-powered hover summaries with Pylance (Experimental)</h4>
 <p>A new experimental AI hover summaries feature is now available for Python when using the latest pre-release version of Pylance. When you enable the <span class="setting"><a href="vscode://settings/python.analysis.aiHoverSummaries" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'python.analysis.aiHoverSummaries' in Settings Editor"></span>python.analysis.aiHoverSummaries</a></span> setting, you can get helpful summaries on-the-fly for symbols that do not already have documentation. This makes it easier to understand unfamiliar code and boosts productivity as you explore Python projects. AI hover summaries are currently available to GitHub Copilot Pro, Pro+, and Enterprise users.</p>
 <p><video src="../assets/updates/1_104/pylance-hover-summaries.mp4" title="Video showing AI-powered hover summaries with Pylance." autoplay loop controls muted></video></p>
@@ -733,7 +733,7 @@ Navigation End -->
 <blockquote><p><strong>Note</strong>: As with all AI-generated code, please make sure to inspect the generated code before allowing this tool to be executed. Reviewing the logic and intent of the code ensures it aligns with your project's goals and maintains safety and correctness.</p>
 </blockquote><p><video src="../assets/updates/1_104/pylance-run-code-snippet.mp4" title="Code snippet generated and executed by GitHub Copilot in the Chat panel via the pylancerunCodeSnippet tool." autoplay loop controls muted></video></p>
 <h4 id="_pylance-intellisense-enabled-in-all-python-documents" data-needslink="_pylance-intellisense-enabled-in-all-python-documents">Pylance IntelliSense enabled in all Python documents</h4>
-<p>The <code>python.analysis.supportAllPythonDocuments</code> setting has been removed from the latest Pylance pre-release version, with Pylance IntelliSense now being enabled by default in all Python documents, including terminal and diff views. This means you can get rich code completions, hover and code navigation wherever you work with Python in VS Code.</p>
+<p>The <code>python.analysis.supportAllPythonDocuments</code> setting has been removed from the latest Pylance pre-release version, with Pylance IntelliSense now being enabled by default in all Python documents, including terminal and diff views. This means you can get rich code completions, hover and code navigation wherever you work with Python in LTSerialTool.</p>
 <h4 id="_activation-hooks" data-needslink="_activation-hooks">Activation hooks</h4>
 <p>Python activation hooks can now run from shell integration scripts, instead of requiring the Python environment extension to modify your shell profile. This provides more reliable terminal activation when <span class="setting"><a href="vscode://settings/python-envs.terminal.autoActivationType" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'python-envs.terminal.autoActivationType' in Settings Editor"></span>python-envs.terminal.autoActivationType</a></span> is set to <code>shellStartup</code> and, importantly, ensures Copilot terminals are activated as expected.</p>
 <h2 id="_contributions-to-extensions" data-needslink="_contributions-to-extensions">Contributions to extensions</h2>
@@ -751,7 +751,7 @@ Navigation End -->
 <p><code>shellIntegrationNonce</code> can now be passed to <code>createTerminal</code> in <code>TerminalOptions</code> and <code>ExtensionTerminalOptions</code>. This enables the extension to control the nonce, which is used to verify commands <a href="../docs/terminal/shell-integration.html#_supported-escape-sequences">in shell integration escape sequences</a>.</p>
 <h3 id="_language-model-chat-provider-api" data-needslink="_language-model-chat-provider-api">Language Model Chat Provider API</h3>
 <p>This iteration, we finalized the <code>LanguageModelChatProviders</code> API. This enables extensions to contribute one or more language models, cloud-hosted or local. By installing the extension, users can select these models through the model picker in chat.</p>
-<p>There are already multiple extensions that take advantage of this API to extend chat in VS Code with additional models, including <a href="https://aka.ms/AIToolkit" class="external-link" target="_blank">AI Toolkit for VS Code</a>, <a href="https://aka.ms/vscode/cerebras" class="external-link" target="_blank">Cerebras Inference</a>, and <a href="https://aka.ms/vscode/huggingface" class="external-link" target="_blank">Hugging Face</a>.</p>
+<p>There are already multiple extensions that take advantage of this API to extend chat in LTSerialTool with additional models, including <a href="https://aka.ms/AIToolkit" class="external-link" target="_blank">AI Toolkit for LTSerialTool</a>, <a href="https://aka.ms/vscode/cerebras" class="external-link" target="_blank">Cerebras Inference</a>, and <a href="https://aka.ms/vscode/huggingface" class="external-link" target="_blank">Hugging Face</a>.</p>
 <p>You can learn more about how to utilize this API in our <a href="../api/extension-guides/ai/language-model-chat-provider.html">Language Model Chat Provider extension guide</a> or in our <a href="https://github.com/microsoft/vscode-extension-samples/tree/main/chat-model-provider-sample" class="external-link" target="_blank">extension sample</a>.</p>
 <blockquote><p><strong>Note</strong>: Models provided through this API are currently only available to users on <a href="https://docs.github.com/en/copilot/concepts/billing/individual-plans" class="external-link" target="_blank">individual GitHub Copilot plans</a>.</p>
 </blockquote><h2 id="_proposed-apis" data-needslink="_proposed-apis">Proposed APIs</h2>
@@ -787,7 +787,7 @@ Navigation End -->
 <h4 id="_example-azure-mfa" data-needslink="_example-azure-mfa">Example: Azure MFA</h4>
 <p>This work was initially done <a href="https://learn.microsoft.com/entra/identity/authentication/concept-mandatory-multifactor-authentication" class="external-link" target="_blank">due to an upcoming change to require MFA in Azure APIs</a> so let's also use that as an example of this API.</p>
 <p>Let's say you have an extension that creates a resource in Azure. All that's doing is calling an Azure RM API, nothing fancy...  Your extension is probably already familiar with calling <code>vscode.authentication.getSession</code> to get an authentication session, mainly an access token, that can be used to call this API. Now, when you first minted that authentication session, depending on your organization, you may or may NOT have gone through multifactor authentication (MFA). If you did, then the Azure API will be happy. If you <em>didn't</em> go through MFA, then Azure's API will return a 401 and a <code>WWW-Authenticate</code> header.</p>
-<p>Now comes our new API in VS Code... all you have to do is take that header value, and pass it right in to <code>vscode.authentication.getSession</code>:</p>
+<p>Now comes our new API in LTSerialTool... all you have to do is take that header value, and pass it right in to <code>vscode.authentication.getSession</code>:</p>
 <pre class="shiki" data-lang="ts" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF">const</span><span style="--shiki-dark:#4FC1FF;--shiki-light:#0070C1"> newRequest</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> = {</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">  wwwAuthenticate:</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> theRawHeaderValue</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080">  scopes:</span><span style="--shiki-dark:#9CDCFE;--shiki-light:#001080"> scopesFromPreviousRequest</span></span>
@@ -805,15 +805,15 @@ Navigation End -->
 <h3 id="_view-containers-in-the-secondary-side-bar" data-needslink="_view-containers-in-the-secondary-side-bar">View containers in the Secondary Side Bar</h3>
 <p>Extensions can contribute view containers to the <code>activitybar</code> and <code>panel</code>. We have now added support for contributing to the <code>secondarySidebar</code> as well. This is currently behind the <code>contribSecondarySideBar</code> proposed API. We are hoping to finalize this API soon.</p>
 <h2 id="_engineering" data-needslink="_engineering">Engineering</h2>
-<h3 id="_exploring-playwright-and-playwright-mcp-in-the-inner-development-loop-of-vs-code" data-needslink="_exploring-playwright-and-playwright-mcp-in-the-inner-development-loop-of-vs-code">Exploring Playwright and Playwright MCP in the inner development loop of VS Code</h3>
-<p>Agent mode and other AI features of VS Code have become a core tool (no pun intended) for the VS Code team to build VS Code itself. We wanted to explore how we can apply these features further to make the inner development loop of VS Code even better. To that end, we have been experimenting with extending our existing smoke test <a href="https://github.com/microsoft/vscode/tree/main/test/automation" class="external-link" target="_blank">automation project</a>, which uses <a href="https://playwright.dev/" class="external-link" target="_blank">Playwright</a>, to create an MCP server that can drive a local instance of VS Code. This allows our existing agentic flows, which focused on receiving context from build/test-time artifacts (compilation, linters, tests, etc.), to now also interact with a live instance of VS Code... verifying that changes have the desired effect at runtime.</p>
+<h3 id="_exploring-playwright-and-playwright-mcp-in-the-inner-development-loop-of-vs-code" data-needslink="_exploring-playwright-and-playwright-mcp-in-the-inner-development-loop-of-vs-code">Exploring Playwright and Playwright MCP in the inner development loop of LTSerialTool</h3>
+<p>发送模式 and other AI features of LTSerialTool have become a core tool (no pun intended) for the LTSerialTool team to build LTSerialTool itself. We wanted to explore how we can apply these features further to make the inner development loop of LTSerialTool even better. To that end, we have been experimenting with extending our existing smoke test <a href="https://github.com/microsoft/vscode/tree/main/test/automation" class="external-link" target="_blank">automation project</a>, which uses <a href="https://playwright.dev/" class="external-link" target="_blank">Playwright</a>, to create an MCP server that can drive a local instance of LTSerialTool. This allows our existing agentic flows, which focused on receiving context from build/test-time artifacts (compilation, linters, tests, etc.), to now also interact with a live instance of LTSerialTool... verifying that changes have the desired effect at runtime.</p>
 <p>The first piece of this work can be found <a href="https://github.com/microsoft/vscode/tree/main/test/mcp" class="external-link" target="_blank">in the test/mcp folder</a> of the vscode repo. If you're interested in trying it out, it's very easy to get started:</p>
 <ol>
 <li>Follow the <a href="https://github.com/microsoft/vscode/wiki/How-to-Contribute" class="external-link" target="_blank">Contribution Guidelines</a> for getting a local version of Code OSS running</li>
-<li>Then you can use <a href="https://github.com/microsoft/vscode/blob/cd7de11f65cd5ff6a491f04fc013e363780bde31/.github/prompts/playwright.prompt.md" class="external-link" target="_blank">our trivial (for now) prompt file</a> to ask a question <code>/playwright your question here</code> in Agent mode.</li>
+<li>Then you can use <a href="https://github.com/microsoft/vscode/blob/cd7de11f65cd5ff6a491f04fc013e363780bde31/.github/prompts/playwright.prompt.md" class="external-link" target="_blank">our trivial (for now) prompt file</a> to ask a question <code>/playwright your question here</code> in 发送模式.</li>
 </ol>
 <p>This is still an early exploration, but we are excited about the possibilities this opens up for us to use AI further in our inner development loop. The ground work is now laid, and we will be iterating on this to make it more robust and useful for the team.</p>
-<p>This work was recently featured on the VS Code Insiders podcast, where we discussed the motivations behind this exploration and some of the technical details. You can listen to the episode of the <a href="https://www.vscodepodcast.com/3" class="external-link" target="_blank">VS Code Insiders podcast</a>.</p>
+<p>This work was recently featured on the LTSerialTool Insiders podcast, where we discussed the motivations behind this exploration and some of the technical details. You can listen to the episode of the <a href="https://www.vscodepodcast.com/3" class="external-link" target="_blank">LTSerialTool Insiders podcast</a>.</p>
 <h2 id="_notable-fixes" data-needslink="_notable-fixes">Notable fixes</h2>
 <ul>
 <li><a href="https://github.com/microsoft/vscode/issues/151902" class="external-link" target="_blank">vscode#151902</a> - Terminal: Copy on selection + new highlight in 1.68 copies previous term on CMD+F</li>
@@ -821,7 +821,7 @@ Navigation End -->
 <li><a href="https://github.com/xtermjs/xterm.js/pull/5390" class="external-link" target="_blank">xtermjs/xterm.js#5390</a> - Fix scrollbar teleport after exiting alt buffer</li>
 </ul>
 <h2 id="_thank-you" data-needslink="_thank-you">Thank you</h2>
-<p>Last but certainly not least, a big <em><strong>Thank You</strong></em> to the contributors of VS Code.</p>
+<p>Last but certainly not least, a big <em><strong>Thank You</strong></em> to the contributors of LTSerialTool.</p>
 <h3 id="_issue-tracking" data-needslink="_issue-tracking">Issue tracking</h3>
 <p>Contributions to our issue tracking:</p>
 <ul>
@@ -1036,7 +1036,7 @@ Navigation End -->
 <li><a href="https://github.com/almarouk" class="external-link" target="_blank">@almarouk (Abdelrahman AL MAROUK)</a>: Fix conda env trace message <a href="https://github.com/microsoft/python-environment-tools/pull/241" class="external-link" target="_blank">PR #241</a></li>
 </ul>
 <p>We really appreciate people trying our new features as soon as they are ready, so check back here often and learn what's new.</p>
-<blockquote><p>If you'd like to read release notes for previous VS Code versions, go to <a href="v1_104.html">Updates</a> on <a href="../index.html">code.visualstudio.com</a>.</p>
+<blockquote><p>If you'd like to read release notes for previous LTSerialTool versions, go to <a href="v1_104.html">Updates</a> on <a href="../index.html">code.visualstudio.com</a>.</p>
 </blockquote><p><a id="scroll-to-top" role="button" title="Scroll to top" aria-label="scroll to top" href="#"><span class="icon"></span></a></p>
 
             <div class="feedback"></div>
@@ -1098,28 +1098,28 @@ Navigation End -->
 				<div class="footer-social">
 					<ul class="links">
 						<li>
-							<a href="https://github.com/microsoft/vscode"><img src="../assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+							<a href="https://github.com/microsoft/vscode"><img src="../assets/icons/github-icon.svg" alt="LTSerialTool on Github"></a>
 						</li>
 						<li>
 							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="../assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
 						</li>
 						<li>
-							<a href="https://www.linkedin.com/showcase/vs-code"><img src="../assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="../assets/icons/linkedin-icon.svg" alt="LTSerialTool on LinkedIn"></a>
 						</li>
 						<li>
-							<a href="https://bsky.app/profile/vscode.dev"><img src="../assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="../assets/icons/bluesky-icon.svg" alt="LTSerialTool on Bluesky"></a>
 						</li>
 						<li>
-							<a href="https://www.reddit.com/r/vscode/"><img src="../assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+							<a href="https://www.reddit.com/r/vscode/"><img src="../assets/icons/reddit-icon.svg" alt="Join the LTSerialTool community on Reddit"></a>
 						</li>
 						<li>
-							<a href="https://www.vscodepodcast.com/"><img src="../assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+							<a href="https://www.vscodepodcast.com/"><img src="../assets/icons/podcast-icon.svg" alt="The LTSerialTool Insiders Podcast"></a>
 						</li>
 						<li>
-							<a href="https://www.tiktok.com/@vscode"><img src="../assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+							<a href="https://www.tiktok.com/@vscode"><img src="../assets/icons/tiktok-icon.svg" alt="LTSerialTool on TikTok"></a>
 						</li>
 						<li>
-							<a href="https://www.youtube.com/@code"><img src="../assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+							<a href="https://www.youtube.com/@code"><img src="../assets/icons/youtube-icon.svg" alt="LTSerialTool on YouTube"></a>
 						</li>
 						<script>
 							function manageConsent() {
@@ -1181,7 +1181,7 @@ Navigation End -->
 			},
 			"applicationCategory": "DeveloperApplication",
 			"applicationSubCategory": "Text Editor",
-			"alternateName": "VS Code",
+			"alternateName": "LTSerialTool",
 			"datePublished": "2021-11-03",
 			"operatingSystem": "Mac, Linux, Windows",
 			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",

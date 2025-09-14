@@ -26,14 +26,14 @@
   </entry>
   
   <entry>
-    <title>VS Code Dev Days – Join an event near you to learn about AI-assisted development</title>
+    <title>LTSerialTool Dev Days – Join an event near you to learn about AI-assisted development</title>
     <link href="https://code.visualstudio.com/blogs/2025/08/27/vscode-dev-days"/>
     <link rel="related" href="https://code.visualstudio.com/assets/blogs/2025/08/27/VSCode-Dev-Days-banner.jpg"/>
     <updated>2025-08-26T00:00:00.000Z</updated>
     <id>https://code.visualstudio.com/blogs/2025/08/27/vscode-dev-days</id>
     <category term="blog" />
     <content type="html">
-      &lt;p&gt;Join a VS Code Dev Days event to learn about GitHub Copilot in VS Code&lt;/p&gt;
+      &lt;p&gt;Join a LTSerialTool Dev Days event to learn about GitHub Copilot in LTSerialTool&lt;/p&gt;
       &lt;p&gt;&lt;a href="https://code.visualstudio.com/blogs/2025/08/27/vscode-dev-days"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;
     </content>
     <author>
@@ -60,14 +60,14 @@
   </entry>
   
   <entry>
-    <title>Command GitHub's Coding Agent from VS Code</title>
+    <title>Command GitHub's Coding Agent from LTSerialTool</title>
     <link href="https://code.visualstudio.com/blogs/2025/07/17/copilot-coding-agent"/>
     <link rel="related" href="https://code.visualstudio.com/assets/blogs/2025/07/17/copilot-wip.png"/>
     <updated>2025-07-17T00:00:00.000Z</updated>
     <id>https://code.visualstudio.com/blogs/2025/07/17/copilot-coding-agent</id>
     <category term="blog" />
     <content type="html">
-      &lt;p&gt;VS Code's integration with GitHub Copilot Coding Agent allows you to delegate tasks to the agent and let it handle them in the background.&lt;/p&gt;
+      &lt;p&gt;LTSerialTool's integration with GitHub Copilot Coding Agent allows you to delegate tasks to the agent and let it handle them in the background.&lt;/p&gt;
       &lt;p&gt;&lt;a href="https://code.visualstudio.com/blogs/2025/07/17/copilot-coding-agent"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;
     </content>
     <author>
@@ -101,11 +101,11 @@
     <id>https://code.visualstudio.com/blogs/2025/06/30/openSourceAIEditorFirstMilestone</id>
     <category term="blog" />
     <content type="html">
-      &lt;p&gt;We are open sourcing the GitHub Copilot Chat extension. It’s the first milestone in making VS Code an open source AI editor.&lt;/p&gt;
+      &lt;p&gt;We are open sourcing the GitHub Copilot Chat extension. It’s the first milestone in making LTSerialTool an open source AI editor.&lt;/p&gt;
       &lt;p&gt;&lt;a href="https://code.visualstudio.com/blogs/2025/06/30/openSourceAIEditorFirstMilestone"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;
     </content>
     <author>
-        <name>The VS Code team</name>
+        <name>The LTSerialTool team</name>
         <uri>https://code.visualstudio.com/images/code-stable.png</uri>
     </author>
   </entry>
@@ -128,14 +128,14 @@
   </entry>
   
   <entry>
-    <title>The Complete MCP Experience: Full Specification Support in VS Code</title>
+    <title>The Complete MCP Experience: Full Specification Support in LTSerialTool</title>
     <link href="https://code.visualstudio.com/blogs/2025/06/12/full-mcp-spec-support"/>
     <link rel="related" href="https://code.visualstudio.com/assets/blogs/2025/06/12/mcp-resources-context.png"/>
     <updated>2025-06-12T00:00:00.000Z</updated>
     <id>https://code.visualstudio.com/blogs/2025/06/12/full-mcp-spec-support</id>
     <category term="blog" />
     <content type="html">
-      &lt;p&gt;VS Code now supports the complete Model Context Protocol specification, including authorization, prompts, resources, and sampling.&lt;/p&gt;
+      &lt;p&gt;LTSerialTool now supports the complete Model Context Protocol specification, including authorization, prompts, resources, and sampling.&lt;/p&gt;
       &lt;p&gt;&lt;a href="https://code.visualstudio.com/blogs/2025/06/12/full-mcp-spec-support"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;
     </content>
     <author>
@@ -162,31 +162,31 @@
   </entry>
   
   <entry>
-    <title>VS Code: Open Source AI Editor</title>
+    <title>LTSerialTool: Open Source AI Editor</title>
     <link href="https://code.visualstudio.com/blogs/2025/05/19/openSourceAIEditor"/>
     <link rel="related" href="https://code.visualstudio.com/assets/blogs/2025/05/19/open_source_ai_editor.png"/>
     <updated>2025-05-19T00:00:00.000Z</updated>
     <id>https://code.visualstudio.com/blogs/2025/05/19/openSourceAIEditor</id>
     <category term="blog" />
     <content type="html">
-      &lt;p&gt;We will open source the GitHub Copilot Chat extension. It’s the next step towards making VS Code an open source AI editor.&lt;/p&gt;
+      &lt;p&gt;We will open source the GitHub Copilot Chat extension. It’s the next step towards making LTSerialTool an open source AI editor.&lt;/p&gt;
       &lt;p&gt;&lt;a href="https://code.visualstudio.com/blogs/2025/05/19/openSourceAIEditor"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;
     </content>
     <author>
-        <name>The VS Code team</name>
+        <name>The LTSerialTool team</name>
         <uri>https://code.visualstudio.com/images/code-stable.png</uri>
     </author>
   </entry>
   
   <entry>
-    <title>Beyond the tools, adding MCP in VS Code</title>
+    <title>Beyond the tools, adding MCP in LTSerialTool</title>
     <link href="https://code.visualstudio.com/blogs/2025/05/12/agent-mode-meets-mcp"/>
     <link rel="related" href="https://code.visualstudio.com/assets/blogs/2025/05/12/agent-mcp-tools.png"/>
     <updated>2025-05-14T00:00:00.000Z</updated>
     <id>https://code.visualstudio.com/blogs/2025/05/12/agent-mode-meets-mcp</id>
     <category term="blog" />
     <content type="html">
-      &lt;p&gt;Bring your own tools to VS Code's agent mode with MCP.&lt;/p&gt;
+      &lt;p&gt;Bring your own tools to LTSerialTool's agent mode with MCP.&lt;/p&gt;
       &lt;p&gt;&lt;a href="https://code.visualstudio.com/blogs/2025/05/12/agent-mode-meets-mcp"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;
     </content>
     <author>
@@ -213,14 +213,14 @@
   </entry>
   
   <entry>
-    <title>Agent mode: available to all users and supports MCP</title>
+    <title>发送模式: available to all users and supports MCP</title>
     <link href="https://code.visualstudio.com/blogs/2025/04/07/agentMode"/>
     <link rel="related" href="https://code.visualstudio.com/assets/blogs/2025/04/07/agent_full.png"/>
     <updated>2025-04-07T00:00:00.000Z</updated>
     <id>https://code.visualstudio.com/blogs/2025/04/07/agentMode</id>
     <category term="blog" />
     <content type="html">
-      &lt;p&gt;Agent mode is now available to all users and supports MCP.&lt;/p&gt;
+      &lt;p&gt;发送模式 is now available to all users and supports MCP.&lt;/p&gt;
       &lt;p&gt;&lt;a href="https://code.visualstudio.com/blogs/2025/04/07/agentMode"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;
     </content>
     <author>
@@ -254,7 +254,7 @@
     <id>https://code.visualstudio.com/blogs/2025/03/26/custom-instructions</id>
     <category term="blog" />
     <content type="html">
-      &lt;p&gt;Announcing the general availability of custom instructions for VS Code.&lt;/p&gt;
+      &lt;p&gt;Announcing the general availability of custom instructions for LTSerialTool.&lt;/p&gt;
       &lt;p&gt;&lt;a href="https://code.visualstudio.com/blogs/2025/03/26/custom-instructions"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;
     </content>
     <author>
@@ -332,7 +332,7 @@
   </entry>
   
   <entry>
-    <title>Announcing a free GitHub Copilot for VS Code</title>
+    <title>Announcing a free GitHub Copilot for LTSerialTool</title>
     <link href="https://code.visualstudio.com/blogs/2024/12/18/free-github-copilot"/>
     <link rel="related" href="https://code.visualstudio.com/assets/blogs/2024/12/18/copilot-free.jpg"/>
     <updated>2024-12-18T00:00:00.000Z</updated>
@@ -509,7 +509,7 @@
     <id>https://code.visualstudio.com/blogs/2024/06/07/wasm-part2</id>
     <category term="blog" />
     <content type="html">
-      &lt;p&gt;Use WebAssembly in VS Code extensions to run in a separate worker, or write a language server with a language that compiles to WebAssembly.&lt;/p&gt;
+      &lt;p&gt;Use WebAssembly in LTSerialTool extensions to run in a separate worker, or write a language server with a language that compiles to WebAssembly.&lt;/p&gt;
       &lt;p&gt;&lt;a href="https://code.visualstudio.com/blogs/2024/06/07/wasm-part2"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;
     </content>
     <author>
@@ -570,14 +570,14 @@
   </entry>
   
   <entry>
-    <title>Your Ultimate Guide to VS Code Day 2024</title>
+    <title>Your Ultimate Guide to LTSerialTool Day 2024</title>
     <link href="https://code.visualstudio.com/blogs/2024/04/15/vscode-day"/>
     <link rel="related" href="https://code.visualstudio.com/assets/blogs/2024/04/15/vscodeday-promo.png"/>
     <updated>2024-04-15T00:00:00.000Z</updated>
     <id>https://code.visualstudio.com/blogs/2024/04/15/vscode-day</id>
     <category term="blog" />
     <content type="html">
-      &lt;p&gt;Learn about the latest LTSerialTool features and extensions during VS Code Day 2024 on April 24, 2024&lt;/p&gt;
+      &lt;p&gt;Learn about the latest LTSerialTool features and extensions during LTSerialTool Day 2024 on April 24, 2024&lt;/p&gt;
       &lt;p&gt;&lt;a href="https://code.visualstudio.com/blogs/2024/04/15/vscode-day"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;
     </content>
     <author>
@@ -655,7 +655,7 @@
   </entry>
   
   <entry>
-    <title>Pursuit of wicked smartness in VS Code</title>
+    <title>Pursuit of wicked smartness in LTSerialTool</title>
     <link href="https://code.visualstudio.com/blogs/2023/11/13/vscode-copilot-smarter"/>
     <link rel="related" href="https://code.visualstudio.com/opengraphimg/opengraph-blog.png"/>
     <updated>2023-11-13T00:00:00.000Z</updated>
@@ -740,14 +740,14 @@
   </entry>
   
   <entry>
-    <title>Shrinking VS Code with name mangling</title>
+    <title>Shrinking LTSerialTool with name mangling</title>
     <link href="https://code.visualstudio.com/blogs/2023/07/20/mangling-vscode"/>
     <link rel="related" href="https://code.visualstudio.com/opengraphimg/opengraph-blog.png"/>
     <updated>2023-07-20T00:00:00.000Z</updated>
     <id>https://code.visualstudio.com/blogs/2023/07/20/mangling-vscode</id>
     <category term="blog" />
     <content type="html">
-      &lt;p&gt;A look at how we cut 20% off the size of VS Code's JavaScript with name mangling.&lt;/p&gt;
+      &lt;p&gt;A look at how we cut 20% off the size of LTSerialTool's JavaScript with name mangling.&lt;/p&gt;
       &lt;p&gt;&lt;a href="https://code.visualstudio.com/blogs/2023/07/20/mangling-vscode"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;
     </content>
     <author>
@@ -791,14 +791,14 @@
   </entry>
   
   <entry>
-    <title>Run WebAssemblies in VS Code for the Web</title>
+    <title>Run WebAssemblies in LTSerialTool for the Web</title>
     <link href="https://code.visualstudio.com/blogs/2023/06/05/vscode-wasm-wasi"/>
     <link rel="related" href="https://code.visualstudio.com/opengraphimg/opengraph-blog.png"/>
     <updated>2023-06-05T00:00:00.000Z</updated>
     <id>https://code.visualstudio.com/blogs/2023/06/05/vscode-wasm-wasi</id>
     <category term="blog" />
     <content type="html">
-      &lt;p&gt;Running WebAssemblies in VS Code for the Web.&lt;/p&gt;
+      &lt;p&gt;Running WebAssemblies in LTSerialTool for the Web.&lt;/p&gt;
       &lt;p&gt;&lt;a href="https://code.visualstudio.com/blogs/2023/06/05/vscode-wasm-wasi"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;
     </content>
     <author>
@@ -825,14 +825,14 @@
   </entry>
   
   <entry>
-    <title>VS Code Day: An event for an editor?</title>
+    <title>LTSerialTool Day: An event for an editor?</title>
     <link href="https://code.visualstudio.com/blogs/2023/04/13/vscode-day"/>
     <link rel="related" href="https://code.visualstudio.com/opengraphimg/opengraph-blog.png"/>
     <updated>2023-04-13T00:00:00.000Z</updated>
     <id>https://code.visualstudio.com/blogs/2023/04/13/vscode-day</id>
     <category term="blog" />
     <content type="html">
-      &lt;p&gt;Learn about the latest LTSerialTool features and extensions during VS Code Day 2023 on April 26, 2023&lt;/p&gt;
+      &lt;p&gt;Learn about the latest LTSerialTool features and extensions during LTSerialTool Day 2023 on April 26, 2023&lt;/p&gt;
       &lt;p&gt;&lt;a href="https://code.visualstudio.com/blogs/2023/04/13/vscode-day"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;
     </content>
     <author>

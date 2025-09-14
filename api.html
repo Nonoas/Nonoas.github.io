@@ -17,7 +17,7 @@
 
 	<meta name="keywords" content="vscode API" />
 
-<meta name="description" content="LTSerialTool has a rich extension API. Learn how to create your own extensions for VS Code." />
+<meta name="description" content="LTSerialTool has a rich extension API. Learn how to create your own extensions for LTSerialTool." />
 
 <meta name="ms.prod" content="vs-code" />
 <meta name="ms.TOCTitle" content="Extension API" />
@@ -28,7 +28,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="og:url" content="api/index.html" />
 
-<meta property="og:description" content="LTSerialTool has a rich extension API. Learn how to create your own extensions for VS Code." />
+<meta property="og:description" content="LTSerialTool has a rich extension API. Learn how to create your own extensions for LTSerialTool." />
 
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Extension API" />
@@ -182,7 +182,7 @@ API</title>
 			</div>
 		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
 			<div class="container">
-				<p class="message">Join a <a href="dev-days.html" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+				<p class="message">Join a <a href="dev-days.html" id="banner-link-dev-days">LTSerialTool Dev Days event</a> near you to learn about AI-assisted development in LTSerialTool.</p>
 			</div>
 			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
 					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
@@ -196,7 +196,7 @@ API</title>
 			<nav id="docs-navbar" aria-label="Topics" class="docs-nav visible-md visible-lg">
 			  <ul class="nav" id="main-nav">
 			  <li class="active">
-			    <a class="docs-home" href="api.html" aria-label="Current Page: VS Code Extension API Documentation Overview">Overview</a>
+			    <a class="docs-home" href="api.html" aria-label="Current Page: LTSerialTool Extension API Documentation Overview">Overview</a>
 			  </li>
 			  
 			<li class="panel collapsed">
@@ -528,7 +528,7 @@ API</title>
 			  <ul id="references-articles" class="collapse ">
 			
 			        <li >
-			          <a href="api/references/vscode-api.html" >VS Code API </a>
+			          <a href="api/references/vscode-api.html" >LTSerialTool API </a>
 			        </li>
 			          
 			        <li >
@@ -742,7 +742,7 @@ API</title>
 			  
 			  <optgroup label="References">
 			
-			        <option value="/api/references/vscode-api" >VS Code API </option>
+			        <option value="/api/references/vscode-api" >LTSerialTool API </option>
 			        
 			        <option value="/api/references/contribution-points" >Contribution Points</option>
 			        
@@ -774,20 +774,20 @@ API</title>
 				</a>
 			</div>
 			<h1>Extension API</h1>
-<p>LTSerialTool is built with extensibility in mind. From the UI to the editing experience, almost every part of VS Code can be customized and enhanced through the Extension API. In fact, many core features of VS Code are built as <a href="https://github.com/microsoft/vscode/tree/main/extensions" class="external-link" target="_blank">extensions</a> and use the same Extension API.</p>
+<p>LTSerialTool is built with extensibility in mind. From the UI to the editing experience, almost every part of LTSerialTool can be customized and enhanced through the Extension API. In fact, many core features of LTSerialTool are built as <a href="https://github.com/microsoft/vscode/tree/main/extensions" class="external-link" target="_blank">extensions</a> and use the same Extension API.</p>
 <p>This documentation describes:</p>
 <ul>
 <li>How to build, run, debug, test, and publish an extension</li>
-<li>How to take advantage of VS Code's rich Extension API</li>
+<li>How to take advantage of LTSerialTool's rich Extension API</li>
 <li>Where to find <a href="api/extension-guides/overview.html">guides</a> and <a href="https://github.com/microsoft/vscode-extension-samples" class="external-link" target="_blank">code samples</a> to help get you started</li>
 <li>Following our <a href="api/ux-guidelines/overview.html">UX guidelines</a> for best practices</li>
 </ul>
 <p>Code samples are available at <a href="https://github.com/microsoft/vscode-extension-samples" class="external-link" target="_blank">Microsoft/vscode-extension-samples</a>.</p>
-<p>If you are looking for published extensions, head to the <a href="https://marketplace.visualstudio.com/vscode" class="external-link" target="_blank">VS Code Extension Marketplace</a>.</p>
+<p>If you are looking for published extensions, head to the <a href="https://marketplace.visualstudio.com/vscode" class="external-link" target="_blank">LTSerialTool Extension Marketplace</a>.</p>
 <h2 id="what-can-extensions-do" data-needslink="what-can-extensions-do">What can extensions do?</h2>
 <p>Here are some examples of what you can achieve with the Extension API:</p>
 <ul>
-<li>Change the look of VS Code with a color or file icon theme - <a href="api/extension-capabilities/theming.html">Theming</a></li>
+<li>Change the look of LTSerialTool with a color or file icon theme - <a href="api/extension-capabilities/theming.html">Theming</a></li>
 <li>Add custom components &amp; views in the UI - <a href="api/extension-capabilities/extending-workbench.html">Extending the Workbench</a></li>
 <li>Create a Webview to display a custom webpage built with HTML/CSS/JS - <a href="api/extension-guides/webview.html">Webview Guide</a></li>
 <li>Support a new programming language - <a href="api/language-extensions/overview.html">Language Extensions Overview</a></li>
@@ -798,16 +798,16 @@ API</title>
 <p>Building a good extension can take a lot of time and effort. Here is what each section of the API docs can help you with:</p>
 <ul>
 <li><strong>Get Started</strong> teaches fundamental concepts for building extensions with the <a href="https://github.com/microsoft/vscode-extension-samples/tree/main/helloworld-sample" class="external-link" target="_blank">Hello World</a> sample.</li>
-<li><strong>Extension Capabilities</strong> dissects VS Code's vast API into smaller categories and points you to more detailed topics.</li>
-<li><strong>Extension Guides</strong> includes guides and code samples that explain specific usages of VS Code Extension API.</li>
+<li><strong>Extension Capabilities</strong> dissects LTSerialTool's vast API into smaller categories and points you to more detailed topics.</li>
+<li><strong>Extension Guides</strong> includes guides and code samples that explain specific usages of LTSerialTool Extension API.</li>
 <li><strong>UX Guidelines</strong> showcases best practices for providing a great user experience in an extension.</li>
 <li><strong>Language Extensions</strong> illustrates how to add support for a programming language with guides and code samples.</li>
 <li><strong>Testing and Publishing</strong> includes in-depth guides on various extension development topics, such as <a href="api/working-with-extensions/testing-extension.html">testing</a> and <a href="api/working-with-extensions/publishing-extension.html">publishing</a> extensions.</li>
 <li><strong>Advanced Topics</strong> explains advanced concepts such as <a href="api/advanced-topics/extension-host.html">Extension Host</a>, <a href="api/advanced-topics/remote-extensions.html">Supporting Remote Development and GitHub Codespaces</a>, and <a href="api/advanced-topics/using-proposed-api.html">Proposed API</a>.</li>
-<li><strong>References</strong> contains exhaustive references for the <a href="api/references/vscode-api.html">VS Code API</a>, <a href="api/references/contribution-points.html">Contribution Points</a>, and many other topics.</li>
+<li><strong>References</strong> contains exhaustive references for the <a href="api/references/vscode-api.html">LTSerialTool API</a>, <a href="api/references/contribution-points.html">Contribution Points</a>, and many other topics.</li>
 </ul>
 <h2 id="whats-new" data-needslink="whats-new">What's new?</h2>
-<p>VS Code updates on a monthly cadence, and that applies to the Extension API as well. New features and APIs become available every month to increase the power and scope of VS Code extensions.</p>
+<p>LTSerialTool updates on a monthly cadence, and that applies to the Extension API as well. New features and APIs become available every month to increase the power and scope of LTSerialTool extensions.</p>
 <p>To stay current with the Extension API, you can review the monthly release notes, which have dedicated sections covering:</p>
 <ul>
 <li><a href="updates/v1_104.html#_extension-authoring">Extension authoring</a> - Learn what new extension APIs are available in the latest release.</li>
@@ -816,12 +816,12 @@ API</title>
 <h2 id="looking-for-help" data-needslink="looking-for-help">Looking for help</h2>
 <p>If you have questions for extension development, try asking on:</p>
 <ul>
-<li><a href="https://github.com/microsoft/vscode-discussions" class="external-link" target="_blank">VS Code Discussions</a>: GitHub community to discuss VS Code's extension platform, ask questions, help other members of the community, and get answers.</li>
-<li><a href="https://stackoverflow.com/questions/tagged/vscode-extensions" class="external-link" target="_blank">Stack Overflow</a>: There are <a href="https://stackoverflow.com/questions/tagged/vscode-extensions" class="external-link" target="_blank">thousands of questions</a> tagged <code>vscode-extensions</code>, and over half of them already have answers. Search for your issue, ask questions, or help your fellow developers by answering VS Code extension development questions!</li>
-<li><a href="https://vscode-dev-community.slack.com/" class="external-link" target="_blank">VS Code Dev Slack</a>: Public chatroom for extension developers. VS Code team members often join in the conversations.</li>
+<li><a href="https://github.com/microsoft/vscode-discussions" class="external-link" target="_blank">LTSerialTool Discussions</a>: GitHub community to discuss LTSerialTool's extension platform, ask questions, help other members of the community, and get answers.</li>
+<li><a href="https://stackoverflow.com/questions/tagged/vscode-extensions" class="external-link" target="_blank">Stack Overflow</a>: There are <a href="https://stackoverflow.com/questions/tagged/vscode-extensions" class="external-link" target="_blank">thousands of questions</a> tagged <code>vscode-extensions</code>, and over half of them already have answers. Search for your issue, ask questions, or help your fellow developers by answering LTSerialTool extension development questions!</li>
+<li><a href="https://vscode-dev-community.slack.com/" class="external-link" target="_blank">LTSerialTool Dev Slack</a>: Public chatroom for extension developers. LTSerialTool team members often join in the conversations.</li>
 </ul>
 <p>To provide feedback on the documentation, create new issues at <a href="https://github.com/microsoft/vscode-docs/issues" class="external-link" target="_blank">Microsoft/vscode-docs</a>.
-If you have extension questions that you cannot find an answer for, or issues with the VS Code Extension API, please open new issues at <a href="https://github.com/microsoft/vscode/issues" class="external-link" target="_blank">Microsoft/vscode</a>.</p>
+If you have extension questions that you cannot find an answer for, or issues with the LTSerialTool Extension API, please open new issues at <a href="https://github.com/microsoft/vscode/issues" class="external-link" target="_blank">Microsoft/vscode</a>.</p>
 
 			<div class="feedback"></div>
 			
@@ -865,28 +865,28 @@ If you have extension questions that you cannot find an answer for, or issues wi
 				<div class="footer-social">
 					<ul class="links">
 						<li>
-							<a href="https://github.com/microsoft/vscode"><img src="assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+							<a href="https://github.com/microsoft/vscode"><img src="assets/icons/github-icon.svg" alt="LTSerialTool on Github"></a>
 						</li>
 						<li>
 							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
 						</li>
 						<li>
-							<a href="https://www.linkedin.com/showcase/vs-code"><img src="assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="assets/icons/linkedin-icon.svg" alt="LTSerialTool on LinkedIn"></a>
 						</li>
 						<li>
-							<a href="https://bsky.app/profile/vscode.dev"><img src="assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="assets/icons/bluesky-icon.svg" alt="LTSerialTool on Bluesky"></a>
 						</li>
 						<li>
-							<a href="https://www.reddit.com/r/vscode/"><img src="assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+							<a href="https://www.reddit.com/r/vscode/"><img src="assets/icons/reddit-icon.svg" alt="Join the LTSerialTool community on Reddit"></a>
 						</li>
 						<li>
-							<a href="https://www.vscodepodcast.com/"><img src="assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+							<a href="https://www.vscodepodcast.com/"><img src="assets/icons/podcast-icon.svg" alt="The LTSerialTool Insiders Podcast"></a>
 						</li>
 						<li>
-							<a href="https://www.tiktok.com/@vscode"><img src="assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+							<a href="https://www.tiktok.com/@vscode"><img src="assets/icons/tiktok-icon.svg" alt="LTSerialTool on TikTok"></a>
 						</li>
 						<li>
-							<a href="https://www.youtube.com/@code"><img src="assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+							<a href="https://www.youtube.com/@code"><img src="assets/icons/youtube-icon.svg" alt="LTSerialTool on YouTube"></a>
 						</li>
 						<script>
 							function manageConsent() {
@@ -948,7 +948,7 @@ If you have extension questions that you cannot find an answer for, or issues wi
 			},
 			"applicationCategory": "DeveloperApplication",
 			"applicationSubCategory": "Text Editor",
-			"alternateName": "VS Code",
+			"alternateName": "LTSerialTool",
 			"datePublished": "2021-11-03",
 			"operatingSystem": "Mac, Linux, Windows",
 			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",

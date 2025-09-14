@@ -179,7 +179,7 @@
 			</div>
 		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
 			<div class="container">
-				<p class="message">Join a <a href="https://code.visualstudio.com/dev-days" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+				<p class="message">Join a <a href="https://code.visualstudio.com/dev-days" id="banner-link-dev-days">LTSerialTool Dev Days event</a> near you to learn about AI-assisted development in LTSerialTool.</p>
 			</div>
 			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
 					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
@@ -230,7 +230,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/setup/vscode-web" >VS Code for the Web</a>
+                      <a href="https://code.visualstudio.com/docs/setup/vscode-web" >LTSerialTool for the Web</a>
                     </li>
                       
                     <li >
@@ -261,7 +261,7 @@
               <ul id="getstarted-articles" class="collapse ">
             
                     <li >
-                      <a href="https://code.visualstudio.com/docs/getstarted/getting-started" >VS Code Tutorial</a>
+                      <a href="https://code.visualstudio.com/docs/getstarted/getting-started" >LTSerialTool Tutorial</a>
                     </li>
                       
                     <li >
@@ -273,7 +273,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/getstarted/personalize-vscode" >Personalize VS Code</a>
+                      <a href="https://code.visualstudio.com/docs/getstarted/personalize-vscode" >Personalize LTSerialTool</a>
                     </li>
                       
                     <li >
@@ -1284,7 +1284,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/azure/vscodeforweb" >VS Code for the Web - Azure</a>
+                      <a href="https://code.visualstudio.com/docs/azure/vscodeforweb" >LTSerialTool for the Web - Azure</a>
                     </li>
                       
                     <li >
@@ -1335,7 +1335,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/remote/vscode-server" >VS Code Server</a>
+                      <a href="https://code.visualstudio.com/docs/remote/vscode-server" >LTSerialTool Server</a>
                     </li>
                       
                     <li >
@@ -1445,7 +1445,7 @@
                     
                     <option value="/docs/setup/windows" >Windows</option>
                     
-                    <option value="/docs/setup/vscode-web" >VS Code for the Web</option>
+                    <option value="/docs/setup/vscode-web" >LTSerialTool for the Web</option>
                     
                     <option value="/docs/setup/raspberry-pi" >Raspberry Pi</option>
                     
@@ -1461,13 +1461,13 @@
               
               <optgroup label="Get Started">
             
-                    <option value="/docs/getstarted/getting-started" >VS Code Tutorial</option>
+                    <option value="/docs/getstarted/getting-started" >LTSerialTool Tutorial</option>
                     
                     <option value="/docs/getstarted/copilot-quickstart" >Copilot Quickstart</option>
                     
                     <option value="/docs/getstarted/userinterface" >User Interface</option>
                     
-                    <option value="/docs/getstarted/personalize-vscode" >Personalize VS Code</option>
+                    <option value="/docs/getstarted/personalize-vscode" >Personalize LTSerialTool</option>
                     
                     <option value="/docs/getstarted/extensions" >Install Extensions</option>
                     
@@ -1985,7 +1985,7 @@
                     
                     <option value="/docs/azure/deployment" >Deployment</option>
                     
-                    <option value="/docs/azure/vscodeforweb" >VS Code for the Web - Azure</option>
+                    <option value="/docs/azure/vscodeforweb" >LTSerialTool for the Web - Azure</option>
                     
                     <option value="/docs/azure/containers" >Containers</option>
                     
@@ -2011,7 +2011,7 @@
                     
                     <option value="/docs/remote/codespaces" >GitHub Codespaces</option>
                     
-                    <option value="/docs/remote/vscode-server" >VS Code Server</option>
+                    <option value="/docs/remote/vscode-server" >LTSerialTool Server</option>
                     
                     <option value="/docs/remote/tunnels" >Tunnels</option>
                     
@@ -2072,13 +2072,13 @@
             </div>
             <h1>Integrate with External Tools via Tasks</h1>
 <p>Lots of tools exist to automate tasks like linting, building, packaging, testing, or deploying software systems. Examples include the <a href="https://www.typescriptlang.org/" class="external-link" target="_blank">TypeScript Compiler</a>, linters like <a href="https://eslint.org/" class="external-link" target="_blank">ESLint</a> and <a href="https://palantir.github.io/tslint/" class="external-link" target="_blank">TSLint</a> as well as build systems like <a href="https://en.wikipedia.org/wiki/Make_software" class="external-link" target="_blank">Make</a>, <a href="https://ant.apache.org/" class="external-link" target="_blank">Ant</a>, <a href="https://gulpjs.com/" class="external-link" target="_blank">Gulp</a>, <a href="https://jakejs.com/" class="external-link" target="_blank">Jake</a>, <a href="https://ruby.github.io/rake/" class="external-link" target="_blank">Rake</a>, and <a href="https://github.com/microsoft/msbuild" class="external-link" target="_blank">MSBuild</a>.</p>
-<p><img src="https://code.visualstudio.com/assets/docs/debugtest/tasks/tasks_hero.png" alt="VS Code can talk to a variety of external tools" loading="lazy"></p>
-<p>These tools are mostly run from the command line and automate jobs inside and outside the inner software development loop (edit, compile, test, and debug). Given their importance in the development life cycle, it is helpful to be able to run tools and analyze their results from within VS Code. Tasks in VS Code can be configured to run scripts and start processes so that many of these existing tools can be used from within VS Code without having to enter a command line or write new code. Workspace or folder specific tasks are configured from the <code>tasks.json</code> file in the <code>.vscode</code> folder for a workspace.</p>
+<p><img src="https://code.visualstudio.com/assets/docs/debugtest/tasks/tasks_hero.png" alt="LTSerialTool can talk to a variety of external tools" loading="lazy"></p>
+<p>These tools are mostly run from the command line and automate jobs inside and outside the inner software development loop (edit, compile, test, and debug). Given their importance in the development life cycle, it is helpful to be able to run tools and analyze their results from within LTSerialTool. Tasks in LTSerialTool can be configured to run scripts and start processes so that many of these existing tools can be used from within LTSerialTool without having to enter a command line or write new code. Workspace or folder specific tasks are configured from the <code>tasks.json</code> file in the <code>.vscode</code> folder for a workspace.</p>
 <p>Extensions can also contribute tasks using a <a href="https://code.visualstudio.com/api/extension-guides/task-provider">Task Provider</a>, and these contributed tasks can add workspace-specific configurations defined in the <code>tasks.json</code> file.</p>
 <blockquote><p><strong>Note:</strong> Task support is only available when working on a workspace folder. It is not available when editing single files.</p>
 </blockquote><h2 id="_typescript-hello-world" data-needslink="_typescript-hello-world">TypeScript Hello World</h2>
 <p>Let's start with a simple &quot;Hello World&quot; TypeScript program that we want to compile to JavaScript.</p>
-<p>Create an empty folder &quot;mytask&quot;, generate a <code>tsconfig.json</code> file and start VS Code from that folder.</p>
+<p>Create an empty folder &quot;mytask&quot;, generate a <code>tsconfig.json</code> file and start LTSerialTool from that folder.</p>
 <pre class="shiki" data-lang="bash" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">mkdir</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> mytask</span></span>
 <span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">cd</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> mytask</span></span>
 <span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">tsc</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> --init</span></span>
@@ -2094,7 +2094,7 @@
 <p>Pressing <span class="dynamic-keybinding" data-commandId="workbench.action.tasks.build" data-osx="⇧⌘B" data-win="Ctrl+Shift+B" data-linux="Ctrl+Shift+B"><span class="keybinding">⇧⌘B</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+B</span>)</span> or running <strong>Run Build Task</strong> from the global <strong>Terminal</strong> menu show the following picker:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/debugtest/tasks/typescript-build.png" alt="TypeScript Build Task" loading="lazy"></p>
 <p>The first entry executes the TypeScript compiler and translates the TypeScript file to a JavaScript file. When the compiler has finished, there should be a <code>HelloWorld.js</code> file. The second entry starts the TypeScript compiler in watch mode. Every save to the <code>HelloWorld.ts</code> file will regenerate the <code>HelloWorld.js</code> file.</p>
-<p>You can also define the TypeScript build or watch task as the default build task so that it is executed directly when triggering <strong>Run Build Task</strong> (<span class="dynamic-keybinding" data-commandId="workbench.action.tasks.build" data-osx="⇧⌘B" data-win="Ctrl+Shift+B" data-linux="Ctrl+Shift+B"><span class="keybinding">⇧⌘B</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+B</span>)</span>). To do so, select <strong>Configure Default Build Task</strong> from the global <strong>Terminal</strong> menu. This shows you a picker with the available build tasks. Select <strong>tsc: build</strong> or <strong>tsc: watch</strong> and VS Code will generate a <code>tasks.json</code> file. The one shown below makes the <strong>tsc: build</strong> task the default build task:</p>
+<p>You can also define the TypeScript build or watch task as the default build task so that it is executed directly when triggering <strong>Run Build Task</strong> (<span class="dynamic-keybinding" data-commandId="workbench.action.tasks.build" data-osx="⇧⌘B" data-win="Ctrl+Shift+B" data-linux="Ctrl+Shift+B"><span class="keybinding">⇧⌘B</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+B</span>)</span>). To do so, select <strong>Configure Default Build Task</strong> from the global <strong>Terminal</strong> menu. This shows you a picker with the available build tasks. Select <strong>tsc: build</strong> or <strong>tsc: watch</strong> and LTSerialTool will generate a <code>tasks.json</code> file. The one shown below makes the <strong>tsc: build</strong> task the default build task:</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">  // See https://go.microsoft.com/fwlink/?LinkId=733558</span></span>
 <span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">  // for the documentation about the tasks.json format</span></span>
@@ -2112,15 +2112,15 @@
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  ]</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
 <span class="line"></span></code></pre>
-<p>The <code>tasks.json</code> example above does not define a new task. It annotates the <strong>tsc: build</strong> tasks contributed by VS Code's TypeScript extension to be the default build task. You can now execute the TypeScript compiler by pressing <span class="dynamic-keybinding" data-commandId="workbench.action.tasks.build" data-osx="⇧⌘B" data-win="Ctrl+Shift+B" data-linux="Ctrl+Shift+B"><span class="keybinding">⇧⌘B</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+B</span>)</span>.</p>
+<p>The <code>tasks.json</code> example above does not define a new task. It annotates the <strong>tsc: build</strong> tasks contributed by LTSerialTool's TypeScript extension to be the default build task. You can now execute the TypeScript compiler by pressing <span class="dynamic-keybinding" data-commandId="workbench.action.tasks.build" data-osx="⇧⌘B" data-win="Ctrl+Shift+B" data-linux="Ctrl+Shift+B"><span class="keybinding">⇧⌘B</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+B</span>)</span>.</p>
 <h2 id="_task-autodetection" data-needslink="_task-autodetection">Task auto-detection</h2>
-<p>VS Code currently auto-detects tasks for the following systems: Gulp, Grunt, Jake, and npm. We are working with the corresponding extension authors to add support for Maven and the C# <code>dotnet</code> command as well. If you develop a JavaScript application using Node.js as the runtime, you usually have a <code>package.json</code> file describing your dependencies and the scripts to run. If you have cloned the <a href="https://github.com/spicydonuts/eslint-starter" class="external-link" target="_blank">eslint-starter</a> example, then executing <strong>Run Tasks</strong> from the global menu shows the following list:</p>
+<p>LTSerialTool currently auto-detects tasks for the following systems: Gulp, Grunt, Jake, and npm. We are working with the corresponding extension authors to add support for Maven and the C# <code>dotnet</code> command as well. If you develop a JavaScript application using Node.js as the runtime, you usually have a <code>package.json</code> file describing your dependencies and the scripts to run. If you have cloned the <a href="https://github.com/spicydonuts/eslint-starter" class="external-link" target="_blank">eslint-starter</a> example, then executing <strong>Run Tasks</strong> from the global menu shows the following list:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/debugtest/tasks/eslint-starter.png" alt="Tasks ESLint starter" loading="lazy"></p>
 <p>If you have not already done so, install the necessary npm modules by running <code>npm install</code>. Now open the <code>server.js</code> file and add a semicolon to the end of a statement (note the ESLint starter assumes statements without a semicolon) and execute the <strong>Run Tasks</strong> again. This time select the <strong>npm: lint</strong> task. When prompted for the problem matcher to use, select <strong>ESLint stylish</strong></p>
 <p><img src="https://code.visualstudio.com/assets/docs/debugtest/tasks/eslint-problem-matcher-selection.png" alt="Tasks ESLint Problem Matcher Selection" loading="lazy"></p>
 <p>Executing the task produces one error, shown in the <strong>Problems</strong> view:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/debugtest/tasks/eslint-problem.png" alt="Tasks ESLint Problem" loading="lazy"></p>
-<p>In addition, VS Code created a <code>tasks.json</code> file with the following content:</p>
+<p>In addition, LTSerialTool created a <code>tasks.json</code> file with the following content:</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">  // See https://go.microsoft.com/fwlink/?LinkId=733558</span></span>
 <span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">  // for the documentation about the tasks.json format</span></span>
@@ -2134,7 +2134,7 @@
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  ]</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
 <span class="line"></span></code></pre>
-<p>This instructs VS Code to scan the output of the <strong>npm lint</strong> script for problems using the ESLint stylish format.</p>
+<p>This instructs LTSerialTool to scan the output of the <strong>npm lint</strong> script for problems using the ESLint stylish format.</p>
 <p>For Gulp, Grunt, and Jake, the task auto-detection works the same. Below is an example of the tasks detected for the <a href="https://github.com/microsoft/vscode-node-debug" class="external-link" target="_blank">vscode-node-debug</a> extension.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/debugtest/tasks/gulp-auto-detect.png" alt="Gulp task auto-detection" loading="lazy"></p>
 <blockquote><p><strong>Tip:</strong> You can run your task through <strong>Quick Open</strong> (<span class="dynamic-keybinding" data-commandId="workbench.action.quickOpen" data-osx="⌘P" data-win="Ctrl+P" data-linux="Ctrl+P"><span class="keybinding">⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+P</span>)</span>) by typing 'task', <span class="keybinding">Space</span> and the command name. In this case, 'task lint'.</p>
@@ -2226,9 +2226,9 @@
 <p>Besides escaping, the following values are supported:</p>
 <ul>
 <li><strong>strong</strong>: Uses the shell's strong quoting mechanism, which suppresses all evaluations inside the string. Under PowerShell and for shells under Linux and macOS, single quotes are used (<code>'</code>). For cmd.exe, <code>&quot;</code> is used.</li>
-<li><strong>weak</strong>: Uses the shell's weak quoting mechanism, which still evaluates expression inside the string (for example, environment variables). Under PowerShell and for shells under Linux and macOS, double quotes are used (<code>&quot;</code>). cmd.exe doesn't support weak quoting so VS Code uses <code>&quot;</code> as well.</li>
+<li><strong>weak</strong>: Uses the shell's weak quoting mechanism, which still evaluates expression inside the string (for example, environment variables). Under PowerShell and for shells under Linux and macOS, double quotes are used (<code>&quot;</code>). cmd.exe doesn't support weak quoting so LTSerialTool uses <code>&quot;</code> as well.</li>
 </ul>
-<p>If the command itself contains spaces, VS Code will by default strong quote the command as well. As with arguments, the user can control the quoting of the command using the same literal style.</p>
+<p>If the command itself contains spaces, LTSerialTool will by default strong quote the command as well. As with arguments, the user can control the quoting of the command using the same literal style.</p>
 <p>There are more task properties to configure your workflow. You can use IntelliSense with <span class="dynamic-keybinding" data-commandId="editor.action.triggerSuggest" data-osx="⌃Space" data-win="Ctrl+Space" data-linux="Ctrl+Space"><span class="keybinding">⌃Space</span> (Windows, Linux <span class="keybinding">Ctrl+Space</span>)</span> to get an overview of the valid properties.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/debugtest/tasks/intellisense.png" alt="Tasks IntelliSense" loading="lazy"></p>
 <p>In addition to the global menu bar, task commands can be accessed using the <strong>Command Palette</strong> (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>). You can filter on 'task' and can see the various task related commands.</p>
@@ -2410,7 +2410,7 @@
 <span class="line"></span></code></pre>
 <p>Usually you would now add a problem matcher (in this case <code>$eslint-stylish</code>) or modify the presentation settings.</p>
 <h2 id="_processing-task-output-with-problem-matchers" data-needslink="_processing-task-output-with-problem-matchers">Processing task output with problem matchers</h2>
-<p>VS Code can process the output from a task with a problem matcher. Problem matchers scan the task output text for known warning or error strings, and report these inline in the editor and in the Problems panel. VS Code ships with several problem matchers 'in-the-box':</p>
+<p>LTSerialTool can process the output from a task with a problem matcher. Problem matchers scan the task output text for known warning or error strings, and report these inline in the editor and in the Problems panel. LTSerialTool ships with several problem matchers 'in-the-box':</p>
 <ul>
 <li><strong>TypeScript</strong>: <code>$tsc</code> assumes that file names in the output are relative to the opened folder.</li>
 <li><strong>TypeScript Watch</strong>: <code>$tsc-watch</code> matches problems reported from the <code>tsc</code> compiler when executed in watch mode.</li>
@@ -2434,7 +2434,7 @@
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
 <span class="line"></span></code></pre>
 <h2 id="_variable-substitution" data-needslink="_variable-substitution">Variable substitution</h2>
-<p>When authoring tasks configurations, it is useful to have a set of predefined common variables such as the active file (<code>${file}</code>) or workspace root folder (<code>${workspaceFolder}</code>). VS Code supports variable substitution inside strings in the <code>tasks.json</code> file and you can see a full list of predefined variables in the <a href="https://code.visualstudio.com/docs/reference/variables-reference">Variables Reference</a>.</p>
+<p>When authoring tasks configurations, it is useful to have a set of predefined common variables such as the active file (<code>${file}</code>) or workspace root folder (<code>${workspaceFolder}</code>). LTSerialTool supports variable substitution inside strings in the <code>tasks.json</code> file and you can see a full list of predefined variables in the <a href="https://code.visualstudio.com/docs/reference/variables-reference">Variables Reference</a>.</p>
 <blockquote><p><strong>Note:</strong> Not all properties will accept variable substitution. Specifically, only <code>command</code>, <code>args</code>, and <code>options</code> support variable substitution.</p>
 </blockquote><p>Below is an example of a custom task configuration that passes the current opened file to the TypeScript compiler.</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
@@ -2493,7 +2493,7 @@
 <span class="line"></span></code></pre>
 <blockquote><p><strong>Tip:</strong> To get access to the global scope <code>tasks.json</code> file, open the Command Palette (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>) and run the <strong>Tasks: Open User Tasks</strong> command.</p>
 </blockquote><h3 id="_character-escaping-in-powershell" data-needslink="_character-escaping-in-powershell">Character escaping in PowerShell</h3>
-<p>When the default shell is PowerShell, or when a task is configured to use PowerShell, you might see unexpected space and quote escaping. The unexpected escaping only occurs with cmdlets because VS Code doesn't know if your command contains cmdlets. Example 1 below shows a case where you'll get escaping that doesn't work with PowerShell. Example 2 shows the best, cross-platform, way to get good escaping. In some cases, you might not be able to follow example 2 and you'll need to do the manual escaping shown in example 3.</p>
+<p>When the default shell is PowerShell, or when a task is configured to use PowerShell, you might see unexpected space and quote escaping. The unexpected escaping only occurs with cmdlets because LTSerialTool doesn't know if your command contains cmdlets. Example 1 below shows a case where you'll get escaping that doesn't work with PowerShell. Example 2 shows the best, cross-platform, way to get good escaping. In some cases, you might not be able to follow example 2 and you'll need to do the manual escaping shown in example 3.</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"tasks"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: [</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    {</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">        "label"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"PowerShell example 1 (unexpected escaping)"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
@@ -2533,9 +2533,9 @@
 <span class="line"></span></code></pre>
 <p>If the task is executed in <code>PowerShell</code>, the command needs to read like this <code>chcp 866; more russian.txt</code>. On Linux and macOS, the <code>locale</code> command can be used to inspect the locale and tweak the necessary environment variables.</p>
 <h2 id="_examples-of-tasks-in-action" data-needslink="_examples-of-tasks-in-action">Examples of tasks in action</h2>
-<p>To highlight the power of tasks, here are a few examples of how VS Code can use tasks to integrate external tools like linters and compilers.</p>
+<p>To highlight the power of tasks, here are a few examples of how LTSerialTool can use tasks to integrate external tools like linters and compilers.</p>
 <h3 id="_transpiling-typescript-to-javascript" data-needslink="_transpiling-typescript-to-javascript">Transpiling TypeScript to JavaScript</h3>
-<p>The <a href="https://code.visualstudio.com/docs/typescript/typescript-compiling">TypeScript topic</a> includes an example that creates a task to transpile TypeScript to JavaScript and observe any related errors from within VS Code.</p>
+<p>The <a href="https://code.visualstudio.com/docs/typescript/typescript-compiling">TypeScript topic</a> includes an example that creates a task to transpile TypeScript to JavaScript and observe any related errors from within LTSerialTool.</p>
 <h3 id="_transpiling-less-and-scss-into-css" data-needslink="_transpiling-less-and-scss-into-css">Transpiling Less and SCSS into CSS</h3>
 <p>The CSS topic provides examples of how to use Tasks to generate CSS files.</p>
 <ol>
@@ -2543,11 +2543,11 @@
 <li><a href="https://code.visualstudio.com/docs/languages/css#_automating-sassless-compilation">Automation of the compile step with a file watcher</a></li>
 </ol>
 <h2 id="_defining-a-problem-matcher" data-needslink="_defining-a-problem-matcher">Defining a problem matcher</h2>
-<p>VS Code ships some of the most common problem matchers 'in-the-box'.  However, there are lots of compilers and linting tools out there, all of which produce their own style of errors and warnings so you may want to create your own problem matcher.</p>
+<p>LTSerialTool ships some of the most common problem matchers 'in-the-box'.  However, there are lots of compilers and linting tools out there, all of which produce their own style of errors and warnings so you may want to create your own problem matcher.</p>
 <p>We have a <code>helloWorld.c</code> program in which the developer mistyped <strong>printf</strong> as <strong>prinft</strong>. Compiling it with <a href="https://gcc.gnu.org/" class="external-link" target="_blank">gcc</a> will produce the following warning:</p>
 <pre class="shiki" data-lang="bash" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">helloWorld.c:5:3:</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> warning:</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> implicit</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> declaration</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> of</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> function</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> ‘prinft’</span></span>
 <span class="line"></span></code></pre>
-<p>We want to produce a problem matcher that can capture the message in the output and show a corresponding problem in VS Code.  Problem matchers heavily rely on <a href="https://en.wikipedia.org/wiki/Regular_expression" class="external-link" target="_blank">regular expressions</a>. The section below assumes you are familiar with regular expressions.</p>
+<p>We want to produce a problem matcher that can capture the message in the output and show a corresponding problem in LTSerialTool.  Problem matchers heavily rely on <a href="https://en.wikipedia.org/wiki/Regular_expression" class="external-link" target="_blank">regular expressions</a>. The section below assumes you are familiar with regular expressions.</p>
 <blockquote><p><strong>Tip:</strong> We have found the <a href="https://regex101.com/" class="external-link" target="_blank">RegEx101 playground</a>, which has an ECMAScript (JavaScript) flavor, to be a great way to develop and test regular expressions.</p>
 </blockquote><p>A matcher that captures the above warning (and errors) looks like this:</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
@@ -2601,7 +2601,7 @@
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  ]</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
 <span class="line"></span></code></pre>
-<p>Running it inside VS Code and pressing <span class="dynamic-keybinding" data-commandId="workbench.actions.view.problems" data-osx="⇧⌘M" data-win="Ctrl+Shift+M" data-linux="Ctrl+Shift+M"><span class="keybinding">⇧⌘M</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+M</span>)</span> to get the list of problems gives you the following output:</p>
+<p>Running it inside LTSerialTool and pressing <span class="dynamic-keybinding" data-commandId="workbench.actions.view.problems" data-osx="⇧⌘M" data-win="Ctrl+Shift+M" data-linux="Ctrl+Shift+M"><span class="keybinding">⇧⌘M</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+M</span>)</span> to get the list of problems gives you the following output:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/debugtest/tasks/problemmatcher.png" alt="GCC Problem Matcher" loading="lazy"></p>
 <blockquote><p><strong>Note:</strong> The <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" class="external-link" target="_blank">C/C++ extension</a> includes problem matchers for GCC so there is no need to define our own.</p>
 </blockquote><p>There are a couple more properties that can be used inside a pattern. These are:</p>
@@ -2692,7 +2692,7 @@
 <p>Other modifiable problem matcher properties include <code>background</code>, <code>fileLocation</code>, <code>owner</code>, <code>pattern</code>, <code>severity</code>, and <code>source</code>.</p>
 <h2 id="_background-watching-tasks" data-needslink="_background-watching-tasks">Background / watching tasks</h2>
 <p>Some tools support running in the background while watching the file system for changes and then triggering an action when a file changes on disk. With <code>Gulp</code> such functionality is provided through the npm module <a href="https://www.npmjs.com/package/gulp-watch" class="external-link" target="_blank">gulp-watch</a>. The TypeScript compiler <code>tsc</code> has built in support for this via the <code>--watch</code> command line option.</p>
-<p>To provide feedback that a background task is active in VS Code and producing problem results, a problem matcher has to use additional information to detect these <code>state</code> changes in the output. Let's take the <code>tsc</code> compiler as an example. When the compiler is started in watch mode, it prints the following additional information to the console:</p>
+<p>To provide feedback that a background task is active in LTSerialTool and producing problem results, a problem matcher has to use additional information to detect these <code>state</code> changes in the output. Let's take the <code>tsc</code> compiler as an example. When the compiler is started in watch mode, it prints the following additional information to the console:</p>
 <pre class="shiki" data-lang="bash" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">> tsc --watch</span></span>
 <span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">12:30:36</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> PM</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> -</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> Compilation</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> complete.</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> Watching</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> for</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> file</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> changes.</span></span>
 <span class="line"></span></code></pre>
@@ -2751,14 +2751,14 @@
 <p>That was tasks - let's keep going...</p>
 <ul>
 <li><a href="https://code.visualstudio.com/docs/reference/tasks-appendix">tasks.json Schema</a> - You can review the full <code>tasks.json</code> schema and descriptions.</li>
-<li><a href="https://code.visualstudio.com/docs/editing/codebasics">Basic Editing</a> - Learn about the powerful VS Code editor.</li>
+<li><a href="https://code.visualstudio.com/docs/editing/codebasics">Basic Editing</a> - Learn about the powerful LTSerialTool editor.</li>
 <li><a href="https://code.visualstudio.com/docs/editing/editingevolved">Code Navigation</a> - Move quickly through your source code.</li>
-<li><a href="https://code.visualstudio.com/docs/languages/overview">Language Support</a> - Learn about our supported programming languages, both shipped with VS Code and through community extensions.</li>
-<li><a href="https://code.visualstudio.com/docs/debugtest/debugging">Debugging</a> - Debug your source code directly in the VS Code editor.</li>
+<li><a href="https://code.visualstudio.com/docs/languages/overview">Language Support</a> - Learn about our supported programming languages, both shipped with LTSerialTool and through community extensions.</li>
+<li><a href="https://code.visualstudio.com/docs/debugtest/debugging">Debugging</a> - Debug your source code directly in the LTSerialTool editor.</li>
 </ul>
 <h2 id="_common-questions" data-needslink="_common-questions">Common questions</h2>
 <h3 id="_can-a-task-use-a-different-shell-than-the-one-specified-for-the-integrated-terminal" data-needslink="_can-a-task-use-a-different-shell-than-the-one-specified-for-the-integrated-terminal">Can a task use a different shell than the one specified for the Integrated Terminal?</h3>
-<p>Yes. You can use the <code>&quot;terminal.integrated.automationProfile.*&quot;</code> setting to set the shell that will be used for all automation in VS Code, which includes Tasks.</p>
+<p>Yes. You can use the <code>&quot;terminal.integrated.automationProfile.*&quot;</code> setting to set the shell that will be used for all automation in LTSerialTool, which includes Tasks.</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">    "terminal.integrated.automationProfile.windows"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: {</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">        "path"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"cmd.exe"</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    }</span></span>
@@ -2894,28 +2894,28 @@
 				<div class="footer-social">
 					<ul class="links">
 						<li>
-							<a href="https://github.com/microsoft/vscode"><img src="https://code.visualstudio.com/assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+							<a href="https://github.com/microsoft/vscode"><img src="https://code.visualstudio.com/assets/icons/github-icon.svg" alt="LTSerialTool on Github"></a>
 						</li>
 						<li>
 							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="https://code.visualstudio.com/assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
 						</li>
 						<li>
-							<a href="https://www.linkedin.com/showcase/vs-code"><img src="https://code.visualstudio.com/assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="https://code.visualstudio.com/assets/icons/linkedin-icon.svg" alt="LTSerialTool on LinkedIn"></a>
 						</li>
 						<li>
-							<a href="https://bsky.app/profile/vscode.dev"><img src="https://code.visualstudio.com/assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="https://code.visualstudio.com/assets/icons/bluesky-icon.svg" alt="LTSerialTool on Bluesky"></a>
 						</li>
 						<li>
-							<a href="https://www.reddit.com/r/vscode/"><img src="https://code.visualstudio.com/assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+							<a href="https://www.reddit.com/r/vscode/"><img src="https://code.visualstudio.com/assets/icons/reddit-icon.svg" alt="Join the LTSerialTool community on Reddit"></a>
 						</li>
 						<li>
-							<a href="https://www.vscodepodcast.com/"><img src="https://code.visualstudio.com/assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+							<a href="https://www.vscodepodcast.com/"><img src="https://code.visualstudio.com/assets/icons/podcast-icon.svg" alt="The LTSerialTool Insiders Podcast"></a>
 						</li>
 						<li>
-							<a href="https://www.tiktok.com/@vscode"><img src="https://code.visualstudio.com/assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+							<a href="https://www.tiktok.com/@vscode"><img src="https://code.visualstudio.com/assets/icons/tiktok-icon.svg" alt="LTSerialTool on TikTok"></a>
 						</li>
 						<li>
-							<a href="https://www.youtube.com/@code"><img src="https://code.visualstudio.com/assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+							<a href="https://www.youtube.com/@code"><img src="https://code.visualstudio.com/assets/icons/youtube-icon.svg" alt="LTSerialTool on YouTube"></a>
 						</li>
 						<script>
 							function manageConsent() {
@@ -2977,7 +2977,7 @@
 			},
 			"applicationCategory": "DeveloperApplication",
 			"applicationSubCategory": "Text Editor",
-			"alternateName": "VS Code",
+			"alternateName": "LTSerialTool",
 			"datePublished": "2021-11-03",
 			"operatingSystem": "Mac, Linux, Windows",
 			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",

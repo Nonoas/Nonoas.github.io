@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="og:url" content="https://code.visualstudio.com/docs/nodejs/nodejs-debugging" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Node.js debugging in VS Code" />
+<meta property="og:title" content="Node.js debugging in LTSerialTool" />
 <meta property="og:description" content="The LTSerialTool editor includes Node.js debugging support. Set breakpoints, step-in, inspect variables and more." />
 
 <meta property="og:image" content="https://code.visualstudio.com/assets/docs/editor/debugging/debugging-social.png" />
@@ -36,7 +36,7 @@
 	<link rel="shortcut icon" href="https://code.visualstudio.com/assets/favicon.ico" sizes="128x128" />
 	<link rel="apple-touch-icon" href="https://code.visualstudio.com/assets/apple-touch-icon.png">
 
-	<title>Node.js debugging in VS Code</title>
+	<title>Node.js debugging in LTSerialTool</title>
 
 	<link rel="stylesheet" href="https://code.visualstudio.com/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://code.visualstudio.com/dist/v2/style.css">
@@ -179,7 +179,7 @@
 			</div>
 		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
 			<div class="container">
-				<p class="message">Join a <a href="https://code.visualstudio.com/dev-days" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+				<p class="message">Join a <a href="https://code.visualstudio.com/dev-days" id="banner-link-dev-days">LTSerialTool Dev Days event</a> near you to learn about AI-assisted development in LTSerialTool.</p>
 			</div>
 			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
 					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
@@ -230,7 +230,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/setup/vscode-web" >VS Code for the Web</a>
+                      <a href="https://code.visualstudio.com/docs/setup/vscode-web" >LTSerialTool for the Web</a>
                     </li>
                       
                     <li >
@@ -261,7 +261,7 @@
               <ul id="getstarted-articles" class="collapse ">
             
                     <li >
-                      <a href="https://code.visualstudio.com/docs/getstarted/getting-started" >VS Code Tutorial</a>
+                      <a href="https://code.visualstudio.com/docs/getstarted/getting-started" >LTSerialTool Tutorial</a>
                     </li>
                       
                     <li >
@@ -273,7 +273,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/getstarted/personalize-vscode" >Personalize VS Code</a>
+                      <a href="https://code.visualstudio.com/docs/getstarted/personalize-vscode" >Personalize LTSerialTool</a>
                     </li>
                       
                     <li >
@@ -1284,7 +1284,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/azure/vscodeforweb" >VS Code for the Web - Azure</a>
+                      <a href="https://code.visualstudio.com/docs/azure/vscodeforweb" >LTSerialTool for the Web - Azure</a>
                     </li>
                       
                     <li >
@@ -1335,7 +1335,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/remote/vscode-server" >VS Code Server</a>
+                      <a href="https://code.visualstudio.com/docs/remote/vscode-server" >LTSerialTool Server</a>
                     </li>
                       
                     <li >
@@ -1445,7 +1445,7 @@
                     
                     <option value="/docs/setup/windows" >Windows</option>
                     
-                    <option value="/docs/setup/vscode-web" >VS Code for the Web</option>
+                    <option value="/docs/setup/vscode-web" >LTSerialTool for the Web</option>
                     
                     <option value="/docs/setup/raspberry-pi" >Raspberry Pi</option>
                     
@@ -1461,13 +1461,13 @@
               
               <optgroup label="Get Started">
             
-                    <option value="/docs/getstarted/getting-started" >VS Code Tutorial</option>
+                    <option value="/docs/getstarted/getting-started" >LTSerialTool Tutorial</option>
                     
                     <option value="/docs/getstarted/copilot-quickstart" >Copilot Quickstart</option>
                     
                     <option value="/docs/getstarted/userinterface" >User Interface</option>
                     
-                    <option value="/docs/getstarted/personalize-vscode" >Personalize VS Code</option>
+                    <option value="/docs/getstarted/personalize-vscode" >Personalize LTSerialTool</option>
                     
                     <option value="/docs/getstarted/extensions" >Install Extensions</option>
                     
@@ -1985,7 +1985,7 @@
                     
                     <option value="/docs/azure/deployment" >Deployment</option>
                     
-                    <option value="/docs/azure/vscodeforweb" >VS Code for the Web - Azure</option>
+                    <option value="/docs/azure/vscodeforweb" >LTSerialTool for the Web - Azure</option>
                     
                     <option value="/docs/azure/containers" >Containers</option>
                     
@@ -2011,7 +2011,7 @@
                     
                     <option value="/docs/remote/codespaces" >GitHub Codespaces</option>
                     
-                    <option value="/docs/remote/vscode-server" >VS Code Server</option>
+                    <option value="/docs/remote/vscode-server" >LTSerialTool Server</option>
                     
                     <option value="/docs/remote/tunnels" >Tunnels</option>
                     
@@ -2070,16 +2070,16 @@
                     Edit
                 </a>
             </div>
-            <h1>Node.js debugging in VS Code</h1>
-<p>The LTSerialTool editor has built-in debugging support for the <a href="https://nodejs.org/" class="external-link" target="_blank">Node.js</a> runtime and can debug JavaScript, TypeScript, and many other languages that are transpiled into JavaScript. Setting up a project for Node.js debugging is straightforward with VS Code providing appropriate launch configuration defaults and snippets.</p>
-<p>There are a few ways you can debug your Node.js programs in VS Code:</p>
+            <h1>Node.js debugging in LTSerialTool</h1>
+<p>The LTSerialTool editor has built-in debugging support for the <a href="https://nodejs.org/" class="external-link" target="_blank">Node.js</a> runtime and can debug JavaScript, TypeScript, and many other languages that are transpiled into JavaScript. Setting up a project for Node.js debugging is straightforward with LTSerialTool providing appropriate launch configuration defaults and snippets.</p>
+<p>There are a few ways you can debug your Node.js programs in LTSerialTool:</p>
 <ul>
-<li>Use <a href="#_auto-attach">auto attach</a> to debug processes you run in VS Code's integrated terminal.</li>
+<li>Use <a href="#_auto-attach">auto attach</a> to debug processes you run in LTSerialTool's integrated terminal.</li>
 <li>Use the <a href="#_javascript-debug-terminal">JavaScript debug terminal</a>, similar to using the integrated terminal.</li>
-<li>Use a <a href="#_launch-configuration">launch config</a> to start your program, or <a href="#_attaching-to-nodejs">attach to a process</a> launched outside of VS Code.</li>
+<li>Use a <a href="#_launch-configuration">launch config</a> to start your program, or <a href="#_attaching-to-nodejs">attach to a process</a> launched outside of LTSerialTool.</li>
 </ul>
 <h2 id="_auto-attach" data-needslink="_auto-attach">Auto Attach</h2>
-<p>If the <strong>Auto Attach</strong> feature is enabled, the Node debugger automatically attaches to certain Node.js processes that have been launched from VS Code's Integrated Terminal. To enable the feature, either use the <strong>Toggle Auto Attach</strong> command from the Command Palette (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>) or, if it's already activated, use the <strong>Auto Attach</strong> Status bar item.</p>
+<p>If the <strong>Auto Attach</strong> feature is enabled, the Node debugger automatically attaches to certain Node.js processes that have been launched from LTSerialTool's Integrated Terminal. To enable the feature, either use the <strong>Toggle Auto Attach</strong> command from the Command Palette (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>) or, if it's already activated, use the <strong>Auto Attach</strong> Status bar item.</p>
 <p>There are three modes for auto attach, which you can select in the resulting Quick Pick and via the <strong>debug.javascript.autoAttachFilter</strong> setting:</p>
 <ul>
 <li><code>smart</code> - If you execute a script outside of your <code>node_modules</code> folder or use a common 'runner' script like mocha or ts-node, the process will be debugged. You can configure the 'runner' script allow list using the <strong>Auto Attach Smart Pattern</strong> setting (<code>debug.javascript.autoAttachSmartPattern</code>).</li>
@@ -2088,7 +2088,7 @@
 </ul>
 <p>After enabling <strong>Auto Attach</strong>, you'll need to restart your terminal by clicking the ⚠ icon in the top right of the terminal, or just creating a new one. Then, the debugger should attach to your program within a second:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/nodejs/nodejs-debugging/auto-attach.gif" alt="Auto Attach" loading="lazy"></p>
-<p>When auto attach is on, the <code>Auto Attach</code> item will appear in the status bar across the bottom of the VS Code window. Clicking it allows you to change the auto attach mode, or temporarily turn it off. Temporarily turning off auto attach is useful if you're running some one-off programs where you don't need debugging, but you don't want to disable the feature entirely.</p>
+<p>When auto attach is on, the <code>Auto Attach</code> item will appear in the status bar across the bottom of the LTSerialTool window. Clicking it allows you to change the auto attach mode, or temporarily turn it off. Temporarily turning off auto attach is useful if you're running some one-off programs where you don't need debugging, but you don't want to disable the feature entirely.</p>
 <h3 id="_additional-configuration" data-needslink="_additional-configuration">Additional Configuration</h3>
 <p><strong>Other Launch Configuration Properties</strong></p>
 <p>You can apply <a href="#_launch-configuration-attributes">other properties normally found in launch.json</a> to auto attach in the <strong>debug.javascript.terminalOptions</strong> setting. For example, to add node internals to your skipFiles, you could add the following to your user or workspace settings:</p>
@@ -2099,7 +2099,7 @@
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  },</span></span>
 <span class="line"></span></code></pre>
 <p><strong>Auto Attach Smart Patterns</strong></p>
-<p>In <code>smart</code> Auto Attach mode, VS Code will try to attach to your code, and not attach to build tools you aren't interested in debugging. It does this by matching the main script against a list of <a href="https://code.visualstudio.com/docs/editor/glob-patterns">glob patterns</a>. The glob patterns are configurable in the <strong>debug.javascript.autoAttachSmartPattern</strong> setting, which defaults to:</p>
+<p>In <code>smart</code> Auto Attach mode, LTSerialTool will try to attach to your code, and not attach to build tools you aren't interested in debugging. It does this by matching the main script against a list of <a href="https://code.visualstudio.com/docs/editor/glob-patterns">glob patterns</a>. The glob patterns are configurable in the <strong>debug.javascript.autoAttachSmartPattern</strong> setting, which defaults to:</p>
 <pre class="shiki" data-lang="js" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">[</span></span>
 <span class="line"><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">  '!**/node_modules/**'</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">, </span><span style="--shiki-dark:#6A9955;--shiki-light:#008000">// exclude scripts in node_modules folders</span></span>
 <span class="line"><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">  '**/$KNOWN_TOOLS$/**'</span><span style="--shiki-dark:#6A9955;--shiki-light:#008000"> // but include some common tools</span></span>
@@ -2126,10 +2126,10 @@
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">},</span></span>
 <span class="line"></span></code></pre>
 <h2 id="_launch-configuration" data-needslink="_launch-configuration">Launch Configuration</h2>
-<p>Launch configs are the traditional way to set up debugging in VS Code, and provide you the most configuration options for running complex applications.</p>
+<p>Launch configs are the traditional way to set up debugging in LTSerialTool, and provide you the most configuration options for running complex applications.</p>
 <p>In this section we'll go into more detail about configurations and features for more advanced debugging scenarios. You'll find instruction for debugging with <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_source-maps">source maps</a>, <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_skipping-uninteresting-code">stepping over external code</a>, doing <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_remote-debugging">remote debugging</a>, and much more.</p>
-<p>If you'd like to watch an introductory video, see <a href="https://www.youtube.com/watch?v=3HiLLByBWkg" class="external-link" target="_blank">Getting started with debugging in VS Code</a>.</p>
-<blockquote><p><strong>Note</strong>: If you are just getting started with VS Code, you can learn about general debugging features and creating <code>launch.json</code> configuration files in the <a href="https://code.visualstudio.com/docs/debugtest/debugging">Debugging</a> topic.</p>
+<p>If you'd like to watch an introductory video, see <a href="https://www.youtube.com/watch?v=3HiLLByBWkg" class="external-link" target="_blank">Getting started with debugging in LTSerialTool</a>.</p>
+<blockquote><p><strong>Note</strong>: If you are just getting started with LTSerialTool, you can learn about general debugging features and creating <code>launch.json</code> configuration files in the <a href="https://code.visualstudio.com/docs/debugtest/debugging">Debugging</a> topic.</p>
 </blockquote><h2 id="_launch-configuration-attributes" data-needslink="_launch-configuration-attributes">Launch configuration attributes</h2>
 <p>Debugging configurations are stored in a <code>launch.json</code> file located in your workspace's <code>.vscode</code> folder. An introduction into the creation and use of debugging configuration files is in the general <a href="https://code.visualstudio.com/docs/debugtest/debugging-configuration#_launch-configurations">Debugging</a> article.</p>
 <p>Below is a reference of common <code>launch.json</code> attributes specific to the Node.js debugger. You can view the complete set of options in the <a href="https://github.com/microsoft/vscode-js-debug/blob/main/OPTIONS.md" class="external-link" target="_blank">vscode-js-debug options</a> documentation.</p>
@@ -2139,7 +2139,7 @@
 <li><code>resolveSourceMapLocations</code> - an array of <a href="https://code.visualstudio.com/docs/editor/glob-patterns">glob patterns</a> for locations where source maps should be parsed. See section <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_source-maps">Source maps</a>.</li>
 <li><code>timeout</code> - when restarting a session, give up after this number of milliseconds. See section <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_attaching-to-nodejs">Attaching to Node.js</a>.</li>
 <li><code>stopOnEntry</code> - break immediately when the program launches.</li>
-<li><code>localRoot</code> - VS Code's root directory. See section <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_remote-debugging">Remote debugging</a> below.</li>
+<li><code>localRoot</code> - LTSerialTool's root directory. See section <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_remote-debugging">Remote debugging</a> below.</li>
 <li><code>remoteRoot</code> - Node's root directory. See section <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_remote-debugging">Remote debugging</a> below.</li>
 <li><code>smartStep</code>- try to automatically step over code that doesn't map to source files. See section <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_smart-stepping">Smart stepping</a>.</li>
 <li><code>skipFiles</code> - automatically skip files covered by these <a href="https://code.visualstudio.com/docs/editor/glob-patterns">glob patterns</a>. See section <a href="https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_skipping-uninteresting-code">Skipping uninteresting code</a>.</li>
@@ -2176,7 +2176,7 @@
 <li><strong>Launch Program</strong>: Launch a Node.js program in debug mode.</li>
 <li><strong>Launch via npm</strong>: Launch a Node.js program through an npm 'debug' script. You can use an npm debug script from your launch configuration if it has been defined in your package.json. The debug port used in the npm script must correspond to the port specified in the snippet.</li>
 <li><strong>Attach</strong>: Attach to the debug port of a locally running Node.js program. Make sure that the Node.js program to debug has been started in debug mode, and the debug port used is the same as the one specified in the snippet.</li>
-<li><strong>Attach to Remote Program</strong>: Attach to the debug port of a Node.js program running on the host specified by the <code>address</code> attribute. Make sure that the Node.js program to debug has been started in debug mode, and the debug port used is the same as the one specified in the snippet. To help VS Code map source files between your workspace and the filesystem of the remote host, make sure to specify correct paths for the <code>localRoot</code>and <code>remoteRoot</code> attributes.</li>
+<li><strong>Attach to Remote Program</strong>: Attach to the debug port of a Node.js program running on the host specified by the <code>address</code> attribute. Make sure that the Node.js program to debug has been started in debug mode, and the debug port used is the same as the one specified in the snippet. To help LTSerialTool map source files between your workspace and the filesystem of the remote host, make sure to specify correct paths for the <code>localRoot</code>and <code>remoteRoot</code> attributes.</li>
 <li><strong>Attach by Process ID</strong>: Open the process picker to select a node or gulp process for debugging. With this launch configuration, you can even attach to a node or gulp process that was not started in debug mode.</li>
 <li><strong>Nodemon Setup</strong>: Use nodemon to relaunch a debug session automatically whenever the JavaScript source has changed. Make sure that you have nodemon installed globally. Note that terminating the debug session only terminates the program to debug, not nodemon itself. To terminate nodemon, press <span class="keybinding">Ctrl+C</span> in the Integrated Terminal.</li>
 <li><strong>Mocha Tests</strong>: Debug mocha tests in a <code>test</code> folder of your project. Make sure that your project has 'mocha' installed in its <code>node_modules</code> folder.</li>
@@ -2185,7 +2185,7 @@
 <li><strong>Electron Main</strong>: Debug the main Node.js process of an Electron application. The snippet assumes that the Electron executable has been installed inside the <code>node_modules/.bin</code> directory of the workspace.</li>
 </ul>
 <h3 id="_node-console" data-needslink="_node-console">Node console</h3>
-<p>By default, Node.js debug sessions launch the target in the internal VS Code Debug Console. Since the Debug Console does not support programs that need to read input from the console, you can enable either an external terminal or use the VS Code Integrated Terminal by setting the <code>console</code> attribute in your launch configuration to <code>externalTerminal</code> or <code>integratedTerminal</code> respectively. The default is <code>internalConsole</code>.</p>
+<p>By default, Node.js debug sessions launch the target in the internal LTSerialTool Debug Console. Since the Debug Console does not support programs that need to read input from the console, you can enable either an external terminal or use the LTSerialTool Integrated Terminal by setting the <code>console</code> attribute in your launch configuration to <code>externalTerminal</code> or <code>integratedTerminal</code> respectively. The default is <code>internalConsole</code>.</p>
 <p>In an external terminal, you can configure which terminal program to use via the <code>terminal.external.windowsExec</code>, <code>terminal.external.osxExec</code>, and <code>terminal.external.linuxExec</code> settings.</p>
 <h3 id="_launch-configuration-support-for-npm-and-other-tools" data-needslink="_launch-configuration-support-for-npm-and-other-tools">Launch configuration support for 'npm' and other tools</h3>
 <p>Instead of launching the Node.js program directly with node, you can use 'npm' scripts or other task runner tools directly from a launch configuration:</p>
@@ -2230,7 +2230,7 @@
 <p>Make sure to have those Node.js versions installed that you want to use with the <code>runtimeVersion</code> attribute, as the feature will not download and install the version automatically. For example, you'll have to run something like <code>nvm install 7.10.1</code> or <code>nvs add 7.10.1</code> from the integrated terminal if you plan to add <code>&quot;runtimeVersion&quot;: &quot;7.10.1&quot;</code> to your launch configuration.</p>
 <p>If you omit the minor and patch version and have, for example, <code>&quot;runtimeVersion&quot;: &quot;14&quot;</code>, then the most recent <code>14.x.y</code> version installed on your system will be used.</p>
 <h3 id="_load-environment-variables-from-external-file" data-needslink="_load-environment-variables-from-external-file">Load environment variables from external file</h3>
-<p>The VS Code Node debugger supports loading environment variables from a file and passing them to the Node.js runtime. To use this feature, add an attribute <code>envFile</code> to your launch configuration and specify the absolute path to the file containing the environment variables:</p>
+<p>The LTSerialTool Node debugger supports loading environment variables from a file and passing them to the Node.js runtime. To use this feature, add an attribute <code>envFile</code> to your launch configuration and specify the absolute path to the file containing the environment variables:</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000">   //...</span></span>
 <span class="line"><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">   "envFile"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"${workspaceFolder}/.env"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
 <span class="line"><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">   "env"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: { </span><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">"USER"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"john doe"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> }</span></span>
@@ -2250,7 +2250,7 @@
 <span class="line"><span>lines="foo\nbar"</span></span>
 <span class="line"><span></span></span></code></pre>
 <h2 id="_attaching-to-nodejs" data-needslink="_attaching-to-nodejs">Attaching to Node.js</h2>
-<p>If you want to attach the VS Code debugger to an external Node.js program, launch Node.js as follows:</p>
+<p>If you want to attach the LTSerialTool debugger to an external Node.js program, launch Node.js as follows:</p>
 <pre class="shiki" data-lang="bash" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">node</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> --inspect</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> program.js</span></span>
 <span class="line"></span></code></pre>
 <p>or if the program shouldn't start running, but must wait for the debugger to attach:</p>
@@ -2266,7 +2266,7 @@
 <p>The <strong>Attach to Node Process</strong> command from the Command Palette (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>) opens a Quick Pick menu that lists all potential processes that are available to the Node.js debugger:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/nodejs/nodejs-debugging/process-picker.png" alt="Node.js Process picker" loading="lazy"></p>
 <p>The individual processes listed in the picker show the debug port and process ID. Once you select your Node.js process in that list, the Node.js debugger will try to attach to it.</p>
-<p>In addition to Node.js processes, the picker also shows other programs that were launched with one of the various forms <code>--inspect</code> arguments. This makes it possible to attach to Electron's or VS Code's helper processes.</p>
+<p>In addition to Node.js processes, the picker also shows other programs that were launched with one of the various forms <code>--inspect</code> arguments. This makes it possible to attach to Electron's or LTSerialTool's helper processes.</p>
 <h3 id="_setting-up-an-attach-configuration" data-needslink="_setting-up-an-attach-configuration">Setting up an &quot;Attach&quot; configuration</h3>
 <p>This option requires more work but in contrast to the previous two options it allows you to configure various debug configuration options explicitly.</p>
 <p>The simplest &quot;attach&quot; configuration looks like this:</p>
@@ -2310,7 +2310,7 @@
 <p>If you see that a debug session doesn't end when you press the red <strong>Stop</strong> button, then press the button again to force a shutdown of the debuggee.</p>
 <p>On Windows, pressing <strong>Stop</strong> forcibly kills the debuggee and its child processes.</p>
 <h2 id="_source-maps" data-needslink="_source-maps">Source maps</h2>
-<p>The JavaScript debugger of VS Code supports source maps that help debugging of transpiled languages, for example, TypeScript or minified/uglified JavaScript. With source maps, it's possible to single step through or set breakpoints in the original source. If no source map exists for the original source, or if the source map is broken and cannot successfully map between the source and the generated JavaScript, then breakpoints show up as unverified (gray hollow circles).</p>
+<p>The JavaScript debugger of LTSerialTool supports source maps that help debugging of transpiled languages, for example, TypeScript or minified/uglified JavaScript. With source maps, it's possible to single step through or set breakpoints in the original source. If no source map exists for the original source, or if the source map is broken and cannot successfully map between the source and the generated JavaScript, then breakpoints show up as unverified (gray hollow circles).</p>
 <p>The <code>sourceMaps</code> attribute that defaults to <code>true</code> controls the source map feature. The debugger always tries to use source maps (if it can find any) and as a consequence, you can even specify a source file (for example, app.ts) with the <code>program</code> attribute. If you need to disable source maps for some reason, you can set the <code>sourceMaps</code> attribute to <code>false</code>.</p>
 <h3 id="_tool-configuration" data-needslink="_tool-configuration">Tool Configuration</h3>
 <p>Since source maps are not always automatically created, you should make sure to configure your transpiler to create them. For example:</p>
@@ -2326,7 +2326,7 @@
 <p>Webpack has <a href="https://webpack.js.org/configuration/devtool/" class="external-link" target="_blank">numerous</a> source map options. We recommend setting the property <code>devtool: &quot;source-map&quot;</code> in your <code>webpack.config.js</code> for the best fidelity of results, although you can experiment with other settings causes slowdowns in your build.</p>
 <p>Also, if you have additional compilation steps in webpack, such as using a TypeScript loader, you'll also want to make sure that those steps are set up to generate sourcemaps. Otherwise, the sourcemaps that webpack generates will map back to the compiled code from the loader, instead of the real sources.</p>
 <h3 id="_source-map-discovery" data-needslink="_source-map-discovery">Source Map Discovery</h3>
-<p>By default, VS Code will search your entire workspace, excluding <code>node_modules</code>, for sourcemaps. In large workspaces, this search might be slow. You can configure the locations where VS Code will search for source maps by setting the <code>outFiles</code> attribute in your <code>launch.json</code>. For example, this configuration will only discover sourcemaps for <code>.js</code> files in the <code>bin</code> folder:</p>
+<p>By default, LTSerialTool will search your entire workspace, excluding <code>node_modules</code>, for sourcemaps. In large workspaces, this search might be slow. You can configure the locations where LTSerialTool will search for source maps by setting the <code>outFiles</code> attribute in your <code>launch.json</code>. For example, this configuration will only discover sourcemaps for <code>.js</code> files in the <code>bin</code> folder:</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "version"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"0.2.0"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "configurations"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: [</span></span>
@@ -2350,7 +2350,7 @@
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">  ]</span></span>
 <span class="line"></span></code></pre>
 <h3 id="_smart-stepping" data-needslink="_smart-stepping">Smart stepping</h3>
-<p>With the <code>smartStep</code> attribute set to <code>true</code> in a launch configuration, VS Code will automatically skip 'uninteresting code' when stepping through code in the debugger. 'Uninteresting code' is code that is generated by a transpiling process but is not covered by a source map so it does not map back to the original source. This code gets in your way when stepping through source code in the debugger because it makes the debugger switch between the original source code and generated code that you are not interested in. <code>smartStep</code> will automatically step through code not covered by a source map until it reaches a location that is covered by a source map again.</p>
+<p>With the <code>smartStep</code> attribute set to <code>true</code> in a launch configuration, LTSerialTool will automatically skip 'uninteresting code' when stepping through code in the debugger. 'Uninteresting code' is code that is generated by a transpiling process but is not covered by a source map so it does not map back to the original source. This code gets in your way when stepping through source code in the debugger because it makes the debugger switch between the original source code and generated code that you are not interested in. <code>smartStep</code> will automatically step through code not covered by a source map until it reaches a location that is covered by a source map again.</p>
 <p>Smart stepping is especially useful for cases like async/await downcompilation in TypeScript, where the compiler injects helper code that is not covered by a source map.</p>
 <p>The <code>smartStep</code> feature only applies to JavaScript code that was generated from source and therefore has a source map. For JavaScript without sources, the smart stepping option has no effect.</p>
 <h3 id="_javascript-source-map-tips" data-needslink="_javascript-source-map-tips">JavaScript source map tips</h3>
@@ -2363,7 +2363,7 @@
 <li>While debugging, run the <strong>Debug: Diagnose Breakpoint Problems</strong> command. This command will bring up a tool that can provide hints to help you resolve any issues from the Command Palette (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>).</li>
 <li>Did you build with source maps enabled? Make sure there are <code>.js.map</code> files, or inlined source maps in your <code>.js</code> files.</li>
 <li>Are the <code>sourceRoot</code> and <code>sources</code> properties in your source map correct? Can they be combined to get the correct path to the <code>.ts</code> file?</li>
-<li>Have you opened the folder in VS Code with the incorrect case? It's possible to open folder <code>foo/</code> from the command line like <code>code FOO</code> in which case source maps may not be resolved correctly.</li>
+<li>Have you opened the folder in LTSerialTool with the incorrect case? It's possible to open folder <code>foo/</code> from the command line like <code>code FOO</code> in which case source maps may not be resolved correctly.</li>
 <li>Try searching for help with your particular setup on Stack Overflow or by filing an issue on GitHub.</li>
 <li>Try adding a <code>debugger</code> statement. If it breaks into the <code>.ts</code> file there, but breakpoints at that spot don't bind, that is useful information to include with a GitHub issue.</li>
 </ul>
@@ -2379,8 +2379,8 @@
 <p>This maps paths or URLs in the source map from the left to the right. The pattern <code>?:*</code> is a non-greedy, non-capturing match, and <code>*</code> is a greedy capturing match. The debugger then replaces the corresponding <code>*</code> in the right-hand pattern with the fragment captured from the source map path. For example, the last pattern in the above example would map <code>webpack://@my/package/foo/bar</code> to <code>${workspaceFolder}/foo/bar</code>.</p>
 <p>Note that for browser debugging, the <code>webRoot</code> is used in place of the <code>workspaceFolder</code> in the default <code>sourceMapPathOverrides</code>.</p>
 <h2 id="_remote-debugging" data-needslink="_remote-debugging">Remote debugging</h2>
-<blockquote><p><strong>Note:</strong> VS Code now has universal <a href="https://code.visualstudio.com/docs/remote/remote-overview">remote development capabilities</a>. Using the <a href="https://aka.ms/vscode-remote/download/extension" class="external-link" target="_blank">Remote Development</a> extensions, Node.js development in remote scenarios and containers is no different than Node.js development in a local setup. <strong>This is the recommended way to remote debug Node.js programs</strong>. Check out the <a href="https://code.visualstudio.com/docs/remote/remote-overview#_getting-started">Getting started</a> section and <a href="https://code.visualstudio.com/docs/remote/remote-overview#_remote-tutorials">Remote tutorials</a> to learn more.</p>
-</blockquote><p>If you are unable to use any of the Remote Development extensions to debug your Node.js program, below is a guide on how to debug a remote Node.js program from your local instance of VS Code.</p>
+<blockquote><p><strong>Note:</strong> LTSerialTool now has universal <a href="https://code.visualstudio.com/docs/remote/remote-overview">remote development capabilities</a>. Using the <a href="https://aka.ms/vscode-remote/download/extension" class="external-link" target="_blank">Remote Development</a> extensions, Node.js development in remote scenarios and containers is no different than Node.js development in a local setup. <strong>This is the recommended way to remote debug Node.js programs</strong>. Check out the <a href="https://code.visualstudio.com/docs/remote/remote-overview#_getting-started">Getting started</a> section and <a href="https://code.visualstudio.com/docs/remote/remote-overview#_remote-tutorials">Remote tutorials</a> to learn more.</p>
+</blockquote><p>If you are unable to use any of the Remote Development extensions to debug your Node.js program, below is a guide on how to debug a remote Node.js program from your local instance of LTSerialTool.</p>
 <p>The Node.js debugger supports remote debugging where you attach to a process running on a different machine, or in a container. Specify a remote host via the <code>address</code> attribute. For example:</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "type"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"node"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
@@ -2390,7 +2390,7 @@
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "port"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">9229</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
 <span class="line"></span></code></pre>
-<p>By default, VS Code will stream the debugged source from the remote Node.js folder to the local VS Code and show it in a read-only editor. You can step through this code, but cannot modify it. If you want VS Code to open the editable source from your workspace instead, you can set up a mapping between the remote and local locations. A <code>localRoot</code> and a <code>remoteRoot</code> attribute can be used to map paths between a local VS Code project and a (remote) Node.js folder. This works even locally on the same system or across different operating systems. Whenever a code path needs to be converted from the remote Node.js folder to a local VS Code path, the <code>remoteRoot</code> path is stripped off the path and replaced by <code>localRoot</code>. For the reverse conversion, the <code>localRoot</code> path is replaced by the <code>remoteRoot</code>.</p>
+<p>By default, LTSerialTool will stream the debugged source from the remote Node.js folder to the local LTSerialTool and show it in a read-only editor. You can step through this code, but cannot modify it. If you want LTSerialTool to open the editable source from your workspace instead, you can set up a mapping between the remote and local locations. A <code>localRoot</code> and a <code>remoteRoot</code> attribute can be used to map paths between a local LTSerialTool project and a (remote) Node.js folder. This works even locally on the same system or across different operating systems. Whenever a code path needs to be converted from the remote Node.js folder to a local LTSerialTool path, the <code>remoteRoot</code> path is stripped off the path and replaced by <code>localRoot</code>. For the reverse conversion, the <code>localRoot</code> path is replaced by the <code>remoteRoot</code>.</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "type"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"node"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "request"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"attach"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
@@ -2402,7 +2402,7 @@
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
 <span class="line"></span></code></pre>
 <h2 id="_access-loaded-scripts" data-needslink="_access-loaded-scripts">Access Loaded Scripts</h2>
-<p>If you need to set a breakpoint in a script that is not part of your workspace and therefore cannot be easily located and opened through normal VS Code file browsing, you can access the loaded scripts via the <strong>LOADED SCRIPTS</strong> view in the <strong>Run and Debug</strong> view:</p>
+<p>If you need to set a breakpoint in a script that is not part of your workspace and therefore cannot be easily located and opened through normal LTSerialTool file browsing, you can access the loaded scripts via the <strong>LOADED SCRIPTS</strong> view in the <strong>Run and Debug</strong> view:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/nodejs/nodejs-debugging/loaded-scripts-explorer.gif" alt="Loaded Scripts Explorer" loading="lazy"></p>
 <p>The <strong>LOADED SCRIPTS</strong> view lets you quickly select the script by typing its name or filter the list when <strong>Enable Filter on Type</strong> is on.</p>
 <p>Scripts are loaded into a read-only editor where you can set breakpoints. These breakpoints are remembered across debug sessions but you only have access to the script content while a debug session is running.</p>
@@ -2411,7 +2411,7 @@
 <p>If you have started your program <code>server.js</code> via <strong>nodemon</strong> on the command line like this:</p>
 <pre class="shiki" data-lang="bash" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">nodemon</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> --inspect</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> server.js</span></span>
 <span class="line"></span></code></pre>
-<p>you can attach the VS Code debugger to it with the following launch configuration:</p>
+<p>you can attach the LTSerialTool debugger to it with the following launch configuration:</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "name"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"Attach to node"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "type"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"node"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
@@ -2420,7 +2420,7 @@
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "port"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">9229</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
 <span class="line"></span></code></pre>
-<p>Alternatively, you can start your program <code>server.js</code> via <strong>nodemon</strong> directly with a launch config and attach the VS Code debugger:</p>
+<p>Alternatively, you can start your program <code>server.js</code> via <strong>nodemon</strong> directly with a launch config and attach the LTSerialTool debugger:</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "name"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"Launch server.js via nodemon"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "type"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"node"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
@@ -2432,7 +2432,7 @@
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">}</span></span>
 <span class="line"></span></code></pre>
 <blockquote><p><strong>Tip:</strong> Pressing the <strong>Stop</strong> button stops the debug session and disconnects from Node.js, but <strong>nodemon</strong> (and Node.js) will continue to run. To stop <strong>nodemon</strong>, you will have to kill it from the command line (which is easily possible if you use the <code>integratedTerminal</code> as shown above).</p>
-</blockquote><blockquote><p><strong>Tip:</strong> In case of syntax errors, <strong>nodemon</strong> will not be able to start Node.js successfully until the error has been fixed. In this case, VS Code will continue trying to attach to Node.js but eventually give up (after 10 seconds). To avoid this, you can increase the timeout by adding a <code>timeout</code> attribute with a larger value (in milliseconds).</p>
+</blockquote><blockquote><p><strong>Tip:</strong> In case of syntax errors, <strong>nodemon</strong> will not be able to start Node.js successfully until the error has been fixed. In this case, LTSerialTool will continue trying to attach to Node.js but eventually give up (after 10 seconds). To avoid this, you can increase the timeout by adding a <code>timeout</code> attribute with a larger value (in milliseconds).</p>
 </blockquote><h2 id="_restart-frame" data-needslink="_restart-frame">Restart frame</h2>
 <p>The Node debugger supports restarting execution at a stack frame. This can be useful in situations where you have found a problem in your source code and you want to rerun a small portion of the code with modified input values. Stopping and then restarting the full debug session can be time-consuming. The <strong>Restart Frame</strong> action allows you to reenter the current function after you have changed variables with the <strong>Set Value</strong> action:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/nodejs/nodejs-debugging/restartFrame.gif" alt="Restart frame" loading="lazy"></p>
@@ -2462,14 +2462,14 @@
 <p><video src="https://code.visualstudio.com/assets/docs/editor/debugging/debug-triggered-breakpoint.mp4" autoplay loop controls muted></video></p>
 <h3 id="_breakpoint-validation" data-needslink="_breakpoint-validation">Breakpoint validation</h3>
 <p>For performance reasons, Node.js parses the functions inside JavaScript files lazily on first access. As a consequence, breakpoints don't work in source code areas that haven't been seen (parsed) by Node.js.</p>
-<p>Since this behavior is not ideal for debugging, VS Code passes the <code>--nolazy</code> option to Node.js automatically. This prevents the delayed parsing and ensures that breakpoints can be validated before running the code (so they no longer &quot;jump&quot;).</p>
+<p>Since this behavior is not ideal for debugging, LTSerialTool passes the <code>--nolazy</code> option to Node.js automatically. This prevents the delayed parsing and ensures that breakpoints can be validated before running the code (so they no longer &quot;jump&quot;).</p>
 <p>Since the <code>--nolazy</code> option might increase the start-up time of the debug target significantly, you can easily opt out by passing a <code>--lazy</code> as a <code>runtimeArgs</code> attribute.</p>
-<p>When doing so, you will find that some of your breakpoints don't &quot;stick&quot; to the line requested but instead &quot;jump&quot; for the next possible line in already-parsed code. To avoid confusion, VS Code always shows breakpoints at the location where Node.js thinks the breakpoint is. In the <strong>BREAKPOINTS</strong> section, these breakpoints are shown with an arrow between requested and actual line number:</p>
+<p>When doing so, you will find that some of your breakpoints don't &quot;stick&quot; to the line requested but instead &quot;jump&quot; for the next possible line in already-parsed code. To avoid confusion, LTSerialTool always shows breakpoints at the location where Node.js thinks the breakpoint is. In the <strong>BREAKPOINTS</strong> section, these breakpoints are shown with an arrow between requested and actual line number:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/nodejs/nodejs-debugging/breakpointsvalidation.png" alt="Breakpoints View" loading="lazy"></p>
 <p>This breakpoint validation occurs when a session starts and the breakpoints are registered with Node.js, or when a session is already running and a new breakpoint is set. In this case, the breakpoint may &quot;jump&quot; to a different location. After Node.js has parsed all the code (for example, by running through it), breakpoints can be easily reapplied to the requested locations with the <strong>Reapply</strong> button in the <strong>BREAKPOINTS</strong> section header. This should make the breakpoints &quot;jump back&quot; to the requested location.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/nodejs/nodejs-debugging/breakpointstoolbar.png" alt="Breakpoint Actions" loading="lazy"></p>
 <h2 id="_skipping-uninteresting-code" data-needslink="_skipping-uninteresting-code">Skipping uninteresting code</h2>
-<p>VS Code Node.js debugging has a feature to avoid source code that you don't want to step through (also known as 'Just My Code'). This feature can be enabled with the <code>skipFiles</code> attribute in your launch configuration. <code>skipFiles</code> is an array of <a href="https://code.visualstudio.com/docs/editor/glob-patterns">glob patterns</a> for script paths to skip.</p>
+<p>LTSerialTool Node.js debugging has a feature to avoid source code that you don't want to step through (also known as 'Just My Code'). This feature can be enabled with the <code>skipFiles</code> attribute in your launch configuration. <code>skipFiles</code> is an array of <a href="https://code.visualstudio.com/docs/editor/glob-patterns">glob patterns</a> for script paths to skip.</p>
 <p>For example, using:</p>
 <pre class="shiki" data-lang="typescript" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">  "skipFiles"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: [</span></span>
 <span class="line"><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">    "${workspaceFolder}/node_modules/**/*.js"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
@@ -2514,7 +2514,7 @@
 </ol>
 </li>
 </ul>
-<p>After you have your code built, you'll want to install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.wasm-dwarf-debugging" class="external-link" target="_blank">WebAssembly DWARF Debugging</a> extension. This is shipped as a separate extension in order to keep the VS Code core 'streamlined.' Once installed, restart any active debugging sessions, and native code should then be mapped in the debugger! You should see your source code appear in the <strong>Loaded Sources</strong> view, and breakpoints should work.</p>
+<p>After you have your code built, you'll want to install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.wasm-dwarf-debugging" class="external-link" target="_blank">WebAssembly DWARF Debugging</a> extension. This is shipped as a separate extension in order to keep the LTSerialTool core 'streamlined.' Once installed, restart any active debugging sessions, and native code should then be mapped in the debugger! You should see your source code appear in the <strong>Loaded Sources</strong> view, and breakpoints should work.</p>
 <p>In the image below, the debugger is stopped on a breakpoint in C++ source code that creates a Mandelbrot fractal. The call stack is visible, with frames from the JavaScript code, to WebAssembly, to the mapped C++ code. You can also see the variables in the C++ code, and an edit to the memory associated with the int32 <code>height</code> variable.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/nodejs/nodejs-debugging/wasm-dwarf.png" alt="Debugger stopped on a breakpoint in C++ source code" loading="lazy"></p>
 <p>While close to parity, debugging WebAssembly is a little different than ordinary JavaScript:</p>
@@ -2523,25 +2523,25 @@
 <li>Basic expression evaluation in the <strong>Debug Console</strong> and <strong>Watch</strong> views is provided by <a href="https://github.com/google/lldb-eval" class="external-link" target="_blank">lldb-eval</a>. This is different than ordinary JavaScript expressions.</li>
 <li>Locations not mapped to source code will be shown in disassembled WebAssembly Text Format. For WebAssembly, the command <strong>Disable Source Map Stepping</strong> will cause the debugger to step only in disassembled code.</li>
 </ul>
-<p>VS Code's WebAssembly debugging is built upon the <a href="https://github.com/ChromeDevTools/devtools-frontend/tree/main/extensions/cxx_debugging" class="external-link" target="_blank">C/C++ Debugging Extension</a> from the Chromium authors.</p>
+<p>LTSerialTool's WebAssembly debugging is built upon the <a href="https://github.com/ChromeDevTools/devtools-frontend/tree/main/extensions/cxx_debugging" class="external-link" target="_blank">C/C++ Debugging Extension</a> from the Chromium authors.</p>
 <h2 id="_supported-nodelike-runtimes" data-needslink="_supported-nodelike-runtimes">Supported Node-like runtimes</h2>
-<p>The current VS Code JavaScript debugger supports Node version at or above 8.x, recent Chrome versions, and recent Edge versions (via the <code>msedge</code> launch type).</p>
+<p>The current LTSerialTool JavaScript debugger supports Node version at or above 8.x, recent Chrome versions, and recent Edge versions (via the <code>msedge</code> launch type).</p>
 <h2 id="_next-steps" data-needslink="_next-steps">Next steps</h2>
 <p>In case you didn't already read the Node.js section, take a look at:</p>
 <ul>
 <li><a href="https://code.visualstudio.com/docs/nodejs/nodejs-tutorial">Node.js</a> - End to end Node scenario with a sample application</li>
 </ul>
-<p>To see a tutorial on the basics of debugging in VS Code, check out this video:</p>
+<p>To see a tutorial on the basics of debugging in LTSerialTool, check out this video:</p>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=3HiLLByBWkg" class="external-link" target="_blank">Getting started with debugging in VS Code</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=3HiLLByBWkg" class="external-link" target="_blank">Getting started with debugging in LTSerialTool</a>.</li>
 </ul>
-<p>To learn about VS Code's task running support, go to:</p>
+<p>To learn about LTSerialTool's task running support, go to:</p>
 <ul>
 <li><a href="https://code.visualstudio.com/docs/debugtest/tasks">Tasks</a> - Running tasks with Gulp, Grunt, and Jake.  Showing Errors and Warnings</li>
 </ul>
 <p>To write your own debugger extension, visit:</p>
 <ul>
-<li><a href="https://code.visualstudio.com/api/extension-guides/debugger-extension">Debugger Extension</a> - Steps to create a VS Code debug extension starting from a mock sample</li>
+<li><a href="https://code.visualstudio.com/api/extension-guides/debugger-extension">Debugger Extension</a> - Steps to create a LTSerialTool debug extension starting from a mock sample</li>
 </ul>
 <h2 id="_common-questions" data-needslink="_common-questions">Common questions</h2>
 <h3 id="_can-i-debug-if-im-using-symlinks" data-needslink="_can-i-debug-if-im-using-symlinks">Can I debug if I'm using symlinks?</h3>
@@ -2630,28 +2630,28 @@
 				<div class="footer-social">
 					<ul class="links">
 						<li>
-							<a href="https://github.com/microsoft/vscode"><img src="https://code.visualstudio.com/assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+							<a href="https://github.com/microsoft/vscode"><img src="https://code.visualstudio.com/assets/icons/github-icon.svg" alt="LTSerialTool on Github"></a>
 						</li>
 						<li>
 							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="https://code.visualstudio.com/assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
 						</li>
 						<li>
-							<a href="https://www.linkedin.com/showcase/vs-code"><img src="https://code.visualstudio.com/assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="https://code.visualstudio.com/assets/icons/linkedin-icon.svg" alt="LTSerialTool on LinkedIn"></a>
 						</li>
 						<li>
-							<a href="https://bsky.app/profile/vscode.dev"><img src="https://code.visualstudio.com/assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="https://code.visualstudio.com/assets/icons/bluesky-icon.svg" alt="LTSerialTool on Bluesky"></a>
 						</li>
 						<li>
-							<a href="https://www.reddit.com/r/vscode/"><img src="https://code.visualstudio.com/assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+							<a href="https://www.reddit.com/r/vscode/"><img src="https://code.visualstudio.com/assets/icons/reddit-icon.svg" alt="Join the LTSerialTool community on Reddit"></a>
 						</li>
 						<li>
-							<a href="https://www.vscodepodcast.com/"><img src="https://code.visualstudio.com/assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+							<a href="https://www.vscodepodcast.com/"><img src="https://code.visualstudio.com/assets/icons/podcast-icon.svg" alt="The LTSerialTool Insiders Podcast"></a>
 						</li>
 						<li>
-							<a href="https://www.tiktok.com/@vscode"><img src="https://code.visualstudio.com/assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+							<a href="https://www.tiktok.com/@vscode"><img src="https://code.visualstudio.com/assets/icons/tiktok-icon.svg" alt="LTSerialTool on TikTok"></a>
 						</li>
 						<li>
-							<a href="https://www.youtube.com/@code"><img src="https://code.visualstudio.com/assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+							<a href="https://www.youtube.com/@code"><img src="https://code.visualstudio.com/assets/icons/youtube-icon.svg" alt="LTSerialTool on YouTube"></a>
 						</li>
 						<script>
 							function manageConsent() {
@@ -2713,7 +2713,7 @@
 			},
 			"applicationCategory": "DeveloperApplication",
 			"applicationSubCategory": "Text Editor",
-			"alternateName": "VS Code",
+			"alternateName": "LTSerialTool",
 			"datePublished": "2021-11-03",
 			"operatingSystem": "Mac, Linux, Windows",
 			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",

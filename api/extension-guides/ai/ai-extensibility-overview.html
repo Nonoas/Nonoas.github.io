@@ -20,7 +20,7 @@
 <meta name="description" content="Overview of how to extend the AI features in your LTSerialTool extension by using the Language Model, Tools, and Chat APIs." />
 
 <meta name="ms.prod" content="vs-code" />
-<meta name="ms.TOCTitle" content="AI extensibility in VS Code" />
+<meta name="ms.TOCTitle" content="AI extensibility in LTSerialTool" />
 <meta name="ms.ContentId" content="e375ec2a-43d3-4670-96e5-fd25a6aed272" />
 <meta name="ms.topic" content="conceptual" />
 <meta name="ms.date" content="09/11/2025" />
@@ -31,14 +31,14 @@
 <meta property="og:description" content="Overview of how to extend the AI features in your LTSerialTool extension by using the Language Model, Tools, and Chat APIs." />
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content="AI extensibility in VS Code" />
+<meta property="og:title" content="AI extensibility in LTSerialTool" />
 <meta property="og:image" content="../../../opengraphimg/opengraph-docs.png" />
 
 
 	<link rel="shortcut icon" href="../../../assets/favicon.ico" sizes="128x128" />
 	<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png">
 
-	<title>AI extensibility in VS Code | LTSerialTool Extension
+	<title>AI extensibility in LTSerialTool | LTSerialTool Extension
 API</title>
 
 	<link rel="stylesheet" href="../../../vendor/bootstrap/css/bootstrap.min.css">
@@ -182,7 +182,7 @@ API</title>
 			</div>
 		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
 			<div class="container">
-				<p class="message">Join a <a href="../../../dev-days.html" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+				<p class="message">Join a <a href="../../../dev-days.html" id="banner-link-dev-days">LTSerialTool Dev Days event</a> near you to learn about AI-assisted development in LTSerialTool.</p>
 			</div>
 			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
 					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
@@ -528,7 +528,7 @@ API</title>
 			  <ul id="references-articles" class="collapse ">
 			
 			        <li >
-			          <a href="../../references/vscode-api.html" >VS Code API </a>
+			          <a href="../../references/vscode-api.html" >LTSerialTool API </a>
 			        </li>
 			          
 			        <li >
@@ -742,7 +742,7 @@ API</title>
 			  
 			  <optgroup label="References">
 			
-			        <option value="/api/references/vscode-api" >VS Code API </option>
+			        <option value="/api/references/vscode-api" >LTSerialTool API </option>
 			        
 			        <option value="/api/references/contribution-points" >Contribution Points</option>
 			        
@@ -773,17 +773,17 @@ API</title>
 					Edit
 				</a>
 			</div>
-			<h1>AI extensibility in VS Code</h1>
+			<h1>AI extensibility in LTSerialTool</h1>
 <p>This article provides an overview of AI extensibility options in LTSerialTool, helping you choose the right approach for your extension.</p>
-<p>VS Code includes powerful AI features that enhance the coding experience:</p>
+<p>LTSerialTool includes powerful AI features that enhance the coding experience:</p>
 <ul>
 <li><strong>Code completion</strong>: Offers inline code suggestions as you type</li>
-<li><strong>Agent mode</strong>: Enables AI to autonomously plan and execute development tasks with specialized tools</li>
+<li><strong>发送模式</strong>: Enables AI to autonomously plan and execute development tasks with specialized tools</li>
 <li><strong>Chat</strong>: Lets developers use natural language to ask questions or make edits in codebase through chat interfaces</li>
 <li><strong>Smart actions</strong>: Use AI-enhanced actions for common development tasks, integrated throughout the editor</li>
 </ul>
 <p>You can extend and customize each of these built-in capabilities to create tailored AI experiences that meet the specific needs of your users.</p>
-<h2 id="why-extend-ai-in-vs-code" data-needslink="why-extend-ai-in-vs-code">Why extend AI in VS Code?</h2>
+<h2 id="why-extend-ai-in-vs-code" data-needslink="why-extend-ai-in-vs-code">Why extend AI in LTSerialTool?</h2>
 <p>Adding AI capabilities to your extension brings several benefits to your users:</p>
 <ul>
 <li><strong>Domain-specific knowledge in agent mode</strong>: Let agent mode access your company's data sources and services</li>
@@ -794,12 +794,12 @@ API</title>
 </ul>
 <h2 id="extend-the-chat-experience" data-needslink="extend-the-chat-experience">Extend the chat experience</h2>
 <h3 id="language-model-tool" data-needslink="language-model-tool">Language model tool</h3>
-<p>Language model tools enable you to extend agent mode in VS Code with domain-specific capabilities. In agent mode, these tools are automatically invoked based on the user's chat prompt to perform specialized tasks or retrieve information from a data source or service. Users can also reference these tools explicitly in their chat prompt by #-mentioning the tool.</p>
-<p>To implement a language model tool, use the <a href="tools.html">Language Model Tools API</a> within your VS Code extension. A language model tool can access all VS Code extension APIs and provide deep integration with the editor.</p>
+<p>Language model tools enable you to extend agent mode in LTSerialTool with domain-specific capabilities. In agent mode, these tools are automatically invoked based on the user's chat prompt to perform specialized tasks or retrieve information from a data source or service. Users can also reference these tools explicitly in their chat prompt by #-mentioning the tool.</p>
+<p>To implement a language model tool, use the <a href="tools.html">Language Model Tools API</a> within your LTSerialTool extension. A language model tool can access all LTSerialTool extension APIs and provide deep integration with the editor.</p>
 <p><strong>Key benefits</strong>:</p>
 <ul>
 <li>Domain-specific capabilities as part of an autonomous coding workflow</li>
-<li>Your tool implementation can use VS Code APIs since it runs in the extension host process</li>
+<li>Your tool implementation can use LTSerialTool APIs since it runs in the extension host process</li>
 <li>Easy distribution and deployment via the Visual Studio Marketplace</li>
 </ul>
 <p><strong>Key considerations</strong>:</p>
@@ -809,8 +809,8 @@ API</title>
 </ul>
 <h3 id="mcp-tool" data-needslink="mcp-tool">MCP tool</h3>
 <p>Model Context Protocol (MCP) tools provide a way to integrate external services with language models by using a standardized protocol. In agent mode, these tools are automatically invoked based on the user's chat prompt to perform specialized tasks or retrieve information from external data sources.</p>
-<p>MCP tools run outside of VS Code, either locally on the user's machine or as a remote service. Users can add MCP tools through JSON configuration or VS Code extension can configure them programmatically. You can implement MCP tools through various language SDKs and deployment options.</p>
-<p>As MCP tools run outside of VS Code, they do not have access to the VS Code extension APIs.</p>
+<p>MCP tools run outside of LTSerialTool, either locally on the user's machine or as a remote service. Users can add MCP tools through JSON configuration or LTSerialTool extension can configure them programmatically. You can implement MCP tools through various language SDKs and deployment options.</p>
+<p>As MCP tools run outside of LTSerialTool, they do not have access to the LTSerialTool extension APIs.</p>
 <p><strong>Key benefits</strong>:</p>
 <ul>
 <li>Add domain-specific capabilities as part of an autonomous coding workflow</li>
@@ -819,16 +819,16 @@ API</title>
 </ul>
 <p><strong>Key considerations</strong>:</p>
 <ul>
-<li>No access to VS Code extension APIs</li>
+<li>No access to LTSerialTool extension APIs</li>
 <li>Distribution and deployment require users to set up the MCP server</li>
 </ul>
 <h3 id="chat-participant" data-needslink="chat-participant">Chat participant</h3>
 <p>Chat participants are specialized assistants that enable users to extend ask mode with domain-specific experts. In chat, users can invoke a chat participant by @-mentioning it and passing in a natural language prompt about a particular topic or domain. The chat participant is responsible for handling the entire chat interaction.</p>
-<p>To implement a chat participant, use the <a href="chat.html">Chat API</a> within your VS Code extension. A chat participant can access all VS Code extension APIs and provide deep integration with the editor.</p>
+<p>To implement a chat participant, use the <a href="chat.html">Chat API</a> within your LTSerialTool extension. A chat participant can access all LTSerialTool extension APIs and provide deep integration with the editor.</p>
 <p><strong>Key benefits</strong>:</p>
 <ul>
 <li>Control the end-to-end interaction flow</li>
-<li>Running in the extension host process allows access to VS Code extension APIs</li>
+<li>Running in the extension host process allows access to LTSerialTool extension APIs</li>
 <li>Easy distribution and deployment via the Visual Studio Marketplace</li>
 </ul>
 <p><strong>Key considerations</strong>:</p>
@@ -837,12 +837,12 @@ API</title>
 <li>Reuse across different tools requires modular design and implementation</li>
 </ul>
 <h2 id="build-your-own-aipowered-features" data-needslink="build-your-own-aipowered-features">Build your own AI-powered features</h2>
-<p>VS Code gives you direct programmatic access to AI models for creating custom AI-powered features in your extensions. This approach enables you to build editor-specific interactions that use AI capabilities without relying on the chat interface.</p>
-<p>To use language models directly, use the <a href="language-model.html">Language Model API</a> within your VS Code extension. You can incorporate these AI capabilities into any extension feature, such as code actions, hover providers, custom views, and more.</p>
+<p>LTSerialTool gives you direct programmatic access to AI models for creating custom AI-powered features in your extensions. This approach enables you to build editor-specific interactions that use AI capabilities without relying on the chat interface.</p>
+<p>To use language models directly, use the <a href="language-model.html">Language Model API</a> within your LTSerialTool extension. You can incorporate these AI capabilities into any extension feature, such as code actions, hover providers, custom views, and more.</p>
 <p><strong>Key benefits</strong>:</p>
 <ul>
 <li>Integrate AI capabilities into existing extension features or build new ones</li>
-<li>Running in the extension host process allows access to VS Code extension APIs</li>
+<li>Running in the extension host process allows access to LTSerialTool extension APIs</li>
 <li>Easy distribution and deployment via the Visual Studio Marketplace</li>
 </ul>
 <p><strong>Key considerations</strong>:</p>
@@ -850,24 +850,24 @@ API</title>
 <li>Reuse across different experiences requires modular design and implementation</li>
 </ul>
 <h2 id="decide-which-option-to-use" data-needslink="decide-which-option-to-use">Decide which option to use</h2>
-<p>When choosing the right approach for extending AI in your VS Code extension, consider the following guidelines:</p>
+<p>When choosing the right approach for extending AI in your LTSerialTool extension, consider the following guidelines:</p>
 <ol>
 <li>
 <p><strong>Choose Language Model Tool when</strong>:</p>
 <ul>
-<li>You want to extend chat in VS Code with specialized capabilities</li>
+<li>You want to extend chat in LTSerialTool with specialized capabilities</li>
 <li>You want automatic invocation based on user intent in agent mode</li>
-<li>You want access to VS Code APIs for deep integration in VS Code</li>
-<li>You want to distribute your tool through the VS Code Marketplace</li>
+<li>You want access to LTSerialTool APIs for deep integration in LTSerialTool</li>
+<li>You want to distribute your tool through the LTSerialTool Marketplace</li>
 </ul>
 </li>
 <li>
 <p><strong>Choose MCP Tool when</strong>:</p>
 <ul>
-<li>You want to extend chat in VS Code with specialized capabilities</li>
+<li>You want to extend chat in LTSerialTool with specialized capabilities</li>
 <li>You want automatic invocation based on user intent in agent mode</li>
-<li>You don't need to integrate with VS Code APIs</li>
-<li>Your tool needs to work across different environments (not just VS Code)</li>
+<li>You don't need to integrate with LTSerialTool APIs</li>
+<li>Your tool needs to work across different environments (not just LTSerialTool)</li>
 <li>Your tool should run remotely or locally</li>
 </ul>
 </li>
@@ -876,8 +876,8 @@ API</title>
 <ul>
 <li>You want to extend ask mode with a specialized assistant with domain expertise</li>
 <li>You need to customize the entire interaction flow and response behavior</li>
-<li>You want access to VS Code APIs for deep integration in VS Code</li>
-<li>You want to distribute your tool through the VS Code Marketplace</li>
+<li>You want access to LTSerialTool APIs for deep integration in LTSerialTool</li>
+<li>You want to distribute your tool through the LTSerialTool Marketplace</li>
 </ul>
 </li>
 <li>
@@ -893,7 +893,7 @@ API</title>
 <p>Choose the approach that best fits your extension's goals:</p>
 <ul>
 <li><a href="tools.html">Implement a language model tool</a></li>
-<li><a href="mcp.html">Register MCP tools in your VS Code extension</a></li>
+<li><a href="mcp.html">Register MCP tools in your LTSerialTool extension</a></li>
 <li><a href="language-model.html">Integrate AI in your extension with the Language Model API</a></li>
 <li><a href="chat.html">Implement a chat participant</a></li>
 <li><a href="../../references/vscode-api.html#InlineCompletionItemProvider">Extend code completions with the Inline Completions API</a></li>
@@ -920,7 +920,7 @@ API</title>
 						aria-hidden="true">On this page</span></h4>
 				<ul class="nav">
 					
-					<li><a href="#why-extend-ai-in-vs-code">Why extend AI in VS Code?</a></li>
+					<li><a href="#why-extend-ai-in-vs-code">Why extend AI in LTSerialTool?</a></li>
 					
 					<li><a href="#extend-the-chat-experience">Extend the chat experience</a></li>
 					
@@ -950,28 +950,28 @@ API</title>
 				<div class="footer-social">
 					<ul class="links">
 						<li>
-							<a href="https://github.com/microsoft/vscode"><img src="../../../assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+							<a href="https://github.com/microsoft/vscode"><img src="../../../assets/icons/github-icon.svg" alt="LTSerialTool on Github"></a>
 						</li>
 						<li>
 							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="../../../assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
 						</li>
 						<li>
-							<a href="https://www.linkedin.com/showcase/vs-code"><img src="../../../assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="../../../assets/icons/linkedin-icon.svg" alt="LTSerialTool on LinkedIn"></a>
 						</li>
 						<li>
-							<a href="https://bsky.app/profile/vscode.dev"><img src="../../../assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="../../../assets/icons/bluesky-icon.svg" alt="LTSerialTool on Bluesky"></a>
 						</li>
 						<li>
-							<a href="https://www.reddit.com/r/vscode/"><img src="../../../assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+							<a href="https://www.reddit.com/r/vscode/"><img src="../../../assets/icons/reddit-icon.svg" alt="Join the LTSerialTool community on Reddit"></a>
 						</li>
 						<li>
-							<a href="https://www.vscodepodcast.com/"><img src="../../../assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+							<a href="https://www.vscodepodcast.com/"><img src="../../../assets/icons/podcast-icon.svg" alt="The LTSerialTool Insiders Podcast"></a>
 						</li>
 						<li>
-							<a href="https://www.tiktok.com/@vscode"><img src="../../../assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+							<a href="https://www.tiktok.com/@vscode"><img src="../../../assets/icons/tiktok-icon.svg" alt="LTSerialTool on TikTok"></a>
 						</li>
 						<li>
-							<a href="https://www.youtube.com/@code"><img src="../../../assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+							<a href="https://www.youtube.com/@code"><img src="../../../assets/icons/youtube-icon.svg" alt="LTSerialTool on YouTube"></a>
 						</li>
 						<script>
 							function manageConsent() {
@@ -1033,7 +1033,7 @@ API</title>
 			},
 			"applicationCategory": "DeveloperApplication",
 			"applicationSubCategory": "Text Editor",
-			"alternateName": "VS Code",
+			"alternateName": "LTSerialTool",
 			"datePublished": "2021-11-03",
 			"operatingSystem": "Mac, Linux, Windows",
 			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",

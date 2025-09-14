@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="og:url" content="https://code.visualstudio.com/docs/python/debugging" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Python debugging in VS Code" />
+<meta property="og:title" content="Python debugging in LTSerialTool" />
 <meta property="og:description" content="Details on configuring the LTSerialTool debugger for different Python applications." />
 
 <meta property="og:image" content="https://code.visualstudio.com/assets/docs/python/tutorial/python-social.png" />
@@ -36,7 +36,7 @@
 	<link rel="shortcut icon" href="https://code.visualstudio.com/assets/favicon.ico" sizes="128x128" />
 	<link rel="apple-touch-icon" href="https://code.visualstudio.com/assets/apple-touch-icon.png">
 
-	<title>Python debugging in VS Code</title>
+	<title>Python debugging in LTSerialTool</title>
 
 	<link rel="stylesheet" href="https://code.visualstudio.com/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://code.visualstudio.com/dist/v2/style.css">
@@ -179,7 +179,7 @@
 			</div>
 		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
 			<div class="container">
-				<p class="message">Join a <a href="https://code.visualstudio.com/dev-days" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+				<p class="message">Join a <a href="https://code.visualstudio.com/dev-days" id="banner-link-dev-days">LTSerialTool Dev Days event</a> near you to learn about AI-assisted development in LTSerialTool.</p>
 			</div>
 			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
 					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
@@ -230,7 +230,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/setup/vscode-web" >VS Code for the Web</a>
+                      <a href="https://code.visualstudio.com/docs/setup/vscode-web" >LTSerialTool for the Web</a>
                     </li>
                       
                     <li >
@@ -261,7 +261,7 @@
               <ul id="getstarted-articles" class="collapse ">
             
                     <li >
-                      <a href="https://code.visualstudio.com/docs/getstarted/getting-started" >VS Code Tutorial</a>
+                      <a href="https://code.visualstudio.com/docs/getstarted/getting-started" >LTSerialTool Tutorial</a>
                     </li>
                       
                     <li >
@@ -273,7 +273,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/getstarted/personalize-vscode" >Personalize VS Code</a>
+                      <a href="https://code.visualstudio.com/docs/getstarted/personalize-vscode" >Personalize LTSerialTool</a>
                     </li>
                       
                     <li >
@@ -1284,7 +1284,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/azure/vscodeforweb" >VS Code for the Web - Azure</a>
+                      <a href="https://code.visualstudio.com/docs/azure/vscodeforweb" >LTSerialTool for the Web - Azure</a>
                     </li>
                       
                     <li >
@@ -1335,7 +1335,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/remote/vscode-server" >VS Code Server</a>
+                      <a href="https://code.visualstudio.com/docs/remote/vscode-server" >LTSerialTool Server</a>
                     </li>
                       
                     <li >
@@ -1445,7 +1445,7 @@
                     
                     <option value="/docs/setup/windows" >Windows</option>
                     
-                    <option value="/docs/setup/vscode-web" >VS Code for the Web</option>
+                    <option value="/docs/setup/vscode-web" >LTSerialTool for the Web</option>
                     
                     <option value="/docs/setup/raspberry-pi" >Raspberry Pi</option>
                     
@@ -1461,13 +1461,13 @@
               
               <optgroup label="Get Started">
             
-                    <option value="/docs/getstarted/getting-started" >VS Code Tutorial</option>
+                    <option value="/docs/getstarted/getting-started" >LTSerialTool Tutorial</option>
                     
                     <option value="/docs/getstarted/copilot-quickstart" >Copilot Quickstart</option>
                     
                     <option value="/docs/getstarted/userinterface" >User Interface</option>
                     
-                    <option value="/docs/getstarted/personalize-vscode" >Personalize VS Code</option>
+                    <option value="/docs/getstarted/personalize-vscode" >Personalize LTSerialTool</option>
                     
                     <option value="/docs/getstarted/extensions" >Install Extensions</option>
                     
@@ -1985,7 +1985,7 @@
                     
                     <option value="/docs/azure/deployment" >Deployment</option>
                     
-                    <option value="/docs/azure/vscodeforweb" >VS Code for the Web - Azure</option>
+                    <option value="/docs/azure/vscodeforweb" >LTSerialTool for the Web - Azure</option>
                     
                     <option value="/docs/azure/containers" >Containers</option>
                     
@@ -2011,7 +2011,7 @@
                     
                     <option value="/docs/remote/codespaces" >GitHub Codespaces</option>
                     
-                    <option value="/docs/remote/vscode-server" >VS Code Server</option>
+                    <option value="/docs/remote/vscode-server" >LTSerialTool Server</option>
                     
                     <option value="/docs/remote/tunnels" >Tunnels</option>
                     
@@ -2070,17 +2070,17 @@
                     Edit
                 </a>
             </div>
-            <h1>Python debugging in VS Code</h1>
+            <h1>Python debugging in LTSerialTool</h1>
 <p>The Python extension supports debugging through the <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy" class="external-link" target="_blank">Python Debugger extension</a> for several types of Python applications. For a short walkthrough of basic debugging, see <a href="https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger">Tutorial - Configure and run the debugger</a>. Also see the <a href="https://code.visualstudio.com/docs/python/tutorial-flask">Flask tutorial</a>. Both tutorials demonstrate core skills like setting breakpoints and stepping through code.</p>
-<p>For general debugging features such as inspecting variables, setting breakpoints, and other activities that aren't language-dependent, review <a href="https://code.visualstudio.com/docs/debugtest/debugging">VS Code debugging</a>.</p>
+<p>For general debugging features such as inspecting variables, setting breakpoints, and other activities that aren't language-dependent, review <a href="https://code.visualstudio.com/docs/debugtest/debugging">LTSerialTool debugging</a>.</p>
 <p>This article mainly addresses Python-specific debugging <em>configurations</em>, including the necessary steps for specific app types and remote debugging.</p>
 <h2 id="_python-debugger-extension" data-needslink="_python-debugger-extension">Python Debugger Extension</h2>
-<p>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy" class="external-link" target="_blank">Python Debugger extension</a> is automatically installed along with the <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python" class="external-link" target="_blank">Python extension</a> for VS Code. It offers debugging features with <a href="https://pypi.org/project/debugpy/" class="external-link" target="_blank">debugpy</a> for several types of Python applications, including scripts, web apps, remote processes and more.</p>
+<p>The <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy" class="external-link" target="_blank">Python Debugger extension</a> is automatically installed along with the <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python" class="external-link" target="_blank">Python extension</a> for LTSerialTool. It offers debugging features with <a href="https://pypi.org/project/debugpy/" class="external-link" target="_blank">debugpy</a> for several types of Python applications, including scripts, web apps, remote processes and more.</p>
 <p>To verify it's installed, open the <strong>Extensions</strong> view (<span class="dynamic-keybinding" data-commandId="workbench.view.extensions" data-osx="⇧⌘X" data-win="Ctrl+Shift+X" data-linux="Ctrl+Shift+X"><span class="keybinding">⇧⌘X</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+X</span>)</span>) and search for <code>@installed python debugger</code>. You should see the Python Debugger extension listed in the results.</p>
-<p><img src="https://code.visualstudio.com/assets/docs/python/shared/python-debugger-extension.png" alt="Python Debugger extension shown in installed extensions view in VS Code." loading="lazy"></p>
+<p><img src="https://code.visualstudio.com/assets/docs/python/shared/python-debugger-extension.png" alt="Python Debugger extension shown in installed extensions view in LTSerialTool." loading="lazy"></p>
 <p>You can refer to the extension's <a href="https://github.com/microsoft/vscode-python-debugger/blob/main/README.md" class="external-link" target="_blank">README</a> page for information on supported Python versions.</p>
 <h2 id="_initialize-configurations" data-needslink="_initialize-configurations">Initialize configurations</h2>
-<p>A configuration drives VS Code's behavior during a debugging session. Configurations are defined in a <code>launch.json</code> file that's stored in a <code>.vscode</code> folder in your workspace.</p>
+<p>A configuration drives LTSerialTool's behavior during a debugging session. Configurations are defined in a <code>launch.json</code> file that's stored in a <code>.vscode</code> folder in your workspace.</p>
 <blockquote><p><strong>Note</strong>: To change debugging configuration, your code must be stored in a folder.</p>
 </blockquote><p>To initialize debug configurations, first select the <strong>Run</strong> view in the sidebar:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/python/debugging/debug-icon.png" alt="Run icon" loading="lazy"></p>
@@ -2106,14 +2106,14 @@
 </ol>
 <p>The details of configuration properties are covered later in this article under <a href="#_set-configuration-options">Standard configuration and options</a>. Other configurations are also described in this article under <a href="#_debugging-specific-app-types">Debugging specific app types</a>.</p>
 <h2 id="_additional-configurations" data-needslink="_additional-configurations">Additional configurations</h2>
-<p>By default, VS Code shows only the most common configurations provided by the Python Debugger extension. You can select other configurations to include in <code>launch.json</code> by using the <strong>Add Configuration</strong> command shown in the list and the <code>launch.json</code> editor. When you use the command, VS Code prompts you with a list of all available configurations (be sure to select the <strong>Python</strong> option):</p>
+<p>By default, LTSerialTool shows only the most common configurations provided by the Python Debugger extension. You can select other configurations to include in <code>launch.json</code> by using the <strong>Add Configuration</strong> command shown in the list and the <code>launch.json</code> editor. When you use the command, LTSerialTool prompts you with a list of all available configurations (be sure to select the <strong>Python</strong> option):</p>
 <p><img src="https://code.visualstudio.com/assets/docs/python/debugging/add-configuration.png" alt="Adding a new Python debugging configuration" loading="lazy"></p>
 <p>Selecting the <strong>Attach using Process ID</strong> one yields the following result:
 <img src="https://code.visualstudio.com/assets/docs/python/debugging/added-configuration.png" alt="Added a configuration" loading="lazy"></p>
 <p>See <a href="#_debugging-specific-app-types">Debugging specific app types</a> for details on all of these configurations.</p>
 <p>During debugging, the Status Bar shows the current configuration and the current debugging interpreter. Selecting the configuration brings up a list from which you can choose a different configuration:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/python/debugging/debug-status-bar.png" alt="Debugging Status Bar" loading="lazy"></p>
-<p>By default, the debugger uses the same interpreter selected for your workspace, just like other features of Python extension for VS Code. To use a different interpreter for debugging specifically, set the value for <code>python</code> in <code>launch.json</code> for the applicable debugger configuration. Alternately, use the Python interpreter indicator on the Status Bar to select a different one.</p>
+<p>By default, the debugger uses the same interpreter selected for your workspace, just like other features of Python extension for LTSerialTool. To use a different interpreter for debugging specifically, set the value for <code>python</code> in <code>launch.json</code> for the applicable debugger configuration. Alternately, use the Python interpreter indicator on the Status Bar to select a different one.</p>
 <h2 id="_basic-debugging" data-needslink="_basic-debugging">Basic debugging</h2>
 <p>If you're only interested in debugging a Python script, the simplest way is to select the down-arrow next to the run button on the editor and select <strong>Python Debugger: Debug Python File</strong>.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/python/debugging/debug-button-editor.png" alt="Debug button on the top-right of the editor" loading="lazy"></p>
@@ -2129,7 +2129,7 @@
 <p>The debugger can also be run from the command line, if <code>debugpy</code> is installed in your Python environment.</p>
 <h3 id="_install-debugpy" data-needslink="_install-debugpy">Install debugpy</h3>
 <p>You can install <a href="https://pypi.org/project/debugpy/" class="external-link" target="_blank">debugpy</a> using <code>python -m pip install --upgrade debugpy</code> into your Python environment.</p>
-<blockquote><p><strong>Tip</strong>: While using a virtual environment is not required, it is a recommended best practice. You can create a virtual environment in VS Code by opening the Command Palette (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>) and running the <strong>Python: Create Virtual Environment</strong> command (<span class="dynamic-keybinding" data-commandId="workbench.action.terminal.newWithProfilePython"></span>).</p>
+<blockquote><p><strong>Tip</strong>: While using a virtual environment is not required, it is a recommended best practice. You can create a virtual environment in LTSerialTool by opening the Command Palette (<span class="dynamic-keybinding" data-commandId="workbench.action.showCommands" data-osx="⇧⌘P" data-win="Ctrl+Shift+P" data-linux="Ctrl+Shift+P"><span class="keybinding">⇧⌘P</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+P</span>)</span>) and running the <strong>Python: Create Virtual Environment</strong> command (<span class="dynamic-keybinding" data-commandId="workbench.action.terminal.newWithProfilePython"></span>).</p>
 </blockquote><h3 id="_command-line-syntax" data-needslink="_command-line-syntax">Command line syntax</h3>
 <p>The debugger command line syntax is as follows:</p>
 <pre class="shiki" data-lang="bash" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">python</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> -m</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> debugpy</span></span>
@@ -2145,7 +2145,7 @@
 <p>From the command line, you could start the debugger using a specified port (5678) and script using the following syntax. This example assumes the script is long-running and omits the <code>--wait-for-client</code> flag, meaning that the script will not wait for the client to attach.</p>
 <pre class="shiki" data-lang="bash" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">python</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> -m</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> debugpy</span><span style="--shiki-dark:#569CD6;--shiki-light:#0000FF"> --listen</span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658"> 5678</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515"> ./myscript.py</span></span>
 <span class="line"></span></code></pre>
-<p>You would then use the following configuration to attach from the VS Code Python Debugger extension.</p>
+<p>You would then use the following configuration to attach from the LTSerialTool Python Debugger extension.</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "name"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"Python Debugger: Attach"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "type"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"debugpy"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
@@ -2185,7 +2185,7 @@
 <tr>
 <td><strong>--listen</strong> or <strong>--connect</strong></td>
 <td><code>[&lt;host&gt;:]&lt;port&gt;</code></td>
-<td><strong>Required</strong>. Specifies the host address and port for the debug adapter server to wait for incoming connections (--listen) or to connect with a client that is waiting for an incoming connection (--connect). This is the same address that is used in the VS Code debug configuration. By default, the host address is <code>localhost (127.0.0.1)</code>.</td>
+<td><strong>Required</strong>. Specifies the host address and port for the debug adapter server to wait for incoming connections (--listen) or to connect with a client that is waiting for an incoming connection (--connect). This is the same address that is used in the LTSerialTool debug configuration. By default, the host address is <code>localhost (127.0.0.1)</code>.</td>
 </tr>
 <tr>
 <td><strong>--wait-for-client</strong></td>
@@ -2217,16 +2217,16 @@
 <blockquote><p><strong>Note</strong>: <code>[&lt;arg&gt;]</code> can be used to pass command-line arguments along to the app being launched.</p>
 </blockquote><h2 id="_debugging-by-attaching-over-a-network-connection" data-needslink="_debugging-by-attaching-over-a-network-connection">Debugging by attaching over a network connection</h2>
 <h3 id="_local-script-debugging" data-needslink="_local-script-debugging">Local script debugging</h3>
-<p>There may be instances where you need to debug a Python script that's invoked locally by another process. For example, you may be debugging a web server that runs different Python scripts for specific processing jobs. In such cases, you need to attach the VS Code debugger to the script once it's been launched:</p>
+<p>There may be instances where you need to debug a Python script that's invoked locally by another process. For example, you may be debugging a web server that runs different Python scripts for specific processing jobs. In such cases, you need to attach the LTSerialTool debugger to the script once it's been launched:</p>
 <ol>
 <li>
-<p>Run VS Code, open the folder or workspace containing the script, and create a <code>launch.json</code> for that workspace if one doesn't exist already.</p>
+<p>Run LTSerialTool, open the folder or workspace containing the script, and create a <code>launch.json</code> for that workspace if one doesn't exist already.</p>
 </li>
 <li>
 <p>In the script code, add the following and save the file:</p>
 <pre class="shiki" data-lang="python" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#C586C0;--shiki-light:#AF00DB">import</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> debugpy</span></span>
 <span class="line"></span>
-<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000"># 5678 is the default attach port in the VS Code debug configurations. Unless a host and port are specified, host defaults to 127.0.0.1</span></span>
+<span class="line"><span style="--shiki-dark:#6A9955;--shiki-light:#008000"># 5678 is the default attach port in the LTSerialTool debug configurations. Unless a host and port are specified, host defaults to 127.0.0.1</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">debugpy.listen(</span><span style="--shiki-dark:#B5CEA8;--shiki-light:#098658">5678</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">)</span></span>
 <span class="line"><span style="--shiki-dark:#DCDCAA;--shiki-light:#795E26">print</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">(</span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"Waiting for debugger attach"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">)</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">debugpy.wait_for_client()</span></span>
@@ -2251,7 +2251,7 @@
 </li>
 </ol>
 <h3 id="_remote-script-debugging-with-ssh" data-needslink="_remote-script-debugging-with-ssh">Remote script debugging with SSH</h3>
-<p>Remote debugging allows you to step through a program locally within VS Code while it runs on a remote computer. It is not necessary to install VS Code on the remote computer. For added security, you may want or need to use a secure connection, such as SSH, to the remote computer when debugging.</p>
+<p>Remote debugging allows you to step through a program locally within LTSerialTool while it runs on a remote computer. It is not necessary to install LTSerialTool on the remote computer. For added security, you may want or need to use a secure connection, such as SSH, to the remote computer when debugging.</p>
 <blockquote><p><strong>Note</strong>: On Windows computers, you may need to install <a href="https://learn.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse" class="external-link" target="_blank">Windows 10 OpenSSH</a> to have the <code>ssh</code> command.</p>
 </blockquote><p>The following steps outline the general process to set up an SSH tunnel. An SSH tunnel allows you to work on your local machine as if you were working directly on the remote in a more secure manner than if a port was opened for public access.</p>
 <p><strong>On the remote computer:</strong></p>
@@ -2275,7 +2275,7 @@
 <p>Verify that you can see a prompt in the SSH session.</p>
 </li>
 <li>
-<p>In your VS Code workspace, create a configuration for remote debugging in your <code>launch.json</code> file, setting the port to match the port used in the <code>ssh</code> command and the host to <code>localhost</code>. You use <code>localhost</code> here because you've set up the SSH tunnel.</p>
+<p>In your LTSerialTool workspace, create a configuration for remote debugging in your <code>launch.json</code> file, setting the port to match the port used in the <code>ssh</code> command and the host to <code>localhost</code>. You use <code>localhost</code> here because you've set up the SSH tunnel.</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "name"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"Python Debugger: Attach"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "type"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"debugpy"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">,</span></span>
@@ -2336,13 +2336,13 @@
 <span class="line"></span></code></pre>
 </li>
 <li>
-<p>Local computer: switch to the <strong>Run and Debug</strong> view (<span class="dynamic-keybinding" data-commandId="workbench.view.debug" data-osx="⇧⌘D" data-win="Ctrl+Shift+D" data-linux="Ctrl+Shift+D"><span class="keybinding">⇧⌘D</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+D</span>)</span>) in VS Code, select the <strong>Python Debugger: Attach</strong> configuration</p>
+<p>Local computer: switch to the <strong>Run and Debug</strong> view (<span class="dynamic-keybinding" data-commandId="workbench.view.debug" data-osx="⇧⌘D" data-win="Ctrl+Shift+D" data-linux="Ctrl+Shift+D"><span class="keybinding">⇧⌘D</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+D</span>)</span>) in LTSerialTool, select the <strong>Python Debugger: Attach</strong> configuration</p>
 </li>
 <li>
 <p>Local computer: set a breakpoint in the code where you want to start debugging.</p>
 </li>
 <li>
-<p>Local computer: start the VS Code debugger using the modified <strong>Python Debugger: Attach</strong> configuration and the Start Debugging button. VS Code should stop on your locally set breakpoints, allowing you to step through the code, examine variables, and perform all other debugging actions. Expressions that you enter in the <strong>Debug Console</strong> are run on the remote computer as well.</p>
+<p>Local computer: start the LTSerialTool debugger using the modified <strong>Python Debugger: Attach</strong> configuration and the Start Debugging button. LTSerialTool should stop on your locally set breakpoints, allowing you to step through the code, examine variables, and perform all other debugging actions. Expressions that you enter in the <strong>Debug Console</strong> are run on the remote computer as well.</p>
 <p>Text output to stdout, as from <code>print</code> statements, appears on both computers. Other outputs, such as graphical plots from a package like matplotlib, however, appear only on the remote computer.</p>
 </li>
 <li>
@@ -2352,7 +2352,7 @@
 </li>
 </ol>
 <h2 id="_set-configuration-options" data-needslink="_set-configuration-options">Set configuration options</h2>
-<p>When you first create <code>launch.json</code>, there are two standard configurations that run the active file in the editor in either the integrated terminal (inside VS Code) or the external terminal (outside of VS Code):</p>
+<p>When you first create <code>launch.json</code>, there are two standard configurations that run the active file in the editor in either the integrated terminal (inside LTSerialTool) or the external terminal (outside of LTSerialTool):</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "configurations"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: [</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    {</span></span>
@@ -2383,7 +2383,7 @@
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000"> },</span></span>
 <span class="line"></span></code></pre>
 <h3 id="_name" data-needslink="_name"><code>name</code></h3>
-<p>Provides the name for the debug configuration that appears in the VS Code dropdown list.</p>
+<p>Provides the name for the debug configuration that appears in the LTSerialTool dropdown list.</p>
 <h3 id="_type" data-needslink="_type"><code>type</code></h3>
 <p>Identifies the type of debugger to use; leave this set to <code>debugpy</code> for debugging Python code.</p>
 <h3 id="_request" data-needslink="_request"><code>request</code></h3>
@@ -2428,11 +2428,11 @@
 <tbody>
 <tr>
 <td><code>&quot;internalConsole&quot;</code></td>
-<td><strong>VS Code debug console.</strong> If <code>redirectOutput</code> is set to False, no output is displayed.</td>
+<td><strong>LTSerialTool debug console.</strong> If <code>redirectOutput</code> is set to False, no output is displayed.</td>
 </tr>
 <tr>
 <td><code>&quot;integratedTerminal&quot;</code> (default)</td>
-<td><a href="https://code.visualstudio.com/docs/terminal/basics">VS Code Integrated Terminal</a>. If <code>redirectOutput</code> is set to True, output is also displayed in the debug console.</td>
+<td><a href="https://code.visualstudio.com/docs/terminal/basics">LTSerialTool Integrated Terminal</a>. If <code>redirectOutput</code> is set to True, output is also displayed in the debug console.</td>
 </tr>
 <tr>
 <td><code>&quot;externalTerminal&quot;</code></td>
@@ -2441,7 +2441,7 @@
 </tbody>
 </table>
 <h3 id="_purpose" data-needslink="_purpose"><code>purpose</code></h3>
-<p>There is more than one way to configure the <strong>Run</strong> button, using the <code>purpose</code> option. Setting the option to <code>debug-test</code>, defines that the configuration should be used when debugging tests in VS Code.
+<p>There is more than one way to configure the <strong>Run</strong> button, using the <code>purpose</code> option. Setting the option to <code>debug-test</code>, defines that the configuration should be used when debugging tests in LTSerialTool.
 However, setting the option to <code>debug-in-terminal</code>, defines that the configuration should only be used when accessing the <strong>Run Python File</strong> button on the top-right of the editor (regardless of whether the <strong>Run Python File</strong> or <strong>Debug Python File</strong> options the button provides is used).
 <strong>Note</strong>: The <code>purpose</code> option can't be used to start the debugger through <span class="keybinding">F5</span> or <strong>Run &gt; Start Debugging</strong>.</p>
 <h3 id="_autoreload" data-needslink="_autoreload"><code>autoReload</code></h3>
@@ -2461,7 +2461,7 @@ However, setting the option to <code>debug-in-terminal</code>, defines that the 
 </blockquote><h3 id="_subprocess" data-needslink="_subprocess"><code>subProcess</code></h3>
 <p>Specifies whether to enable subprocess debugging. Defaults to <code>false</code>, set to <code>true</code> to enable. For more information, see <a href="https://code.visualstudio.com/docs/debugtest/debugging#_multi-target-debugging">multi-target debugging</a>.</p>
 <h3 id="_cwd" data-needslink="_cwd"><code>cwd</code></h3>
-<p>Specifies the current working directory for the debugger, which is the base folder for any relative paths used in code. If omitted, defaults to <code>${workspaceFolder}</code> (the folder open in VS Code).</p>
+<p>Specifies the current working directory for the debugger, which is the base folder for any relative paths used in code. If omitted, defaults to <code>${workspaceFolder}</code> (the folder open in LTSerialTool).</p>
 <p>As an example, say <code>${workspaceFolder}</code> contains a <code>py_code</code> folder containing <code>app.py</code>, and a <code>data</code> folder containing <code>salaries.csv</code>. If you start the debugger on <code>py_code/app.py</code>, then the relative paths to the data file vary depending on the value of <code>cwd</code>:</p>
 <table class="table table-striped">
 <thead>
@@ -2486,7 +2486,7 @@ However, setting the option to <code>debug-in-terminal</code>, defines that the 
 </tbody>
 </table>
 <h3 id="_redirectoutput" data-needslink="_redirectoutput"><code>redirectOutput</code></h3>
-<p>When set to <code>true</code> (the default for internalConsole), causes the debugger to print all output from the program into the VS Code debug output window. If set to <code>false</code> (the default for integratedTerminal and externalTerminal), program output is not displayed in the debugger output window.</p>
+<p>When set to <code>true</code> (the default for internalConsole), causes the debugger to print all output from the program into the LTSerialTool debug output window. If set to <code>false</code> (the default for integratedTerminal and externalTerminal), program output is not displayed in the debugger output window.</p>
 <p>This option is typically disabled when using <code>&quot;console&quot;: &quot;integratedTerminal&quot;</code> or <code>&quot;console&quot;: &quot;externalTerminal&quot;</code> because there's no need to duplicate the output in the debug console.</p>
 <h3 id="_justmycode" data-needslink="_justmycode"><code>justMyCode</code></h3>
 <p>When omitted or set to <code>true</code> (the default), restricts debugging to user-written code only. Set to <code>false</code> to also enable debugging of standard library functions.</p>
@@ -2507,7 +2507,7 @@ However, setting the option to <code>debug-in-terminal</code>, defines that the 
 <h2 id="_breakpoints-and-logpoints" data-needslink="_breakpoints-and-logpoints">Breakpoints and logpoints</h2>
 <p>The Python Debugger extension supports <a href="https://code.visualstudio.com/docs/debugtest/debugging#_breakpoints">breakpoints</a> and <a href="https://code.visualstudio.com/docs/debugtest/debugging#_logpoints">logpoints</a> for debugging code. For a short walkthrough of basic debugging and using breakpoints, see <a href="https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger">Tutorial - Configure and run the debugger</a>.</p>
 <h3 id="_conditional-breakpoints" data-needslink="_conditional-breakpoints">Conditional breakpoints</h3>
-<p>Breakpoints can also be set to trigger based on expressions, hit counts, or a combination of both. The Python Debugger extension supports hit counts that are integers, in addition to integers preceded by the ==, &gt;, &gt;=, &lt;, &lt;=, and % operators. For example, you could set a breakpoint to trigger after five occurrences by setting a hit count of <code>&gt;5</code>  For more information, see <a href="https://code.visualstudio.com/docs/debugtest/debugging#_conditional-breakpoints">conditional breakpoints</a> in the main VS Code debugging article.</p>
+<p>Breakpoints can also be set to trigger based on expressions, hit counts, or a combination of both. The Python Debugger extension supports hit counts that are integers, in addition to integers preceded by the ==, &gt;, &gt;=, &lt;, &lt;=, and % operators. For example, you could set a breakpoint to trigger after five occurrences by setting a hit count of <code>&gt;5</code>  For more information, see <a href="https://code.visualstudio.com/docs/debugtest/debugging#_conditional-breakpoints">conditional breakpoints</a> in the main LTSerialTool debugging article.</p>
 <h3 id="_invoking-a-breakpoint-in-code" data-needslink="_invoking-a-breakpoint-in-code">Invoking a breakpoint in code</h3>
 <p>In your Python code, you can call <code>debugpy.breakpoint()</code> at any point where you want to pause the debugger during a debugging session.</p>
 <h3 id="_breakpoint-validation" data-needslink="_breakpoint-validation">Breakpoint validation</h3>
@@ -2585,7 +2585,7 @@ However, setting the option to <code>debug-in-terminal</code>, defines that the 
 <p>There are many reasons why the debugger may not work. Sometimes the debug console reveals specific causes, but the main reasons are as follows:</p>
 <ul>
 <li>
-<p>Make sure the <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy" class="external-link" target="_blank">Python Debugger extension</a> is installed and enabled in VS Code by opening the <strong>Extensions</strong> view (<span class="dynamic-keybinding" data-commandId="workbench.view.extensions" data-osx="⇧⌘X" data-win="Ctrl+Shift+X" data-linux="Ctrl+Shift+X"><span class="keybinding">⇧⌘X</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+X</span>)</span>) and searching for <code>@installed python debugger</code>.</p>
+<p>Make sure the <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.debugpy" class="external-link" target="_blank">Python Debugger extension</a> is installed and enabled in LTSerialTool by opening the <strong>Extensions</strong> view (<span class="dynamic-keybinding" data-commandId="workbench.view.extensions" data-osx="⇧⌘X" data-win="Ctrl+Shift+X" data-linux="Ctrl+Shift+X"><span class="keybinding">⇧⌘X</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+X</span>)</span>) and searching for <code>@installed python debugger</code>.</p>
 </li>
 <li>
 <p>The path to the python executable is incorrect: check the path of your selected interpreter by running the <strong>Python: Select Interpreter</strong> command and looking at the current value:</p>
@@ -2613,8 +2613,8 @@ However, setting the option to <code>debug-in-terminal</code>, defines that the 
 <ul>
 <li><a href="https://code.visualstudio.com/docs/python/environments">Python environments</a> - Control which Python interpreter is used for editing and debugging.</li>
 <li><a href="https://code.visualstudio.com/docs/python/testing">Testing</a> - Configure test environments and discover, run, and debug tests.</li>
-<li><a href="https://code.visualstudio.com/docs/python/settings-reference">Settings reference</a> - Explore the full range of Python-related settings in VS Code.</li>
-<li><a href="https://code.visualstudio.com/docs/debugtest/debugging">General debugging</a> - Learn about the debugging features of VS Code.</li>
+<li><a href="https://code.visualstudio.com/docs/python/settings-reference">Settings reference</a> - Explore the full range of Python-related settings in LTSerialTool.</li>
+<li><a href="https://code.visualstudio.com/docs/debugtest/debugging">General debugging</a> - Learn about the debugging features of LTSerialTool.</li>
 </ul>
 
             <div class="feedback"></div>
@@ -2673,28 +2673,28 @@ However, setting the option to <code>debug-in-terminal</code>, defines that the 
 				<div class="footer-social">
 					<ul class="links">
 						<li>
-							<a href="https://github.com/microsoft/vscode"><img src="https://code.visualstudio.com/assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+							<a href="https://github.com/microsoft/vscode"><img src="https://code.visualstudio.com/assets/icons/github-icon.svg" alt="LTSerialTool on Github"></a>
 						</li>
 						<li>
 							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="https://code.visualstudio.com/assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
 						</li>
 						<li>
-							<a href="https://www.linkedin.com/showcase/vs-code"><img src="https://code.visualstudio.com/assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="https://code.visualstudio.com/assets/icons/linkedin-icon.svg" alt="LTSerialTool on LinkedIn"></a>
 						</li>
 						<li>
-							<a href="https://bsky.app/profile/vscode.dev"><img src="https://code.visualstudio.com/assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="https://code.visualstudio.com/assets/icons/bluesky-icon.svg" alt="LTSerialTool on Bluesky"></a>
 						</li>
 						<li>
-							<a href="https://www.reddit.com/r/vscode/"><img src="https://code.visualstudio.com/assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+							<a href="https://www.reddit.com/r/vscode/"><img src="https://code.visualstudio.com/assets/icons/reddit-icon.svg" alt="Join the LTSerialTool community on Reddit"></a>
 						</li>
 						<li>
-							<a href="https://www.vscodepodcast.com/"><img src="https://code.visualstudio.com/assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+							<a href="https://www.vscodepodcast.com/"><img src="https://code.visualstudio.com/assets/icons/podcast-icon.svg" alt="The LTSerialTool Insiders Podcast"></a>
 						</li>
 						<li>
-							<a href="https://www.tiktok.com/@vscode"><img src="https://code.visualstudio.com/assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+							<a href="https://www.tiktok.com/@vscode"><img src="https://code.visualstudio.com/assets/icons/tiktok-icon.svg" alt="LTSerialTool on TikTok"></a>
 						</li>
 						<li>
-							<a href="https://www.youtube.com/@code"><img src="https://code.visualstudio.com/assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+							<a href="https://www.youtube.com/@code"><img src="https://code.visualstudio.com/assets/icons/youtube-icon.svg" alt="LTSerialTool on YouTube"></a>
 						</li>
 						<script>
 							function manageConsent() {
@@ -2756,7 +2756,7 @@ However, setting the option to <code>debug-in-terminal</code>, defines that the 
 			},
 			"applicationCategory": "DeveloperApplication",
 			"applicationSubCategory": "Text Editor",
-			"alternateName": "VS Code",
+			"alternateName": "LTSerialTool",
 			"datePublished": "2021-11-03",
 			"operatingSystem": "Mac, Linux, Windows",
 			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",

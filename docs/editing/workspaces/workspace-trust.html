@@ -179,7 +179,7 @@
 			</div>
 		</div>		<div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
 			<div class="container">
-				<p class="message">Join a <a href="https://code.visualstudio.com/dev-days" id="banner-link-dev-days">VS Code Dev Days event</a> near you to learn about AI-assisted development in VS Code.</p>
+				<p class="message">Join a <a href="https://code.visualstudio.com/dev-days" id="banner-link-dev-days">LTSerialTool Dev Days event</a> near you to learn about AI-assisted development in LTSerialTool.</p>
 			</div>
 			<div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
 					class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
@@ -230,7 +230,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/setup/vscode-web" >VS Code for the Web</a>
+                      <a href="https://code.visualstudio.com/docs/setup/vscode-web" >LTSerialTool for the Web</a>
                     </li>
                       
                     <li >
@@ -261,7 +261,7 @@
               <ul id="getstarted-articles" class="collapse ">
             
                     <li >
-                      <a href="https://code.visualstudio.com/docs/getstarted/getting-started" >VS Code Tutorial</a>
+                      <a href="https://code.visualstudio.com/docs/getstarted/getting-started" >LTSerialTool Tutorial</a>
                     </li>
                       
                     <li >
@@ -273,7 +273,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/getstarted/personalize-vscode" >Personalize VS Code</a>
+                      <a href="https://code.visualstudio.com/docs/getstarted/personalize-vscode" >Personalize LTSerialTool</a>
                     </li>
                       
                     <li >
@@ -1284,7 +1284,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/azure/vscodeforweb" >VS Code for the Web - Azure</a>
+                      <a href="https://code.visualstudio.com/docs/azure/vscodeforweb" >LTSerialTool for the Web - Azure</a>
                     </li>
                       
                     <li >
@@ -1335,7 +1335,7 @@
                     </li>
                       
                     <li >
-                      <a href="https://code.visualstudio.com/docs/remote/vscode-server" >VS Code Server</a>
+                      <a href="https://code.visualstudio.com/docs/remote/vscode-server" >LTSerialTool Server</a>
                     </li>
                       
                     <li >
@@ -1445,7 +1445,7 @@
                     
                     <option value="/docs/setup/windows" >Windows</option>
                     
-                    <option value="/docs/setup/vscode-web" >VS Code for the Web</option>
+                    <option value="/docs/setup/vscode-web" >LTSerialTool for the Web</option>
                     
                     <option value="/docs/setup/raspberry-pi" >Raspberry Pi</option>
                     
@@ -1461,13 +1461,13 @@
               
               <optgroup label="Get Started">
             
-                    <option value="/docs/getstarted/getting-started" >VS Code Tutorial</option>
+                    <option value="/docs/getstarted/getting-started" >LTSerialTool Tutorial</option>
                     
                     <option value="/docs/getstarted/copilot-quickstart" >Copilot Quickstart</option>
                     
                     <option value="/docs/getstarted/userinterface" >User Interface</option>
                     
-                    <option value="/docs/getstarted/personalize-vscode" >Personalize VS Code</option>
+                    <option value="/docs/getstarted/personalize-vscode" >Personalize LTSerialTool</option>
                     
                     <option value="/docs/getstarted/extensions" >Install Extensions</option>
                     
@@ -1985,7 +1985,7 @@
                     
                     <option value="/docs/azure/deployment" >Deployment</option>
                     
-                    <option value="/docs/azure/vscodeforweb" >VS Code for the Web - Azure</option>
+                    <option value="/docs/azure/vscodeforweb" >LTSerialTool for the Web - Azure</option>
                     
                     <option value="/docs/azure/containers" >Containers</option>
                     
@@ -2011,7 +2011,7 @@
                     
                     <option value="/docs/remote/codespaces" >GitHub Codespaces</option>
                     
-                    <option value="/docs/remote/vscode-server" >VS Code Server</option>
+                    <option value="/docs/remote/vscode-server" >LTSerialTool Server</option>
                     
                     <option value="/docs/remote/tunnels" >Tunnels</option>
                     
@@ -2071,36 +2071,36 @@
                 </a>
             </div>
             <h1>Workspace Trust</h1>
-<p>LTSerialTool takes security seriously and wants to help you safely browse and edit code no matter the source or original authors. The Workspace Trust feature lets you decide whether code in your project folder can be executed by VS Code and extensions without your explicit approval.</p>
+<p>LTSerialTool takes security seriously and wants to help you safely browse and edit code no matter the source or original authors. The Workspace Trust feature lets you decide whether code in your project folder can be executed by LTSerialTool and extensions without your explicit approval.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/editing/workspaces/workspace-trust/workspace-trust-dialog.png" alt="Trust this folder dialog" loading="lazy"></p>
 <blockquote><p><strong>Note</strong>: When in doubt, leave a folder in <a href="#_restricted-mode">Restricted Mode</a>. You can always <a href="#_trusting-a-workspace">enable trust</a> later.</p>
 </blockquote><h2 id="_safe-code-browsing" data-needslink="_safe-code-browsing">Safe code browsing</h2>
 <p>It's great that there is so much source code available on public repositories and file shares. No matter the coding task or problem, there is probably already a good solution available somewhere. It is also great that there are so many powerful coding tools available to help you understand, debug, and optimize your code. However, using open-source code and tools does have risks, and you can leave yourself open to malicious code execution and exploits.</p>
 <p>Workspace Trust provides an extra layer of security when working with unfamiliar code, by preventing automatic code execution of any code in your workspace if the workspace is open in &quot;Restricted Mode&quot;.</p>
-<blockquote><p><strong>Note</strong>: The terms &quot;workspace&quot; and &quot;folder&quot; are used widely in the VS Code UI and documentation. You can think of a <a href="https://code.visualstudio.com/docs/editing/workspaces/workspaces">&quot;workspace&quot;</a> as a folder with extra metadata created and used by VS Code.</p>
+<blockquote><p><strong>Note</strong>: The terms &quot;workspace&quot; and &quot;folder&quot; are used widely in the LTSerialTool UI and documentation. You can think of a <a href="https://code.visualstudio.com/docs/editing/workspaces/workspaces">&quot;workspace&quot;</a> as a folder with extra metadata created and used by LTSerialTool.</p>
 </blockquote><h2 id="_restricted-mode" data-needslink="_restricted-mode">Restricted Mode</h2>
-<p>When prompted by the Workspace Trust dialog, if you choose <strong>No, I don't trust the authors</strong>, VS Code goes into Restricted Mode to prevent code execution.</p>
+<p>When prompted by the Workspace Trust dialog, if you choose <strong>No, I don't trust the authors</strong>, LTSerialTool goes into Restricted Mode to prevent code execution.</p>
 <p>The workbench displays a banner at the top with a link to <strong>Manage</strong> your folder via the Workspace Trust editor. In the Status Bar, you can also see a badge that indicates that the workspace is in Restricted Mode.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/editing/workspaces/workspace-trust/restricted-mode-banner.png" alt="Workspace Trust Restricted Mode banner" loading="lazy"></p>
-<p>Restricted Mode tries to prevent automatic code execution by disabling or limiting the operation of several VS Code features: tasks, debugging, workspace settings, and extensions.</p>
+<p>Restricted Mode tries to prevent automatic code execution by disabling or limiting the operation of several LTSerialTool features: tasks, debugging, workspace settings, and extensions.</p>
 <p>To see the full list of features disabled in Restricted Mode, you can open the Workspace Trust editor via the <strong>Manage</strong> link in the banner, or by selecting the Restricted Mode badge in the Status Bar.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/editing/workspaces/workspace-trust/workspace-trust-editor.png" alt="Workspace Trust editor" loading="lazy"></p>
 <blockquote><p><strong>Important</strong>: Workspace Trust can't prevent a malicious extension from executing code and ignoring <strong>Restricted Mode</strong>. You should only install and run extensions that come from a well-known publisher that you trust.</p>
 </blockquote><h3 id="_tasks" data-needslink="_tasks">Tasks</h3>
-<p>VS Code <a href="https://code.visualstudio.com/docs/debugtest/tasks">tasks</a> can run scripts and tool binaries. Because task definitions are defined in the workspace <code>.vscode</code> folder, they are part of the committed source code for a repo, and shared to every user of that repo. If someone would create a malicious task, it could be unknowingly run by anyone who cloned that repository.</p>
-<p>If you try to run or even enumerate tasks (<strong>Tasks</strong> &gt; <strong>Run Task</strong>) while in Restricted Mode, VS Code displays a prompt to confirm that you trust the folder and can continue executing the task. If you cancel the dialog, VS Code stays in Restricted Mode.</p>
+<p>LTSerialTool <a href="https://code.visualstudio.com/docs/debugtest/tasks">tasks</a> can run scripts and tool binaries. Because task definitions are defined in the workspace <code>.vscode</code> folder, they are part of the committed source code for a repo, and shared to every user of that repo. If someone would create a malicious task, it could be unknowingly run by anyone who cloned that repository.</p>
+<p>If you try to run or even enumerate tasks (<strong>Tasks</strong> &gt; <strong>Run Task</strong>) while in Restricted Mode, LTSerialTool displays a prompt to confirm that you trust the folder and can continue executing the task. If you cancel the dialog, LTSerialTool stays in Restricted Mode.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/editing/workspaces/workspace-trust/restricted-mode-tasks-dialog.png" alt="Workspace Trust Restricted Mode tasks dialog" loading="lazy"></p>
 <h3 id="_debugging" data-needslink="_debugging">Debugging</h3>
-<p>Similar to running a VS Code task, debug extensions can run debugger binaries when launching a debug session. For that reason, <a href="https://code.visualstudio.com/docs/debugtest/debugging">debugging</a> is also disabled when a folder is open in Restricted Mode.</p>
-<p>If you try to start a debug session (<strong>Debug</strong> &gt; <strong>Start Debugging</strong>) while in Restricted Mode, VS Code displays a prompt to confirm that you trust the folder and can continue launching the debugger. If you cancel the dialog, VS Code stays in Restricted Mode, and does not start the debug session.</p>
+<p>Similar to running a LTSerialTool task, debug extensions can run debugger binaries when launching a debug session. For that reason, <a href="https://code.visualstudio.com/docs/debugtest/debugging">debugging</a> is also disabled when a folder is open in Restricted Mode.</p>
+<p>If you try to start a debug session (<strong>Debug</strong> &gt; <strong>Start Debugging</strong>) while in Restricted Mode, LTSerialTool displays a prompt to confirm that you trust the folder and can continue launching the debugger. If you cancel the dialog, LTSerialTool stays in Restricted Mode, and does not start the debug session.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/editing/workspaces/workspace-trust/restricted-mode-debugging-dialog.png" alt="Workspace Trust Restricted Mode debugging dialog" loading="lazy"></p>
 <h3 id="_workspace-settings" data-needslink="_workspace-settings">Workspace settings</h3>
-<p>Workspace <a href="https://code.visualstudio.com/docs/configure/settings">settings</a> are stored in the <code>.vscode</code> folder at the root of your workspace, and are therefore shared by anyone who clones the workspace repository. Some settings contain paths to executables (for example, linter binaries), which if set to point to malicious code, could cause damage. For this reason, VS Code disables a set of workspace settings when running in Restricted Mode.</p>
+<p>Workspace <a href="https://code.visualstudio.com/docs/configure/settings">settings</a> are stored in the <code>.vscode</code> folder at the root of your workspace, and are therefore shared by anyone who clones the workspace repository. Some settings contain paths to executables (for example, linter binaries), which if set to point to malicious code, could cause damage. For this reason, LTSerialTool disables a set of workspace settings when running in Restricted Mode.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/editing/workspaces/workspace-trust/workspace-settings-link.png" alt="Workspace Trust editor workspace settings link" loading="lazy"></p>
 <p>In the Workspace Trust editor, select the link for workspace settings that aren't being applied to bring up the Settings editor scoped by the <code>@tag:requireTrustedWorkspace</code> tag.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/editing/workspaces/workspace-trust/requireTrustedWorkspace-settings.png" alt="Settings editor scoped by the requireTrustedWorkspace tag in a restricted workspace" loading="lazy"></p>
 <h3 id="_extensions" data-needslink="_extensions">Extensions</h3>
-<p>The VS Code <a href="https://code.visualstudio.com/docs/configure/extensions/extension-marketplace">extensions</a> ecosystem is incredibly rich and diverse. People have created extensions to help with just about any programming task or editor customization. Some extensions provide full programming language support (IntelliSense, debugging, code analysis), and others let you play music or have virtual <a href="https://marketplace.visualstudio.com/items?itemName=tonybaloney.vscode-pets" class="external-link" target="_blank">pets</a>.</p>
+<p>The LTSerialTool <a href="https://code.visualstudio.com/docs/configure/extensions/extension-marketplace">extensions</a> ecosystem is incredibly rich and diverse. People have created extensions to help with just about any programming task or editor customization. Some extensions provide full programming language support (IntelliSense, debugging, code analysis), and others let you play music or have virtual <a href="https://marketplace.visualstudio.com/items?itemName=tonybaloney.vscode-pets" class="external-link" target="_blank">pets</a>.</p>
 <p>Most extensions run code on your behalf and could potentially do harm. Some extensions have settings that could cause them to act maliciously if configured to run an unexpected executable. For this reason, extensions that have not explicitly opted into Workspace Trust are disabled by default in Restricted Mode.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/editing/workspaces/workspace-trust/disabled-extensions-link.png" alt="Workspace Trust disabled extensions link" loading="lazy"></p>
 <p>You can review an installed extension's status by selecting the <strong>extensions are disabled or have limited functionality</strong> link in the Workspace Trust editor, which displays the Extensions view scoped with the <code>@workspaceUnsupported</code> filter.</p>
@@ -2110,7 +2110,7 @@
 <p>Extensions that have either not explicitly indicated that they support running in Restricted Mode are shown in the <strong>Disabled in Restricted Mode</strong> section. An extension author can also indicate that they never want to be enabled in Restricted Mode if they determine that their extension could be misused by modifications (settings or files) in a workspace.</p>
 <p><strong>Limited in Restricted Mode</strong></p>
 <p>Extension authors can also evaluate their extensions for possible security vulnerabilities and declare that they have <strong>limited</strong> support when running in Restricted Mode. This mode means the extension may disable some features or functionality to prevent a possible exploit.</p>
-<p>Extensions can add custom text to the Workspace Trust badge in the Extensions view, explaining the limitation when running in an untrusted folder. For example, the VS Code built-in PHP extension limits the use of the <span class="setting"><a href="vscode://settings/php.validate.executablePath" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'php.validate.executablePath' in Settings Editor"></span>php.validate.executablePath</a></span> setting to trusted folders since overriding this setting could run a malicious program.</p>
+<p>Extensions can add custom text to the Workspace Trust badge in the Extensions view, explaining the limitation when running in an untrusted folder. For example, the LTSerialTool built-in PHP extension limits the use of the <span class="setting"><a href="vscode://settings/php.validate.executablePath" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'php.validate.executablePath' in Settings Editor"></span>php.validate.executablePath</a></span> setting to trusted folders since overriding this setting could run a malicious program.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/editing/workspaces/workspace-trust/php-limited-hover.png" alt="PHP extension limited in Restricted Mode hover" loading="lazy"></p>
 <p>You can override an extension's Workspace Trust support level using the <span class="setting"><a href="vscode://settings/extensions.supportUntrustedWorkspaces" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'extensions.supportUntrustedWorkspaces' in Settings Editor"></span>extensions.supportUntrustedWorkspaces</a></span> setting, described in the <a href="#_enabling-extensions">Enabling extensions</a> section below.</p>
 <p>If you try to install an extension in Restricted Mode, you are prompted to either trust the workspace or just install the extension. If the extension doesn't support Workspace Trust, it is installed, but is disabled or runs with limited functionality.</p>
@@ -2170,14 +2170,14 @@
 <p>You can either enable or disable Workspace Trust support with the <code>supported</code> attribute. The <code>version</code> attribute specifies the exact extension version applicable and you can remove the version field if you want to set the state for all versions.</p>
 <p>If you'd like to learn more about how extension authors evaluate and determine which features to limit in Restricted Mode, you can read the <a href="https://code.visualstudio.com/api/extension-guides/workspace-trust">Workspace Trust Extension Guide</a>.</p>
 <h2 id="_opening-untrusted-files" data-needslink="_opening-untrusted-files">Opening untrusted files</h2>
-<p>If you open a file that is located outside of a trusted folder, VS Code detects that the file comes from somewhere outside the folder root and prompts you with the option to continue to open the file or open the file in a new window in Restricted Mode. Opening in Restricted Mode is the safest option and you can always reopen the file in your original VS Code window once you determine the file is trustworthy.</p>
+<p>If you open a file that is located outside of a trusted folder, LTSerialTool detects that the file comes from somewhere outside the folder root and prompts you with the option to continue to open the file or open the file in a new window in Restricted Mode. Opening in Restricted Mode is the safest option and you can always reopen the file in your original LTSerialTool window once you determine the file is trustworthy.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/editing/workspaces/workspace-trust/untrusted-file-dialog.png" alt="Untrusted files dialog" loading="lazy"></p>
 <p>If you would prefer to not be prompted when opening files from outside trusted workspaces, you can set <span class="setting"><a href="vscode://settings/security.workspace.trust.untrustedFiles" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'security.workspace.trust.untrustedFiles' in Settings Editor"></span>security.workspace.trust.untrustedFiles</a></span> to <code>open</code>. You can also set <span class="setting"><a href="vscode://settings/security.workspace.trust.untrustedFiles" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'security.workspace.trust.untrustedFiles' in Settings Editor"></span>security.workspace.trust.untrustedFiles</a></span> to <code>newWindow</code> to always create a new window in Restricted Mode. Checking the <strong>Remember my decision for all workspaces</strong> option in the untrusted files dialog applies your choice to the <span class="setting"><a href="vscode://settings/security.workspace.trust.untrustedFiles" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'security.workspace.trust.untrustedFiles' in Settings Editor"></span>security.workspace.trust.untrustedFiles</a></span> user setting.</p>
 <h3 id="_opening-untrusted-folders" data-needslink="_opening-untrusted-folders">Opening untrusted folders</h3>
 <p>When working with <a href="https://code.visualstudio.com/docs/editing/workspaces/multi-root-workspaces">multi-root workspaces</a> with multiple folders, if you try to add a new folder to a trusted multi-root workspace, you are prompted to decide if you trust the files in that folder or if not, the entire workspace will switch to Restricted Mode.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/editing/workspaces/workspace-trust/untrusted-folder-dialog.png" alt="Untrusted folder dialog" loading="lazy"></p>
 <h3 id="_empty-windows-no-open-folder" data-needslink="_empty-windows-no-open-folder">Empty windows (no open folder)</h3>
-<p>By default, if you open a new VS Code window (instance) without opening a folder or workspace, VS Code runs the window with full trust. All installed extensions are enabled and you can use the empty window without restrictions.</p>
+<p>By default, if you open a new LTSerialTool window (instance) without opening a folder or workspace, LTSerialTool runs the window with full trust. All installed extensions are enabled and you can use the empty window without restrictions.</p>
 <p>When you open a file, you are prompted whether you want to open an <a href="#_opening-untrusted-files">untrusted file</a>, since there is no folder to parent it.</p>
 <p>You can switch an empty window to Restricted Mode by using the Workspace Trust editor (select <strong>Workspaces: Manage Workspace Trust</strong> in the Command Palette), and then selecting <strong>Don't Trust</strong>. The empty window remains in Restricted Mode for your current session but reverts back to trusted if you restart or create a new window.</p>
 <p>If you want all empty windows to be in Restricted Mode, you can set <span class="setting"><a href="vscode://settings/security.workspace.trust.emptyWindow" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'security.workspace.trust.emptyWindow' in Settings Editor"></span>security.workspace.trust.emptyWindow</a></span> to <code>false</code>.</p>
@@ -2192,7 +2192,7 @@
 <li><span class="setting"><a href="vscode://settings/security.workspace.trust.banner" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'security.workspace.trust.banner' in Settings Editor"></span>security.workspace.trust.banner</a></span> - Controls when the Restricted Mode banner is displayed. Default is <code>untilDismissed</code>.</li>
 </ul>
 <h2 id="_commandline-switch" data-needslink="_commandline-switch">Command-line switch</h2>
-<p>You can disable Workspace Trust via the VS Code command line by passing <code>--disable-workspace-trust</code>. This switch only affects the current session.</p>
+<p>You can disable Workspace Trust via the LTSerialTool command line by passing <code>--disable-workspace-trust</code>. This switch only affects the current session.</p>
 <!-- ## Special configurations
 
 ### Remote extensions
@@ -2212,7 +2212,7 @@ Paths a little weird
 <p>Learn more at:</p>
 <ul>
 <li><a href="https://code.visualstudio.com/api/extension-guides/workspace-trust">Workspace Trust Extension Guide</a> - Learn how extension authors can support Workspace Trust.</li>
-<li><a href="https://code.visualstudio.com/docs/editing/workspaces/workspaces">What is a VS Code &quot;workspace&quot;?</a> - Find out more details about the VS Code &quot;workspace&quot; concept.</li>
+<li><a href="https://code.visualstudio.com/docs/editing/workspaces/workspaces">What is a LTSerialTool &quot;workspace&quot;?</a> - Find out more details about the LTSerialTool &quot;workspace&quot; concept.</li>
 <li><a href="https://code.visualstudio.com/docs/sourcecontrol/github#_github-repositories-extension">GitHub Repositories extension</a> - Work directly on a repository without cloning the source code to your local machine.</li>
 </ul>
 <h2 id="_common-questions" data-needslink="_common-questions">Common questions</h2>
@@ -2223,14 +2223,14 @@ Paths a little weird
 <p>You can override an extension's Workspace Trust support level with the <span class="setting"><a href="vscode://settings/extensions.supportUntrustedWorkspaces" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'extensions.supportUntrustedWorkspaces' in Settings Editor"></span>extensions.supportUntrustedWorkspaces</a></span> setting but do so with care. <a href="#_enabling-extensions">Enabling extensions</a> has more details.</p>
 <!-- List of popular extensions that currently need this override. -->
 <h3 id="_can-i-disable-the-workspace-trust-feature" data-needslink="_can-i-disable-the-workspace-trust-feature">Can I disable the Workspace Trust feature?</h3>
-<p>You can but it is not recommended. If you don't want VS Code to check for Workspace Trust when opening a new folder or repository, you can set <span class="setting"><a href="vscode://settings/security.workspace.trust.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'security.workspace.trust.enabled' in Settings Editor"></span>security.workspace.trust.enabled</a></span> to false. VS Code will then behave as it did before the 1.57 release.</p>
+<p>You can but it is not recommended. If you don't want LTSerialTool to check for Workspace Trust when opening a new folder or repository, you can set <span class="setting"><a href="vscode://settings/security.workspace.trust.enabled" codesetting="true"><span class="codicon codicon-settings-gear dynamic-setting-icon" title="Open 'security.workspace.trust.enabled' in Settings Editor"></span>security.workspace.trust.enabled</a></span> to false. LTSerialTool will then behave as it did before the 1.57 release.</p>
 <h3 id="_how-do-i-untrust-a-folderworkspace" data-needslink="_how-do-i-untrust-a-folderworkspace">How do I untrust a folder/workspace?</h3>
 <p>Bring up Workspace Trust editor (<strong>Workspaces: Manage Workspace Trust</strong> from the Command Palette) and select the <strong>Don't Trust</strong> button. You can also remove the folder from the <strong>Trusted Folders &amp; Workspaces</strong> list.</p>
 <h3 id="_why-dont-i-see-the-dont-trust-button" data-needslink="_why-dont-i-see-the-dont-trust-button">Why don't I see the &quot;Don't Trust&quot; button?</h3>
 <p>If you don't see the <strong>Don't Trust</strong> button in the Workspace Trust dialog, the folder's trust level may be inherited from a parent folder. Review the <strong>Trusted Folders &amp; Workspaces</strong> list to check if a parent folder has enabled Workspace Trust.</p>
 <p>Some workflows such as connecting to a <a href="https://code.visualstudio.com/docs/remote/codespaces">GitHub Codespace</a> or <a href="https://code.visualstudio.com/docs/remote/attach-container">attaching to a running Docker container</a> are automatically trusted since these are managed environments to which you should already have a high level of trust.</p>
 <h3 id="_what-does-workspace-trust-protect-against" data-needslink="_what-does-workspace-trust-protect-against">What does Workspace Trust protect against?</h3>
-<p>Many features of VS Code allow third-party tools and extensions to run automatically, such as linting or format on save, or when you do certain operations like compiling code or debugging. An unethical person could craft an innocent looking project that would run malicious code without your knowledge and harm your local machine. Workspace Trust provides an extra layer of security by trying to prevent code execution while you are evaluating the safety and integrity of unfamiliar source code.</p>
+<p>Many features of LTSerialTool allow third-party tools and extensions to run automatically, such as linting or format on save, or when you do certain operations like compiling code or debugging. An unethical person could craft an innocent looking project that would run malicious code without your knowledge and harm your local machine. Workspace Trust provides an extra layer of security by trying to prevent code execution while you are evaluating the safety and integrity of unfamiliar source code.</p>
 
             <div class="feedback"></div>
             
@@ -2286,28 +2286,28 @@ Paths a little weird
 				<div class="footer-social">
 					<ul class="links">
 						<li>
-							<a href="https://github.com/microsoft/vscode"><img src="https://code.visualstudio.com/assets/icons/github-icon.svg" alt="VS Code on Github"></a>
+							<a href="https://github.com/microsoft/vscode"><img src="https://code.visualstudio.com/assets/icons/github-icon.svg" alt="LTSerialTool on Github"></a>
 						</li>
 						<li>
 							<a href="https://go.microsoft.com/fwlink/?LinkID=533687"><img src="https://code.visualstudio.com/assets/icons/x-icon.svg" class="x-icon" alt="Follow us on X"></a>
 						</li>
 						<li>
-							<a href="https://www.linkedin.com/showcase/vs-code"><img src="https://code.visualstudio.com/assets/icons/linkedin-icon.svg" alt="VS Code on LinkedIn"></a>
+							<a href="https://www.linkedin.com/showcase/vs-code"><img src="https://code.visualstudio.com/assets/icons/linkedin-icon.svg" alt="LTSerialTool on LinkedIn"></a>
 						</li>
 						<li>
-							<a href="https://bsky.app/profile/vscode.dev"><img src="https://code.visualstudio.com/assets/icons/bluesky-icon.svg" alt="VS Code on Bluesky"></a>
+							<a href="https://bsky.app/profile/vscode.dev"><img src="https://code.visualstudio.com/assets/icons/bluesky-icon.svg" alt="LTSerialTool on Bluesky"></a>
 						</li>
 						<li>
-							<a href="https://www.reddit.com/r/vscode/"><img src="https://code.visualstudio.com/assets/icons/reddit-icon.svg" alt="Join the VS Code community on Reddit"></a>
+							<a href="https://www.reddit.com/r/vscode/"><img src="https://code.visualstudio.com/assets/icons/reddit-icon.svg" alt="Join the LTSerialTool community on Reddit"></a>
 						</li>
 						<li>
-							<a href="https://www.vscodepodcast.com/"><img src="https://code.visualstudio.com/assets/icons/podcast-icon.svg" alt="The VS Code Insiders Podcast"></a>
+							<a href="https://www.vscodepodcast.com/"><img src="https://code.visualstudio.com/assets/icons/podcast-icon.svg" alt="The LTSerialTool Insiders Podcast"></a>
 						</li>
 						<li>
-							<a href="https://www.tiktok.com/@vscode"><img src="https://code.visualstudio.com/assets/icons/tiktok-icon.svg" alt="VS Code on TikTok"></a>
+							<a href="https://www.tiktok.com/@vscode"><img src="https://code.visualstudio.com/assets/icons/tiktok-icon.svg" alt="LTSerialTool on TikTok"></a>
 						</li>
 						<li>
-							<a href="https://www.youtube.com/@code"><img src="https://code.visualstudio.com/assets/icons/youtube-icon.svg" alt="VS Code on YouTube"></a>
+							<a href="https://www.youtube.com/@code"><img src="https://code.visualstudio.com/assets/icons/youtube-icon.svg" alt="LTSerialTool on YouTube"></a>
 						</li>
 						<script>
 							function manageConsent() {
@@ -2369,7 +2369,7 @@ Paths a little weird
 			},
 			"applicationCategory": "DeveloperApplication",
 			"applicationSubCategory": "Text Editor",
-			"alternateName": "VS Code",
+			"alternateName": "LTSerialTool",
 			"datePublished": "2021-11-03",
 			"operatingSystem": "Mac, Linux, Windows",
 			"logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",

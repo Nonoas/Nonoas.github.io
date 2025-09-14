@@ -35,7 +35,7 @@
     <link rel="shortcut icon" href="assets/favicon.ico" sizes="128x128"/>
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-    <title>LTSerialTool - Code Editing. Redefined</title>
+    <title>LTSerialTool - 开放源代码的串口工具</title>
 
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/v2/style.css">
@@ -128,17 +128,13 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-left">
-                            <li><a id="nav-docs" href="docs.html">Docs</a></li>
-                            <li><a id="nav-updates" href="updates/v1_104.html">Updates</a></li>
-                            <li><a id="nav-blogs" href="blogs.html">Blog</a></li>
-                            <li><a id="nav-extend" href="api.html">API</a></li>
-                            <li><a href="https://marketplace.visualstudio.com/VSCode" target="_blank" rel="noopener"
-                                   id="nav-extensions">Extensions</a></li>
-                            <li><a id="nav-mcp" href="mcp.html">MCP</a></li>
-                            <li><a id="nav-faqs" href="docs/supporting/faq.html">FAQ</a></li>
+                            <li><a id="nav-docs" href="docs.html">文档</a></li>
+                            <li><a id="nav-updates" href="updates/v1_104.html">更新</a></li>
+                            <li><a id="nav-blogs" href="blogs.html">博客</a></li>
+                            <li><a id="nav-extend" href="api.html">开放API</a></li>
+                            <li><a id="nav-faqs" href="docs/supporting/faq.html">常见疑问</a></li>
                             <li class='search visible-xs visible-sm'
-                            ><a href="Search.html">Search</a></li>
-                            <li><a id="nav-events" href="dev-days.html">Dev Days</a></li>
+                            ><a href="Search.html">搜索</a></li>
                         </ul>
 
                         <ul class="nav navbar-nav navbar-right" role="presentation">
@@ -167,20 +163,20 @@
 											<span class="input-group-btn">
 												<span class="btn search-icon-container" aria-hidden="true">
 													<img class="search-icon-dark" src="assets/icons/search-dark.svg"
-                                                         alt=""/>
+                                                         alt="搜索"/>
 													<img class="search-icon-light" src="assets/icons/search.svg"
-                                                         alt=""/>
+                                                         alt="搜索"/>
 												</span>
 											</span>
                                         <input type="text" name="q" class="search-box form-control"
-                                               placeholder="Search Docs" aria-hidden="true" tabindex="-1" readonly/>
+                                               placeholder="搜索文档" aria-hidden="true" tabindex="-1" readonly/>
                                         <span class="search-shortcut-overlay"></span>
                                     </div>
                                 </div>
                             </li>
                             <!-- this was hiden in the home and download page, keeping it for now -->
                             <li><a class="link-button" href="Download.html" id="nav-download">
-                                <span>Download</span></a></li>
+                                <span>下载</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -189,8 +185,8 @@
     </div>
     <div data-announcement-version="2025-08-25-dev-days" class="updates-banner js-hidden  ">
         <div class="container">
-            <p class="message">Join a <a href="dev-days.html" id="banner-link-dev-days">VS Code Dev Days event</a> near
-                you to learn about AI-assisted development in VS Code.</p>
+            <p class="message">Join a <a href="dev-days.html" id="banner-link-dev-days">LTSerialTool Dev Days event</a> near
+                you to learn about AI-assisted development in LTSerialTool.</p>
         </div>
         <div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span
                 class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
@@ -200,7 +196,7 @@
         <div class="container home">
             <section class="hero-content col-sm-12">
                 <div class="hero-text">
-                    <h1>The open source serial tool</h1>
+                    <h1>开放源代码的<br>串口工具</h1>
                     <div class="download-content-wrapper">
                         <div id="download-buttons" class="download-hero alt-downloads">
                             <div class="primary-buttons">
@@ -220,7 +216,7 @@
                                                 d="m0 12.402 35.687-4.86.016 34.423-35.67.203zm35.67 33.529.028 34.453L.028 75.48.026 45.7zm4.326-39.025L87.314 0v41.527l-47.318.376zm47.329 39.349-.011 41.34-47.318-6.678-.066-34.739z"
                                                 fill="currentColor"/>
                                     </svg>
-                                    Download for Windows
+                                    下载用于 Windows 的版本
                                 </button>
                                 <div class="linux">
                                     <button type="button" class="link-button dlink deb-btn" data-os="linux64_deb"
@@ -256,22 +252,22 @@
                         <p id="download-matrix-label" class="hero-alt-download-links">
                             <a href="https://vscode.dev/" target="_blank" rel="noopener"
                                title="For quick code edits locally or remotely on GitHub and Azure Repos."
-                               id="download-buttons-web">Web</a>, <a href="insiders/index.html"
-                                                                     id="download-buttons-insiders">Insiders edition</a>,
-                            or <a href="Download.html">other platforms</a>
+                               id="download-buttons-web">网页</a>, <a href="insiders/index.html"
+                                                                     id="download-buttons-insiders">预览体验版</a>,
+                            或 <a href="Download.html">其他平台版本</a>
                         </p>
                         <p class="terms">
-                            By using VS Code, you agree to its <span class="wrap-together"><a href="license.html"
+                            使用 LTSerialTool, 即表示您同意其 <span class="wrap-together"><a href="license.html"
                                                                                               target="_blank"
                                                                                               rel="noopener"
-                                                                                              title="View the LTSerialTool license.">license</a> and <a
+                                                                                              title="View the LTSerialTool license.">许可证</a> 和 <a
                                 href="https://go.microsoft.com/fwlink/?LinkId=521839" target="_blank" rel="noopener"
-                                title="View the Microsoft privacy statement.">privacy statement</a>.</span>
+                                title="View the Microsoft privacy statement.">隐私说明</a>.</span>
                         </p>
                     </div>
                 </div>
                 <div class="hero-video-container" role="img"
-                     aria-label="A demonstration animation of VS Code using Copilot Chat, Copilot Edits, Inline Chat, and AI-assisted commit message generation to create and refine a Wordle clone web app built with React and Vite.">
+                     aria-label="A demonstration animation of LTSerialTool using Copilot Chat, Copilot Edits, Inline Chat, and AI-assisted commit message generation to create and refine a Wordle clone web app built with React and Vite.">
                     <video width="1008" height="639" id="hero-video-dark" class="hero-video dark"
                            poster="assets/home/hero-poster-dark.webp" playsinline autoplay muted>
                         <source src="assets/home/hero-dark-sm.webm" type="video/webm" media="(max-width: 991px)">
@@ -287,9 +283,9 @@
                         <source src="assets/home/hero-light-lg.mp4" type="video/mp4">
                     </video>
                     <img width="1008" height="639" id="hero-poster-dark" class="hero-poster dark"
-                         src="assets/home/hero-poster-dark.webp" alt="VS Code interface showing AI-powered features">
+                         src="assets/home/hero-poster-dark.webp" alt="LTSerialTool interface showing AI-powered features">
                     <img width="1008" height="639" id="hero-poster-light" class="hero-poster light"
-                         src="assets/home/hero-poster-light.webp" alt="VS Code interface showing AI-powered features">
+                         src="assets/home/hero-poster-light.webp" alt="LTSerialTool interface showing AI-powered features">
                 </div>
                 <div class="video-control">
                     <button id="hero-video-button" aria-pressed="false"
@@ -333,11 +329,11 @@
                             <div>
                                 <img src="assets/home/an-expert-on-your-codebase-dark.webp" class="swimlane-image dark"
                                      loading="lazy"
-                                     alt="A VS Code chat prompt. The prompt includes codebase and file context by writing #codebase and #file:HistoryView.swift in the message.">
+                                     alt="A LTSerialTool chat prompt. The prompt includes codebase and file context by writing #codebase and #file:HistoryView.swift in the message.">
                                 <img src="assets/home/an-expert-on-your-codebase-light.webp"
                                      class="swimlane-image light"
                                      loading="lazy"
-                                     alt="A VS Code chat prompt. The prompt includes codebase and file context by writing #codebase and #file:HistoryView.swift in the message.">
+                                     alt="A LTSerialTool chat prompt. The prompt includes codebase and file context by writing #codebase and #file:HistoryView.swift in the message.">
                             </div>
                         </div>
                     </div>
@@ -362,7 +358,7 @@
             <section class="swimlane row">
                 <div class="copilot-free-banner">
                     <div class="col-sm-6 col-lg-6">
-                        <h2>Use AI features in VS Code for free</h2>
+                        <h2>Use AI features in LTSerialTool for free</h2>
                     </div>
                     <div class="col-sm-6 col-lg-6">
                         <p>No trial. No credit card required. Just your GitHub account.</p>
@@ -373,16 +369,37 @@
                 </div>
             </section>
 
+
+
+            <section class="swimlane row">
+                <div class="swimlane-content">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="value-prop-intro">
+                            <h2>接收模式</h2>
+                            <p>LTSerialTool 默认启用两个串口接收界面，支持自定义高亮关键字，并且可以自定义高亮颜色</p>
+                            <a href="docs/copilot/ai-powered-suggestions.html#_next-edit-suggestions"
+                               rel="noopener">Code with AI-powered suggestions</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-8">
+                        <img src="assets/home/swimlane-nes-dark.webp" class="swimlane-image dark" loading="lazy"
+                             alt="Code editor showing a JavaScript file post.js. It defines a render method that renders a social media post by calling an external API. 接收模式 is suggesting how to complete the implementation.">
+                        <img src="assets/home/swimlane-nes-light.webp" class="swimlane-image light" loading="lazy"
+                             alt="Code editor showing a JavaScript file post.js. It defines a render method that renders a social media post by calling an external API. 接收模式 is suggesting how to complete the implementation.">
+                    </div>
+                </div>
+            </section>
+
             <section class="swimlane row">
                 <div class="swimlane-content">
                     <div class="col-sm-6 col-lg-4">
                         <div class="secondary-value-prop">
-                            <h2>Agent mode</h2>
-                            <p>Tackle complex, multi-step tasks. Agent mode reads your codebase, suggests edits across
+                            <h2>发送模式</h2>
+                            <p>Tackle complex, multi-step tasks. 发送模式 reads your codebase, suggests edits across
                                 files,
                                 runs terminal commands, and responds to compile or test failures — all in a loop until
                                 the job
-                                is done. Further refine agent mode to fit your team's workflows with VS Code extensions
+                                is done. Further refine agent mode to fit your team's workflows with LTSerialTool extensions
                                 and
                                 Model Context Protocol (MCP) servers.</p>
                             <a href="docs/copilot/chat/chat-agent-mode.html" rel="noopener">Build with
@@ -391,31 +408,9 @@
                     </div>
                     <div class="col-sm-6 col-lg-8">
                         <img src="assets/home/swimlane-chat-dark.webp" class="swimlane-image dark" loading="lazy"
-                             alt="VS Code window showing a code editor with projects.tsx open, alongside a chat panel in Agent mode. The chat discusses an open issue from GitHub.">
+                             alt="LTSerialTool window showing a code editor with projects.tsx open, alongside a chat panel in 发送模式. The chat discusses an open issue from GitHub.">
                         <img src="assets/home/swimlane-chat-light.webp" class="swimlane-image light" loading="lazy"
-                             alt="VS Code window showing a code editor with projects.tsx open, alongside a chat panel in Agent mode. The chat discusses an open issue from GitHub.">
-                    </div>
-                </div>
-            </section>
-
-            <section class="swimlane row">
-                <div class="swimlane-content">
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="value-prop-intro">
-                            <h2>Next edit suggestions</h2>
-                            <p>VS Code predicts your next move as you code. Use the Tab key to accept AI-powered
-                                suggestions right in your editor. It intelligently recommends what to change — and where
-                                — based
-                                on the edits you're already making.</p>
-                            <a href="docs/copilot/ai-powered-suggestions.html#_next-edit-suggestions"
-                               rel="noopener">Code with AI-powered suggestions</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-8">
-                        <img src="assets/home/swimlane-nes-dark.webp" class="swimlane-image dark" loading="lazy"
-                             alt="Code editor showing a JavaScript file post.js. It defines a render method that renders a social media post by calling an external API. Next edit suggestions is suggesting how to complete the implementation.">
-                        <img src="assets/home/swimlane-nes-light.webp" class="swimlane-image light" loading="lazy"
-                             alt="Code editor showing a JavaScript file post.js. It defines a render method that renders a social media post by calling an external API. Next edit suggestions is suggesting how to complete the implementation.">
+                             alt="LTSerialTool window showing a code editor with projects.tsx open, alongside a chat panel in 发送模式. The chat discusses an open issue from GitHub.">
                     </div>
                 </div>
             </section>
@@ -424,7 +419,7 @@
                 <div class="extensions-container-content row">
                     <div class="col-sm-6 col-lg-4">
                         <h2>Code with extensions</h2>
-                        <p>Customize VS Code with AI-powered functionality from extensions and Model Context Protocol
+                        <p>Customize LTSerialTool with AI-powered functionality from extensions and Model Context Protocol
                             servers to
                             use in Chat. Or, <a
                                     href="api/extension-guides/ai/ai-extensibility-overview.html">build your own
@@ -538,9 +533,9 @@
                     <div class="col-sm-6 col-lg-4">
                         <div class="value-prop-intro">
                             <h2>Code in any language</h2>
-                            <p>VS Code supports almost every major programming language. Several ship in the box, like
+                            <p>LTSerialTool supports almost every major programming language. Several ship in the box, like
                                 JavaScript,
-                                TypeScript, CSS, and HTML, but extensions for others can be found in the VS Code
+                                TypeScript, CSS, and HTML, but extensions for others can be found in the LTSerialTool
                                 Marketplace.
                             </p>
                         </div>
@@ -568,19 +563,19 @@
                 <div class="swimlane-content">
                     <div class="col-sm-6 col-lg-4">
                         <div class="value-prop-intro">
-                            <h2>Fully customizable</h2>
-                            <p>Customize your VS Code UI and layout so that it fits your coding style.</p>
+                            <h2>自定义指令</h2>
+                            <p>可以添加自定义指令用于调试，支持TXT，HEX格式，并允许自定义发送间隔时间</p>
                         </div>
                         <div class="secondary-value-prop">
                             <p><a href="docs/configure/themes.html" rel="noopener">Color themes</a>
-                                let you modify the colors in VS Code's user interface to suit your preferences and work
+                                let you modify the colors in LTSerialTool's user interface to suit your preferences and work
                                 environment.</p>
                         </div>
                         <div class="secondary-value-prop">
                             <p><a href="docs/configure/settings.html#_settings-sync" rel="noopener"
                                   class="value-prop-bold">Settings Sync</a> enables you to share your user settings
                                 across
-                                your VS Code instances with the Settings Sync feature.</p>
+                                your LTSerialTool instances with the Settings Sync feature.</p>
                         </div>
                         <div class="secondary-value-prop">
                             <p><a href="docs/configure/profiles.html" rel="noopener"
@@ -601,10 +596,8 @@
                 <div class="swimlane-content">
                     <div class="col-sm-6 col-lg-4">
                         <div class="value-prop-intro">
-                            <h2>Code anywhere</h2>
-                            <p>Code wherever you're most productive, whether you're connected to the cloud, a remote
-                                repository,
-                                or in the browser with VS Code for the Web (vscode.dev).</p>
+                            <h2>多主题样式切换</h2>
+                            <p>LTSerialTool 支持多种主题样式切换，并且提供样式文件模板，支持用户自定义样式文件来定制自己独特的UI风格</p>
                         </div>
                         <div class="secondary-value-prop">
                             <p><a href="docs/sourcecontrol/overview.html" rel="noopener">Built-in
@@ -670,7 +663,7 @@
         },
         "applicationCategory": "DeveloperApplication",
         "applicationSubCategory": "Text Editor",
-        "alternateName": "VS Code",
+        "alternateName": "LTSerialTool",
         "datePublished": "2021-11-03",
         "operatingSystem": "Mac, Linux, Windows",
         "logo": "https://code.visualstudio.com/assets/apple-touch-icon.png",
