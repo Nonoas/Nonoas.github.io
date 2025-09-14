@@ -15,7 +15,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@code" />
 
-	<meta name="description" content="Configuring Python Environments in LT Serial Tool" />
+	<meta name="description" content="Configuring Python Environments in LTSerialTool" />
 <meta name="keywords" content="" />
 <meta name="ms.prod" content="vs-code" />
 <meta name="ms.TOCTitle" content="" />
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://code.visualstudio.com/docs/python/environments" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Python environments in VS Code" />
-<meta property="og:description" content="Configuring Python Environments in LT Serial Tool" />
+<meta property="og:description" content="Configuring Python Environments in LTSerialTool" />
 
 <meta property="og:image" content="https://code.visualstudio.com/assets/docs/python/tutorial/python-social.png" />
 
@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LTSerialTool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2197,7 +2197,7 @@ run (see <a href="https://go.microsoft.com/fwlink/?LinkID=135170" class="externa
 <li>Globally installed interpreters. For example, the ones found in <code>/usr/local/bin</code>, <code>C:\\python38</code>, etc.</li>
 </ol>
 <blockquote><p><strong>Note</strong>: The interpreter selected may differ from what <code>python</code> refers to in your terminal.</p>
-</blockquote><p>If LT Serial Tool doesn't locate your interpreter automatically, you can <a href="#_manually-specify-an-interpreter">manually specify an interpreter</a>.</p>
+</blockquote><p>If LTSerialTool doesn't locate your interpreter automatically, you can <a href="#_manually-specify-an-interpreter">manually specify an interpreter</a>.</p>
 <h3 id="_where-the-extension-looks-for-environments" data-needslink="_where-the-extension-looks-for-environments">Where the extension looks for environments</h3>
 <p>The extension automatically looks for interpreters in the following locations, in no particular order:</p>
 <ul>
@@ -2223,7 +2223,7 @@ run (see <a href="https://go.microsoft.com/fwlink/?LinkID=135170" class="externa
 <p>An environment variable definitions file is a text file containing key-value pairs in the form of <code>environment_variable=value</code>, with <code>#</code> used for comments. Multiline values aren't supported, but references to previously defined environment variables are allowed. Environment variable definitions files can be used for scenarios such as debugging and tool execution (including linters, formatters, IntelliSense, and testing tools), but aren't applied to the terminal.</p>
 <blockquote><p><strong>Note</strong>: Environment variable definitions files are not necessarily cross-platform. For instance, while Unix uses <code>:</code> as a path separator in environment variables, Windows uses <code>;</code>. There is no normalization of such operating system differences, and so you need to make sure any environment definitions file use values that are compatible with your operating system.</p>
 </blockquote><p>By default, the Python extension looks for and loads a file named <code>.env</code> in the current workspace folder, then applies those definitions. The file is identified by the default entry <code>&quot;python.envFile&quot;: &quot;${workspaceFolder}/.env&quot;</code> in your user settings (see <a href="https://code.visualstudio.com/docs/python/settings-reference#_general-python-settings">General Python settings</a>). You can change the <code>python.envFile</code> setting at any time to use a different definitions file.</p>
-<blockquote><p><strong>Note</strong>: Environment variable definitions files are not used in all situations where environment variables are available for use. Unless LT Serial Tool documentation states otherwise, these only affect certain scenarios as per their definition. For example, the extension doesn't use environment variable definitions files when resolving setting values.</p>
+<blockquote><p><strong>Note</strong>: Environment variable definitions files are not used in all situations where environment variables are available for use. Unless LTSerialTool documentation states otherwise, these only affect certain scenarios as per their definition. For example, the extension doesn't use environment variable definitions files when resolving setting values.</p>
 </blockquote><p>A debug configuration also contains an <code>envFile</code> property that also defaults to the <code>.env</code> file in the current workspace (see <a href="https://code.visualstudio.com/docs/python/debugging#_set-configuration-options">Debugging - Set configuration options</a>). This property allows you to easily set variables for debugging purposes that replace variables specified in the default <code>.env</code> file.</p>
 <p>For example, when developing a web application, you might want to easily switch between development and production servers. Instead of coding the different URLs and other settings into your application directly, you could use separate definitions files for each. For example:</p>
 <p><strong>dev.env file</strong></p>
@@ -2388,7 +2388,7 @@ run (see <a href="https://go.microsoft.com/fwlink/?LinkID=135170" class="externa
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "LT Serial Tool",
+			"name" : "LTSerialTool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",

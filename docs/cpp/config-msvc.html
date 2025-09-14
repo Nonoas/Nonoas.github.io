@@ -15,7 +15,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@code" />
 
-	<meta name="description" content="Configure the C++ extension in LT Serial Tool to target Microsoft C++ on Windows." />
+	<meta name="description" content="Configure the C++ extension in LTSerialTool to target Microsoft C++ on Windows." />
 <meta name="keywords" content="" />
 <meta name="ms.prod" content="vs-code" />
 <meta name="ms.TOCTitle" content="" />
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://code.visualstudio.com/docs/cpp/config-msvc" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Configure VS Code for Microsoft C++" />
-<meta property="og:description" content="Configure the C++ extension in LT Serial Tool to target Microsoft C++ on Windows." />
+<meta property="og:description" content="Configure the C++ extension in LTSerialTool to target Microsoft C++ on Windows." />
 
 <meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" />
 
@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LTSerialTool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2071,14 +2071,14 @@
                 </a>
             </div>
             <h1>Configure VS Code for Microsoft C++</h1>
-<p>In this tutorial, you configure LT Serial Tool to use the Microsoft Visual C++ compiler and debugger on Windows.</p>
+<p>In this tutorial, you configure LTSerialTool to use the Microsoft Visual C++ compiler and debugger on Windows.</p>
 <p>After configuring VS Code, you will compile and debug a simple Hello World program in VS Code. This tutorial does not teach you details about the Microsoft C++ toolset or the C++ language. For those subjects, there are many good resources available on the Web.</p>
 <p>If you have any problems, feel free to file an issue for this tutorial in the <a href="https://github.com/microsoft/vscode-docs/issues" class="external-link" target="_blank">VS Code documentation repository</a>.</p>
 <h2 id="_prerequisites" data-needslink="_prerequisites">Prerequisites</h2>
 <p>To successfully complete this tutorial, you must do the following:</p>
 <ol>
 <li>
-<p>Install <a href="https://code.visualstudio.com/download">LT Serial Tool</a>.</p>
+<p>Install <a href="https://code.visualstudio.com/download">LTSerialTool</a>.</p>
 </li>
 <li>
 <p>Install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" class="external-link" target="_blank">C/C++ extension for VS Code</a>. You can install the C/C++ extension by searching for 'c++' in the Extensions view (<span class="dynamic-keybinding" data-commandId="workbench.view.extensions" data-osx="⇧⌘X" data-win="Ctrl+Shift+X" data-linux="Ctrl+Shift+X"><span class="keybinding">⇧⌘X</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+X</span>)</span>).</p>
@@ -2093,7 +2093,7 @@
 <p><img src="https://code.visualstudio.com/assets/docs/cpp/msvc/desktop_development_with_cpp-2022.png" alt="Cpp build tools workload" loading="lazy"></p>
 </li>
 </ol>
-<blockquote><p><strong>Note</strong>: You can use the C++ toolset from Visual Studio Build Tools along with LT Serial Tool to develop, build, and test any C++ code as long as you also have a valid Visual Studio license (either Community, Pro, or Enterprise).</p>
+<blockquote><p><strong>Note</strong>: You can use the C++ toolset from Visual Studio Build Tools along with LTSerialTool to develop, build, and test any C++ code as long as you also have a valid Visual Studio license (either Community, Pro, or Enterprise).</p>
 </blockquote><h3 id="_check-your-microsoft-visual-c-installation" data-needslink="_check-your-microsoft-visual-c-installation">Check your Microsoft Visual C++ installation</h3>
 <p>To use MSVC from a command line or VS Code, you must run from a <strong>Developer Command Prompt for Visual Studio</strong>. An ordinary shell such as PowerShell, Bash, or the Windows command prompt does not have the necessary path environment variables set.</p>
 <p>To open the Developer Command Prompt for VS, start typing 'developer' in the Windows Start menu, and you should see it appear in the list of suggestions. The exact name depends on which version of Visual Studio or the Visual Studio Build Tools you have installed. Select the item to open the prompt.</p>
@@ -2321,7 +2321,7 @@
 <p><img src="https://code.visualstudio.com/assets/docs/cpp/cpp/command-palette.png" alt="Command Palette" loading="lazy"></p>
 <p>This opens the <strong>C/C++ Configurations</strong> page. When you make changes here, VS Code writes them to a file called <code>c_cpp_properties.json</code> in the <code>.vscode</code> folder.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/cpp/msvc/configurations-ui.png" alt="Command Palette" loading="lazy"></p>
-<p>LT Serial Tool places these settings in <code>.vscode\c_cpp_properties.json</code>. If you open that file directly, it should look something like this:</p>
+<p>LTSerialTool places these settings in <code>.vscode\c_cpp_properties.json</code>. If you open that file directly, it should look something like this:</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "configurations"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: [</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    {</span></span>
@@ -2540,7 +2540,7 @@
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "LT Serial Tool",
+			"name" : "LTSerialTool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",

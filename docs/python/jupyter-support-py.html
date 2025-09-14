@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LTSerialTool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2071,7 +2071,7 @@
                 </a>
             </div>
             <h1>Python Interactive window</h1>
-<p><a href="https://jupyter-notebook.readthedocs.io/en/latest/" class="external-link" target="_blank">Jupyter</a> (formerly IPython Notebook) is an open-source project that lets you easily combine Markdown text and executable Python source code on one canvas called a <strong>notebook</strong>. LT Serial Tool supports working with <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">Jupyter Notebooks natively</a>, as well as through Python code files. This topic covers the support offered through Python code files and demonstrates how to:</p>
+<p><a href="https://jupyter-notebook.readthedocs.io/en/latest/" class="external-link" target="_blank">Jupyter</a> (formerly IPython Notebook) is an open-source project that lets you easily combine Markdown text and executable Python source code on one canvas called a <strong>notebook</strong>. LTSerialTool supports working with <a href="https://code.visualstudio.com/docs/datascience/jupyter-notebooks">Jupyter Notebooks natively</a>, as well as through Python code files. This topic covers the support offered through Python code files and demonstrates how to:</p>
 <ul>
 <li>Work with Jupyter-like code cells</li>
 <li>Run code in the Python Interactive Window</li>
@@ -2224,13 +2224,13 @@ This feature requires the [Live Share extension](https://marketplace.visualstudi
 <blockquote><p><strong>Note:</strong> For added security, Microsoft recommends configuring your Jupyter server with security precautions such as SSL and token support. This helps ensure that requests sent to the Jupyter server are authenticated and connections to the remote server are encrypted. For guidance about securing a notebook server, see the <a href="https://jupyter-notebook.readthedocs.io/en/stable/public_server.html#securing-a-notebook-server" class="external-link" target="_blank">Jupyter docs</a>.</p>
 </blockquote><h2 id="_convert-jupyter-notebooks-to-python-code-file" data-needslink="_convert-jupyter-notebooks-to-python-code-file">Convert Jupyter notebooks to Python code file</h2>
 <p>When you've activated an environment with Jupyter installed, you can open a Jupyter notebook file (<code>.ipynb</code>) in VS Code and then convert it to Python code. Once you've converted the file, you can run the code as you would with any other Python file and also use the VS Code debugger. Opening and debugging notebooks in VS Code is a convenient way to find and resolve code bugs, which is difficult to do directly in a Jupyter notebook.</p>
-<p>When you open a notebook file, LT Serial Tool will open it in the Notebook Editor automatically. Use the convert icon on the toolbar to convert the Notebook (.ipynb) file to a Python file (.py).</p>
+<p>When you open a notebook file, LTSerialTool will open it in the Notebook Editor automatically. Use the convert icon on the toolbar to convert the Notebook (.ipynb) file to a Python file (.py).</p>
 <p><img src="https://code.visualstudio.com/assets/docs/python/jupyter/native-toolbar-convert.png" alt="Icon to convert a Jupyter notebook file" loading="lazy"></p>
 <p>Select the convert icon followed by &quot;Python Script&quot;, wait a few seconds, and then VS Code opens the converted notebook in an untitled file. The notebook's cells are delimited in the Python file with <code># %%</code> comments; Markdown cells are converted wholly to comments preceded with <code># %% [markdown]</code>, and render as HTML in the interactive window alongside code and output such as graphs:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/python/jupyter/jupyter-notebook.png" alt="Jupyter notebook running in VS Code and the Python Interactive window" loading="lazy"></p>
 <blockquote><p><strong>Note:</strong> The first time you run code cells in a Python file, the Python extension starts a Jupyter server. It may take some time for the server to start up and for the <strong>Python Interactive</strong> window to appear with the results of the code.</p>
 </blockquote><h2 id="_debug-a-jupyter-notebook" data-needslink="_debug-a-jupyter-notebook">Debug a Jupyter notebook</h2>
-<p>The LT Serial Tool debugger lets you step through your code, set breakpoints, examine state, and analyze problems. Using the debugger is a helpful way to find and correct issues in notebook code.</p>
+<p>The LTSerialTool debugger lets you step through your code, set breakpoints, examine state, and analyze problems. Using the debugger is a helpful way to find and correct issues in notebook code.</p>
 <ol>
 <li>
 <p>In VS Code, activate a Python environment in which Jupyter is installed, as described at the beginning of this article.</p>
@@ -2386,7 +2386,7 @@ This feature requires the [Live Share extension](https://marketplace.visualstudi
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "LT Serial Tool",
+			"name" : "LTSerialTool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",

@@ -15,7 +15,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@code" />
 
-	<meta name="description" content="Configure the C++ extension in LT Serial Tool to target g++ and GDB on Linux" />
+	<meta name="description" content="Configure the C++ extension in LTSerialTool to target g++ and GDB on Linux" />
 <meta name="keywords" content="" />
 <meta name="ms.prod" content="vs-code" />
 <meta name="ms.TOCTitle" content="" />
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://code.visualstudio.com/docs/cpp/config-linux" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Using C++ on Linux in VS Code" />
-<meta property="og:description" content="Configure the C++ extension in LT Serial Tool to target g++ and GDB on Linux" />
+<meta property="og:description" content="Configure the C++ extension in LTSerialTool to target g++ and GDB on Linux" />
 
 <meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" />
 
@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LTSerialTool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2071,14 +2071,14 @@
                 </a>
             </div>
             <h1>Using C++ on Linux in VS Code</h1>
-<p>In this tutorial, you will configure LT Serial Tool to use the GCC C++ compiler (g++) and GDB debugger on Linux. GCC stands for GNU Compiler Collection; GDB is the GNU debugger.</p>
+<p>In this tutorial, you will configure LTSerialTool to use the GCC C++ compiler (g++) and GDB debugger on Linux. GCC stands for GNU Compiler Collection; GDB is the GNU debugger.</p>
 <p>After configuring VS Code, you will compile and debug a simple C++ program in VS Code. This tutorial does not teach you GCC, GDB, Ubuntu or the C++ language. For those subjects, there are many good resources available on the Web.</p>
 <p>If you have trouble, feel free to file an issue for this tutorial in the <a href="https://github.com/microsoft/vscode-docs/issues" class="external-link" target="_blank">VS Code documentation repository</a>.</p>
 <h2 id="_prerequisites" data-needslink="_prerequisites">Prerequisites</h2>
 <p>To successfully complete this tutorial, you must do the following:</p>
 <ol>
 <li>
-<p>Install <a href="https://code.visualstudio.com/download">LT Serial Tool</a>.</p>
+<p>Install <a href="https://code.visualstudio.com/download">LTSerialTool</a>.</p>
 </li>
 <li>
 <p>Install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" class="external-link" target="_blank">C++ extension for VS Code</a>. You can install the C/C++ extension by searching for 'c++' in the Extensions view (<span class="dynamic-keybinding" data-commandId="workbench.view.extensions" data-osx="⇧⌘X" data-win="Ctrl+Shift+X" data-linux="Ctrl+Shift+X"><span class="keybinding">⇧⌘X</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+X</span>)</span>).</p>
@@ -2136,7 +2136,7 @@
 <p>Now press <span class="dynamic-keybinding" data-commandId="workbench.action.files.save" data-osx="⌘S" data-win="Ctrl+S" data-linux="Ctrl+S"><span class="keybinding">⌘S</span> (Windows, Linux <span class="keybinding">Ctrl+S</span>)</span> to save the file. Notice that your files are listed in the <strong>File Explorer</strong> view (<span class="dynamic-keybinding" data-commandId="workbench.view.explorer" data-osx="⇧⌘E" data-win="Ctrl+Shift+E" data-linux="Ctrl+Shift+E"><span class="keybinding">⇧⌘E</span> (Windows, Linux <span class="keybinding">Ctrl+Shift+E</span>)</span>) in the side bar of VS Code:</p>
 <p><img src="https://code.visualstudio.com/assets/docs/cpp/msvc/file-explorer.png" alt="File Explorer" loading="lazy"></p>
 <p>You can also enable <a href="https://code.visualstudio.com/docs/editing/codebasics#_save-auto-save">Auto Save</a> to automatically save your file changes, by checking <strong>Auto Save</strong> in the main <strong>File</strong> menu.</p>
-<p>The Activity Bar on the edge of LT Serial Tool lets you open different views such as <strong>Search</strong>, <strong>Source Control</strong>, and <strong>Run</strong>. You'll look at the <strong>Run</strong> view later in this tutorial. You can find out more about the other views in the VS Code <a href="https://code.visualstudio.com/docs/getstarted/userinterface">User Interface documentation</a>.</p>
+<p>The Activity Bar on the edge of LTSerialTool lets you open different views such as <strong>Search</strong>, <strong>Source Control</strong>, and <strong>Run</strong>. You'll look at the <strong>Run</strong> view later in this tutorial. You can find out more about the other views in the VS Code <a href="https://code.visualstudio.com/docs/getstarted/userinterface">User Interface documentation</a>.</p>
 <blockquote><p><strong>Note</strong>: When you save or open a C++ file, you may see a notification from the C/C++ extension about the availability of an Insiders version, which lets you test new features and fixes. You can ignore this notification by selecting the <code>X</code> (<strong>Clear Notification</strong>).</p>
 </blockquote><h2 id="_explore-intellisense" data-needslink="_explore-intellisense">Explore IntelliSense</h2>
 <p>In the <code>helloworld.cpp</code> file, hover over <code>vector</code> or <code>string</code> to see type information. After the declaration of the <code>msg</code> variable, start typing <code>msg.</code>as you would when calling a member function. You should immediately see a completion list that shows all the member functions, and a window that shows the type information for the <code>msg</code> object:</p>
@@ -2320,7 +2320,7 @@ The <code>args</code> array specifies the command-line arguments that will be pa
 <p>This opens the <strong>C/C++ Configurations</strong> page. When you make changes here, VS Code writes them to a file called <code>c_cpp_properties.json</code> in the <code>.vscode</code> folder.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/cpp/wsl/intellisense-configurations-wsl.png" alt="IntelliSense configuration window" loading="lazy"></p>
 <p>You only need to modify the <strong>Include path</strong> setting if your program includes header files that are not in your workspace or in the standard library path.</p>
-<p>LT Serial Tool places these settings in <code>.vscode/c_cpp_properties.json</code>. If you open that file directly, it should look something like this:</p>
+<p>LTSerialTool places these settings in <code>.vscode/c_cpp_properties.json</code>. If you open that file directly, it should look something like this:</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "configurations"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: [</span></span>
 <span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">    {</span></span>
@@ -2482,7 +2482,7 @@ The <code>args</code> array specifies the command-line arguments that will be pa
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "LT Serial Tool",
+			"name" : "LTSerialTool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",

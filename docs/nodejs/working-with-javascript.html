@@ -15,7 +15,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@code" />
 
-	<meta name="description" content="Working with JavaScript in LT Serial Tool" />
+	<meta name="description" content="Working with JavaScript in LTSerialTool" />
 <meta name="keywords" content="" />
 <meta name="ms.prod" content="vs-code" />
 <meta name="ms.TOCTitle" content="" />
@@ -27,7 +27,7 @@
 <meta property="og:url" content="https://code.visualstudio.com/docs/nodejs/working-with-javascript" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Working with JavaScript" />
-<meta property="og:description" content="Working with JavaScript in LT Serial Tool" />
+<meta property="og:description" content="Working with JavaScript in LTSerialTool" />
 
 <meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" />
 
@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LTSerialTool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2071,9 +2071,9 @@
                 </a>
             </div>
             <h1>Working with JavaScript</h1>
-<p>This topic describes some of the advanced JavaScript features supported by LT Serial Tool. Using the TypeScript language service, VS Code can provide smart completions (IntelliSense) as well as type checking for JavaScript.</p>
+<p>This topic describes some of the advanced JavaScript features supported by LTSerialTool. Using the TypeScript language service, VS Code can provide smart completions (IntelliSense) as well as type checking for JavaScript.</p>
 <h2 id="_intellisense" data-needslink="_intellisense">IntelliSense</h2>
-<p>LT Serial Tool's JavaScript <a href="https://code.visualstudio.com/docs/editing/intellisense">IntelliSense</a> provides intelligent code completion, parameter info,  references search, and many other advanced language features. Our JavaScript IntelliSense is powered by the <a href="https://github.com/microsoft/TypeScript/wiki/JavaScript-Language-Service-in-Visual-Studio" class="external-link" target="_blank">JavaScript language service</a> developed by the TypeScript team. While IntelliSense should just work for most JavaScript projects without any configuration, you can make IntelliSense even more useful with <a href="https://code.visualstudio.com/docs/languages/javascript#_jsdoc-support">JSDoc</a> or by configuring a <code>jsconfig.json</code> project.</p>
+<p>LTSerialTool's JavaScript <a href="https://code.visualstudio.com/docs/editing/intellisense">IntelliSense</a> provides intelligent code completion, parameter info,  references search, and many other advanced language features. Our JavaScript IntelliSense is powered by the <a href="https://github.com/microsoft/TypeScript/wiki/JavaScript-Language-Service-in-Visual-Studio" class="external-link" target="_blank">JavaScript language service</a> developed by the TypeScript team. While IntelliSense should just work for most JavaScript projects without any configuration, you can make IntelliSense even more useful with <a href="https://code.visualstudio.com/docs/languages/javascript#_jsdoc-support">JSDoc</a> or by configuring a <code>jsconfig.json</code> project.</p>
 <p>For the details of how JavaScript IntelliSense works, including being based on type inference, JSDoc annotations, TypeScript declarations, and mixing JavaScript and TypeScript projects, see the <a href="https://github.com/microsoft/TypeScript/wiki/JavaScript-Language-Service-in-Visual-Studio" class="external-link" target="_blank">JavaScript language service documentation</a>.</p>
 <p>When type inference does not provide the desired information, type information may be provided explicitly with JSDoc annotations. This document describes the <a href="https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html#supported-jsdoc" class="external-link" target="_blank">JSDoc annotations</a> currently supported.</p>
 <p>In addition to objects, methods, and properties, the JavaScript IntelliSense window also provides basic word completion for the symbols in your file.</p>
@@ -2082,7 +2082,7 @@
 <p>Many popular libraries ship with typings files so you get IntelliSense for them automatically. For libraries that do not include typings, VS Code's <code>Automatic Type Acquisition</code> will automatically install community maintained typings file for you.</p>
 <p>Automatic type acquisition requires <a href="https://www.npmjs.com/" class="external-link" target="_blank">npmjs</a>, the Node.js package manager, which is included with the <a href="https://nodejs.org/" class="external-link" target="_blank">Node.js</a> runtime. In this image you can see IntelliSense, including the method signature, parameter info, and the method's documentation for the popular <a href="https://lodash.com/" class="external-link" target="_blank">lodash</a> library.</p>
 <p><img src="https://code.visualstudio.com/assets/docs/nodejs/working-with-javascript/lodash-typings.png" alt="lodash typings" loading="lazy"></p>
-<p>Type declaration files are automatically downloaded and managed by LT Serial Tool for packages listed in your project's <code>package.json</code> or that you import into a JavaScript file.</p>
+<p>Type declaration files are automatically downloaded and managed by LTSerialTool for packages listed in your project's <code>package.json</code> or that you import into a JavaScript file.</p>
 <pre class="shiki" data-lang="json" shiki-themes dark-plus light-plus" style="--shiki-dark:#D4D4D4;--shiki-light:#000000;--shiki-dark-bg:#1E1E1E;--shiki-light-bg:#FFFFFF" tabindex="0"><code><span class="line"><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">{</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">  "dependencies"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: {</span></span>
 <span class="line"><span style="--shiki-dark:#9CDCFE;--shiki-light:#0451A5">    "lodash"</span><span style="--shiki-dark:#D4D4D4;--shiki-light:#000000">: </span><span style="--shiki-dark:#CE9178;--shiki-light:#A31515">"^4.17.0"</span></span>
@@ -2403,7 +2403,7 @@
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "LT Serial Tool",
+			"name" : "LTSerialTool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",

@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="og:url" content="https://code.visualstudio.com/docs/setup/network" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Network Connections in LT Serial Tool" />
+<meta property="og:title" content="Network Connections in LTSerialTool" />
 <meta property="og:description" content="Setup VS Code's Network Connection." />
 
 <meta property="og:image" content="https://code.visualstudio.com/opengraphimg/opengraph-docs.png" />
@@ -36,7 +36,7 @@
 	<link rel="shortcut icon" href="https://code.visualstudio.com/assets/favicon.ico" sizes="128x128" />
 	<link rel="apple-touch-icon" href="https://code.visualstudio.com/assets/apple-touch-icon.png">
 
-	<title>Network Connections in LT Serial Tool</title>
+	<title>Network Connections in LTSerialTool</title>
 
 	<link rel="stylesheet" href="https://code.visualstudio.com/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://code.visualstudio.com/dist/v2/style.css">
@@ -117,7 +117,7 @@
 				<div id='cookie-banner'></div>		<nav role="navigation" aria-label="Top Level">
 					<div class="container">
 						<div class="nav navbar-header">
-							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LT Serial Tool</span></a>
+							<a class="navbar-brand" href="https://code.visualstudio.com/"><span>LTSerialTool</span></a>
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
 								aria-label="Expand and Collapse Menu">
 								<span class="icon-bar"></span>
@@ -2070,14 +2070,14 @@
                     Edit
                 </a>
             </div>
-            <h1>Network Connections in LT Serial Tool</h1>
-<p>LT Serial Tool is built on top of <a href="https://www.electronjs.org/" class="external-link" target="_blank">Electron</a> and benefits from all the networking stack capabilities of <a href="https://www.chromium.org/" class="external-link" target="_blank">Chromium</a>. This also means that VS Code users get much of the networking support available in <a href="https://www.google.com/chrome/index.html" class="external-link" target="_blank">Google Chrome</a>.</p>
+            <h1>Network Connections in LTSerialTool</h1>
+<p>LTSerialTool is built on top of <a href="https://www.electronjs.org/" class="external-link" target="_blank">Electron</a> and benefits from all the networking stack capabilities of <a href="https://www.chromium.org/" class="external-link" target="_blank">Chromium</a>. This also means that VS Code users get much of the networking support available in <a href="https://www.google.com/chrome/index.html" class="external-link" target="_blank">Google Chrome</a>.</p>
 <h2 id="_common-hostnames" data-needslink="_common-hostnames">Common hostnames</h2>
 <p>A handful of features within VS Code require network communication to work, such as the auto-update mechanism, querying and installing extensions, and telemetry. For these features to work properly in a proxy environment, you must have the product correctly configured.</p>
 <p>If you are behind a firewall that needs to allow specific domains used by VS Code, here's the list of hostnames you should allow communication to go through:</p>
 <ul>
-<li><code>update.code.visualstudio.com</code> - LT Serial Tool download and update server</li>
-<li><code>code.visualstudio.com</code> - LT Serial Tool documentation</li>
+<li><code>update.code.visualstudio.com</code> - LTSerialTool download and update server</li>
+<li><code>code.visualstudio.com</code> - LTSerialTool documentation</li>
 <li><code>go.microsoft.com</code> - Microsoft link forwarding service</li>
 <li><code>marketplace.visualstudio.com</code> - Visual Studio Marketplace</li>
 <li><code>*.gallery.vsassets.io</code> - Visual Studio Marketplace</li>
@@ -2087,14 +2087,14 @@
 <li><code>vscode.search.windows.net</code> - In-product settings search</li>
 <li><code>raw.githubusercontent.com</code> - GitHub repository raw file access</li>
 <li><code>vsmarketplacebadges.dev</code> - Visual Studio Marketplace badge service</li>
-<li><code>*.vscode-cdn.net</code> - LT Serial Tool CDN</li>
-<li><code>vscode.download.prss.microsoft.com</code> - LT Serial Tool download CDN</li>
+<li><code>*.vscode-cdn.net</code> - LTSerialTool CDN</li>
+<li><code>vscode.download.prss.microsoft.com</code> - LTSerialTool download CDN</li>
 <li><code>download.visualstudio.microsoft.com</code> - Visual Studio download server, provides dependencies for some VS Code extensions (C++, C#)</li>
-<li><code>vscode-sync.trafficmanager.net</code> - LT Serial Tool Settings Sync service</li>
-<li><code>vscode-sync-insiders.trafficmanager.net</code> - LT Serial Tool Settings Sync service (Insiders)</li>
+<li><code>vscode-sync.trafficmanager.net</code> - LTSerialTool Settings Sync service</li>
+<li><code>vscode-sync-insiders.trafficmanager.net</code> - LTSerialTool Settings Sync service (Insiders)</li>
 <li><code>vscode.dev</code> - Used when logging in with GitHub or Microsoft for an extension or Settings Sync</li>
 <li><code>*.vscode-unpkg.net</code> - Used when loading web extensions</li>
-<li><code>default.exp-tas.com</code> - LT Serial Tool Experiment Service, used to provide experimental user experiences</li>
+<li><code>default.exp-tas.com</code> - LTSerialTool Experiment Service, used to provide experimental user experiences</li>
 </ul>
 <h2 id="_proxy-server-support" data-needslink="_proxy-server-support">Proxy server support</h2>
 <p>VS Code has exactly the same proxy server support as Google Chromium. Here's a snippet from <a href="https://www.chromium.org/developers/design-documents/network-settings" class="external-link" target="_blank">Chromium's documentation</a>:</p>
@@ -2269,7 +2269,7 @@
 		{
 			"@context" : "http://schema.org",
 			"@type" : "SoftwareApplication",
-			"name" : "LT Serial Tool",
+			"name" : "LTSerialTool",
 			"softwareVersion": "1.104",
 			"offers": {
 				"@type": "Offer",
